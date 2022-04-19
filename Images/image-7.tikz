@@ -1,0 +1,78 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (12) at (-6, 1) {};
+		\node [style=none] (13) at (-6, -1) {};
+		\node [style=none] (24) at (6, 1) {};
+		\node [style=none] (25) at (6, -1) {};
+		\node [style=none] (30) at (-6, -3) {};
+		\node [style=none] (31) at (-6, -5) {};
+		\node [style=none] (38) at (6, -3) {};
+		\node [style=none] (39) at (6, -5) {};
+		\node [style=none] (43) at (-2, -7) {};
+		\node [style=none] (46) at (-4, -7) {};
+		\node [style=none] (49) at (2, -7) {};
+		\node [style=none] (50) at (0, -7) {};
+		\node [style=none] (54) at (4, -7) {};
+		\node [style=none] (56) at (-2, 5) {};
+		\node [style=none] (59) at (-6, 3) {};
+		\node [style=none] (61) at (-4, 5) {};
+		\node [style=none] (62) at (2, 5) {};
+		\node [style=none] (65) at (0, 5) {};
+		\node [style=none] (67) at (6, 3) {};
+		\node [style=none] (69) at (4, 5) {};
+		\node [style=none] (70) at (7, -7) {};
+		\node [style=none] (71) at (-6, 6) {};
+		\node [style=none] (74) at (-6, -7) {};
+		\node [style=none] (79) at (-19, 0) {};
+		\node [style=none] (80) at (-11, 0) {};
+		\node [style=none] (81) at (-11, -4) {};
+		\node [style=none] (82) at (-19, -4) {};
+		\node [style=none] (83) at (-15, -2) {dispositivo di controllo};
+		\node [style=none] (84) at (-11, -2) {};
+		\node [style=none] (85) at (-8.5, -2) {};
+		\node [style=none] (86) at (-8.5, 2) {};
+		\node [style=none] (87) at (1, 2) {};
+		\node [style=none] (88) at (-4, 6) {};
+		\node [style=none] (89) at (-2, 6) {};
+		\node [style=none] (90) at (0, 6) {};
+		\node [style=none] (91) at (2, 6) {};
+		\node [style=none] (92) at (4, 6) {};
+		\node [style=none] (93) at (7, 3) {};
+		\node [style=none] (94) at (7, 1) {};
+		\node [style=none] (95) at (7, -1) {};
+		\node [style=none] (96) at (7, -3) {};
+		\node [style=none] (97) at (7, -5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=big] (80.center)
+			 to (79.center)
+			 to (82.center)
+			 to (81.center)
+			 to cycle;
+		\draw [style=big arrow] (74.center) to (71.center);
+		\draw [style=big arrow] (74.center) to (70.center);
+		\draw [style=solid] (46.center) to (61.center);
+		\draw [style=solid] (50.center) to (65.center);
+		\draw [style=solid] (56.center) to (43.center);
+		\draw [style=solid] (49.center) to (62.center);
+		\draw [style=solid] (69.center) to (54.center);
+		\draw [style=solid] (31.center) to (39.center);
+		\draw [style=solid] (38.center) to (30.center);
+		\draw [style=solid] (13.center) to (25.center);
+		\draw [style=solid] (12.center) to (24.center);
+		\draw [style=solid] (67.center) to (59.center);
+		\draw [style=big] (84.center) to (85.center);
+		\draw [style=big] (85.center) to (86.center);
+		\draw [style=big arrow] (86.center) to (87.center);
+		\draw [style=dashed] (88.center) to (61.center);
+		\draw [style=dashed] (92.center) to (69.center);
+		\draw [style=dashed] (91.center) to (62.center);
+		\draw [style=dashed] (56.center) to (89.center);
+		\draw [style=dashed] (90.center) to (65.center);
+		\draw [style=dashed] (39.center) to (97.center);
+		\draw [style=dashed] (38.center) to (96.center);
+		\draw [style=dashed] (25.center) to (95.center);
+		\draw [style=dashed] (24.center) to (94.center);
+		\draw [style=dashed] (67.center) to (93.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

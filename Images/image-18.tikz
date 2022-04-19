@@ -1,0 +1,416 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (236) at (30, -14) {};
+		\node [style=none] (237) at (33, -14) {};
+		\node [style=none] (238) at (33, -17) {};
+		\node [style=none] (239) at (30, -17) {};
+		\node [style=none] (0) at (2, -2) {};
+		\node [style=none] (3) at (5, -2) {};
+		\node [style=none, color=white] (4) at (3.5, -3.5) {\(f(x, y)\)};
+		\node [style=none] (5) at (8, -2) {};
+		\node [style=none] (6) at (8, -5) {};
+		\node [style=none] (8) at (11, -5) {};
+		\node [style=none] (10) at (14, -5) {};
+		\node [style=none] (12) at (17, -5) {};
+		\node [style=none] (14) at (20, -5) {};
+		\node [style=none] (15) at (23, -2) {};
+		\node [style=none] (16) at (23, -5) {};
+		\node [style=none] (17) at (6.5, -3.5) {1};
+		\node [style=none] (18) at (9.5, -3.5) {2};
+		\node [style=none] (19) at (12.5, -3.5) {3};
+		\node [style=none] (20) at (15.5, -3.5) {4};
+		\node [style=none] (21) at (18.5, -3.5) {5};
+		\node [style=none] (22) at (21.5, -3.5) {6};
+		\node [style=none] (23) at (2, -5) {};
+		\node [style=none] (24) at (5, -5) {};
+		\node [style=none] (25) at (5, -8) {};
+		\node [style=none] (26) at (2, -8) {};
+		\node [style=none] (27) at (5, -11) {};
+		\node [style=none] (29) at (5, -14) {};
+		\node [style=none] (31) at (5, -17) {};
+		\node [style=none] (33) at (5, -20) {};
+		\node [style=none] (35) at (5, -23) {};
+		\node [style=none] (36) at (2, -23) {};
+		\node [style=none] (37) at (3.5, -6.5) {1};
+		\node [style=none] (38) at (3.5, -9.5) {2};
+		\node [style=none] (39) at (3.5, -12.5) {3};
+		\node [style=none] (40) at (3.5, -15.5) {4};
+		\node [style=none] (41) at (3.5, -18.5) {5};
+		\node [style=none] (42) at (3.5, -21.5) {6};
+		\node [style=none] (43) at (8, -8) {};
+		\node [style=none] (44) at (11, -8) {};
+		\node [style=none] (45) at (14, -8) {};
+		\node [style=none] (46) at (17, -8) {};
+		\node [style=none] (47) at (20, -8) {};
+		\node [style=none] (48) at (23, -8) {};
+		\node [style=none] (49) at (8, -11) {};
+		\node [style=none] (50) at (11, -11) {};
+		\node [style=none] (51) at (14, -11) {};
+		\node [style=none] (52) at (17, -11) {};
+		\node [style=none] (53) at (20, -11) {};
+		\node [style=none] (55) at (8, -14) {};
+		\node [style=none] (56) at (11, -14) {};
+		\node [style=none] (57) at (14, -14) {};
+		\node [style=none] (58) at (17, -14) {};
+		\node [style=none] (59) at (20, -14) {};
+		\node [style=none] (61) at (8, -17) {};
+		\node [style=none] (62) at (11, -17) {};
+		\node [style=none] (63) at (14, -17) {};
+		\node [style=none] (64) at (17, -17) {};
+		\node [style=none] (65) at (20, -17) {};
+		\node [style=none] (67) at (8, -20) {};
+		\node [style=none] (68) at (11, -20) {};
+		\node [style=none] (69) at (14, -20) {};
+		\node [style=none] (70) at (17, -20) {};
+		\node [style=none] (71) at (20, -20) {};
+		\node [style=none] (73) at (8, -23) {};
+		\node [style=none] (78) at (23, -23) {};
+		\node [style=none] (79) at (2, -11) {};
+		\node [style=none] (80) at (23, -11) {};
+		\node [style=none] (81) at (2, -14) {};
+		\node [style=none] (82) at (23, -14) {};
+		\node [style=none] (83) at (2, -17) {};
+		\node [style=none] (84) at (23, -17) {};
+		\node [style=none] (85) at (2, -20) {};
+		\node [style=none] (86) at (23, -20) {};
+		\node [style=none] (87) at (11, -2) {};
+		\node [style=none] (88) at (11, -23) {};
+		\node [style=none] (89) at (14, -2) {};
+		\node [style=none] (90) at (14, -23) {};
+		\node [style=none] (91) at (17, -2) {};
+		\node [style=none] (92) at (17, -23) {};
+		\node [style=none] (93) at (20, -2) {};
+		\node [style=none] (94) at (20, -23) {};
+		\node [style=none, color=white] (95) at (6.5, -6.5) {1};
+		\node [style=none] (96) at (9.5, -6.5) {0};
+		\node [style=none] (97) at (12.5, -6.5) {0};
+		\node [style=none] (98) at (15.5, -6.5) {1};
+		\node [style=none] (99) at (18.5, -6.5) {0};
+		\node [style=none] (100) at (21.5, -6.5) {1};
+		\node [style=none] (101) at (6.5, -9.5) {0};
+		\node [style=none, color=white] (102) at (9.5, -9.5) {0};
+		\node [style=none] (103) at (12.5, -9.5) {0};
+		\node [style=none] (104) at (15.5, -9.5) {1};
+		\node [style=none] (105) at (18.5, -9.5) {0};
+		\node [style=none] (106) at (21.5, -9.5) {0};
+		\node [style=none] (107) at (6.5, -12.5) {0};
+		\node [style=none] (108) at (9.5, -12.5) {1};
+		\node [style=none, color=white] (109) at (12.5, -12.5) {0};
+		\node [style=none] (110) at (15.5, -12.5) {1};
+		\node [style=none] (111) at (18.5, -12.5) {0};
+		\node [style=none] (112) at (21.5, -12.5) {1};
+		\node [style=none] (113) at (6.5, -15.5) {1};
+		\node [style=none] (114) at (9.5, -15.5) {0};
+		\node [style=none] (115) at (12.5, -15.5) {0};
+		\node [style=none, color=white] (116) at (15.5, -15.5) {1};
+		\node [style=none] (117) at (18.5, -15.5) {0};
+		\node [style=none] (118) at (21.5, -15.5) {0};
+		\node [style=none] (119) at (6.5, -18.5) {0};
+		\node [style=none] (120) at (9.5, -18.5) {0};
+		\node [style=none] (121) at (12.5, -18.5) {0};
+		\node [style=none] (122) at (15.5, -18.5) {1};
+		\node [style=none, color=white] (123) at (18.5, -18.5) {1};
+		\node [style=none] (124) at (21.5, -18.5) {1};
+		\node [style=none] (125) at (6.5, -21.5) {1};
+		\node [style=none] (126) at (9.5, -21.5) {1};
+		\node [style=none] (127) at (12.5, -21.5) {0};
+		\node [style=none] (128) at (15.5, -21.5) {0};
+		\node [style=none] (129) at (18.5, -21.5) {1};
+		\node [style=none, color=white] (130) at (21.5, -21.5) {0};
+		\node [style=none] (131) at (0, -1) {};
+		\node [style=none] (132) at (24, -1) {};
+		\node [style=none] (133) at (1, 0) {};
+		\node [style=none] (134) at (1, -24) {};
+		\node [style=none] (135) at (24.5, -1) {\large \(x\)};
+		\node [style=none] (136) at (1, -24.5) {\large \(y\)};
+		\node [style=none] (137) at (11, -8) {};
+		\node [style=none] (138) at (8, -8) {};
+		\node [style=none] (139) at (8, -11) {};
+		\node [style=none] (140) at (11, -11) {};
+		\node [style=none] (141) at (14, -11) {};
+		\node [style=none] (142) at (11, -11) {};
+		\node [style=none] (143) at (11, -14) {};
+		\node [style=none] (144) at (14, -14) {};
+		\node [style=none] (145) at (17, -14) {};
+		\node [style=none] (146) at (14, -14) {};
+		\node [style=none] (147) at (14, -17) {};
+		\node [style=none] (148) at (17, -17) {};
+		\node [style=none] (149) at (20, -17) {};
+		\node [style=none] (150) at (17, -17) {};
+		\node [style=none] (151) at (17, -20) {};
+		\node [style=none] (152) at (20, -20) {};
+		\node [style=none] (153) at (23, -20) {};
+		\node [style=none] (154) at (20, -20) {};
+		\node [style=none] (155) at (20, -23) {};
+		\node [style=none] (156) at (23, -23) {};
+		\node [style=none] (157) at (27, -8) {};
+		\node [style=none] (158) at (30, -8) {};
+		\node [style=none] (159) at (28.5, -9.5) {\(f(x, y)\)};
+		\node [style=none] (160) at (33, -8) {};
+		\node [style=none] (166) at (48, -8) {};
+		\node [style=none, color=white] (168) at (31.5, -9.5) {1};
+		\node [style=none, color=white] (169) at (34.5, -9.5) {0};
+		\node [style=none, color=white] (170) at (37.5, -9.5) {0};
+		\node [style=none, color=white] (171) at (40.5, -9.5) {1};
+		\node [style=none, color=white] (172) at (43.5, -9.5) {1};
+		\node [style=none, color=white] (173) at (46.5, -9.5) {0};
+		\node [style=none] (176) at (36, -8) {};
+		\node [style=none] (177) at (39, -8) {};
+		\node [style=none] (178) at (42, -8) {};
+		\node [style=none] (179) at (45, -8) {};
+		\node [style=none] (181) at (30, -14) {};
+		\node [style=none] (182) at (28.5, -15.5) {\(h(x)\)};
+		\node [style=none] (183) at (33, -14) {};
+		\node [style=none] (184) at (33, -17) {};
+		\node [style=none] (185) at (36, -17) {};
+		\node [style=none] (186) at (39, -17) {};
+		\node [style=none] (187) at (42, -17) {};
+		\node [style=none] (188) at (45, -17) {};
+		\node [style=none] (190) at (48, -17) {};
+		\node [style=none, color=white] (191) at (31.5, -15.5) {\(\bot\)};
+		\node [style=none, color=white] (192) at (34.5, -15.5) {0};
+		\node [style=none] (197) at (27, -17) {};
+		\node [style=none] (198) at (30, -17) {};
+		\node [style=none] (203) at (27, -14) {};
+		\node [style=none, color=white] (204) at (37.5, -15.5) {0};
+		\node [style=none, color=white] (205) at (43.5, -15.5) {\(\bot\)};
+		\node [style=none, color=white] (206) at (40.5, -15.5) {\(\bot\)};
+		\node [style=none, color=white] (207) at (46.5, -15.5) {0};
+		\node [style=none] (208) at (45, -14) {};
+		\node [style=none] (209) at (48, -14) {};
+		\node [style=none] (210) at (48, -17) {};
+		\node [style=none] (211) at (45, -17) {};
+		\node [style=none] (212) at (30, -8) {};
+		\node [style=none] (213) at (33, -8) {};
+		\node [style=none] (214) at (33, -11) {};
+		\node [style=none] (215) at (30, -11) {};
+		\node [style=none] (216) at (33, -8) {};
+		\node [style=none] (217) at (36, -8) {};
+		\node [style=none] (218) at (36, -11) {};
+		\node [style=none] (219) at (33, -11) {};
+		\node [style=none] (220) at (36, -8) {};
+		\node [style=none] (221) at (39, -8) {};
+		\node [style=none] (222) at (39, -11) {};
+		\node [style=none] (223) at (36, -11) {};
+		\node [style=none] (224) at (39, -8) {};
+		\node [style=none] (225) at (42, -8) {};
+		\node [style=none] (226) at (42, -11) {};
+		\node [style=none] (227) at (39, -11) {};
+		\node [style=none] (228) at (42, -8) {};
+		\node [style=none] (229) at (45, -8) {};
+		\node [style=none] (230) at (45, -11) {};
+		\node [style=none] (231) at (42, -11) {};
+		\node [style=none] (232) at (45, -8) {};
+		\node [style=none] (233) at (48, -8) {};
+		\node [style=none] (234) at (48, -11) {};
+		\node [style=none] (235) at (45, -11) {};
+		\node [style=none] (240) at (33, -14) {};
+		\node [style=none] (241) at (36, -14) {};
+		\node [style=none] (242) at (36, -17) {};
+		\node [style=none] (243) at (33, -17) {};
+		\node [style=none] (244) at (36, -14) {};
+		\node [style=none] (245) at (39, -14) {};
+		\node [style=none] (246) at (39, -17) {};
+		\node [style=none] (247) at (36, -17) {};
+		\node [style=none] (248) at (39, -14) {};
+		\node [style=none] (249) at (42, -14) {};
+		\node [style=none] (250) at (42, -17) {};
+		\node [style=none] (251) at (39, -17) {};
+		\node [style=none] (252) at (42, -14) {};
+		\node [style=none] (253) at (45, -14) {};
+		\node [style=none] (254) at (45, -17) {};
+		\node [style=none] (255) at (42, -17) {};
+		\node [style=none] (256) at (30, -8) {};
+		\node [style=none] (257) at (5, -2) {};
+		\node [style=none] (258) at (2, -2) {};
+		\node [style=none] (259) at (2, -5) {};
+		\node [style=none] (260) at (5, -5) {};
+		\node [style=none] (261) at (27, -11) {};
+		\node [style=none] (262) at (28.5, -12.5) {\(g(x, y)\)};
+		\node [style=none] (263) at (33, -14) {};
+		\node [style=none] (264) at (33, -11) {};
+		\node [style=none] (265) at (36, -11) {};
+		\node [style=none] (266) at (36, -14) {};
+		\node [style=none] (267) at (36, -14) {};
+		\node [style=none] (268) at (36, -11) {};
+		\node [style=none] (269) at (39, -11) {};
+		\node [style=none] (270) at (39, -14) {};
+		\node [style=none] (271) at (45, -14) {};
+		\node [style=none] (272) at (45, -11) {};
+		\node [style=none] (273) at (48, -11) {};
+		\node [style=none] (274) at (48, -14) {};
+		\node [style=none] (275) at (42, -14) {};
+		\node [style=none] (276) at (42, -11) {};
+		\node [style=none] (277) at (45, -11) {};
+		\node [style=none] (278) at (45, -14) {};
+		\node [style=none] (279) at (39, -14) {};
+		\node [style=none] (280) at (39, -11) {};
+		\node [style=none] (281) at (42, -11) {};
+		\node [style=none] (282) at (42, -14) {};
+		\node [style=none, color=white] (283) at (31.5, -12.5) {0};
+		\node [style=none, color=white] (284) at (34.5, -12.5) {1};
+		\node [style=none, color=white] (285) at (37.5, -12.5) {1};
+		\node [style=none, color=white] (286) at (40.5, -12.5) {0};
+		\node [style=none, color=white] (287) at (43.5, -12.5) {0};
+		\node [style=none, color=white] (288) at (46.5, -12.5) {1};
+		\node [style=none, color=white] (289) at (30, -11) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=big] (197.center) to (190.center);
+		\draw [style=dark fill] (238.center)
+			 to (237.center)
+			 to (236.center)
+			 to [in=90, out=-90] (239.center)
+			 to cycle;
+		\draw [style=big] (198.center) to (158.center);
+		\draw [style=big] (36.center) to (0.center);
+		\draw [style=big] (0.center) to (15.center);
+		\draw [style=big] (36.center) to (78.center);
+		\draw [style=big] (78.center) to (15.center);
+		\draw [style=big] (23.center) to (24.center);
+		\draw [style=big] (24.center) to (3.center);
+		\draw [style=solid] (24.center) to (35.center);
+		\draw [style=solid] (24.center) to (16.center);
+		\draw [style=solid] (26.center) to (48.center);
+		\draw [style=solid] (79.center) to (80.center);
+		\draw [style=solid] (81.center) to (82.center);
+		\draw [style=solid] (83.center) to (84.center);
+		\draw [style=solid] (85.center) to (86.center);
+		\draw [style=solid] (5.center) to (73.center);
+		\draw [style=solid] (87.center) to (88.center);
+		\draw [style=solid] (89.center) to (90.center);
+		\draw [style=solid] (91.center) to (92.center);
+		\draw [style=solid] (93.center) to (94.center);
+		\draw [style=big arrow] (131.center) to (132.center);
+		\draw [style=big arrow] (133.center) to (134.center);
+		\draw [style=dark fill] (25.center)
+			 to (24.center)
+			 to (6.center)
+			 to (43.center)
+			 to cycle;
+		\draw [style=dark fill] (139.center)
+			 to (138.center)
+			 to (137.center)
+			 to (140.center)
+			 to cycle;
+		\draw [style=dark fill] (143.center)
+			 to (142.center)
+			 to (141.center)
+			 to (144.center)
+			 to cycle;
+		\draw [style=dark fill] (147.center)
+			 to (146.center)
+			 to (145.center)
+			 to (148.center)
+			 to cycle;
+		\draw [style=dark fill] (151.center)
+			 to (150.center)
+			 to (149.center)
+			 to (152.center)
+			 to cycle;
+		\draw [style=dark fill] (155.center)
+			 to (154.center)
+			 to (153.center)
+			 to (156.center)
+			 to cycle;
+		\draw [style=big] (157.center) to (166.center);
+		\draw [style=big] (190.center) to (166.center);
+		\draw [style=big] (197.center) to (157.center);
+		\draw [style=dark fill] (210.center)
+			 to (209.center)
+			 to (208.center)
+			 to (211.center)
+			 to cycle;
+		\draw [style=dark fill] (214.center)
+			 to (213.center)
+			 to (212.center)
+			 to (215.center)
+			 to cycle;
+		\draw [style=dark fill] (218.center)
+			 to (217.center)
+			 to (216.center)
+			 to (219.center)
+			 to cycle;
+		\draw [style=dark fill] (222.center)
+			 to (221.center)
+			 to (220.center)
+			 to (223.center)
+			 to cycle;
+		\draw [style=dark fill] (226.center)
+			 to (225.center)
+			 to (224.center)
+			 to (227.center)
+			 to cycle;
+		\draw [style=dark fill] (230.center)
+			 to (229.center)
+			 to (228.center)
+			 to (231.center)
+			 to cycle;
+		\draw [style=dark fill] (234.center)
+			 to (233.center)
+			 to (232.center)
+			 to (235.center)
+			 to cycle;
+		\draw [style=dark fill] (242.center)
+			 to (241.center)
+			 to (240.center)
+			 to (243.center)
+			 to cycle;
+		\draw [style=dark fill] (246.center)
+			 to (245.center)
+			 to (244.center)
+			 to (247.center)
+			 to cycle;
+		\draw [style=dark fill] (250.center)
+			 to (249.center)
+			 to (248.center)
+			 to (251.center)
+			 to cycle;
+		\draw [style=dark fill] (254.center)
+			 to (253.center)
+			 to (252.center)
+			 to (255.center)
+			 to cycle;
+		\draw [style=big] (203.center) to (236.center);
+		\draw [style=dark fill] (257.center)
+			 to [in=360, out=180] (258.center)
+			 to (259.center)
+			 to (260.center)
+			 to cycle;
+		\draw [style=big] (256.center) to (239.center);
+		\draw [style=big] (261.center) to (215.center);
+		\draw [style=dark fill] (181.center)
+			 to (240.center)
+			 to (219.center)
+			 to (215.center)
+			 to cycle;
+		\draw [style=dark fill] (263.center)
+			 to (266.center)
+			 to (265.center)
+			 to (264.center)
+			 to cycle;
+		\draw [style=dark fill] (267.center)
+			 to (270.center)
+			 to (269.center)
+			 to (268.center)
+			 to cycle;
+		\draw [style=dark fill] (271.center)
+			 to (274.center)
+			 to (273.center)
+			 to (272.center)
+			 to cycle;
+		\draw [style=dark fill] (275.center)
+			 to (278.center)
+			 to (277.center)
+			 to (276.center)
+			 to cycle;
+		\draw [style=dark fill] (279.center)
+			 to (282.center)
+			 to (281.center)
+			 to (280.center)
+			 to cycle;
+		\draw [style=big] (289.center) to (181.center);
+		\draw [style=big] (35.center) to (257.center);
+		\draw [style=big] (259.center) to (16.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

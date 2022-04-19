@@ -1,0 +1,207 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (-1, 2) {};
+		\node [style=none] (1) at (1, 2) {};
+		\node [style=none] (2) at (-1, 1) {};
+		\node [style=none] (3) at (1, 1) {};
+		\node [style=none] (4) at (5, 2) {};
+		\node [style=none] (5) at (7, 2) {};
+		\node [style=none] (6) at (9, 2) {};
+		\node [style=none] (7) at (11, 2) {};
+		\node [style=none] (8) at (13, 2) {};
+		\node [style=none] (9) at (15, 2) {};
+		\node [style=none] (10) at (17, 2) {};
+		\node [style=none] (11) at (19, 2) {};
+		\node [style=none] (12) at (21, 2) {};
+		\node [style=none] (13) at (23, 2) {};
+		\node [style=none] (14) at (5, 1) {};
+		\node [style=none] (15) at (7, 1) {};
+		\node [style=none] (16) at (9, 1) {};
+		\node [style=none] (17) at (11, 1) {};
+		\node [style=none] (18) at (13, 1) {};
+		\node [style=none] (19) at (15, 1) {};
+		\node [style=none] (20) at (17, 1) {};
+		\node [style=none] (21) at (19, 1) {};
+		\node [style=none] (22) at (21, 1) {};
+		\node [style=none] (23) at (23, 1) {};
+		\node [style=none] (24) at (25, 2) {};
+		\node [style=none] (26) at (-1, -12) {};
+		\node [style=none] (27) at (1, -12) {};
+		\node [style=none] (28) at (-1, -13) {};
+		\node [style=none] (29) at (1, -13) {};
+		\node [style=none] (30) at (5, -12) {};
+		\node [style=none] (31) at (7, -12) {};
+		\node [style=none] (32) at (9, -12) {};
+		\node [style=none] (33) at (11, -12) {};
+		\node [style=none] (34) at (13, -12) {};
+		\node [style=none] (35) at (15, -12) {};
+		\node [style=none] (36) at (17, -12) {};
+		\node [style=none] (37) at (19, -12) {};
+		\node [style=none] (38) at (21, -12) {};
+		\node [style=none] (39) at (23, -12) {};
+		\node [style=none] (40) at (5, -13) {};
+		\node [style=none] (41) at (7, -13) {};
+		\node [style=none] (42) at (9, -13) {};
+		\node [style=none] (43) at (11, -13) {};
+		\node [style=none] (44) at (13, -13) {};
+		\node [style=none] (45) at (15, -13) {};
+		\node [style=none] (46) at (17, -13) {};
+		\node [style=none] (47) at (19, -13) {};
+		\node [style=none] (48) at (21, -13) {};
+		\node [style=none] (49) at (23, -13) {};
+		\node [style=none] (50) at (25, -12) {};
+		\node [style=none] (51) at (25, -13) {};
+		\node [style=none] (61) at (12, -14) {nastro di scrittura - \texttt{OUT}};
+		\node [style=none] (62) at (12, 3) {nastro di lettura - \texttt{IN}};
+		\node [style=none] (66) at (12, -10) {};
+		\node [style=none] (67) at (12, -6) {};
+		\node [style=none] (68) at (6, -6) {};
+		\node [style=none] (69) at (6, -10) {};
+		\node [style=none] (70) at (6, -7) {};
+		\node [style=none] (71) at (6, -9) {};
+		\node [style=none] (72) at (2, -9) {};
+		\node [style=none] (73) at (4, -7) {};
+		\node [style=none] (74) at (2, -11.75) {};
+		\node [style=none] (75) at (4, 0.75) {};
+		\node [style=none] (78) at (12.25, -9) {};
+		\node [style=none] (135) at (16.75, -9) {};
+		\node [style=none] (151) at (9, -8) {programma};
+		\node [style=none] (152) at (6, -1) {};
+		\node [style=none] (153) at (12, -1) {};
+		\node [style=none] (154) at (12, -3) {};
+		\node [style=none] (155) at (6, -3) {};
+		\node [style=none] (156) at (9, -2) {program counter};
+		\node [style=none] (157) at (25, 1) {};
+		\node [style=none] (158) at (9, -3.25) {};
+		\node [style=none] (159) at (9, -5.75) {};
+		\node [style=none] (160) at (23, -10) {};
+		\node [style=none] (161) at (23, -6) {};
+		\node [style=none] (162) at (17, -6) {};
+		\node [style=none] (163) at (17, -10) {};
+		\node [style=none] (167) at (20, -8) {unità aritmetica};
+		\node [style=none] (168) at (3, -12) {};
+		\node [style=none] (169) at (3, -13) {};
+		\node [style=none] (170) at (3, 1) {};
+		\node [style=none] (171) at (3, 2) {};
+		\node [style=none] (172) at (29, -11.5) {};
+		\node [style=none] (173) at (30.5, -11.5) {};
+		\node [style=none] (178) at (29, 0.5) {};
+		\node [style=none] (179) at (30.5, 0.5) {};
+		\node [style=none] (180) at (29, -1.5) {};
+		\node [style=none] (181) at (30.5, -1.5) {};
+		\node [style=none] (182) at (29, -3.5) {};
+		\node [style=none] (183) at (30.5, -3.5) {};
+		\node [style=none] (184) at (29, -5.5) {};
+		\node [style=none] (185) at (30.5, -5.5) {};
+		\node [style=none] (186) at (29, -7.5) {};
+		\node [style=none] (187) at (30.5, -7.5) {};
+		\node [style=none] (188) at (29, -9.5) {};
+		\node [style=none] (189) at (30.5, -9.5) {};
+		\node [style=none] (190) at (29, -13.5) {};
+		\node [style=none] (191) at (30.5, -13.5) {};
+		\node [style=none] (192) at (29, 2.5) {};
+		\node [style=none] (193) at (30.5, 2.5) {};
+		\node [style=none, rotate=90] (194) at (31, -5.5) {memoria};
+		\node [style=none] (195) at (23, -8) {};
+		\node [style=none] (198) at (28.75, -10.5) {};
+		\node [style=none] (201) at (28.75, -2.25) {};
+		\node [style=none] (204) at (27, -8) {};
+		\node [style=none] (205) at (27, -10.5) {};
+		\node [style=none] (206) at (17, -4) {};
+		\node [style=none] (207) at (23, -4) {};
+		\node [style=none] (208) at (20, -5) {accumulatore};
+		\node [style=none] (209) at (12.25, -7.5) {};
+		\node [style=none] (210) at (14.5, -7.5) {};
+		\node [style=none] (211) at (14.5, -5) {};
+		\node [style=none] (212) at (16.75, -5) {};
+		\node [style=none] (213) at (29.75, -0.5) {\footnotesize \(\texttt{N}[\texttt{0}]\)};
+		\node [style=none] (214) at (29.75, -2.5) {\footnotesize \(\texttt{N}[\texttt{1}]\)};
+		\node [style=none] (215) at (29.75, -4.5) {\footnotesize \(\texttt{N}[\texttt{2}]\)};
+		\node [style=none] (216) at (29.75, -6.5) {\footnotesize \(\texttt{N}[\texttt{3}]\)};
+		\node [style=none] (217) at (29.75, -8.5) {\footnotesize \(\texttt{N}[\texttt{4}]\)};
+		\node [style=none] (218) at (29.75, -10.5) {\footnotesize \(\texttt{N}[\texttt{5}]\)};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=dashed, in=180, out=0] (0.center) to (1.center);
+		\draw [style=dashed] (2.center) to (3.center);
+		\draw [style=solid] (3.center)
+			 to [in=180, out=0] (23.center)
+			 to [in=270, out=90] (13.center)
+			 to (1.center)
+			 to [in=90, out=270] cycle;
+		\draw [style=solid] (22.center) to (12.center);
+		\draw [style=solid] (11.center) to (21.center);
+		\draw [style=solid] (10.center) to (20.center);
+		\draw [style=solid] (9.center) to (19.center);
+		\draw [style=solid] (8.center) to (18.center);
+		\draw [style=solid] (14.center) to (4.center);
+		\draw [style=solid] (15.center) to (5.center);
+		\draw [style=solid] (16.center) to (6.center);
+		\draw [style=solid] (17.center) to (7.center);
+		\draw [style=dashed] (13.center) to (24.center);
+		\draw [style=dashed, in=180, out=0] (26.center) to (27.center);
+		\draw [style=dashed] (28.center) to (29.center);
+		\draw [style=solid] (29.center) to (27.center);
+		\draw [style=solid] (39.center) to (27.center);
+		\draw [style=solid, in=180, out=0] (29.center) to (49.center);
+		\draw [style=solid] (49.center) to (39.center);
+		\draw [style=solid] (48.center) to (38.center);
+		\draw [style=solid] (37.center) to (47.center);
+		\draw [style=solid] (36.center) to (46.center);
+		\draw [style=solid] (35.center) to (45.center);
+		\draw [style=solid] (34.center) to (44.center);
+		\draw [style=solid] (40.center) to (30.center);
+		\draw [style=solid] (41.center) to (31.center);
+		\draw [style=solid] (42.center) to (32.center);
+		\draw [style=solid] (43.center) to (33.center);
+		\draw [style=dashed] (39.center) to (50.center);
+		\draw [style=dashed] (49.center) to (51.center);
+		\draw [style=big] (69.center)
+			 to (66.center)
+			 to (67.center)
+			 to (68.center)
+			 to cycle;
+		\draw [style=big] (71.center) to (72.center);
+		\draw [style=big] (73.center) to (70.center);
+		\draw [style=big arrow] (73.center) to (75.center);
+		\draw [style=big arrow] (72.center) to (74.center);
+		\draw [style=double arrow] (78.center) to (135.center);
+		\draw [style=big] (155.center)
+			 to (154.center)
+			 to (153.center)
+			 to (152.center)
+			 to cycle;
+		\draw [style=dashed] (23.center) to (157.center);
+		\draw [style=double arrow] (159.center) to (158.center);
+		\draw [style=big] (162.center)
+			 to (163.center)
+			 to (160.center)
+			 to (161.center)
+			 to cycle;
+		\draw [style=solid] (169.center) to (168.center);
+		\draw [style=solid] (171.center) to (170.center);
+		\draw [style=solid] (178.center)
+			 to (179.center)
+			 to (173.center)
+			 to (172.center)
+			 to cycle;
+		\draw [style=solid] (180.center) to (181.center);
+		\draw [style=solid] (182.center) to (183.center);
+		\draw [style=solid] (184.center) to (185.center);
+		\draw [style=solid] (186.center) to (187.center);
+		\draw [style=solid] (188.center) to (189.center);
+		\draw [style=dashed] (192.center) to (178.center);
+		\draw [style=dashed] (193.center) to (179.center);
+		\draw [style=dashed] (190.center) to (172.center);
+		\draw [style=dashed] (173.center) to (191.center);
+		\draw [style=big arrow] (205.center) to (198.center);
+		\draw [style=big] (195.center) to (204.center);
+		\draw [style=big] (204.center) to (205.center);
+		\draw (207.center) to (161.center);
+		\draw (162.center) to (206.center);
+		\draw (206.center) to (207.center);
+		\draw (211.center) to (210.center);
+		\draw [style=big arrow] (210.center) to (209.center);
+		\draw [style=big arrow] (211.center) to (212.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

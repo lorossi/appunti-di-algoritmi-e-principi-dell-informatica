@@ -1,0 +1,23 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (0, 0) {linguaggi regolari};
+		\node [style=none] (3) at (0, 2) {};
+		\node [style=none] (4) at (0, -2.5) {};
+		\node [style=none] (13) at (3.5, 3.25) {linguaggi riconoscibili da \DPDA};
+		\node [style=none] (14) at (3.75, 5.75) {};
+		\node [style=none] (15) at (1.5, -3.75) {};
+		\node [style=none] (16) at (2.75, -4.75) {};
+		\node [style=none] (17) at (9, 8.75) {};
+		\node [style=none] (18) at (10, 6.75) {linguaggi riconoscibili da \NPDA};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=solid] (4.center)
+			 to [in=-180, out=180, looseness=2.50] (3.center)
+			 to [in=0, out=0, looseness=2.50] cycle;
+		\draw [style=solid] (15.center)
+			 to [in=-180, out=180, looseness=2.50] (14.center)
+			 to [in=0, out=0, looseness=2.50] cycle;
+		\draw [style=solid, in=-180, out=180, looseness=2.50] (17.center) to (16.center);
+		\draw [style=solid, in=0, out=0, looseness=2.50] (16.center) to (17.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

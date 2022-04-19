@@ -1,0 +1,36 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (2) at (27, 0) {};
+		\node [style=none] (4) at (0, 17) {};
+		\node [style=left align] (5) at (27.25, 0) {\Large \(n\)};
+		\node [style=none] (6) at (0, 0) {};
+		\node [style=none] (7) at (0, 2.75) {};
+		\node [style=none] (8) at (5, 8.75) {};
+		\node [style=none] (9) at (9.75, 4.75) {};
+		\node [style=none] (10) at (20, 13.25) {};
+		\node [style=none] (11) at (25, 17) {};
+		\node [style=none] (12) at (-0.25, 5) {};
+		\node [style=none] (13) at (10, 6.75) {};
+		\node [style=none] (14) at (18.5, 4.5) {};
+		\node [style=none] (15) at (24.5, 10) {};
+		\node [style=left align] (16) at (25, 10) {\Large \(f(n)\)};
+		\node [style=left align] (17) at (25, 18) {\Large \(c \cdot g(n)\)};
+		\node [style=none] (18) at (13.7, 4.99) {};
+		\node [style=none] (19) at (13.7, 0) {};
+		\node [style=none] (20) at (13.7, -1) {\Large \(n_0\)};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=dashed] (19.center) to (18.center);
+		\draw [style=big arrow] (6.center) to (4.center);
+		\draw [style=big arrow] (6.center) to (2.center);
+		\draw [style=green line] (7.center)
+			 to [in=-180, out=60] (8.center)
+			 to [in=150, out=0] (9.center)
+			 to [in=-135, out=-30] (10.center)
+			 to [in=-120, out=45] (11.center);
+		\draw [style=red line] (12.center)
+			 to [in=165, out=30] (13.center)
+			 to [in=-150, out=-15] (14.center)
+			 to [in=-165, out=45] (15.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

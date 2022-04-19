@@ -1,0 +1,45 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (18) at (18.83, 9.32) {};
+		\node [style=none] (2) at (27, 0) {};
+		\node [style=none] (4) at (0, 17) {};
+		\node [style=left align] (5) at (27.25, 0) {\Large \(n\)};
+		\node [style=none] (6) at (0, 0) {};
+		\node [style=none] (7) at (0, 3.25) {};
+		\node [style=none] (8) at (5.75, 10.25) {};
+		\node [style=none] (9) at (14, 6.25) {};
+		\node [style=none] (10) at (19, 9.5) {};
+		\node [style=none] (11) at (25.75, 13.5) {};
+		\node [style=none] (12) at (0, 4.5) {};
+		\node [style=none] (13) at (9.5, 10) {};
+		\node [style=none] (14) at (21.25, 9.75) {};
+		\node [style=none] (15) at (26, 12.25) {};
+		\node [style=left align] (16) at (26.25, 11.5) {\Large \(c_1 \cdot g(n)\)};
+		\node [style=left align] (17) at (26.25, 13.5) {\Large \(f(n)\)};
+		\node [style=none] (19) at (18.83, 0) {};
+		\node [style=none] (20) at (18.83, -1) {\Large \(n_0\)};
+		\node [style=none] (21) at (0, 4.5) {};
+		\node [style=none] (22) at (9.5, 12.5) {};
+		\node [style=none] (23) at (20.25, 12) {};
+		\node [style=none] (24) at (26, 15.25) {};
+		\node [style=left align] (25) at (26, 16) {\Large \(c_2 \cdot g(n)\)};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=dashed] (19.center) to (18.center);
+		\draw [style=big arrow] (6.center) to (4.center);
+		\draw [style=big arrow] (6.center) to (2.center);
+		\draw [style=green line] (7.center)
+			 to [in=-165, out=60, looseness=0.75] (8.center)
+			 to [in=150, out=15, looseness=0.75] (9.center)
+			 to [in=-135, out=-30] (10.center)
+			 to [in=-165, out=45, looseness=0.75] (11.center);
+		\draw [style=red line] (12.center)
+			 to [in=-180, out=30, looseness=0.75] (13.center)
+			 to [in=-165, out=0] (14.center)
+			 to [in=-165, out=15] (15.center);
+		\draw [style=red line] (21.center)
+			 to [in=-180, out=30, looseness=0.75] (22.center)
+			 to [in=-165, out=0] (23.center)
+			 to [in=-165, out=15] (24.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

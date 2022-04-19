@@ -1,0 +1,25 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (9) at (0, 0.5) {linguaggi regolari};
+		\node [style=none] (10) at (1.25, 4.25) {linguaggi riconosciuti da \PDA};
+		\node [style=none] (12) at (0, -1.25) {linguaggi riconosciuti da \FSA};
+		\node [style=none] (17) at (0, 8.75) {linguaggi ricorsivamente enumerabili};
+		\node [style=none] (18) at (7.25, 7) {linguaggi riconosciuti da \TM};
+		\node [style=none] (23) at (0, -4) {};
+		\node [style=none] (24) at (0, 3) {};
+		\node [style=none] (27) at (1, -5) {};
+		\node [style=none] (28) at (1, 6) {};
+		\node [style=none] (29) at (2, -6) {};
+		\node [style=none] (30) at (2.25, 11) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=solid] (24.center)
+			 to [bend left=90, looseness=2.75] (23.center)
+			 to [bend left=90, looseness=2.75] cycle;
+		\draw [style=solid] (28.center)
+			 to [bend left=90, looseness=2.75] (27.center)
+			 to [bend left=90, looseness=2.75] cycle;
+		\draw [style=solid, bend left=90, looseness=2.75] (30.center) to (29.center);
+		\draw [style=solid, bend left=90, looseness=2.75] (29.center) to (30.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

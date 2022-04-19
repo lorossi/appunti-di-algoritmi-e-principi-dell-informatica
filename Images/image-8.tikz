@@ -1,0 +1,92 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (-4, 1) {};
+		\node [style=none] (1) at (-8, 1) {};
+		\node [style=none] (2) at (-9, 1) {};
+		\node [style=none] (3) at (-10, 1) {};
+		\node [style=none] (4) at (-11, 1) {};
+		\node [style=none] (5) at (-13, 1) {};
+		\node [style=none] (6) at (-4, -1) {};
+		\node [style=none] (7) at (-8, -1) {};
+		\node [style=none] (8) at (-9, -1) {};
+		\node [style=none] (9) at (-10, -1) {};
+		\node [style=none] (10) at (-11, -1) {};
+		\node [style=none] (11) at (-13, -1) {};
+		\node [style=none] (12) at (-1, 1) {};
+		\node [style=none] (13) at (-1, -1) {};
+		\node [style=none] (14) at (4, 1) {};
+		\node [style=none] (15) at (5, 1) {};
+		\node [style=none] (16) at (8, 1) {};
+		\node [style=none] (17) at (9, 1) {};
+		\node [style=none] (18) at (11, 1) {};
+		\node [style=none] (19) at (13, 1) {};
+		\node [style=none] (20) at (4, -1) {};
+		\node [style=none] (21) at (5, -1) {};
+		\node [style=none] (22) at (8, -1) {};
+		\node [style=none] (23) at (9, -1) {};
+		\node [style=none] (24) at (11, -1) {};
+		\node [style=none] (25) at (13, -1) {};
+		\node [style=none] (26) at (1, 1) {};
+		\node [style=none] (27) at (1, -1) {};
+		\node [style=none] (28) at (-11, -5) {};
+		\node [style=none] (29) at (-3, -5) {};
+		\node [style=none] (30) at (-3, -9) {};
+		\node [style=none] (31) at (-11, -9) {};
+		\node [style=none] (32) at (-7, -7) {dispositivo di controllo};
+		\node [style=none] (33) at (-7, -5) {};
+		\node [style=none] (34) at (-7, -3) {};
+		\node [style=none] (35) at (8.5, -3) {};
+		\node [style=none] (36) at (8.5, -1.25) {};
+		\node [style=none] (37) at (-10.5, 0) {\blank};
+		\node [style=none] (38) at (-9.5, 0) {\blank};
+		\node [style=none] (39) at (-8.5, 0) {\(\$\)};
+		\node [style=none] (40) at (-5, -1) {};
+		\node [style=none] (41) at (-5, 1) {};
+		\node [style=none] (42) at (-6.5, 0) {\(c(T_1)^\prime\)};
+		\node [style=none] (43) at (-8.5, 0) {};
+		\node [style=none] (44) at (-4.5, 0) {\(\ast\)};
+		\node [style=none] (46) at (-2.5, 0) {\(c(T_1)^{\prime\prime}\)};
+		\node [style=none] (49) at (2.5, 0) {\(c(T_k)^\prime\)};
+		\node [style=none] (50) at (4.5, 0) {\(\ast\)};
+		\node [style=none] (51) at (6.5, 0) {\(c(T_k)^{\prime\prime}\)};
+		\node [style=none] (52) at (8.5, 0) {\(\overline{q}\)};
+		\node [style=none] (53) at (10, -1) {};
+		\node [style=none] (54) at (10, 1) {};
+		\node [style=none] (55) at (9.5, 0) {\blank};
+		\node [style=none] (56) at (10.5, 0) {\blank};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=solid] (12.center) to (4.center);
+		\draw [style=solid] (10.center) to (13.center);
+		\draw [style=dashed] (5.center) to (4.center);
+		\draw [style=dashed] (11.center) to (10.center);
+		\draw [style=solid] (9.center) to (3.center);
+		\draw [style=solid] (4.center) to (10.center);
+		\draw [style=solid] (8.center) to (2.center);
+		\draw [style=solid] (1.center) to (7.center);
+		\draw [style=solid] (6.center) to (0.center);
+		\draw [style=solid] (13.center) to (12.center);
+		\draw [style=solid] (26.center) to (18.center);
+		\draw [style=solid] (24.center) to (27.center);
+		\draw [style=dashed] (19.center) to (18.center);
+		\draw [style=dashed] (25.center) to (24.center);
+		\draw [style=solid] (23.center) to (17.center);
+		\draw [style=solid] (22.center) to (16.center);
+		\draw [style=solid] (15.center) to (21.center);
+		\draw [style=solid] (20.center) to (14.center);
+		\draw [style=solid] (27.center) to (26.center);
+		\draw [style=big] (29.center)
+			 to (28.center)
+			 to (31.center)
+			 to (30.center)
+			 to cycle;
+		\draw [style=big] (33.center) to (34.center);
+		\draw [style=big] (34.center) to (35.center);
+		\draw [style=big arrow] (35.center) to (36.center);
+		\draw [style=solid] (24.center) to (18.center);
+		\draw [style=solid] (41.center) to (40.center);
+		\draw [style=solid] (53.center) to (54.center);
+		\draw [style=dashed, in=180, out=0] (13.center) to (27.center);
+		\draw [style=dashed, in=180, out=0] (12.center) to (26.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

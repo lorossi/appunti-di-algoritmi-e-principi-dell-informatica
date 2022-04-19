@@ -1,0 +1,36 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (0, -5) {};
+		\node [style=none] (1) at (17, -5) {};
+		\node [style=none] (2) at (5, -5) {};
+		\node [style=none] (3) at (12, -5) {};
+		\node [style=none] (5) at (5, -1) {};
+		\node [style=none] (6) at (12, -1) {};
+		\node [style=none] (8) at (-1, -6) {};
+		\node [style=left align] (9) at (17.25, -6) {\(t\)};
+		\node [style=none] (10) at (17, -6) {};
+		\node [style=right align] (11) at (-0.5, -5) {\(L_{OFF}\)};
+		\node [style=right align] (14) at (-0.5, -1) {\(L_{ON}\)};
+		\node [style=none] (15) at (5, -7) {};
+		\node [style=none] (16) at (12, -7) {};
+		\node [style=none] (17) at (5, -8) {\(t + \Delta\)};
+		\node [style=none] (18) at (12, -8) {\(t+k\)};
+		\node [style=none] (19) at (2, -8) {\(P_B(t)\)};
+		\node [style=none] (20) at (2, -5) {};
+		\node [style=none] (21) at (2, -7) {};
+		\node [style=none] (22) at (0, -7) {};
+		\node [style=none] (23) at (0, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=red line] (0.center) to (2.center);
+		\draw [style=red line] (5.center) to (2.center);
+		\draw [style=red line] (5.center) to (6.center);
+		\draw [style=red line] (6.center) to (3.center);
+		\draw [style=red line] (3.center) to (1.center);
+		\draw [style=big arrow] (8.center) to (10.center);
+		\draw [style=dashed, in=270, out=90] (15.center) to (2.center);
+		\draw [style=dashed] (16.center) to (3.center);
+		\draw [style=dashed] (21.center) to (20.center);
+		\draw [style=big arrow] (22.center) to (23.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
