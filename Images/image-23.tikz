@@ -78,7 +78,7 @@
 		\node [style=none] (161) at (23, -6) {};
 		\node [style=none] (162) at (17, -6) {};
 		\node [style=none] (163) at (17, -10) {};
-		\node [style=none] (167) at (20, -8) {unità aritmetica};
+		\node [style=none] (167) at (20, -8) {unit\`a aritmetica};
 		\node [style=none] (168) at (3, -12) {};
 		\node [style=none] (169) at (3, -13) {};
 		\node [style=none] (170) at (3, 1) {};
@@ -101,8 +101,8 @@
 		\node [style=none] (191) at (30.5, -13.5) {};
 		\node [style=none] (192) at (29, 2.5) {};
 		\node [style=none] (193) at (30.5, 2.5) {};
-		\node [style=none, rotate=90] (194) at (31, -5.5) {memoria};
-		\node [style=none] (195) at (23, -8) {};
+		\node [style=none, rotate=90] (194) at (31.25, -5.5) {memoria};
+		\node [style=none] (195) at (23.25, -8) {};
 		\node [style=none] (198) at (28.75, -10.5) {};
 		\node [style=none] (201) at (28.75, -2.25) {};
 		\node [style=none] (204) at (27, -8) {};
@@ -120,6 +120,10 @@
 		\node [style=none] (216) at (29.75, -6.5) {\footnotesize \(\texttt{N}[\texttt{3}]\)};
 		\node [style=none] (217) at (29.75, -8.5) {\footnotesize \(\texttt{N}[\texttt{4}]\)};
 		\node [style=none] (218) at (29.75, -10.5) {\footnotesize \(\texttt{N}[\texttt{5}]\)};
+		\node [style=none] (219) at (23.25, -5) {};
+		\node [style=none] (220) at (27, -5) {};
+		\node [style=none] (221) at (27, -0.5) {};
+		\node [style=none] (222) at (28.75, -0.5) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [style=dashed, in=180, out=0] (0.center) to (1.center);
@@ -195,7 +199,7 @@
 		\draw [style=dashed] (190.center) to (172.center);
 		\draw [style=dashed] (173.center) to (191.center);
 		\draw [style=big arrow] (205.center) to (198.center);
-		\draw [style=big] (195.center) to (204.center);
+		\draw [style=big arrow] (204.center) to (195.center);
 		\draw [style=big] (204.center) to (205.center);
 		\draw (207.center) to (161.center);
 		\draw (162.center) to (206.center);
@@ -203,5 +207,8 @@
 		\draw (211.center) to (210.center);
 		\draw [style=big arrow] (210.center) to (209.center);
 		\draw [style=big arrow] (211.center) to (212.center);
+		\draw [style=big arrow] (220.center) to (219.center);
+		\draw [style=big] (220.center) to (221.center);
+		\draw [style=big arrow] (221.center) to (222.center);
 	\end{pgfonlayer}
 \end{tikzpicture}

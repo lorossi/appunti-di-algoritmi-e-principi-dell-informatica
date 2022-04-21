@@ -40,10 +40,7 @@ Alcuni argomenti, paragrafi e sezioni potrebbero talora seguire le lezioni, talo
 Il lettore si senta libero di avvisarmi qualora trovasse un errore!
 Vi ringrazio in anticipo.
 
-\vspace*{2cm}
-\begin{flushright}
-  \textit{Lorenzo Rossi}
-\end{flushright}
+\signature
 
 \clearpage
 
@@ -511,40 +508,42 @@ Il \FSA in Figura~\ref{fig:esempio-funzione-transizione-totale-FSA} ha una funzi
 \begin{figure}[htbp]
   \bigskip
   \centering
-  \begin{tikzpicture}[auto, on grid, node distance=4cm, >=Triangle]
-    \node [state](on) {\texttt{ON}};
-    \node [state](off) [right=of on] {\texttt{OFF}};
+  \begin{subfigure}[t]{0.62\textwidth}
+    \centering
+    \scalebox{0.9}{
+      \begin{tikzpicture}[auto, on grid, node distance=4cm, >=Triangle]
+        \node [state](on) {\texttt{ON}};
+        \node [state](off) [right=of on] {\texttt{OFF}};
 
-    \path[->, thick]
-    (on) edge [loop left] node {\texttt{switch\ on}} ()
-    (off) edge [loop right] node {\texttt{switch\ off}} ()
-    (on) edge [bend left] node {\texttt{switch\ off}} (off)
-    (off) edge [bend left] node {\texttt{switch\ on}} (on);
-  \end{tikzpicture}
+        \path[->, thick]
+        (on) edge [loop left] node {\texttt{switch on}} ()
+        (off) edge [loop right] node {\texttt{switch off}} ()
+        (on) edge [bend left] node {\texttt{switch off}} (off)
+        (off) edge [bend left] node {\texttt{switch on}} (on);
+      \end{tikzpicture}
+    }
+    \caption{\FSA con funzione di transizione totale}
+    \label{fig:esempio-funzione-transizione-totale-FSA}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.37\textwidth}
+    \centering
+    \scalebox{0.9}{
+      \begin{tikzpicture}[auto, on grid, node distance=4cm, >=Triangle]
+        \node [state](on) {\texttt{ON}};
+        \node [state](off) [right=of on] {\texttt{OFF}};
 
-  \caption{\FSA con funzione di transizione totale}
-  \label{fig:esempio-funzione-transizione-totale-FSA}
+        \path[->, thick]
+        (on) edge [bend left] node {\texttt{switch off}} (off)
+        (off) edge [bend left] node {\texttt{switch on}} (on);
+      \end{tikzpicture}
+    }
+    \caption{\FSA con funzione di transizione parziale}
+    \label{fig:esempio-funzione-transizione-parziale-FSA}
+  \end{subfigure}
   \bigskip
 \end{figure}
 
-\begin{figure}[htbp]
-  \bigskip
-  \centering
-  \begin{tikzpicture}[auto, on grid, node distance=4cm, >=Triangle]
-    \node [state](on) {\footnotesize \texttt{ON}};
-    \node [state](off) [right=of on] {\footnotesize \texttt{OFF}};
-
-    \path[->, thick]
-    (on) edge [bend left] node {\texttt{switch\ off}} (off)
-    (off) edge [bend left] node {\texttt{switch\ on}} (on);
-  \end{tikzpicture}
-
-  \caption{\FSA con funzione di transizione parziale}
-  \label{fig:esempio-funzione-transizione-parziale-FSA}
-  \bigskip
-\end{figure}
-
-Il \FSA in Figura~\ref{fig:esempio-funzione-transizione-parziale-FSA} non mostra la transizione effettuata in corrispondenza dell'azione di \texttt{switch\ off} in corrispondenza di stato \texttt{off} e \texttt{switch\ on} sullo stato \texttt{on}
+Il \FSA in Figura~\ref{fig:esempio-funzione-transizione-parziale-FSA}, al contrario di quello in Figura~\ref{fig:esempio-funzione-transizione-totale-FSA}, non presenta le transizioni in corrispondenza dell'azione di \texttt{switch off} sullo stato \texttt{off} e \texttt{switch on} sullo stato \texttt{on}.
 
 \subsubsection{Sequenza di mosse}
 \label{sec:sequenza-di-mosse}
@@ -2826,22 +2825,31 @@ All'interno del corso verranno usati la \PL e la \FOL \textit{(introdotte nelle 
 \subsection{Logica proposizionale - \PL}
 \label{sec:logica-proposizionale}
 
+La logica proposizionale è un linguaggio formale dalla sintassi semplice, basata su proposizioni elementari e su connettivi logici di tipo funzionale.
+Opera tra proposizioni \textit{(che possono assumere il valore \vero o \falso)} e relazioni tra proposizioni.
+Le proposizioni composte sono formate concatenando proposizioni semplici tramite connettivi logici.
+
+Contrariamente a logiche più complicate \textit{(come la \nameref{sec:logica-primo-ordine}, analizzata nella Sezione~\ref{sec:logica-primo-ordine})}, non permette di operare e predicare tra oggetti non logici e quantificatori.
+
 \subsubsection{Sintassi}
 
-Sia \(\mathcal{L}\) un linguaggio della logica proposizionale.
+Sia \(\mathcal{L}\) un linguaggio della \textbf{logica proposizionale}.
 
 \begin{itemize}
   \item L'\textbf{alfabeto}, di \(\mathcal{L}\) è composto da:
         \begin{itemize}
-          \item Un insieme numerabile \textit{(finito o infinito)} di \textbf{proposizioni} (simboli di relazione nullaria): \(A, B, C, \ldots\)
-          \item Un insieme di \textbf{} \(\lnot, \land, \lor, \rightarrow, \leftrightarrow\)
+          \item Un insieme \textbf{numerabile} \textit{(finito o infinito)} di \textbf{proposizioni}: \(A, B, C, \ldots\)
+                \begin{itemize}
+                  \item le proposizioni sono simboli di relazione \textbf{nullaria}
+                  \item I simboli dell'alfabeto sono privi di significato
+                \end{itemize}
+          \item Un insieme di \textbf{simboli} \textbf{} \(\lnot, \land, \lor, \rightarrow, \leftrightarrow\)
           \item I \textbf{simboli di punteggiatura} \(  (, ) \) - \textit{parentesi tonde}
-          \item I simboli dell'alfabeto sono privi di significato
         \end{itemize}
   \item L'\textbf{insieme di formule} di \(\mathcal{L}\) è il più piccolo insieme tale che:
         \begin{itemize}
           \item Ogni \textit{proposizione} è una \textbf{formula}
-          \item Se \(F, G\) sono formule, allora \(\lnot F\), \(F \land G\), \(F \lor G\), \(F \rightarrow G\),  \(F \leftrightarrow G\) sono \textbf{formule}
+          \item Se \(F\) e \(G\) sono formule, allora \(\lnot F\), \(F \land G\), \(F \lor G\), \(F \rightarrow G\),  \(F \leftrightarrow G\) sono \textbf{formule}
         \end{itemize}
   \item Le \textbf{parentesi sono omesse} ovunque possibile usando l'ordine di precedenza:
         \[ \lnot \quad \land \quad \lor \quad \rightarrow \quad \leftrightarrow \]
@@ -2851,7 +2859,7 @@ Sia \(\mathcal{L}\) un linguaggio della logica proposizionale.
           \item \(\lnot A\) è detto letterale \textbf{negativo}
         \end{itemize}
   \item se \(L\) è un letterale, allora \(\overline{L}\) è il \textbf{letterale complementare} definito come \(\lnot A\) \textit{se} \(L = A\) o \(A\) \textit{se} \(L = \lnot A\)
-  \item Informalmente, una \textbf{sotto formula} è una formula inclusa in un'altra formula
+  \item \textit{Informalmente}, una \textbf{sotto formula} è una formula inclusa in un'altra formula
   \item L'insieme \(\tau(F)\) delle sotto formule di \(\mathcal{F}\) è definito come il più piccolo insieme di formule tale che:
         \begin{itemize}
           \item \(F \in \tau(F)\)
@@ -2870,7 +2878,7 @@ Nella logica proposizionale, ogni formula può corrispondere a un solo valore di
 Un'\textbf{interpretazione} \(I\) è una funzione totale dell'insieme di proposizioni ai valori di verità.
 Ogni interpretazione può essere convenientemente rappresentata come l'insieme delle proposizioni vere.
 
-Con la notazione \(I \vDash F\) si indica che \(I\) rende vera \(F\).
+Con la notazione \(I \vDash F\) si indica che \(I\) \textbf{rende vera} \(F\).
 
 \bigskip
 
@@ -2954,8 +2962,14 @@ Allora:
 \label{sec:forme-normali-PL}
 
 \begin{itemize}
-  \item Due formule \(F, G\) sono \textbf{semanticamente equivalenti} se e solo se vale sia \(F \vDash G\) che \(G \vDash F\) e si scrive \(F \equiv G\)
-  \item Quando \(G\), sotto-formula di \(F\), viene sostituita con una formula \(H\), la formula risultante viene indicata con \(F [G \, \backslash H]\)
+  \item Due formule \(F, G\) sono \textbf{semanticamente equivalenti} se e solo se vale sia \(F \vDash G\) che \(G \vDash F\)
+        \begin{itemize}[label=\(\rightarrow\)]
+          \item in questo caso si usa la notazione \(F \equiv G\)
+        \end{itemize}
+  \item La formula \(G\), sottoformula di \(F\) può essere sostituita da una formula \(H\)
+        \begin{itemize}[label=\(\rightarrow\)]
+          \item per indicare la formula risultante si usa la notazione \(F [G \, \backslash H]\)
+        \end{itemize}
   \item Un insieme di connettivi è detto \textbf{funzionalmente completo} se e solo se qualunque formula proposizionale può essere trasformata in una formula semanticamente equivalente che contiene solo connettivi dell'insieme
         \begin{itemize}[label=\(\rightarrow\)]
           \item L'insieme \(\{\lnot, \land\}\) è funzionalmente complesso
@@ -3017,10 +3031,13 @@ Se una formula \(F\) piò essere derivata in una teoria \(\mathcal{F}\) usando g
 La logica proposizionale (vista in Sezione~\ref{sec:logica-proposizionale}) ha molte applicazioni, ma il suo potere espressivo è ristretto.
 Infatti, frasi come \inlinequote{tutti gli esseri umani sono mortali} e \inlinequote{ogni bambino ha dei genitori} possono essere espresse come proposizioni in un modo che non cattura le relazioni sottintese tra esseri umani, mortali, bambini e genitori.
 
-\textit{Frege} ha sviluppato la \FOL (\textbf{logica del prim'ordine} o \textbf{logica dei predicati}) nel 1879, estendendo la logica proposizionale con \textit{funzioni}, \textit{variabili} e \textit{quantificatori}.
+\textit{Gottlob Frege}, logico tedesco, ha sviluppato la \FOL (\textbf{logica del prim'ordine} o \textbf{logica dei predicati}) nel \(1879\), estendendo la logica proposizionale con \textit{funzioni}, \textit{variabili} e \textit{quantificatori}.
 
 \begin{itemize}
-  \item Dal punto di vista \textit{epistemologico} (stati della conoscenza) sia \PL che \FOL considerano \textbf{verità} e \textbf{falsità} (ossia quando la logica assume i valori di \vero e \falso).
+  \item Dal punto di vista \textit{epistemologico} (stati della conoscenza) sia \PL che \FOL considerano \textbf{verità} e \textbf{falsità}
+        \begin{itemize}
+          \item quindi vengono considerati i valori di \vero e \falso assunti dalla logica
+        \end{itemize}
   \item Dal punto di vista \textit{ontologico} (ciò che esiste), \PL considera i \textit{fatti}, mentre \FOL considera anche:
         \begin{itemize}
           \item \textbf{oggetti}, quali: \textit{persone, case, numeri, corsi, \ldots}
@@ -3041,14 +3058,14 @@ Infatti, frasi come \inlinequote{tutti gli esseri umani sono mortali} e \inlineq
           \item I seguenti \textbf{quantificatori}: \(\exists, \forall\)
           \item I \textbf{simboli di punteggiatura}: \((, ), ","\) - \textit{parentesi tonde e virgola}
         \end{itemize}
-  \item Ogni simbolo di funzione e relazione ha una \textbf{arietà} fissata che indica il numero di argomenti a esso associati.
+  \item Ogni simbolo di funzione e relazione ha una \textbf{arietà} fissata che indica il numero di argomenti a esso associati:
         \begin{itemize}
           \item la notazione \(p/n\) indica che il \textit{predicato} (o \textit{funzione}) \(p\) ha \textbf{arietà} \(n\)
           \item un \textit{predicato} (o \textit{funzione}) con arietà zero è detto \textbf{nullario}
-          \item un \textit{predicato} nullario \(p()\) è scritto semplicemente come \(p\)
-          \item una \textit{funzione} nullaria \(c()\) è semplicemente scritta come \(c\)
+          \item un \textit{predicato nullario} \(p()\) è scritto semplicemente come \(p\)
+          \item una \textit{funzione nullaria} \(c()\) è semplicemente scritta come \(c\)
         \end{itemize}
-  \item Le funzioni nullarie sono dette \textbf{costanti}, i predicati nullari sono detti \textbf{proposizioni}.
+  \item Le funzioni nullarie sono dette \textbf{costanti}, i predicati nullari sono detti \textbf{proposizioni}
   \item I \textbf{termini} denotano tutti gli oggetti che \(\mathcal{L}\) può trattare
         \begin{itemize}
           \item sono definiti induttivamente come segue:
@@ -3061,11 +3078,11 @@ Infatti, frasi come \inlinequote{tutti gli esseri umani sono mortali} e \inlineq
   \item L'insieme di \textbf{formule della \FOL} è definito induttivamente come il più piccolo insieme tale che:
         \begin{itemize}
           \item Se \(p/n\) è un simbolo di relazione e \(t_1, \ldots t_n\) sono termini, allora \(p(t_1, \ldots, t_n)\) è una formula detta \textbf{formula atomica} o \textbf{atomo}
-          \item se \(F, G\) sono formule e \(X\) è una variabile, allora anche
-                \[\lnot F \quad F \land G \quad F \lor G \quad F \rightarrow G \quad F \leftrightarrow G \quad \exists \, X F \quad \forall \, X F \] sono formule
+          \item se \(F, G\) sono formule e \(X\) è una variabile, allora sono formule anche:
+                \[\lnot F \quad F \land G \quad F \lor G \quad F \rightarrow G \quad F \leftrightarrow G \quad \exists \, X F \quad \forall \, X F \]
         \end{itemize}
-  \item I \textbf{letterali} sono atomi (letterali positivi) o atomi negati (letterali negativi)
-  \item Le \textbf{parentesi sono omesse} ovunque possibile usando l'ordine di precedenza
+  \item I \textbf{letterali} sono atomi \textit{(letterali positivi)} o atomi negati \textit{(letterali negativi)}
+  \item Le \textbf{parentesi sono omesse ovunque possibile} usando l'ordine di precedenza tra gli operatori:
         \[ \exists \quad \forall \quad \lnot \quad \land \quad \lor \quad \rightarrow \quad \leftrightarrow\]
   \item Per convenienza:
         \begin{align*}
@@ -3080,19 +3097,12 @@ Infatti, frasi come \inlinequote{tutti gli esseri umani sono mortali} e \inlineq
         \end{itemize}
   \item Una formula è \textbf{chiusa} se e solo se non contiene occorrenze libere di variabili
         \begin{itemize}
-          \item La valutazione è omessa quando si considerano formule chiuse
+          \item la valutazione è omessa quando si considerano formule chiuse
         \end{itemize}
   \item Un'interpretazione \(\mathcal{I}\) è detta \textbf{modello} per \(F\) sse per ogni valutazione \(\Phi\) si ha \(\mathcal{I} \vDash_\Phi F\)
         \begin{itemize}
-          \item Se \(\mathcal{F}\) è un insieme di formule, un'interpretazione è un \textbf{modello} di \(\mathcal{F}\) sse è un modello \(\forall \, F \in \mathcal{F}\)
+          \item se \(\mathcal{F}\) è un insieme di formule, un'interpretazione è un \textbf{modello} di \(\mathcal{F}\) sse è un modello \(\forall \, F \in \mathcal{F}\)
         \end{itemize}
-\end{itemize}
-
-\paragraph{Esempi di traduzioni in \FOL}
-
-\begin{itemize}
-  \item \inlinequote{tutti gli esseri umani sono mortali} diventa \[\forall \,X  \, (h(X) \rightarrow m(X))\]
-  \item \inlinequote{ogni bambino ha dei genitori} diventa \[\forall \,  X \,\left(c(X) \rightarrow \left(\exists \, Y \, \exists \, Z p(X, Y, Z)\right)\right)\]
 \end{itemize}
 
 \paragraph{Osservazioni sulle traduzioni in \FOL}
@@ -3101,12 +3111,12 @@ Infatti, frasi come \inlinequote{tutti gli esseri umani sono mortali} e \inlineq
   \item Il connettivo principale usato con \(\forall\) è \(\rightarrow\)
         \begin{itemize}
           \item \inlinequote{al Polimi sono tutti brillanti} \texttt{(bleah)} si può tradurre con \[ \forall \, X \, (at(X, polimi) \rightarrow smart(X)) \]
-          \item notare che la formula \[ \forall \, X \, (at(X, polimi) \land smart(X)) \] significa che tutti sono al Polimi e tutti sono brillanti
+          \item notare che la formula \[ \forall \, X \, (at(X, polimi) \land smart(X)) \] significa che \textbf{tutti} sono al Polimi e \textbf{tutti} sono brillanti
         \end{itemize}
   \item Analogamente, il connettivo principale da usare con \(\exists\) è \(\land\)
         \begin{itemize}
           \item \inlinequote{al Polimi qualcuno è brillante} si pu\`o tradurre con \[ \exists \, X \, (at(X, polimi) \land smart(X)) \] % a volte la o accentata mi sfancula il documento intero e non va più niente
-          \item notare che la formula \[ \forall \, X \, (at(X, polimi) \rightarrow smart(X)) \] significa che c'è qualcuno che o non è al Polimi o è brillante (o entrambe)
+          \item notare che la formula \[ \forall \, X \, (at(X, polimi) \rightarrow smart(X)) \] significa che c'è qualcuno che o non è al Polimi o è brillante \textit{(o entrambe)}
         \end{itemize}
 \end{itemize}
 
@@ -3114,7 +3124,7 @@ Infatti, frasi come \inlinequote{tutti gli esseri umani sono mortali} e \inlineq
 
 Come per \PL, anche \FOL ha una semantica a due valori di verità basata sulla nozione di interpretazione.
 
-Una interpretazione \(\mathcal{I}\) di un alfabeto \(\mathcal{A}\) è un \textbf{dominio} non vuoto \(D\) (indicato anche come \(|I|\)) a una funzione che associa:
+Una interpretazione \(\mathcal{I}\) di un alfabeto \(\mathcal{A}\) è un \textbf{dominio} non vuoto \(D\) (indicato anche come \(|\mathcal{I}|\)) a una funzione che associa:
 
 \begin{itemize}
   \item Ogni costante \(c \in \mathcal{A}\) a un elemento \(c_{\mathcal{I}} \in D\)
@@ -3164,7 +3174,7 @@ Il significato di una formula è un valore di verità che è definito induttivam
 
 \paragraph{Da \PL a \FOL}
 
-La relazione di conseguenza logica \(vDash\) tra insiemi di formule e formule può essere esteso anche a \FOL, così come i concetti di \textbf{validità, soddisfacibilità, falsificabilità,, contingenza} e \textbf{insoddisfacibilità} (visti nella Sezione~\ref{sec:semantica-PL}).
+La relazione di conseguenza logica \(\vDash\) tra insiemi di formule e formule può essere esteso anche a \FOL, così come i concetti di \textbf{validità, soddisfacibilità, falsificabilità, contingenza} e \textbf{insoddisfacibilità} (visti nella Sezione~\ref{sec:semantica-PL}).
 
 Analogamente, anche le equivalenze mostrate per \PL (Sezione~\ref{sec:forme-normali-PL}) possono essere estese a \FOL, con l'aggiunta di:
 
@@ -3184,7 +3194,7 @@ Analogamente, anche le equivalenze mostrate per \PL (Sezione~\ref{sec:forme-norm
 \subsection{Logica e linguaggi}
 \label{sec:logica-linguaggi}
 
-La logica può aiutare a descrivere i linguaggi: gli insiemi di stringhe, infatti, possono essere visti come abbreviazioni di formule \FOL.
+La logica può aiutare a descrivere i linguaggi: gli insiemi di stringhe possono essere visti come abbreviazioni di formule \FOL.
 Tramite formalismi matematici, infatti, è possibile mostrare i linguaggi in modo descrittivo focalizzandosi sulle proprietà rilevanti delle stringhe anziché sul modo in cui esse sono generate o riconosciute.
 Per raggiungere tale obiettivo, bisogna analizzare:
 
@@ -3195,8 +3205,8 @@ Per raggiungere tale obiettivo, bisogna analizzare:
 \end{itemize}
 
 \bigskip
-Una volta che la lingua viene definita in modo logico, occorrerebbe definire tutti i predicati e le funzioni non elementari, quali \(=, >, +, -, \times, \ast, \cdot, \ldots\).
-Per evitare di doverlo fare, si fa normalmente riferimento a logiche più ristrette, con sintassi specifica già predisposta.
+Una volta che la lingua viene definita in modo logico, occorrerebbe definire tutti i predicati e le funzioni non elementari \textit{(come \(=, >, +, -, \times, \ast, \cdot, \ldots\))}.
+Per evitare di doversi imbarcare in questa operazione, si fa normalmente riferimento a logiche più ristrette dalla sintassi specifica già predisposta.
 
 \subsubsection{Esempi di descrizione della lingua tramite \FOL}
 
@@ -3229,7 +3239,7 @@ Quindi \(L\) è il linguaggio delle stringhe su \(\left\{ a, b \right\}\) che in
 Più precisamente, fanno parte di \(L\) le stringhe:
 
 \begin{itemize}
-  \item vuota \(\epsilon\)
+  \item vuota (\(\epsilon\))
   \item composta da un carattere \(a\) e un suffisso appartenente a \(L\)
   \item composta da un prefisso appartenente a \(L\) e da un carattere \(b\)
 \end{itemize}
@@ -3270,7 +3280,7 @@ la cui definizione dipende dall'alfabeto.
 
 \bigskip
 Questo linguaggio può quindi essere espresso in \FOL come:
-\[ x \in L \Leftrightarrow x \in \{a, b\}^\ast \land \#(a, x) = \#(b, x) \]
+\[ x \in L \Leftrightarrow (x \in \{a, b\}^\ast) \land (\#(a, x) = \#(b, x)) \]
 
 \subsubsection{Osservazioni sulla formulazione logica}
 
@@ -3284,7 +3294,7 @@ Non esiste una \inlinequote{formula magica} o un sistema di risoluzione unico pe
 \subsection{Logica monadica del primo ordine - \MFO}
 \label{sec:logica-monadica-primo-ordine}
 
-Dato un alfabeto di ingresso \(\Sigma\), le formule sulla logica monadica del primo ordine (o MFO per brevità) sono costruite dai seguenti elementi:
+Dato un alfabeto di ingresso \(\Sigma\), le formule sulla logica monadica del primo ordine (o \MFO per brevità) sono costruite dai seguenti elementi:
 
 \begin{itemize}
   \item \textbf{Variabili del primo ordine}
@@ -3385,6 +3395,8 @@ Mentre non \textbf{non sono chiusi} rispetto alla stella di Kleene.
 Infatti, i linguaggi definiti tramite questa logica prendono il nome di \textit{star-free}, cioè definibili unicamente tramite unione, intersezione, complemento e concatenazione di linguaggi finiti.
 
 \bigskip
+Ne consegue che:
+
 \begin{itemize}
   \item \MFO è strettamente meno potente degli \FSA
         \begin{itemize}
@@ -3463,7 +3475,6 @@ Per lo stesso motivo, si può dimostrare che la \MSO ha la stessa espressività 
 \paragraph{Da \FSA a \MSO}
 
 In generale, grazie alle quantificazioni del second'ordine è possibile trovare, per ogni \FSA, una formula \MSO equivalente.
-
 L'idea generale della costruzione consiste nell'usare una variabile di secondo ordine \(X_q\) per ogni stato \(q\) dell'\FSA \(M\).
 Il valore di ciascun \(X_q\) corrisponde all'insieme delle posizioni di tutti i caratteri che \(M\) può leggere in una transizione partendo dallo stato \(q\).
 
@@ -3471,8 +3482,9 @@ Assumendo che l'insieme di stati di \(M\) sia \(Q = \{0, 1, \ldots, k\}\) per un
 
 \paragraph{Da \MSO a \FSA}
 
-Data una formula \MSO \(\Phi\), è possibile costruire un \FSA che accetta un linguaggio \(L\) definito da \(\Phi\) tramite il teorema di \textit{Büchi Elgot Trakhtenbrot}.
+Data una formula \MSO \(\Phi\), è possibile costruire un \FSA che accetta un linguaggio \(L\) definito da \(\Phi\) tramite il teorema di \textit{Büchi-Elgot-Trakhtenbrot}.
 
+\bigskip
 I passaggi che portano alla costruzione non sono oggetto di questo corso e non saranno mostrati.
 
 \subsection{Precondizioni e postcondizioni}
@@ -3503,16 +3515,15 @@ Le precondizioni e postcondizioni possono essere definite in modi diversi, come:
   \item Linguaggi ad hoc
 \end{itemize}
 
-Soprattutto, tra di questi si riconosce la \FOL, che può essere usata per questo scopo.
+Tra di questi si riconosce innazitutto la \FOL, che può essere usata a questo scopo.
 
 \subsubsection{Specifiche}
 Una specifica deve essere usata come un \inlinequote{contratto}, che contiene tutte le informazioni necessarie senza assunzioni a priori.
-Quando qualche condizione è eliminata dalla precondizione, la specifica diventa insoddisfacente.
+Quando una qualche condizione viene eliminata dalla precondizione, la specifica diventa insoddisfacente.
 
 \bigskip
 Una \textbf{specifica formale} è una descrizione matematica di un sistema.
 Come per le specifiche, esistono più linguaggi di specifica diversi.
-
 Dopo aver specificato i requisiti di un algoritmo (o di un sistema), è necessario verificare la correttezza del medesimo.
 Utilizzando un modello matematico dell'implementazione costruita, è possibile ottenere la prova di correttezza come una dimostrazione di teorema.
 
@@ -4111,17 +4122,6 @@ Si calcoli ora \(h(i)\) ricordando che \(f_x(i) = h(i)\) e applicando la definiz
   \end{cases}
 \]
 Quindi entrambi i casi sono inammissibili e la dimostrazione è terminata.
-
-% Dei possibili valori di \(g\), \(h\) e \(f\) sono mostrati nella Figura~\ref{fig:possibili-valori-fgh}.
-
-% \begin{figure}[htbp]
-%   \bigskip
-%   \centering
-%   \tikzfig[0.65]{image-18.tikz}
-%   \caption{Possibili valori di \(g\), \(h\) e \(f\)}
-%   \label{fig:possibili-valori-fgh}
-%   \bigskip
-% \end{figure}
 
 \subsubsection{Lemma 1}
 
@@ -4830,6 +4830,8 @@ Il risultato della trattazione è illustrato in Tabella~\ref{tab:complessita-mod
 
 \subsection{Teoremi di accelerazione lineare}
 
+I quattro teoremi di accelerazione lineare e le loro dimostrazioni sono riportate nei seguenti Paragrafi, insieme a degli importanti risvolti pratici.
+
 \subsubsection[Teorema 1]{Teorema \(1\)}
 \label{sec:teorema-accelerazione-1}
 
@@ -4896,7 +4898,7 @@ Questi teoremi portano alle seguenti conseguenze pratiche:
         \end{itemize}
 \end{itemize}
 
-\subsection{La macchina \RAM}
+\subsection{Macchina \RAM}
 
 L'introduzione della macchina \RAM consente di fare un passo per arrivare ad un livello di astrazione più vicino alla realtà.
 È infatti un modello classico, ispirato all'architettura di \textit{Von Neumann}.
@@ -4927,45 +4929,65 @@ La struttura di una macchina \RAM è mostrata nella Figura~\ref{fig:struttura-ma
 I programmi all'interno dell'unità di controllo sono codificati tramite una semantica simile al codice \texttt{Assembly}, seppur di molto semplificato.
 Viene definita una specifica dei comandi (un \textit{Instruction Set}) che permette operazioni matematiche, logiche e di salto.
 
-Un'esempio di tale linguaggio è mostrato nella Tabella~\ref{tab:instruction-set-e-semantica}.
+Un'esempio di tale linguaggio è mostrato nella Tabella~\ref{tab:instruction-set-macchina-RAM}.
 
 \begin{table}[htbp]
   \bigskip
   \centering
-  \begin{minipage}[t]{.45\textwidth}
-    \centering
-    \begin{tabular}{ll}
-      \textit{istruzione} & \textit{semantica}                                                       \\ \hline
-      \texttt{LOAD X}     & \(\texttt{N}[0] \leftarrow \texttt{N}[\texttt{X}]\)                      \\
-      \texttt{LOAD= X}    & \(\texttt{N}[0] \leftarrow \texttt{X}\)                                  \\
-      \texttt{LOAD* X}    & \(\texttt{N}[0] \leftarrow \texttt{N}[\texttt{N}[\texttt{X}]]\)          \\
-      \texttt{STORE X}    & \(\texttt{N}[\texttt{X}] \leftarrow \texttt{N}[0]\)                      \\
-      \texttt{STORE* X}   & \(\texttt{N}[\texttt{N}[\texttt{X}]] \leftarrow \texttt{N}[0]\)          \\
-      \texttt{ADD X}      & \(\texttt{N}[0] \leftarrow \texttt{N}[0] + \texttt{N[\texttt{X}]}\)      \\
-      \texttt{SUB X}      & \(\texttt{N}[0] \leftarrow \texttt{N}[0] - \texttt{N[\texttt{X}]}\)      \\
-      \texttt{MUL X}      & \(\texttt{N}[0] \leftarrow \texttt{N}[0] \times \texttt{N[\texttt{X}]}\) \\
-      \texttt{DIV X}      & \(\texttt{N}[0] \leftarrow \texttt{N}[0] \div \texttt{N[\texttt{X}]}\)   \\
-      \texttt{HALT}       & \texttt{-}                                                               \\
-    \end{tabular}
+  \begin{minipage}[t]{.3\textwidth}
+    \scalebox{0.8}{
+      \centering
+      \begin{tabular}[t]{ll}
+        \textit{istruzione} & \textit{semantica}                                                       \\ \hline
+        \texttt{LOAD X}     & \(\texttt{N}[0] \leftarrow \texttt{N}[\texttt{X}]\)                      \\
+        \texttt{LOAD= X}    & \(\texttt{N}[0] \leftarrow \texttt{X}\)                                  \\
+        \texttt{LOAD* X}    & \(\texttt{N}[0] \leftarrow \texttt{N}[\texttt{N}[\texttt{X}]]\)          \\
+        \texttt{STORE X}    & \(\texttt{N}[\texttt{X}] \leftarrow \texttt{N}[0]\)                      \\
+        \texttt{STORE* X}   & \(\texttt{N}[\texttt{N}[\texttt{X}]] \leftarrow \texttt{N}[0]\)          \\
+        \texttt{ADD X}      & \(\texttt{N}[0] \leftarrow \texttt{N}[0] + \texttt{N[\texttt{X}]}\)      \\
+        \texttt{SUB X}      & \(\texttt{N}[0] \leftarrow \texttt{N}[0] - \texttt{N[\texttt{X}]}\)      \\
+        \texttt{MUL X}      & \(\texttt{N}[0] \leftarrow \texttt{N}[0] \times \texttt{N[\texttt{X}]}\) \\
+        \texttt{DIV X}      & \(\texttt{N}[0] \leftarrow \texttt{N}[0] \div \texttt{N[\texttt{X}]}\)   \\
+      \end{tabular}
+    }
   \end{minipage}
-  \begin{minipage}[t]{.45\textwidth}
-    \centering
-    \begin{tabular}{ll}
-      \textit{istruzione} & \textit{semantica}                                                  \\ \hline
-      \texttt{READ X}     & \(\texttt{N}[[\texttt{X}] \leftarrow \texttt{IN}]\)                 \\
-      \texttt{READ* X}    & \(\texttt{N}[\texttt{N}[\texttt{X}]] \leftarrow \texttt{IN}\)       \\
-      \texttt{WRITE X}    & \(\texttt{OUT} \leftarrow \texttt{N}[\texttt{X}]\)                  \\
-      \texttt{WRITE= X}   & \(\texttt{OUT} \leftarrow \texttt{X}\)                              \\
-      \texttt{WRITE* X}   & \(\texttt{OUT} \leftarrow \texttt{N}[\texttt{N}[\texttt{X}]]\)      \\
-      \texttt{JUMP l}     & \(\texttt{PC} \leftarrow \texttt{l}\)                               \\
-      \texttt{JZ l}       & \(\texttt{PC} \leftarrow \texttt{l} \text{ se } \texttt{N}[0] = 0\) \\
-      \texttt{JGZ l}      & \(\texttt{PC} \leftarrow \texttt{l} \text{ se } \texttt{N}[0] > 0\) \\
-      \texttt{JZZ l}      & \(\texttt{PC} \leftarrow \texttt{l} \text{ se } \texttt{N}[0] < 0\) \\
-    \end{tabular}
+  \begin{minipage}[t]{.3\textwidth}
+    \scalebox{0.8}{
+      \centering
+      \begin{tabular}[t]{ll}
+        \textit{istruzione} & \textit{semantica}                                                                   \\ \hline
+        \texttt{ADD= X}     & \(\texttt{N}[0] \leftarrow \texttt{N}[0] + \texttt{X}\)                              \\
+        \texttt{ADD* X}     & \(\texttt{N}[0] \leftarrow \texttt{N}[0] + \texttt{N}[\texttt{N}[\texttt{X}]]\)      \\
+        \texttt{SUB= X}     & \(\texttt{N}[0] \leftarrow \texttt{N}[0] - \texttt{X}\)                              \\
+        \texttt{SUB* X}     & \(\texttt{N}[0] \leftarrow \texttt{N}[0] - \texttt{N}[\texttt{N}[\texttt{X}]]\)      \\
+        \texttt{MULT= X}    & \(\texttt{N}[0] \leftarrow \texttt{N}[0] \times \texttt{X}\)                         \\
+        \texttt{MULT* X}    & \(\texttt{N}[0] \leftarrow \texttt{N}[0] \times \texttt{N}[\texttt{N}[\texttt{X}]]\) \\
+        \texttt{DIV= X}     & \(\texttt{N}[0] \leftarrow \texttt{N}[0] \div \texttt{X}\)                           \\
+        \texttt{DIV* X}     & \(\texttt{N}[0] \leftarrow \texttt{N}[0] \div \texttt{N}[\texttt{N}[\texttt{X}]]\)   \\
+      \end{tabular}
+    }
+  \end{minipage}
+  \begin{minipage}[t]{.3\textwidth}
+    \scalebox{0.8}{
+      \centering
+      \begin{tabular}[t]{ll}
+        \textit{istruzione} & \textit{semantica}                                                  \\ \hline
+        \texttt{READ X}     & \(\texttt{N}[\texttt{X}] \leftarrow \texttt{IN}\)                   \\
+        \texttt{READ* X}    & \(\texttt{N}[\texttt{N}[\texttt{X}]] \leftarrow \texttt{IN}\)       \\
+        \texttt{WRITE X}    & \(\texttt{OUT} \leftarrow \texttt{N}[\texttt{X}]\)                  \\
+        \texttt{WRITE= X}   & \(\texttt{OUT} \leftarrow \texttt{X}\)                              \\
+        \texttt{WRITE* X}   & \(\texttt{OUT} \leftarrow \texttt{N}[\texttt{N}[\texttt{X}]]\)      \\
+        \texttt{JUMP L}     & \(\texttt{PC} \leftarrow \texttt{L}\)                               \\
+        \texttt{JZ L}       & \(\texttt{PC} \leftarrow \texttt{L} \text{ se } \texttt{N}[0] = 0\) \\
+        \texttt{JGZ L}      & \(\texttt{PC} \leftarrow \texttt{L} \text{ se } \texttt{N}[0] > 0\) \\
+        \texttt{JLZ L}      & \(\texttt{PC} \leftarrow \texttt{L} \text{ se } \texttt{N}[0] < 0\) \\
+        \texttt{HALT}       & \texttt{-}                                                          \\
+      \end{tabular}
+    }
   \end{minipage}
   \bigskip
-  \caption{Instruction set e semantica pseudo-\textit{RTL}}
-  \label{tab:instruction-set-e-semantica}
+  \caption{Instruction set della macchina \RAM}
+  \label{tab:instruction-set-macchina-RAM}
 \end{table}
 
 \subsubsection{Criterio di costo logaritmico}
@@ -4980,7 +5002,7 @@ Così facendo risulterà che caricare e salvare interi in memoria non sarà più
 
 Alla luce di questi ragionamenti, sarà possibile calcolare la complessità per ogni categoria di operazione.
 
-\begin{minipage}[h]{.99\textwidth}
+\begin{minipage}[htbp]{.99\textwidth}
   \bigskip
   \begin{itemize}
     \item \textbf{Copiare}, \textbf{spostare}, \textbf{scrivere}, \textbf{leggere} un intero \(i\) avrà complessità pari al suo numero di cifre in base \(b\):
@@ -5183,16 +5205,487 @@ Inoltre, è possibile fare le seguenti osservazioni:
 
 \clearpage
 
-\section{Concetti base di complessità degli algoritmi}
+\section{Concetti ed Algoritmi di base}
 
+Gli algoritmi possono essere scomposti in:
 
-\TODO
+\begin{itemize}
+  \item \textbf{Problema}: il compito da svolgere
+        \begin{itemize}
+          \item quali \textit{output} vogliamo ottenere a fronte di certi \textit{input}
+          \item quali \textit{operazioni} devono essere effettuate (la funzione che deve svolgere)
+        \end{itemize}
+  \item \textbf{Algoritmo}: i passi da eseguire per risolvere un problema
+        \begin{itemize}
+          \item un algoritmo prende gli \textit{input} in ingresso ad un problema e li trasforma in opportuni \textit{output}
+          \item è formato da una sequenza di \textit{operazioni concrete}
+          \item è eseguibile da una \textbf{macchina}
+          \item deve essere \textbf{corretto}
+        \end{itemize}
+\end{itemize}
+
+Gli algoritmi possono essere descritti in diversi linguaggi, \textit{(come ad esempio, in \texttt{C}, \texttt{Java}, \texttt{Python}, \ldots)}.
+La complessità di un algoritmo non varia significativamente in base al linguaggio in cui è implementato \textit{(la complessità varierà solo di un fattore moltiplicativo)}.
+
+All'interno del corso si userà lo \textbf{pseudocodice}, che assomiglia ad un linguaggio vero e proprio nella sintassi senza tuttavia esserlo.
+
+\subsection{Pseudocodice}
+
+La sintassi dello \textbf{pseudocodice} è la seguente:
+
+\begin{itemize}
+  \item \textbf{Assegnamento}: \texttt{i := j}
+        \begin{itemize}
+          \item Assegnamento multiplo: \texttt{i := j := e}
+          \item Le variabili sono locali alla procedura
+        \end{itemize}
+        \begin{itemize}
+          \item è applicato da destra a sinistra
+        \end{itemize}
+  \item \textbf{Cicli} e \textbf{salti} condizionali: \texttt{while}, \texttt{for}, \texttt{if-then-else}
+        \begin{itemize}
+          \item la struttura a blocchi è determinata dall'indentazione
+          \item non si usano le parentesi
+        \end{itemize}
+  \item \textbf{Commenti}: \texttt{// commento}
+  \item \textbf{Array}: la notazione è analoga a quella del \texttt{C}
+        \begin{itemize}
+          \item il primo elemento può avere indice diverso da \(0\)
+          \item \texttt{A[j]} è l'elemento \(j\) dell'array \texttt{A}
+          \item \texttt{A[i..j]} è il sotto array che inizia dall'elemento \(i\) e termina all'elemento \(j\)
+        \end{itemize}
+  \item Gli \textbf{oggetti} sono strutture che raggruppano dati composti
+        \begin{itemize}
+          \item possiedono degli attributi, anche detti campi
+          \item per accedere all'attributo \texttt{attr} dell'oggetto \texttt{x}, si usa \texttt{x.attr}
+          \item gli \texttt{array} sono dati composti, quindi sono assimilabili ad oggetti
+                \begin{itemize}
+                  \item ogni array ha un attributo \texttt{length} che indica la lunghezza dell'array
+                \end{itemize}
+        \end{itemize}
+  \item Una \textbf{variabile} che corrisponde ad un oggetto è un puntatore all'oggetto
+        \begin{itemize}
+          \item analogo a quanto avviene in \texttt{C} o in \texttt{Java}
+          \item un puntatore che non fa riferimento ad un oggetto ha valore \texttt{NIL}
+        \end{itemize}
+  \item Il \textbf{passaggio dei parametri} avviene per valore
+        \begin{itemize}
+          \item la procedura invocata ottiene una copia dei parametri passati
+          \item passando un oggetto come parametro alla procedura, si passa il puntatore all'oggetto
+        \end{itemize}
+\end{itemize}
+
+\bigskip
+Per la valutazione della complessità di algoritmi scritti in pseudocodice si userà il \textbf{criterio di costo costante}, poiché non verranno manipolati dati più grandi rispetto a quelli in ingresso.
+Come conseguenza diretta, ogni istruzione \texttt{i} di pseudocodice verrà eseguita in un tempo costante \(c_\texttt{i}\)
+
+Grazie a questa assunzione sarà possibile trascurare il modello di calcolo dello pseudocodice \textit{(che sarà la macchina \RAM)}.
+La complessità temporale sarà studiata più di quella spaziale perché più rilevante nella realtà.
+
+\subsection{Divide et Impera}
+
+La tecnica chiamata \textbf{Divide et Impera} è una tecnica algoritmica molto comune.
+Essa si applica a problemi grossi e difficili da risolvere e si articola nei seguenti passi:
+
+\begin{enumerate}
+  \item \textbf{divisione} del problema in problemi più piccoli da risolvere
+  \item \textbf{risoluzione} dei problemi più piccoli
+  \item \textbf{combinazione} delle soluzioni
+\end{enumerate}
+
+Dividendo a sufficienza i problemi, inevitabilmente si ottengono problemi risolubili senza che debbano essere divisi ulteriormente.
+Questa è una tecnica di natura ricorsiva, in quanto per risolvere i problemi più piccoli si applica lo stesso algoritmo del problema più grosso.
+
+\bigskip
+In generale, un algoritmo \textbf{divide et impera} mostra le seguenti caratteristiche:
+
+\begin{itemize}
+  \item si divide il problema \(a\) in sotto problemi, ognuno di dimensione \(\dfrac{1}{b}\) di quello originale
+  \item se il sotto problema ha dimensione \(n\) sufficientemente piccola \textit{(\(n < c\) con \(c\) costante)} allora esso può essere risolto in tempo costante \textit{(\(\Theta(1)\))}
+  \item Indicando con \(D(n)\) il costo di divisione e \(C(n)\) il costo di ricombinazione, si può esprimere il costo totale \(T(n)\) come:
+        \[ T(n) = \begin{cases} \Theta(1)                      & \quad \text{ se } n < c   \\
+              D(n) + aT(\dfrac{n}{b}) + C(n) & \quad \text{ altrimenti }
+          \end{cases}\]
+\end{itemize}
+
+\subsection{Ricorrenze}
+
+Una \textbf{ricorrenza} è una caratteristica delle funzioni ricorsive, ossia quelle funzioni con:
+
+\begin{itemize}
+  \item uno o più casi base
+  \item sé stesso, con parametri più piccoli
+\end{itemize}
+
+Esistono \(3\) tecniche principali per il risolvimento delle ricorrenze:
+
+\begin{enumerate}
+  \item sostituzione
+  \item albero di ricorsione
+  \item teorema dell'esperto (dall'Inglese \textit{master theorem})
+\end{enumerate}
+
+Tutte queste tecniche verranno analizzate più nel dettaglio nelle seguenti Sezioni.
+
+\subsubsection{Metodo di sostituzione}
+
+Il metodo di sostituzione si articola in \(2\) passi:
+
+\begin{enumerate}
+  \item Ipotizzare una soluzione
+  \item Trovare le costanti e dimostrare che la soluzione è corretta tramite induzione
+\end{enumerate}
+
+Può essere usato per trovare il limite superiore o il limite inferiore di una ricorrenza.
+
+Questo è un metodo potente, ma può essere applicato solo laddove è facile ipotizzare una soluzione.
+
+\subsubsection{Metodo dell'albero di ricorsione}
+
+Questo metodo fornisce un risultato approssimato, il cui non si può dire sempre esatto.
+
+\begin{enumerate}
+  \item Si disegna l'albero di ricorsione, tenendo conto che ad ogni livello la somma di ciascun nodo è pari alla dimensione della radice
+  \item Si somma la complessità di ogni livello per trovare la complessità totale
+\end{enumerate}
+
+Questo metodo va usato insieme al metodo di sostituzione.
+Il metodo dell'albero di ricorsione, infatti, semplifica di molto il primo passo del metodo di sostituzione, ossia l'ipotesi della soluzione.
+
+Inoltre, questo metodo è molto comodo nei problemi di tipo \textit{Dividi et Impera}.
+
+\subsubsection{Teorema dell'esperto}
+
+Il \textbf{Teorema dell'esperto} fornisce un metodo da \inlinequote{manuale} per risolvere le ricorrenze nella forma \(T(n) = aT(\sfrac{n}{b}) + f(n)\), dove \(a > 1,\ b \geq 1\) sono costanti e \(f\) è una funzione asintoticamente positiva.
+Il teorema richiede di memorizzare tre casi, ma permette di trovare una soluzione alla ricorrenza con relativa semplicità.
+
+\bigskip
+\textit{Formalmente}, siano \(a > 1,\ b \geq 1\) due costanti e \(f(n)\) una funzione asintoticamente positiva.
+A partire da essi è possibile definire \(T(n),\ n \in \mathbb{N}\) tramite la ricorrenza:
+\[ T(n) = aT(\sfrac{n}{b}) + f(n) \]
+dove \(\sfrac{n}{b}\) è considerato arrotondato per difetto o per eccesso (quindi rispettivamente \(\lfloor\sfrac{n}{b}\rfloor\) e \(\lceil\sfrac{n}{b}\rceil\)).
+
+\(T(n)\) può essere limitato asintoticamente come segue:
+
+\begin{enumerate}[label=\arabic*), ref=(\arabic*)]
+  \item\label{enum:teorema-esperto-1} Se \(f(n) = \bigO\left(n^{\log_b(a) - \epsilon}\right)\) per una costante \(\epsilon > 0\), allora \(T(n) = \Theta\left(n^{\log_b (a)}\right)\)
+  \item\label{enum:teorema-esperto-2} Se \(f(n) = \Theta\left(n^{\log_b(a)}\right)\), allora \(T(n) = \Theta\left(n^{\log_b(a)} \log(n)\right)\)
+  \item\label{enum:teorema-esperto-3} Se \(f(n) = \Omega\left(n^{\log_b(a) + \epsilon}\right)\) per una costante \(\epsilon > 0\) e se \(a \cdot f(\sfrac{n}{b}) \leq c \cdot f(n)\) per una costante \(c < 1\) \textit{(condizione di regolarità)} e dei valori di \(n\) sufficientemente grandi, allora \(T(n) = \Theta\left(f(n)\right)\)
+\end{enumerate}
+
+\bigskip
+\textit{Informalmente}, il teorema porta a confrontare \(f(n)\) con la funzione \(n^{\log_b(a)}\).
+
+Se, come nel caso \ref{enum:teorema-esperto-1}, la funzione \(n^{\log_b(a)}\) è la più grande, allora la soluzione è \(T(n) = \Theta\left(n^{\log_b (a)}\right)\).
+Se, invece, è \(f(n)\) ad essere la più grande, come nel caso \ref{enum:teorema-esperto-3}, allora la soluzione è \(T(n) = \Theta\left(f(n)\right)\).
+Infine, se come nel caso \ref{enum:teorema-esperto-2},le due funzioni sono della stessa dimensione, moltiplicando per un fattore logaritmico risulta che la soluzione è \(T(n) = \Theta\left(n^{\log_b(a)} \log(n)\right) = \Theta\left(f(n) \log(n)\right)\).
+
+\bigskip
+Bisogna tuttavia tenere conto di alcuni dettagli tecnici.
+
+Nel primo caso, \ref{enum:teorema-esperto-1}, non solo \(f(n)\) deve essere più piccola di \(n^{\log_b(a)}\), ma deve essere polinomialmente più piccola.
+Essa sarà asintoticamente più piccola di un fattore \(n^\epsilon,\ \epsilon>0\).
+
+Nel terzo caso, \ref{enum:teorema-esperto-3}, non solo \(f(n)\) deve essere più grande di \(n^{\log_b(a)}\), ma deve essere polinomialmente più piccola e deve soddisfare la condizione di \inlinequote{regolarità} che impone \(a \cdot f(\sfrac{n}{b}) \leq c \cdot f(n)\).
+Questa condizione è soddisfatta dalla maggior parte delle funzioni polinomialmente limitate che possono essere incontrate.
+
+\bigskip
+E importante realizzare che i tre casi del teorema \textbf{non coprono tutti i possibili comportamenti} asintotici di \(f(n)\).
+C'è infatti un \inlinequote{vuoto} tra i casi \ref{enum:teorema-esperto-1} e \ref{enum:teorema-esperto-2} quando \(f(n)\) è più piccola di \(n^{\log_b(a)}\) ma non \textbf{polinomialmente} più piccola.
+In modo analogo, la stessa problematica si presenta tra i casi \ref{enum:teorema-esperto-2} e \ref{enum:teorema-esperto-3} quando \(f(n)\) è più grande di \(n^{\log_b(a)}\), ma non \textbf{polinomialmente} più grande.
+Se la funzione \(f(n)\) cade in uno di questi \inlinequote{vuoti}, o se la condizione di regolarità del caso \ref{enum:teorema-esperto-3} non è valida, il teorema del maestro \textbf{non è applicabile}.
+
+\paragraph{Confronto polinomiale}
+
+Per cercare di chiarire il concetto di \inlinequote{più piccolo} e \inlinequote{più grande}, verranno ora esposti degli \textit{esempi}.
+
+\begin{itemize}
+  \item \(n\) è polinomialmente \textbf{più piccolo} di \(n^2\)
+  \item \(n \log (n)\) è polinomialmente \textbf{più grande} di \(n^{1/2}\)
+  \item \(n \log (n)\) è più grande di \(n\) ma \textbf{non polinomialmente}
+\end{itemize}
+
+\paragraph{Caso particolari}
+
+Il teorema si semplifica notevolmente qualora \(f(n)\) è una funzione \(\Theta(n^k)\), con \(k\) costante:
+
+\begin{enumerate}[label=\arabic*), ref=(\arabic*)]
+  \item\label{enum:caso-particolare-teorema-esperto-1} Se \(k < \log_b(a)\), allora \(T(n) = \Theta\left(n^{\log_b(a)}\right)\)
+  \item\label{enum:caso-particolare-teorema-esperto-2} Se \(k = \log_b(a)\), allora \(T(n) = \Theta\left(n^k \log(n)\right)\)
+  \item\label{enum:caso-particolare-teorema-esperto-3} Se \(k > \log_b(a)\), allora \(T(n) = \Theta\left(n^k\right)\)
+\end{enumerate}
+
+Nel caso \ref{enum:caso-particolare-teorema-esperto-3} la condizione aggiuntiva di regolarità è automaticamente verificata.
+
+\subsection{Problemi di ordinamento}
+
+L'\textbf{ordinamento} degli elementi di una sequenza è un problema molto comune e fornisce un classico esempio di problema risolvibile tramite algoritmi.
+Esistono parecchi algoritmi di ordinamento \textit{(insertion sort, selection sort, bubble sort, \ldots)}, ognuno con la propria complessità.
+
+\bigskip
+Nelle prossime Sezioni alcuni di essi verranno analizzati in dettaglio.
+
+\subsubsection{Insertion Sort}
+
+\begin{minipage}{0.99\textwidth}
+  \bigskip
+  \centering
+  \begin{minipage}{0.45\textwidth}
+    \centering
+    \begin{lstlisting}[style=pseudocode]
+INSERTION-SORT(A)
+  for j := 2 to A.length
+    key := A[j]
+    i := j - 1
+    while i > 0 and A[i] > key
+      A[i + 1] := A[i]
+      i := i - 1
+    A[i + 1] := key
+    \end{lstlisting}
+  \end{minipage}
+  \begin{minipage}{0.45\textwidth}
+    \centering
+    \begin{tabular}{ccc}
+      \textit{riga} & \textit{costo} & \textit{ripetizioni}     \\ \hline
+      \(2\)         & \(c_1\)        & \(n\)                    \\
+      \(3\)         & \(c_2\)        & \(n-1\)                  \\
+      \(4\)         & \(c_3\)        & \(n-1\)                  \\
+      \(5\)         & \(c_4\)        & \(\sum_{j=2}^n t_j\)     \\
+      \(6\)         & \(c_5\)        & \(\sum_{j=2}^n (t_j-1)\) \\
+      \(7\)         & \(c_6\)        & \(\sum_{j=2}^n (t_j-1)\) \\
+      \(8\)         & \(c_7\)        & \(n-1\)                  \\
+    \end{tabular}
+  \end{minipage}
+  \bigskip
+\end{minipage}
+
+\paragraph{Analisi dell'algoritmo \texttt{INSERTION-SORT}}
+
+Il tempo di esecuzione di \texttt{INSERTION-SORT(A)} è:
+
+\[ T(n) = c_1 \cdot n + c_2 \cdot (n-1) + c_3 \cdot (n-1) + c_4 \cdot \displaystyle \sum_{j=2}^n t_j + c_5 \cdot \displaystyle \sum_{h-2}^n (t_j - 1) + c_6 \cdot \displaystyle \sum_{h-2}^n (t_j - 1) + c_7 \cdot (n-1) \]
+
+\begin{itemize}
+  \item Caso \textbf{ottimo}:
+        \begin{itemize}
+          \item gli elementi sono già ordinati, \(t_2 = \ldots = t_n = 1\)
+          \item \(T(n) = an + b \quad \Rightarrow \quad T(n) = \Theta(n)\)
+          \item si può anche dire che \(T(n) = \Omega(n)\) perché il limite inferiore è funzione di \(\Theta(n)\)
+        \end{itemize}
+  \item Caso \textbf{pessimo}:
+        \begin{itemize}
+          \item gli elementi sono già ordinati ma in ordine decrescente \(t_2 = 2,\ t_3 = 3,\ \ldots\)
+          \item \(T(n) = an^2 + bn + c \quad \Rightarrow \quad T(n) = \Theta(n^2)\)
+          \item si può anche dire che \(T(n) = \bigO(n^2)\) perché il limite superiore è funzione di \(\Theta(n^2)\)
+        \end{itemize}
+\end{itemize}
+
+\subsubsection{Merge sort}
+
+\textit{Idea dell'algoritmo}:
+
+\begin{itemize}
+  \item Se l'array da ordinare ha meno di \(2\) elementi, allora è ordinato per definizione
+  \item Altrimenti:
+        \begin{itemize}
+          \item si dive l'array in \(2\) sotto array, ognuno con la metà degli elementi di quello originario
+          \item si ordinano i \(2\) sotto array applicando di nuovo l'algoritmo
+          \item si fondono \textit{(tramite l'algoritmo \texttt{MERGE})} i \(2\) sotto array ora ordinati
+        \end{itemize}
+\end{itemize}
+
+Il \texttt{MERGE-SORT} è un algoritmo ricorsivo e adotta la tecnica \textbf{divide ed impera}.
+Per completare l'algoritmo, infatti, è necessario definire un sotto algoritmo \texttt{MERGE} che combina le soluzioni dei problemi divisi.
+
+\begin{minipage}{0.99\textwidth}
+  \begin{lstlisting}[style=pseudocode]
+MERGE-SORT(A, p, R)
+  if p < r
+    q := floor((p + r) / 2)
+    MERGE-SORT(A, p, q)
+    MERGE-SORT(A, q+1, r)
+    MERGE(A, p, q, r)
+\end{lstlisting}
+
+  \begin{minipage}{0.99\textwidth}
+    \centering
+    \begin{minipage}[t]{0.495\textwidth}
+      \begin{lstlisting}[style=pseudocode]
+      MERGE(A, p, q, r)
+        n1 := q - p + 1
+        n2 := r - q
+        alloca L[1 .. n1+1]
+        alloca R[1 .. n2+1]
+        for i := 1 to n1
+          L[i] := A[p+i-1]
+        for j := 1 to n2
+          R[j] := A[q+j]
+        L[n1+1] := $\infty$
+        R[n2+1] := $\infty$
+        i := 1
+        j := 1
+        for k := p to r
+          if L[i] <= R[j]
+            A[k] := L[i]
+            i := i + 1
+          else
+            A[k] := R[j]
+            j := j + 1
+          \end{lstlisting}
+    \end{minipage}
+    \begin{minipage}[t]{0.495\textwidth}
+      \begin{tabular}[t]{ccc}
+        \textit{riga} & \textit{costo}  & \textit{ripetizioni}        \\ \hline
+        \(2\)         & \(c_1\)         & \(1\)                       \\
+        \(3\)         & \(c_2\)         & \(1\)                       \\
+        \(4\)         & \(\Theta(n)\)   & \(1\)                       \\
+        \(5\)         & \(\Theta(n_1)\) & \(n_1\)                     \\
+        \(8\)         & \(\Theta(n_2)\) & \(n_2\)                     \\
+        \(10\)        & \(c_3\)         & 1                           \\
+        \(11\)        & \(c_4\)         & 1                           \\
+        \(12\)        & \(c_5\)         & 1                           \\
+        \(13\)        & \(c_7\)         & 1                           \\
+        \(14\)        & \(\Theta(n)\)   & \(\texttt{r} - \texttt{p}\) \\
+        \(15\)        & \(c_8\)         & 1                           \\
+        \(16\)        & \(c_9\)         & 1                           \\
+        \(17\)        & \(c_10\)        & 1                           \\
+        \(19\)        & \(c_11\)        & 1                           \\
+        \(20\)        & \(c_12\)        & 1                           \\
+      \end{tabular}
+    \end{minipage}
+  \end{minipage}
+\end{minipage}
+
+\paragraph{Analisi dell'algoritmo \texttt{MERGE}}
+
+\textit{Idea dell'algoritmo}
+
+\begin{enumerate}
+  \item Si va all'inizio dei \(2\) sotto array
+        \item\label{enum:begin-merge-loop} Si prende il minimo dei \(2\) elementi correnti
+  \item Si inserisce il minimo alla fine dell'array da restituire
+  \item Si avanza di uno nell'array da cui si è preso il minimo
+  \item Si ripete il passo \ref{enum:begin-merge-loop}
+\end{enumerate}
+
+\bigskip
+
+Nell'algoritmo \texttt{MERGE} prima vengono copiati gli elementi dei \(2\) sotto array \texttt{A[p .. q]} e \texttt{A[q+1 .. r]} in \(2\) array temporanei \(L\) e \(R\) e poi vengono fusi in \texttt{A[p .. r]}.
+Per non dover controllare se \(L\) e \(R\) sono vuoti si usa un valore particolare \((\infty)\), più grande di ogni possibile valore, in ultima posizione negli array.
+
+La dimensione dei dati in input è \(\texttt{n} = \texttt{r} - \texttt{p} + 1\) ed è composto da \(3\) cicli \textbf{\texttt{for}}:
+
+\begin{itemize}
+  \item \(2\) cicli di inizializzazione (linee \(10\) e \(11\)) per assegnare i valori a \(L\) e \(R\)
+        \begin{enumerate}
+          \item il primo è eseguito \(n_1\) volte, con \(\Theta(n_1) = \Theta(\texttt{q}-\texttt{p}+1) = \Theta(\sfrac{n}{2}) = \Theta(n)\)
+          \item il secondo è eseguito \(n_2\) volte, con \(\Theta(n_2) = \Theta(\texttt{r}-\texttt{q}) = \Theta(\sfrac{n}{2}) = \Theta(n)\)
+        \end{enumerate}
+  \item[\(\rightarrow\)] in totale, \(T_\texttt{MERGE} = \Theta(n)\)
+\end{itemize}
+
+\paragraph{Analisi delle ricorrenze dell'algoritmo \texttt{MERGE-SORT}}
+
+Siano \(a = b = c = 2\).
+Di conseguenza, \(D(n) = \Theta(1),\ C(n) = \Theta(n)\).
+
+La complessità totale sarà:
+
+\[T(n) = \begin{cases}
+    \Theta(1)                    & \quad \text{ se } n < 2   \\
+    2T(\sfrac{n}{2}) + \Theta(n) & \quad \text{ altrimenti }
+  \end{cases}\]
+
+In realtà la complessità dovrebbe essere \(T(\lfloor \sfrac{n}{2} \rfloor) + T(\lfloor \sfrac{n}{2} \rfloor)\) ma l'approssimazione a \(2T(\sfrac{n}{2})\) è sufficiente perché non influisce sul comportamento asintotico della funzione.
+
+\bigskip
+
+Riscrivendo la ricorrenza dell'algoritmo senza fare uso delle notazioni \textit{Theta}, risulta che:
+
+\[
+  T(n) = \begin{cases}
+    c                     & \quad \text{ se } n < 2  \\
+    2T(\sfrac{n}{2}) + cn & \quad \text{ altrimenti}
+  \end{cases}
+\]
+
+Per visualizzare le ricorsioni si può fare uso di un \textbf{albero di ricorsione}, scegliendo per semplicità il caso in cui \(n\) è una potenza di due.
+Una rappresentazione dell'albero di ricorsione è mostrata in Figura~\ref{fig:albero-ricorsione-algoritmo-merge-sort}.
+
+\begin{figure}[htbp]
+  \bigskip
+  \centering
+  \tikzfig{image-25.tikz}
+  \caption{Albero di ricorsione per l'algoritmo \texttt{MERGE-SORT} su un array di dimensione \(n = 2^k\).}
+  \label{fig:albero-ricorsione-algoritmo-merge-sort}
+  \bigskip
+\end{figure}
+
+Sommando i costi dei vari livelli si ottiene:
+
+\[ T(n) = cn \log(n) + cn \quad \Rightarrow \quad T_\texttt{MERGE-SORT} = \Theta(n \log(n)) \]
+
+\bigskip
+Analogamente si sarebbe potuto applicare il teorema dell'esperto.
+Infatti:
+
+\[ T(n) = 2T(\sfrac{n}{2}) + \Theta(n)\ \]
+dove \(a = b = 2,\ f(n) = n\) e di conseguenza \(n^{\log_b(a)} = n^1 = n\).
+
+Si ricade quindi nel caso \ref{enum:teorema-esperto-2} del teorema dell'esperto:
+\[ T_{\texttt{MERGE-SORT}} = \Theta(n \log(n)) \]
+
+\subsection{Grafi}
+
+Un grafo e una coppia \(\langle V, E \rangle\) in cui \(V\) è un insieme finito di \textbf{nodi} (detti anche \textbf{vertici}) e \(E \subseteq V \times V\) è una relazione binaria \textit{(costituente un insieme finito)} su \(V\) di coppie di nodi (dette anche \textbf{archi}).
+
+Se \(u\) e \(v\) sono nodi del grafo, la coppia \(\langle u, v \rangle\) è un arco.
+L'arco è detto \textbf{orientato} se \(u\) e \(v\) sono coppie di nodi consecutivi, ovvero \(u = v + 1\) \textit{(Figura~\ref{fig:grafo-arco-orientato})}.
+In caso contrario, è detto \textbf{non orientato} \textit{(Figura~\ref{fig:grafo-arco-non-orientato})}.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[t]{0.495\textwidth}
+    \centering
+    \begin{tikzpicture}[auto, on grid, node distance=3cm, >=Triangle]
+      \node [state, minimum size=1cm](u) {\textit{u}};
+      \node [state, minimum size=1cm](v) [right=of u] {\textit{v}};
+
+      \path[->, thick]
+      (u) edge [] node {} (v);
+
+    \end{tikzpicture}
+    \caption{Grafo con arco orientato}
+    \label{fig:grafo-arco-orientato}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.495\textwidth}
+    \centering
+    \begin{tikzpicture}[auto, on grid, node distance=3cm, >=Triangle]
+      \node [state, minimum size=1cm](u) {\textit{u}};
+      \node [state, minimum size=1cm](v) [right=of u] {\textit{v}};
+
+      \path[-, thick]
+      (u) edge [] node {} (v);
+
+    \end{tikzpicture}
+    \caption{Grafo con arco non orientato}
+    \label{fig:grafo-arco-non-orientato}
+  \end{subfigure}
+\end{figure}
 
 \clearpage
 
 \section{Conclusioni sparse delle precedenti Sezioni}
 
 L'obiettivo di questa Sezione sarà ricapitolare delle conclusioni tratte nelle precedenti sezioni, con particolare riguardo agli esercizi ed alle applicazioni pratiche.
+
+\subsection{Ripasso di matematica}
+
+\begin{itemize}
+  \item La formula \(\log_a(b)\) indica il numero reale \(c\) che realizza l'uguaglianza \(a^c = b\), \(a, b > 0,\ a \neq 1\)
+  \item Formula di cambio di base per i logaritmi \(\log_a(b) = \dfrac{\log_c(b)}{\log_(a)}\) con \(a, b, c > 0,\ c \neq 1\)
+  \item Formula di Gauss \(\displaystyle \sum_{i=1}^k i = \dfrac{k(k+1)}{2}\)
+\end{itemize}
 
 \subsection{Scala di potenza delle classi di automi}
 
@@ -5368,6 +5861,17 @@ Si ricordi che un insieme di funzioni è banale se è \textbf{vuoto} o se è l'i
                   \item \textbf{Non si può} usare il teorema di Rice
                 \end{itemize}
         \end{itemize}
+\end{itemize}
+
+\subsection{Complessità}
+
+\begin{itemize}
+  \item Tutti i logaritmi sono nello stesso \(\Theta\) indipendentemente dalla base
+        \begin{itemize}
+          \item la formula di cambio base comporta un fattore moltiplicativo
+          \item grazie a questa proprietà si può non indicare la base del logaritmo quando si valuta l'andamento asintotico
+        \end{itemize}
+  \item Contrariamente a quanto avviene nei logaritmi, negli esponenziali è importante specificare la base
 \end{itemize}
 
 \end{document}

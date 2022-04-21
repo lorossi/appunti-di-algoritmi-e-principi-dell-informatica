@@ -29,6 +29,9 @@
 \RequirePackage{xfrac} % for diagonal fractions
 \RequirePackage{tocloft} % for spacing in TOC
 \RequirePackage{nameref} % for named references
+\RequirePackage{courier} % for bold in listlng
+\RequirePackage{anyfontsize} % for better font sizes
+\RequirePackage{subcaption} % for subfigures and subcaptions
 \RequirePackage[style=iso]{datetime2} % datetime command
 
 \ProcessOptions\relax
@@ -126,6 +129,27 @@
 \advance\cftsubsecindent 0.5em\relax
 \advance\cftsubsecnumwidth 0.5em\relax
 
+% lstlisting style definition for pseudocode
+\lstdefinestyle{pseudocode}{
+  commentstyle=\color{gray}\bfseries,
+  keywordstyle=\color{black}\bfseries,
+  basicstyle=\ttfamily,
+  breakatwhitespace=false,
+  captionpos=b,
+  keepspaces=false,
+  numbers=left,
+  xleftmargin=10pt,
+  numberstyle=\small,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  showlines=false,
+  tabsize=2,
+  morekeywords={while, for, if, then, else, to, and, or, xor, floor},
+  mathescape=true,
+  morecomment=[l][commentstyle]{//},
+}
+
 % command for indented quote block
 \newcommand{\indentquote}[1]{
   \vspace*{1em}
@@ -141,6 +165,14 @@
   \hspace*{-0.75em}
   \textit{\textquote{#1}}
   \hspace*{-0.75em}
+}
+
+% command for my signature
+\newcommand{\signature}{
+  \hspace{5cm}
+  \begin{flushright}
+    \textit{Lorenzo Rossi}
+  \end{flushright}
 }
 
 % white on gray text
