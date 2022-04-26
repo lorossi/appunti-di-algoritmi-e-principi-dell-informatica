@@ -1,0 +1,95 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=black] (0) at (10, 0) {};
+		\node [style=black] (1) at (4, -4) {};
+		\node [style=black] (2) at (10, -4) {};
+		\node [style=black] (3) at (16, -4) {};
+		\node [style=black] (4) at (6, -8) {};
+		\node [style=black] (5) at (2, -8) {};
+		\node [style=black] (6) at (2, -12) {};
+		\node [style=black] (7) at (13, -8) {};
+		\node [style=black] (8) at (16, -8) {};
+		\node [style=black] (9) at (19, -8) {};
+		\node [style=black] (10) at (10, -8) {};
+		\node [style=black] (11) at (6, -12) {};
+		\node [style=black] (12) at (8, -12) {};
+		\node [style=black] (13) at (10, -12) {};
+		\node [style=black] (14) at (12, -12) {};
+		\node [style=black] (15) at (14, -12) {};
+		\node [style=left align] (16) at (10.75, 0) {radice};
+		\node [style=none] (17) at (10.75, 0.75) {};
+		\node [style=none] (19) at (1.25, -11.25) {};
+		\node [style=none] (20) at (1.25, -12.75) {};
+		\node [style=none] (21) at (14.75, -12.75) {};
+		\node [style=none] (22) at (12.25, -11.25) {};
+		\node [style=left align] (23) at (20, -8) {foglie};
+		\node [style=none] (24) at (10.75, -0.75) {};
+		\node [style=none] (25) at (9.25, -0.75) {};
+		\node [style=none] (26) at (9.25, 0.75) {};
+		\node [style=none] (27) at (5.25, -11.25) {};
+		\node [style=none] (28) at (5.25, -7.25) {};
+		\node [style=none] (29) at (6.75, -7.25) {};
+		\node [style=none] (30) at (6.75, -11.25) {};
+		\node [style=none] (31) at (12.25, -7.25) {};
+		\node [style=none] (32) at (20, -7.25) {};
+		\node [style=none] (33) at (20, -8.75) {};
+		\node [style=none] (34) at (14.75, -8.75) {};
+		\node [style=none] (35) at (9, -8.75) {};
+		\node [style=none] (36) at (11, -8.75) {};
+		\node [style=none] (37) at (11, -4.75) {};
+		\node [style=none] (38) at (17, -4.75) {};
+		\node [style=none] (39) at (17, -3.25) {};
+		\node [style=none] (40) at (3, -3.25) {};
+		\node [style=none] (41) at (3, -4.75) {};
+		\node [style=none] (42) at (9, -4.75) {};
+		\node [style=left align] (43) at (17, -4) {nodi interni};
+		\node [style=none] (44) at (0, -12) {};
+		\node [style=none] (45) at (0, 0) {};
+		\node [style=none, rotate=90] (46) at (-0.75, -6) {altezza = \(3\)};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=big] (1) to (0);
+		\draw [style=big] (0) to (2);
+		\draw [style=big] (0) to (3);
+		\draw [style=big] (5) to (1);
+		\draw [style=big] (4) to (1);
+		\draw [style=big] (6) to (5);
+		\draw [style=big] (10) to (2);
+		\draw [style=big] (7) to (3);
+		\draw [style=big] (3) to (8);
+		\draw [style=big] (9) to (3);
+		\draw [style=big] (10) to (15);
+		\draw [style=big] (14) to (10);
+		\draw [style=big] (13) to (10);
+		\draw [style=big] (12) to (10);
+		\draw [style=big] (11) to (10);
+		\draw [style=dashed] (29.center)
+			 to (30.center)
+			 to (22.center)
+			 to (31.center)
+			 to (32.center)
+			 to (33.center)
+			 to (34.center)
+			 to (21.center)
+			 to (20.center)
+			 to (19.center)
+			 to (27.center)
+			 to (28.center)
+			 to cycle;
+		\draw [style=dashed] (17.center)
+			 to (24.center)
+			 to (25.center)
+			 to (26.center)
+			 to cycle;
+		\draw [style=dashed] (36.center)
+			 to (37.center)
+			 to (38.center)
+			 to (39.center)
+			 to (40.center)
+			 to (41.center)
+			 to (42.center)
+			 to (35.center)
+			 to cycle;
+		\draw [style=double arrow] (44.center) to (45.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

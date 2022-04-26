@@ -34,7 +34,7 @@ Il contenuto di questo documento è tratto parzialmente dalle slide mostrate in 
 Spesso, le illustrazioni e le tabelle saranno uguali \textit{(a meno di palesi errori da parte mia)}.
 
 \bigskip
-Alcuni argomenti, paragrafi e sezioni potrebbero talora seguire le lezioni, talora seguire i libri, perché mi sono preso la libertà di riordinare il corso a piacimento, in modo che seguisse il mio schema mentale.
+Alcuni argomenti, paragrafi e sezioni potrebbero talora seguire le lezioni, talora seguire i libri perché mi sono preso la libertà di riordinare il corso a piacimento, in modo che seguisse il mio schema mentale.
 
 \bigskip
 Il lettore si senta libero di avvisarmi qualora trovasse un errore!
@@ -4050,7 +4050,7 @@ La dimostrazione avviene per assurdo ed è strutturata in passi:
   \item A questo punto emerge la contraddizione: sia \(a\) la \(n\)-esima cifra decimale di \(n_k = x\). Essa può essere \(4\) o \(5\): per la definizione, \(a\) potrà essere \(4\) se e solo se è uguale a \(5\), e \(5\) negli altri casi. Questo è impossibile e ne segue che l'ipotesi di partenza è falsa.
 \end{enumerate}
 
-\subsubsection{Dimostrazione del problema di terminazione}
+\subsubsection{Dimostrazione del Problema di Terminazione}
 \label{sec:dimostrazione-problema-terminazione}
 
 Come già annunciato, la dimostrazione avviene tramite tecnica diagonale.
@@ -4137,9 +4137,9 @@ Allora \(h^\prime\) \textbf{non è computabile.}
 Si noti che \(h^\prime(x)\) \inlinequote{si muove} ancora sulla diagonale (coincide con \(g(x, x)\)) ed è quindi una semplificazione di \(f(x)\).
 È un problema analogo al problema di terminazione, di cui è appunto un lemma, ma non dipende da esso.
 
-\paragraph{Dimostrazione del lemma 1}
+\paragraph[Dimostazione del Lemma 1]{Dimostrazione del Lemma \(1\)}
 
-La dimostrazione segue la traccia della dimostrazione del teorema di terminazione, nel avvenuta nella Sezione~\ref{sec:dimostrazione-problema-terminazione}.
+La dimostrazione segue la traccia della dimostrazione del Teorema di Terminazione, nel avvenuta nella Sezione~\ref{sec:dimostrazione-problema-terminazione}.
 
 \bigskip
 Si definisca inizialmente la funzione
@@ -4188,9 +4188,9 @@ In qualche caso potrebbe essere possibile stabilire se \(f_y(x) \neq \bot\) per 
 
 Se ciò, \textit{per assurdo}, fosse possibile, determinare se \(f_y\) è una funzione totale sarebbe impossibile.
 
-\paragraph{Dimostrazione lemma 3}
+\paragraph[Dimostrazione del Lemma 3]{Dimostrazione del Lemma \(3\)}
 
-La dimostrazione segue la traccia della dimostrazione del teorema di terminazione, nel avvenuta nella Sezione~\ref{sec:dimostrazione-problema-terminazione}.
+La dimostrazione segue la traccia della dimostrazione del Teorema di Terminazione, nel avvenuta nella Sezione~\ref{sec:dimostrazione-problema-terminazione}.
 
 Per ipotesi, sia \(k(y)\) la funzione definita come:
 \[ k(y) =
@@ -4479,7 +4479,7 @@ Allora è sempre possibile trovare un intero \(p\) tale che:
 
 La funzione \(f_p\) è detta \textbf{punto fisso} di \(t\) perché \(t\) trasforma \textit{(una macchina che calcola)} \(f_p\) in \textit{(una macchina che calcola)} \(f_p\) stessa.
 
-\paragraph{Dimostrazione}
+\paragraph{Dimostrazione del Teorma di \textit{Kleene}}
 
 Sia \(u\) un qualsiasi numero naturale.
 Si definisca un \TM che realizza la seguente procedura applicata al valore in ingresso \(x\):
@@ -4500,7 +4500,7 @@ L'insieme \(S = \left\{ x \, | \, f_x \in F \right\}\) degli indici di \TM che c
 
 Di conseguenza in tutti i casi non banali \(S\) \textbf{non è decidibile}.
 
-\paragraph{Dimostrazione}
+\paragraph{Dimostrazione del Teorema di \textit{Rice}}
 
 Per assurdo, si supponga che \(S\) sia ricorsivo, che \(F \neq \emptyset\) e che \(F\) non coincida con l'insieme di tutte le funzioni computabili.
 
@@ -4830,14 +4830,14 @@ Il risultato della trattazione è illustrato in Tabella~\ref{tab:complessita-mod
 
 \subsection{Teoremi di accelerazione lineare}
 
-I quattro teoremi di accelerazione lineare e le loro dimostrazioni sono riportate nei seguenti Paragrafi, insieme a degli importanti risvolti pratici.
+I quattro teoremi di accelerazione lineare e le loro dimostrazioni sono riportate nelle seguenti Sezioni, insieme a degli importanti risvolti pratici.
 
 \subsubsection[Teorema 1]{Teorema \(1\)}
 \label{sec:teorema-accelerazione-1}
 
 \indentquote{Se \(L\) è accettato da una \TM \(M\) a \(k\) nastri in \(S_M(n)\), per ogni \(c \in \mathbb{R}^+\) è possibile costruire una \TM \(M^\prime\) a \(k\) nastri che accetta \(L\) con \(S_{M^\prime}(n) < c \cdot S_M(n)\)}
 
-\paragraph[Dimostrazione teorema 1]{Dimostrazione teorema \(1\)}
+\paragraph[Dimostrazione Teorema 1]{Dimostrazione Teorema \(1\)}
 \label{par:dimostrazione-teorema-accelerazione-1}
 
 \textit{Schema della dimostrazione:}
@@ -4868,7 +4868,7 @@ Il risultato è analogo a quello del \nameref{sec:teorema-accelerazione-2}, con 
 
 Il risultato è analogo a quello del \nameref{sec:teorema-accelerazione-2}, con in aggiunta la compressione già vista nel \nameref{sec:teorema-accelerazione-1}.
 
-\paragraph[Dimostrazione teorema 4]{Dimostrazione teorema \(4\)}
+\paragraph[Dimostrazione Teorema 4]{Dimostrazione Teorema \(4\)}
 
 L'approccio della dimostrazione è analogo a quello già visto in \ref{par:dimostrazione-teorema-accelerazione-1}
 
@@ -5170,7 +5170,7 @@ In seguito all'enunciazione e alla dimostrazione del Teorema di correlazione pol
 
 \indentquote{Lo spazio occupato sul nastro principale è \(\bigO \left(T_\text{RAM}(n)\right)\)}
 
-\paragraph{Dimostrazione del lemma}
+\paragraph{Dimostrazione del Lemma}
 
 \begin{itemize}
   \item Ogni cella \(i_j\)-esima della \RAM occupa \(\log(i_j) + \log(\texttt{N}[i_j])\)
@@ -5205,9 +5205,134 @@ Inoltre, è possibile fare le seguenti osservazioni:
 
 \clearpage
 
-\section{Concetti ed Algoritmi di base}
+\section{Algoritmi e Grafi}
 
-Gli algoritmi possono essere scomposti in:
+L'obiettivo di questa sezione sarà introdurre i concetti di base dei grafi e degli algoritmi, per poi iniziare ad analizzare alcuni problemi di ordinamento.
+
+\subsection{Grafi}
+
+Un grafo e una coppia \(\langle V, E \rangle\) in cui \(V\) è un insieme finito di \textbf{nodi} (detti anche \textbf{vertici}) e \(E \subseteq V \times V\) è una relazione binaria \textit{(costituente un insieme finito)} su \(V\) di coppie di nodi (dette anche \textbf{archi}).
+
+Se \(u\) e \(v\) sono nodi del grafo, la coppia \(\langle u, v \rangle\) è un arco.
+L'arco è detto \textbf{orientato} se \(u\) e \(v\) sono coppie di nodi consecutivi, ovvero \(u = v + 1\) \textit{(Figura~\ref{fig:grafo-arco-orientato})}.
+In caso contrario, è detto \textbf{non orientato} \textit{(Figura~\ref{fig:grafo-arco-non-orientato})}.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[t]{0.495\textwidth}
+    \centering
+    \begin{tikzpicture}[auto, on grid, node distance=3cm, >=Triangle]
+      \node [state, minimum size=1cm](u) {\textit{u}};
+      \node [state, minimum size=1cm](v) [right=of u] {\textit{v}};
+
+      \path[->, thick]
+      (u) edge [] node {} (v);
+
+    \end{tikzpicture}
+    \caption{Grafo con arco orientato}
+    \label{fig:grafo-arco-orientato}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.495\textwidth}
+    \centering
+    \begin{tikzpicture}[auto, on grid, node distance=3cm, >=Triangle]
+      \node [state, minimum size=1cm](u) {\textit{u}};
+      \node [state, minimum size=1cm](v) [right=of u] {\textit{v}};
+
+      \path[-, thick]
+      (u) edge [] node {} (v);
+
+    \end{tikzpicture}
+    \caption{Grafo con arco non orientato}
+    \label{fig:grafo-arco-non-orientato}
+  \end{subfigure}
+\end{figure}
+
+\subsubsection{Tipi di Grafo}
+
+\begin{itemize}
+  \item Se tutti gli archi di un grafo sono \textbf{orientati}, allora il grafo è detto \textbf{orientato}
+        \begin{itemize}
+          \item in caso contrario, è detto \textbf{non orientato}
+        \end{itemize}
+  \item n \textbf{cammino} è una sequenza di nodi \(v_0, v_1, \ldots, v_n\) tali che tra ogni coppia di nodi della sequenza \(\langle v_i, v_{i+1} \rangle\) esiste un arco
+        \begin{itemize}
+          \item i nodi \(v_0, v_1, \ldots, v_n\) appartengono tutti al cammino
+          \item la lunghezza del cammino è data da \(n\) \textit{(il numero di vertici \(-1\))}
+        \end{itemize}
+  \item In un grafo \textbf{non orientato}, il cammino forma un \textbf{ciclo} se \(v_0 = v_n\)
+        \begin{itemize}
+          \item un grafo che non contiene cicli è detto \textbf{aciclico}
+        \end{itemize}
+  \item Un grafo \textbf{non orientato} è connesso se tra ogni coppia di vertici esiste un cammino.
+\end{itemize}
+
+\subsubsection{Alberi}
+
+Un \textbf{albero} è un grafo connesso, aciclico, non orientato.
+È detto \textbf{radicato} se un nodo viene indicato come \textbf{radice}.
+
+Ogni nodo del grafico è \textbf{raggiungibile} dalla radice tramite un \textbf{cammino}.
+Esso sarà \textbf{unico} in quanto il grafo è aciclico.
+Gli ultimi nodi dei cammini dalla radice sono detti \textbf{foglie}.
+Viene detta \textbf{altezza} dell'albero la distanza massima tra la radice e una sua foglia
+
+\bigskip
+Ogni \textbf{nodo} ha un \textbf{padre} \textit{(tranne la radice)} e uno o più \textbf{figli} \textit{(tranne le foglie)}.
+Più precisamente vengono chiamati:
+
+\begin{itemize}
+  \item \textbf{Nodi interni}: tutti i nodi dei cammini tra la radice e le foglie
+  \item \textbf{Profondità} di un nodo \(N\): la \textbf{distanza} di \(N\) dalla radice
+  \item \textbf{Antenato} di un nodo \(N\):  ogni nodo che \textbf{precede} \(N\) sul cammino dalla radice a \(N\)
+  \item \textbf{Padre} di un nodo \(N\): il nodo che \textbf{precede} immediatamente \(N\) lungo il cammino dalla radice a \(N\)
+  \item \textbf{Figlio} di un nodo \(N\): ogni nodo che \textbf{succede} immediatamente \(N\) lungo il cammino dalla radice a \(N\)
+  \item \textbf{Fratelli} di un nodo \(N\): ogni nodo che ha lo stesso padre di \(N\)
+\end{itemize}
+
+Infine un albero è detto \textbf{binario} se ogni nodo ha \textbf{al più} \(2\) figli.
+
+\bigskip
+Un esempio di albero è mostrato in Figura~\ref{fig:esempio-di-albero}.
+
+\begin{figure}[htbp]
+  \bigskip
+  \centering
+  \tikzfig{image-26.tikz}
+  \caption{Esempio di albero}
+  \label{fig:esempio-di-albero}
+  \bigskip
+\end{figure}
+
+\subsubsection{Heap}
+\label{sec:heap}
+
+Uno \textbf{heap binario} è un albero binario detto \textbf{quasi completo}.
+Tutti i suoi livelli sono completi, tranne l'ultimo che potrebbe essere completo solo fino ad un certo punto da sinistra.
+L'albero binario che deriva dall'interpretazione di un array come albero è quasi completo.
+
+Un \textbf{max-heap} è uno heap tale che, per ogni nodo \(x\) dell'albero, il valore contenuto nel padre di \(x\) è \(\geq\) del contenuto di \(x\).
+Considerando i singoli nodi, \(A\left(\left\lfloor\sfrac{i}{2}\right\rfloor\right) \geq A[i]\).
+
+Nei \textbf{min-heap}, al contrario, il valore contenuto nel padre di \(x\) è \(\leq\) del contenuto di \(x\).
+
+\bigskip
+Un esempio di \textbf{max-heap} e la sua corrispondenza con un array è mostrata nella Figura~\ref{fig:esempio-di-max-heap}.
+
+\begin{figure}[htbp]
+  \bigskip
+  \centering
+  \tikzfig[0.8]{image-27.tikz}
+  \caption{Esempio di max heap}
+  \label{fig:esempio-di-max-heap}
+  \bigskip
+\end{figure}
+
+\subsection{Algoritmi}
+
+\textit{Informalmente}, un \textbf{algoritmo} è una qualsiasi procedura ben definita che prende un valore \textit{(o un insieme di valori)} in input e restituisce un valore \textit{(o un insieme di valori)} in output, calcolato tramite una serie ben definita di operazioni.
+L'algoritmo può essere visto anche come uno strumento per risolvere un particolare problema di computazione.
+
+In particolare, si definiscono:
 
 \begin{itemize}
   \item \textbf{Problema}: il compito da svolgere
@@ -5225,21 +5350,18 @@ Gli algoritmi possono essere scomposti in:
 \end{itemize}
 
 Gli algoritmi possono essere descritti in diversi linguaggi, \textit{(come ad esempio, in \texttt{C}, \texttt{Java}, \texttt{Python}, \ldots)}.
-La complessità di un algoritmo non varia significativamente in base al linguaggio in cui è implementato \textit{(la complessità varierà solo di un fattore moltiplicativo)}.
+La complessità di un algoritmo non varia significativamente in base al linguaggio in cui è implementato. Essa varierà solo di un fattore moltiplicativo.
+All'interno del corso si userà lo \textbf{pseudocodice}, che assomiglia nella sintassi ad un linguaggio vero e proprio senza tuttavia esserlo.
 
-All'interno del corso si userà lo \textbf{pseudocodice}, che assomiglia ad un linguaggio vero e proprio nella sintassi senza tuttavia esserlo.
-
-\subsection{Pseudocodice}
+\subsubsection{Pseudocodice}
 
 La sintassi dello \textbf{pseudocodice} è la seguente:
 
 \begin{itemize}
   \item \textbf{Assegnamento}: \texttt{i := j}
         \begin{itemize}
-          \item Assegnamento multiplo: \texttt{i := j := e}
-          \item Le variabili sono locali alla procedura
-        \end{itemize}
-        \begin{itemize}
+          \item assegnamento multiplo: \texttt{i := j := e}
+          \item le variabili sono locali alla procedura
           \item è applicato da destra a sinistra
         \end{itemize}
   \item \textbf{Cicli} e \textbf{salti} condizionali: \texttt{while}, \texttt{for}, \texttt{if-then-else}
@@ -5282,15 +5404,16 @@ Come conseguenza diretta, ogni istruzione \texttt{i} di pseudocodice verrà eseg
 Grazie a questa assunzione sarà possibile trascurare il modello di calcolo dello pseudocodice \textit{(che sarà la macchina \RAM)}.
 La complessità temporale sarà studiata più di quella spaziale perché più rilevante nella realtà.
 
-\subsection{Divide et Impera}
+\subsubsection{Divide et Impera}
+\label{sec:divide-et-impera}
 
 La tecnica chiamata \textbf{Divide et Impera} è una tecnica algoritmica molto comune.
 Essa si applica a problemi grossi e difficili da risolvere e si articola nei seguenti passi:
 
 \begin{enumerate}
-  \item \textbf{divisione} del problema in problemi più piccoli da risolvere
-  \item \textbf{risoluzione} dei problemi più piccoli
-  \item \textbf{combinazione} delle soluzioni
+  \item \textbf{Divide} - divisione del problema in problemi più piccoli da risolvere
+  \item \textbf{Impera} - risoluzione dei problemi più piccoli
+  \item \textbf{Combina} - le soluzioni vengono combinate al fine di ottenere il risultato finale
 \end{enumerate}
 
 Dividendo a sufficienza i problemi, inevitabilmente si ottengono problemi risolubili senza che debbano essere divisi ulteriormente.
@@ -5300,29 +5423,29 @@ Questa è una tecnica di natura ricorsiva, in quanto per risolvere i problemi pi
 In generale, un algoritmo \textbf{divide et impera} mostra le seguenti caratteristiche:
 
 \begin{itemize}
-  \item si divide il problema \(a\) in sotto problemi, ognuno di dimensione \(\dfrac{1}{b}\) di quello originale
+  \item si divide il problema \(a\) in sotto problemi, ognuno di dimensione \(\sfrac{1}{b}\) di quello originale
   \item se il sotto problema ha dimensione \(n\) sufficientemente piccola \textit{(\(n < c\) con \(c\) costante)} allora esso può essere risolto in tempo costante \textit{(\(\Theta(1)\))}
   \item Indicando con \(D(n)\) il costo di divisione e \(C(n)\) il costo di ricombinazione, si può esprimere il costo totale \(T(n)\) come:
-        \[ T(n) = \begin{cases} \Theta(1)                      & \quad \text{ se } n < c   \\
-              D(n) + aT(\dfrac{n}{b}) + C(n) & \quad \text{ altrimenti }
+        \[ T(n) = \begin{cases} \Theta(1)                                 & \quad \text{ se } n < c   \\
+              D(n) + aT\left(\sfrac{n}{b}\right) + C(n) & \quad \text{ altrimenti }
           \end{cases}\]
 \end{itemize}
 
-\subsection{Ricorrenze}
+\subsubsection{Ricorrenze}
 
 Una \textbf{ricorrenza} è una caratteristica delle funzioni ricorsive, ossia quelle funzioni con:
 
 \begin{itemize}
-  \item uno o più casi base
-  \item sé stesso, con parametri più piccoli
+  \item uno o più \textbf{casi base}
+  \item \textbf{chiamata a sé stesse}, con parametri più piccoli
 \end{itemize}
 
 Esistono \(3\) tecniche principali per il risolvimento delle ricorrenze:
 
 \begin{enumerate}
-  \item sostituzione
-  \item albero di ricorsione
-  \item teorema dell'esperto (dall'Inglese \textit{master theorem})
+  \item Sostituzione
+  \item Albero di ricorsione
+  \item Teorema dell'Esperto (dall'Inglese \textit{Master Theorem})
 \end{enumerate}
 
 Tutte queste tecniche verranno analizzate più nel dettaglio nelle seguenti Sezioni.
@@ -5332,8 +5455,8 @@ Tutte queste tecniche verranno analizzate più nel dettaglio nelle seguenti Sezi
 Il metodo di sostituzione si articola in \(2\) passi:
 
 \begin{enumerate}
-  \item Ipotizzare una soluzione
-  \item Trovare le costanti e dimostrare che la soluzione è corretta tramite induzione
+  \item \textbf{Ipotizzare} una soluzione
+  \item \textbf{Trovare le costanti} e dimostrare che la soluzione è corretta tramite induzione
 \end{enumerate}
 
 Può essere usato per trovare il limite superiore o il limite inferiore di una ricorrenza.
@@ -5342,7 +5465,7 @@ Questo è un metodo potente, ma può essere applicato solo laddove è facile ipo
 
 \subsubsection{Metodo dell'albero di ricorsione}
 
-Questo metodo fornisce un risultato approssimato, il cui non si può dire sempre esatto.
+Questo metodo fornisce un risultato approssimato la cui validità va provata con altre tecniche.
 
 \begin{enumerate}
   \item Si disegna l'albero di ricorsione, tenendo conto che ad ogni livello la somma di ciascun nodo è pari alla dimensione della radice
@@ -5356,14 +5479,14 @@ Inoltre, questo metodo è molto comodo nei problemi di tipo \textit{Dividi et Im
 
 \subsubsection{Teorema dell'esperto}
 
-Il \textbf{Teorema dell'esperto} fornisce un metodo da \inlinequote{manuale} per risolvere le ricorrenze nella forma \(T(n) = aT(\sfrac{n}{b}) + f(n)\), dove \(a > 1,\ b \geq 1\) sono costanti e \(f\) è una funzione asintoticamente positiva.
+Il \textbf{Teorema dell'esperto} fornisce un metodo \inlinequote{da manuale} per risolvere le ricorrenze nella forma \(T(n) = aT(\sfrac{n}{b}) + f(n)\), dove \(a > 1,\ b \geq 1\) sono costanti e \(f\) è una funzione asintoticamente positiva.
 Il teorema richiede di memorizzare tre casi, ma permette di trovare una soluzione alla ricorrenza con relativa semplicità.
 
 \bigskip
-\textit{Formalmente}, siano \(a > 1,\ b \geq 1\) due costanti e \(f(n)\) una funzione asintoticamente positiva.
+\textit{Formalmente}, siano \(a > 1,\ b \geq 1\) due costanti e \(f(n)\) una funzione dal comportamento asintotico positivo.
 A partire da essi è possibile definire \(T(n),\ n \in \mathbb{N}\) tramite la ricorrenza:
 \[ T(n) = aT(\sfrac{n}{b}) + f(n) \]
-dove \(\sfrac{n}{b}\) è considerato arrotondato per difetto o per eccesso (quindi rispettivamente \(\lfloor\sfrac{n}{b}\rfloor\) e \(\lceil\sfrac{n}{b}\rceil\)).
+dove \(\sfrac{n}{b}\) è considerato arrotondato per difetto o per eccesso (quindi rispettivamente \(\lfloor\sfrac{n}{b}\rfloor\) o \(\lceil\sfrac{n}{b}\rceil\)).
 
 \(T(n)\) può essere limitato asintoticamente come segue:
 
@@ -5378,15 +5501,15 @@ dove \(\sfrac{n}{b}\) è considerato arrotondato per difetto o per eccesso (quin
 
 Se, come nel caso \ref{enum:teorema-esperto-1}, la funzione \(n^{\log_b(a)}\) è la più grande, allora la soluzione è \(T(n) = \Theta\left(n^{\log_b (a)}\right)\).
 Se, invece, è \(f(n)\) ad essere la più grande, come nel caso \ref{enum:teorema-esperto-3}, allora la soluzione è \(T(n) = \Theta\left(f(n)\right)\).
-Infine, se come nel caso \ref{enum:teorema-esperto-2},le due funzioni sono della stessa dimensione, moltiplicando per un fattore logaritmico risulta che la soluzione è \(T(n) = \Theta\left(n^{\log_b(a)} \log(n)\right) = \Theta\left(f(n) \log(n)\right)\).
+Infine, se come nel caso \ref{enum:teorema-esperto-2}, le due funzioni sono della stessa dimensione, moltiplicando per un fattore logaritmico risulta che la soluzione è \(T(n) = \Theta\left(n^{\log_b(a)} \log(n)\right) = \Theta\left(f(n) \log(n)\right)\).
 
 \bigskip
 Bisogna tuttavia tenere conto di alcuni dettagli tecnici.
 
-Nel primo caso, \ref{enum:teorema-esperto-1}, non solo \(f(n)\) deve essere più piccola di \(n^{\log_b(a)}\), ma deve essere polinomialmente più piccola.
-Essa sarà asintoticamente più piccola di un fattore \(n^\epsilon,\ \epsilon>0\).
+Nel primo caso, \ref{enum:teorema-esperto-1}, non solo \(f(n)\) deve essere più piccola di \(n^{\log_b(a)}\), ma deve essere \textbf{polinomialmente più piccola}.
+Essa sarà, asintoticamente, più piccola di un fattore \(n^\epsilon,\ \epsilon>0\).
 
-Nel terzo caso, \ref{enum:teorema-esperto-3}, non solo \(f(n)\) deve essere più grande di \(n^{\log_b(a)}\), ma deve essere polinomialmente più piccola e deve soddisfare la condizione di \inlinequote{regolarità} che impone \(a \cdot f(\sfrac{n}{b}) \leq c \cdot f(n)\).
+Nel terzo caso, \ref{enum:teorema-esperto-3}, non solo \(f(n)\) deve essere più grande di \(n^{\log_b(a)}\), ma deve essere \textbf{polinomialmente più grande} e deve soddisfare la condizione di \inlinequote{regolarità} che impone \(a \cdot f(\sfrac{n}{b}) \leq c \cdot f(n)\).
 Questa condizione è soddisfatta dalla maggior parte delle funzioni polinomialmente limitate che possono essere incontrate.
 
 \bigskip
@@ -5405,9 +5528,9 @@ Per cercare di chiarire il concetto di \inlinequote{più piccolo} e \inlinequote
   \item \(n \log (n)\) è più grande di \(n\) ma \textbf{non polinomialmente}
 \end{itemize}
 
-\paragraph{Caso particolari}
+\paragraph{Casi particolari}
 
-Il teorema si semplifica notevolmente qualora \(f(n)\) è una funzione \(\Theta(n^k)\), con \(k\) costante:
+Il teorema dell'Esperto si semplifica notevolmente qualora \(f(n)\) è una funzione \(\Theta(n^k)\), con \(k\) costante:
 
 \begin{enumerate}[label=\arabic*), ref=(\arabic*)]
   \item\label{enum:caso-particolare-teorema-esperto-1} Se \(k < \log_b(a)\), allora \(T(n) = \Theta\left(n^{\log_b(a)}\right)\)
@@ -5417,6 +5540,118 @@ Il teorema si semplifica notevolmente qualora \(f(n)\) è una funzione \(\Theta(
 
 Nel caso \ref{enum:caso-particolare-teorema-esperto-3} la condizione aggiuntiva di regolarità è automaticamente verificata.
 
+\subsection{Algoritmi di supporto}
+
+\subsubsection{Operazioni sugli heap}
+
+\begin{center}
+  \begin{minipage}{0.3\textwidth}
+    \centering
+    \begin{lstlisting}[style=pseudocode, numbers=none]
+PARENT(i):
+  return floor(i / 2)
+\end{lstlisting}
+  \end{minipage}
+  \begin{minipage}{0.3\textwidth}
+    \begin{lstlisting}[style=pseudocode, xleftmargin=20pt, xrightmargin=20pt, numbers=none]
+LEFT(i):
+  return 2 * i
+\end{lstlisting}
+  \end{minipage}
+  \begin{minipage}{0.3\textwidth}
+    \begin{lstlisting}[style=pseudocode, numbers=none]
+RIGHT(i):
+  return 2 * i + 1
+\end{lstlisting}
+  \end{minipage}
+\end{center}
+
+Ogni array \texttt{A} che rappresenta uno heap ha \(2\) attributi:
+
+\begin{itemize}
+  \item \texttt{A.length}, rappresentante il numero totale di elementi dell'array
+  \item \texttt{A.heap-size}, rappresentante il numero totale di elementi dell'heap
+        \begin{itemize}
+          \item \texttt{A.heap-size} \(\leq\) \texttt{A.length} \(\forall \, A\)
+          \item solo gli elementi fino a \texttt{A.heap-size} hanno le proprietà dello heap
+          \item l'array potrebbe però contenere elementi dopo l'indice \texttt{A.heap-size}
+        \end{itemize}
+\end{itemize}
+
+\subsubsection{Algoritmo \texttt{MAX-HEAPIFY}}
+\label{sec:algoritmo-max-heapify}
+
+L'algoritmo di \texttt{MAX-HEAPIFY} è una funzione che modifica un \textbf{array}, tale per cui i suoi figli sinistro e destro sono max-heap ma in cui \texttt{A[i]} \textit{(la radice del sotto albero)} potrebbe essere \textit{minore} dei suoi figli, in modo che tutto l'albero di radice \texttt{A[i]} sia un \textbf{max-heap}.
+
+\begin{lstlisting}[style=pseudocode]
+MAX-HEAPIFY(A, i)
+  l := LEFT(i)
+  r := RIGHT(i)
+  if l < A.heap-size and A[l] > A[i]
+    max := l
+  else
+    max := i
+  if r < A.heap-size and A[r] > A[max]
+    max := r
+  if max != i then
+    swap A[i], A[max]
+    MAX-HEAPIFY(A, max)
+\end{lstlisting}
+
+\paragraph{Analisi dell'algoritmo \texttt{MAX-HEAPIFY}}
+
+La complessità temporale di \texttt{MAX-HEAPIFY} è parti a
+\[ T_{\texttt{MAX-HEAPIFY}} = \bigO(h) = \bigO\left(\log(n)\right) \]
+dove \(h\) corrisponde all'altezza dell'albero, che essendo quasi completo è inferiore di \(\log(n)\).
+
+\bigskip
+Sarebbe stato possibile giungere alla stessa soluzione usando il teorema dell'esperto per la ricorrenza
+\[ T(n) = T\left(\sfrac{2n}{3}\right) + \Theta(1) \]
+che rappresenta il tempo di esecuzione di \texttt{MAX-HEAPIFY} nel caso pessimo.
+
+In questo caso, infatti, l'ultimo livello dell'albero è pieno esattamente a metà.
+L'algoritmo viene applicato ricorsivamente sul sotto albero sinistro (contenente \(\leq \sfrac{2n}{3}\), con \(n\) nodi totali).
+
+\subsubsection{Algoritmo \texttt{BUILD-MAX-HEAP}}
+\label{sec:algoritmo-build-max-heap}
+
+L'algoritmo \texttt{BUILD-MAX-HEAP} permette di costruire un \textbf{max-heap} partendo da un \textbf{array}.
+La costruzione avviene \textit{bottom-up}, partendo dalle foglie fino alla radice.
+
+Funziona grazie a due proprietà dello heap:
+
+\begin{itemize}
+  \item Tutti gli elementi oltre l'indice \texttt{A.length / 2} sono delle foglie, gli altri sono dei nodi interni
+  \item I sotto alberi fatti di solo foglie sono, presi singolarmente, max-heap in quanto costituiti da un solo elemento
+\end{itemize}
+
+\begin{lstlisting}[style=pseudocode]
+BUILD-MAX-HEAP(A)
+  A.heap-size := A.length
+  for i := A.length / 2 downto 1 do
+    MAX-HEAPIFY(A, i)
+\end{lstlisting}
+
+\paragraph{Analisi dell'algoritmo \texttt{BUILD-MAX-HEAP}}
+
+Il costo dell'algoritmo \texttt{BUILD-MAX-HEAP}, a priori, potrebbe risultare pari a \(\bigO(\left(n \log(n)\right))\).
+Tuttavia, questo limite non fornisce una precisione sufficiente.
+
+Infatti, si osserva che:
+
+\begin{itemize}
+  \item L'altezza di un albero quasi completo di \(n\) nodi è \(\left\lfloor \log_2(n) \right\lfloor\)
+  \item Definendo come \inlinequote{altezza di un nodo di uno heap} la lunghezza del cammino più lungo che porta ad una foglia, il costo dell'algoritmo invocato su un nodo di altezza \(h\) è \(\bigO(h)\)
+  \item Il numero massimo di nodi di altezza \(h\) di uno heap è \(\left\lceil \dfrac{n}{2^{h+1}} \right\rceil\) volte ad ogni altezza \(h\)
+\end{itemize}
+
+Grazie a queste proprietà, il costo di computazione dell'algoritmo \texttt{BUILD-MAX-HEAP} è pari a:
+\[ \displaystyle \sum_{n=0}^{\left\lfloor \log_2(n) \right\rfloor} \left[ \dfrac{n}{n^{h+1}} \right] \bigO(h) = \bigO \left(n \displaystyle \sum_{n=0}^{\left\lfloor \log_2(n) \right\rfloor} \dfrac{h}{2^h} \right) = \bigO (n)\]
+
+Il passo finale della soluzione deriva dall'uguaglianza
+\[ \sum_{n=0}^{\left\lfloor \log_2(n) \right\rfloor} \dfrac{h}{2^h} = \dfrac{\sfrac{1}{2}}{(1 - \sfrac{1}{2})^2} \]
+come sommatoria di una serie geometrica.
+
 \subsection{Problemi di ordinamento}
 
 L'\textbf{ordinamento} degli elementi di una sequenza è un problema molto comune e fornisce un classico esempio di problema risolvibile tramite algoritmi.
@@ -5425,7 +5660,14 @@ Esistono parecchi algoritmi di ordinamento \textit{(insertion sort, selection so
 \bigskip
 Nelle prossime Sezioni alcuni di essi verranno analizzati in dettaglio.
 
-\subsubsection{Insertion Sort}
+\subsubsection{\texttt{INSERTION-SORT}}
+
+L'algoritmo \texttt{INSERTION-SORT} è uno dei più semplici algoritmi di ordinamento.
+
+\textit{Idea} dell'algoritmo:
+per ogni elemento \(x\) di una sequenza \(A\) di elementi, partendo dalla prima posizione, si inserisce l'elemento in una posizione successiva, fino a quando non viene trovata una posizione successiva in cui inserire \(x\).
+
+L'array viene quindi ordinato senza sul posto, senza bisogno di array ausiliari.
 
 \begin{minipage}{0.99\textwidth}
   \bigskip
@@ -5480,9 +5722,9 @@ Il tempo di esecuzione di \texttt{INSERTION-SORT(A)} è:
         \end{itemize}
 \end{itemize}
 
-\subsubsection{Merge sort}
+\subsubsection{\texttt{MERGESORT}}
 
-\textit{Idea dell'algoritmo}:
+\textit{Idea} dell'algoritmo:
 
 \begin{itemize}
   \item Se l'array da ordinare ha meno di \(2\) elementi, allora è ordinato per definizione
@@ -5496,6 +5738,16 @@ Il tempo di esecuzione di \texttt{INSERTION-SORT(A)} è:
 
 Il \texttt{MERGE-SORT} è un algoritmo ricorsivo e adotta la tecnica \textbf{divide ed impera}.
 Per completare l'algoritmo, infatti, è necessario definire un sotto algoritmo \texttt{MERGE} che combina le soluzioni dei problemi divisi.
+
+\textit{Idea} dell'algoritmo:
+
+\begin{enumerate}
+  \item Si va all'inizio dei \(2\) sotto array
+        \item\label{enum:begin-merge-loop} Si prende il minimo dei \(2\) elementi correnti
+  \item Si inserisce il minimo alla fine dell'array da restituire
+  \item Si avanza di uno nell'array da cui si è preso il minimo
+  \item Si ripete il passo \ref{enum:begin-merge-loop}
+\end{enumerate}
 
 \begin{minipage}{0.99\textwidth}
   \begin{lstlisting}[style=pseudocode]
@@ -5558,18 +5810,6 @@ MERGE-SORT(A, p, R)
 
 \paragraph{Analisi dell'algoritmo \texttt{MERGE}}
 
-\textit{Idea dell'algoritmo}
-
-\begin{enumerate}
-  \item Si va all'inizio dei \(2\) sotto array
-        \item\label{enum:begin-merge-loop} Si prende il minimo dei \(2\) elementi correnti
-  \item Si inserisce il minimo alla fine dell'array da restituire
-  \item Si avanza di uno nell'array da cui si è preso il minimo
-  \item Si ripete il passo \ref{enum:begin-merge-loop}
-\end{enumerate}
-
-\bigskip
-
 Nell'algoritmo \texttt{MERGE} prima vengono copiati gli elementi dei \(2\) sotto array \texttt{A[p .. q]} e \texttt{A[q+1 .. r]} in \(2\) array temporanei \(L\) e \(R\) e poi vengono fusi in \texttt{A[p .. r]}.
 Per non dover controllare se \(L\) e \(R\) sono vuoti si usa un valore particolare \((\infty)\), più grande di ogni possibile valore, in ultima posizione negli array.
 
@@ -5626,7 +5866,7 @@ Sommando i costi dei vari livelli si ottiene:
 \[ T(n) = cn \log(n) + cn \quad \Rightarrow \quad T_\texttt{MERGE-SORT} = \Theta(n \log(n)) \]
 
 \bigskip
-Analogamente si sarebbe potuto applicare il teorema dell'esperto.
+Analogamente sarebbe stato possibile applicare il Teorema dell'Esperto, giungendo alla stessa soluzione.
 Infatti:
 
 \[ T(n) = 2T(\sfrac{n}{2}) + \Theta(n)\ \]
@@ -5635,43 +5875,110 @@ dove \(a = b = 2,\ f(n) = n\) e di conseguenza \(n^{\log_b(a)} = n^1 = n\).
 Si ricade quindi nel caso \ref{enum:teorema-esperto-2} del teorema dell'esperto:
 \[ T_{\texttt{MERGE-SORT}} = \Theta(n \log(n)) \]
 
-\subsection{Grafi}
+\subsubsection{\texttt{HEAPSORT}}
+\label{sec:heap-sort}
 
-Un grafo e una coppia \(\langle V, E \rangle\) in cui \(V\) è un insieme finito di \textbf{nodi} (detti anche \textbf{vertici}) e \(E \subseteq V \times V\) è una relazione binaria \textit{(costituente un insieme finito)} su \(V\) di coppie di nodi (dette anche \textbf{archi}).
+L'algoritmo \texttt{HEAPSORT}, \textit{come suggerisce il nome}, sfrutta le proprietà degli heap \textit{(Sezione~\ref{sec:heap})} per ordinare gli elementi di un array.
+Questo algoritmo farà uso degli algoritmi \textit{di supporto} \texttt{BUILD-MAX-HEAP} \textit{(Sezione~\ref{sec:algoritmo-build-max-heap})} e \texttt{MAX-HEAPIFY} \textit{(Sezione~\ref{sec:algoritmo-max-heapify})}.
 
-Se \(u\) e \(v\) sono nodi del grafo, la coppia \(\langle u, v \rangle\) è un arco.
-L'arco è detto \textbf{orientato} se \(u\) e \(v\) sono coppie di nodi consecutivi, ovvero \(u = v + 1\) \textit{(Figura~\ref{fig:grafo-arco-orientato})}.
-In caso contrario, è detto \textbf{non orientato} \textit{(Figura~\ref{fig:grafo-arco-non-orientato})}.
+\textit{Idea} dell'algoritmo:
+Ad ogni ciclo viene preso l'elemento più grande \textit{(primo dell'array, in quanto max-heap)} in fondo alla parte di array ancora da ordinare \textit{(corrispondente allo heap).}
+Lo heap viene decrementato di \(1\) e viene ricostruito il max-heap mettendo come radice l'ultima foglia a destra dell'ultimo livello e invocando \texttt{MAX-HEAPIFY}.
 
-\begin{figure}[htbp]
-  \centering
-  \begin{subfigure}[t]{0.495\textwidth}
-    \centering
-    \begin{tikzpicture}[auto, on grid, node distance=3cm, >=Triangle]
-      \node [state, minimum size=1cm](u) {\textit{u}};
-      \node [state, minimum size=1cm](v) [right=of u] {\textit{v}};
+\begin{lstlisting}[style=pseudocode]
+HEAPSORT(A)
+  BUILD-MAX-HEAP(A)
+  for i := A.length downto 2
+    swap A[1], A[i]
+    A.heap-size := A.heap-size - 1
+    MAX-HEAPIFY(A, 1)
+\end{lstlisting}
 
-      \path[->, thick]
-      (u) edge [] node {} (v);
+\paragraph{Analisi dell'algoritmo \texttt{HEAPSORT}}
 
-    \end{tikzpicture}
-    \caption{Grafo con arco orientato}
-    \label{fig:grafo-arco-orientato}
-  \end{subfigure}
-  \begin{subfigure}[t]{0.495\textwidth}
-    \centering
-    \begin{tikzpicture}[auto, on grid, node distance=3cm, >=Triangle]
-      \node [state, minimum size=1cm](u) {\textit{u}};
-      \node [state, minimum size=1cm](v) [right=of u] {\textit{v}};
+La complessità dell'algoritmo \texttt{HEAPSORT} è
+\[ T(n) = \bigO (n \log(n)) \]
+perché:
 
-      \path[-, thick]
-      (u) edge [] node {} (v);
+\begin{itemize}
+  \item \texttt{BUILD-MAX-HEAP} ha costo \(\bigO(n)\)
+  \item \texttt{MAX-HEAPIFY} è invocato \(n-1\) volte, con costo \(\bigO\left(\log(n)\right)\)
+\end{itemize}
 
-    \end{tikzpicture}
-    \caption{Grafo con arco non orientato}
-    \label{fig:grafo-arco-non-orientato}
-  \end{subfigure}
-\end{figure}
+\subsubsection{\texttt{QUICKSORT}}
+
+L'algoritmo \texttt{QUICKSORT} è un algoritmo in stile \textit{\nameref{sec:divide-et-impera}}, che ordina sul posto.
+Nel caso pessimo ha complessità \(\Theta(n^2)\), superiore all'\nameref{sec:heap-sort}, ma nel caso medio ha complessità \(\Theta\left(n \log(n)\right)\).
+
+\textit{Idea} dell'algoritmo, dato un array \texttt{A[p..r]} da ordinare:
+
+\begin{itemize}
+  \item \textbf{Divide}: \texttt{A} viene diviso in \(2\) sotto array \texttt{A[p..q]} e \texttt{A[q+1..r]}
+        \begin{itemize}
+          \item \texttt{q} è il minimo elemento del sotto array \texttt{A[p..q]} (\texttt{A[n]} \(\leq\) \texttt{A[q]} \(\forall\) \texttt{n} \(\in [\texttt{p}, \texttt{q}]\))
+          \item \texttt{q} è il massimo elemento del sotto array \texttt{A[q+1..r]} (\texttt{A[n]} \(\geq\) \texttt{A[q]} \(\forall\) \texttt{n} \(\in [\texttt{q}+1, \texttt{r}]\))
+        \end{itemize}
+  \item \textbf{Impera}: i sotto array \texttt{A[p...q-1]} e \texttt{A[q+1...r]} vengono ordinati utilizzando \texttt{QUICKSORT}
+  \item \textbf{Combina}: l'array \texttt{A[p..r]} è già ordinato
+\end{itemize}
+
+La parte \inlinequote{complicata} da implementare riguarda la partizione: essa viene effettuata tramite l'algoritmo \texttt{PARTITION}:
+viene scelto un elemento di come \textit{pivot}:
+
+\begin{itemize}
+  \item Tutti gli elementi \textbf{minori} di \texttt{pivot} vengono posti nel sotto array \textbf{sinistro}
+  \item Tutti gli elementi \textbf{maggiori} di \texttt{pivot} vengono posti nel sotto array \textbf{destro}
+\end{itemize}
+
+\begin{center}
+  \begin{minipage}[t]{0.495\textwidth}
+    \begin{lstlisting}[style=pseudocode]
+QUICKSORT(A, p, r):
+  if p < r:
+    q := PARTITION(A, p, r)
+    QUICKSORT(A, p, q - 1)
+    QUICKSORT(A, q + 1, r)
+        \end{lstlisting}
+  \end{minipage}
+  \begin{minipage}[t]{0.495\textwidth}
+    \begin{lstlisting}[style=pseudocode]
+PARTITION(A, p, r):
+    x := A[r]
+    i := p - 1
+    for j := p to r - 1
+        if A[j] <= x
+            i := i + 1
+            swap A[i], A[j]
+    return i + 1
+  \end{lstlisting}
+  \end{minipage}
+\end{center}
+
+\paragraph{Analisi di \texttt{QUICKSORT}}
+
+La complessità di \texttt{PARTITION} e \(\Theta(n),\ n = r - p + 1\).
+
+\bigskip
+Il tempo di esecuzione di \texttt{QUICKSORT} dipende da come viene partizionato l'array:
+
+\begin{itemize}
+  \item Se ogni volta uno dei \(2\) sotto array è vuoto mentre l'altro contiene \(n-1\) elementi si ha il caso \textbf{pessimo}:
+        \begin{itemize}
+          \item la ricorrenza è \(T(n) = T(n - 1) + \Theta(n)\)
+          \item risolvendo per sostituzione o tramite il Teorema dell'esperto dimostra che la soluzione è \(\Theta(n^2)\)
+          \item questo caso si può verificare quando l'array è già ordinato
+        \end{itemize}
+  \item Se ogni volta i due sotto array hanno una dimensione pari a \(\sfrac{n}{2}\) si ha il caso \textbf{ottimo}:
+        \begin{itemize}
+          \item la ricorrenza è \(T(n) = 2T(\sfrac{n}{2}) + \Theta(n)\)
+          \item risolvendo si dimostra che la soluzione è \(\Theta(n \log(n))\)
+        \end{itemize}
+\end{itemize}
+
+Se la proporzione di divisione fosse diversa da \(\sfrac{1}{2}\) e \(\sfrac{1}{2}\), la complessità rimarrebbe la stessa.
+
+\bigskip
+Il caso \textbf{medio} va analizzato in modo diverso:
 
 \clearpage
 
@@ -5685,6 +5992,7 @@ L'obiettivo di questa Sezione sarà ricapitolare delle conclusioni tratte nelle 
   \item La formula \(\log_a(b)\) indica il numero reale \(c\) che realizza l'uguaglianza \(a^c = b\), \(a, b > 0,\ a \neq 1\)
   \item Formula di cambio di base per i logaritmi \(\log_a(b) = \dfrac{\log_c(b)}{\log_(a)}\) con \(a, b, c > 0,\ c \neq 1\)
   \item Formula di Gauss \(\displaystyle \sum_{i=1}^k i = \dfrac{k(k+1)}{2}\)
+  \item Sommatoria di una serie geometrica \(\displaystyle \sum_{n=0}^{+\infty} q^n = \dfrac{1}{1-q}\) con \(|q| < 1\)
 \end{itemize}
 
 \subsection{Scala di potenza delle classi di automi}
