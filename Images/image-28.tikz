@@ -1,0 +1,41 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=black] (2) at (4, -4) {};
+		\node [style=black] (3) at (0, 0) {};
+		\node [style=black] (4) at (2, -8) {};
+		\node [style=black] (5) at (6, -8) {};
+		\node [style=none] (10) at (7, -5) {};
+		\node [style=none] (11) at (7, 2) {};
+		\node [style=none] (12) at (-7, -5) {};
+		\node [style=none] (13) at (-7, 2) {};
+		\node [style=none] (14) at (-1, -3) {};
+		\node [style=none] (15) at (-1, -9) {};
+		\node [style=none] (16) at (9, -9) {};
+		\node [style=none] (17) at (9, -3) {};
+		\node [style=none, text={rgb,255: red,0; green,128; blue,128}] (18) at (4, -9.5) {divisione bilanciata, \(\Theta(1)\)};
+		\node [style=none, text={rgb,255: red,191; green,0; blue,64}] (19) at (0, 2.5) {divisione non bilanciata, \(\Theta(1)\)};
+		\node [style=right align] (20) at (-4.5, -4) {\(\sfrac{1}{10}\)};
+		\node [style=left align] (22) at (4.5, -4) {\(\sfrac{9}{10}\)};
+		\node [style=left align] (24) at (6.5, -8) {\(\sfrac{9}{20}\)};
+		\node [style=right align] (25) at (1.5, -8) {\(\sfrac{9}{20}\)};
+		\node [style=black] (26) at (-4, -4) {};
+		\node [style=black] (27) at (-6, -8) {};
+		\node [style=black] (28) at (-2, -8) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=big] (3) to (2);
+		\draw [style=big] (4) to (2);
+		\draw [style=big] (2) to (5);
+		\draw [style=red line] (11.center) to (13.center);
+		\draw [style=red line] (13.center) to (12.center);
+		\draw [style=red line] (10.center) to (11.center);
+		\draw [style=green line] (15.center) to (16.center);
+		\draw [style=green line] (16.center) to (17.center);
+		\draw [style=green line] (15.center) to (14.center);
+		\draw [style=big] (27) to (26);
+		\draw [style=big] (26) to (28);
+		\draw [style=big] (26) to (3);
+		\draw [style=red line] (10.center) to (12.center);
+		\draw [style=green line] (17.center) to (14.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

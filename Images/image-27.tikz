@@ -1,17 +1,17 @@
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=black] (0) at (0, 0) {\small \(a_1\)};
-		\node [style=black] (1) at (-5, -4) {\small \(a_2\)};
-		\node [style=black] (2) at (5, -4) {\small \(a_3\)};
-		\node [style=black] (3) at (-7.5, -8) {\small \(a_4\)};
-		\node [style=black] (4) at (-2.5, -8) {\small \(a_5\)};
-		\node [style=black] (5) at (2, -8) {\small \(a_6\)};
-		\node [style=black] (6) at (7.5, -8) {\small \(a_7\)};
-		\node [style=black] (7) at (-9.25, -12) {\small \(a_8\)};
-		\node [style=black] (8) at (-6, -12) {\small \(a_9\)};
-		\node [style=black] (9) at (-4, -12) {\small \(a_{10}\)};
-		\node [style=black] (10) at (-1, -12) {\small \(a_{11}\)};
-		\node [style=black] (11) at (1, -12) {\small \(a_{12}\)};
+		\node [style=black, minimum width=22pt] (0) at (0, 0) {\small \(a_1\)};
+		\node [style=black, minimum width=22pt] (1) at (-5, -4) {\small \(a_2\)};
+		\node [style=black, minimum width=22pt] (2) at (5, -4) {\small \(a_3\)};
+		\node [style=black, minimum width=22pt] (3) at (-7.5, -8) {\small \(a_4\)};
+		\node [style=black, minimum width=22pt] (4) at (-2.5, -8) {\small \(a_5\)};
+		\node [style=black, minimum width=22pt] (5) at (2, -8) {\small \(a_6\)};
+		\node [style=black, minimum width=22pt] (6) at (7.5, -8) {\small \(a_7\)};
+		\node [style=black, minimum width=22pt] (7) at (-9.25, -12) {\small \(a_8\)};
+		\node [style=black, minimum width=22pt] (8) at (-6, -12) {\small \(a_9\)};
+		\node [style=black, minimum width=22pt] (9) at (-4, -12) {\small \(a_{10}\)};
+		\node [style=black, minimum width=22pt] (10) at (-1, -12) {\small \(a_{11}\)};
+		\node [style=black, minimum width=22pt] (11) at (1, -12) {\small \(a_{12}\)};
 		\node [style=right align] (12) at (-1, 0) {\(1\)};
 		\node [style=right align] (13) at (-6, -4) {\(2\)};
 		\node [style=right align] (14) at (4, -4) {\(3\)};
