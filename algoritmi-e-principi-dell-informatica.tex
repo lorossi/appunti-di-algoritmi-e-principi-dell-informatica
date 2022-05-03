@@ -9,6 +9,7 @@
 \DeclareMathOperator{\Succop}{Succ}
 \DeclareMathOperator{\lastop}{last}
 \DeclareMathOperator{\firstop}{first}
+\DeclareMathOperator{\modop}{\ mod}
 
 % various text
 \newcommand{\vero}{\textcolor{ForestGreen}{\texttt{vero}}\xspace} % green check
@@ -188,7 +189,7 @@ Non è imposto un limite superiore alla lunghezza delle stringhe prodotte.
         \end{itemize}
 \end{itemize}
 
-Tra i 3 insiemi è valida la relazione:
+Tra i \(3\) insiemi è valida la relazione:
 
 \[ semigruppo \subseteq monoide \subseteq gruppo \]
 
@@ -956,7 +957,7 @@ La \textbf{pila} è una forma di memoria in cui:
   \item La pila viene \textbf{letta dalla cima}
   \item Un simbolo letto viene \textbf{estratto dalla cima}
         \begin{itemize}
-          \item[\(\rightarrow\)] si attua una politica \texttt{FIFO}
+          \item[\(\rightarrow\)] si attua una politica \texttt{LIFO}
         \end{itemize}
   \item L'ultimo elemento in basso della pila è occupato da un particolare simbolo \(Z_0\)
 \end{itemize}
@@ -1851,6 +1852,8 @@ A tal proposito, si consulti la Figura~\ref{fig:configurazione-MT-nastro-singolo
   \item \(\overline{q}\) è un'opportuna codifica dello stato \(M\)
 \end{itemize}
 
+% TODO sostituire * e % rispettivamente con $ e # sia nell'immagine che nella lista
+
 \begin{figure}[htbp]
   \bigskip
   \centering
@@ -1870,33 +1873,37 @@ In certe situazioni, però, il modello che si desidera modellare non può essere
 
 Per esempio, si consideri la serie di istruzioni:
 
-\begin{verbatim}
+\begin{center}
+  \begin{lstlisting}[style=pseudocode, numbers=none]
   if x >= y then:
     max := x
 
   if y >= x then:
     max := y
-\end{verbatim}
+\end{lstlisting}
+\end{center}
 
-Essa definisce il massimo tra due numeri \texttt{a} e \texttt{b}.
-Tale notazione rappresenta una specifica non deterministica: non viene illustrato il comportamento per \texttt{a == b} e l'applicazione di entrambe le regole risulta in un output valido.
+Essa definisce il massimo tra due numeri \texttt{x} e \texttt{y}.
+Tale notazione rappresenta una specifica non deterministica: non viene illustrato il comportamento per \texttt{x == y} e l'applicazione di entrambe le regole risulta in un output valido.
 
-Normalmente, nei linguaggi di programmazione, si usa una precedenza di tipo lessicale: viene applicata la prima conzidione scelta.
+Normalmente, nei linguaggi di programmazione, si usa una precedenza di tipo lessicale: viene applicata la prima condizione scelta.
 
 Un'esempio analogo può essere fatto sfruttando gli algoritmi di \textit{ricerca binaria}.
 Essi infatti compiono una \textit{simulazione} di algoritmi non deterministici:
 
-\begin{verbatim}
+\begin{center}
+  \begin{lstlisting}[style=pseudocode, numbers=none]
 while true:
-  l'elemento ricercato è nella radice?
-    termina
+  if elemento-cercato in radice:
+    end
 
-  cerca nel sotto albero sinistro
-  cerca nel sotto albero destro
-\end{verbatim}
+  search in left-subtree
+  search in right-subtree
+\end{lstlisting}
+\end{center}
 
 Siccome non è possibile determinare a priori quale dei due cammini \textit{(sinistro o destro)} sia migliore, la scelta della priorità nei cammini è spesso \textbf{arbitraria}.
-Alternativamente, non viene fatta una scelta del cammino da intraprendere ma entrambi venengono esplorati in \textbf{parallelo}.
+Alternativamente, non viene fatta una scelta del cammino da intraprendere ma entrambi vengono esplorati in \textbf{parallelo}.
 
 In entrambi i casi, grazie al non determinismo, è possibile implementare l'algoritmo senza la necessità di usare \textit{backtracking}, che sarebbe invece obbligatorio nel caso si cercasse di usare un sistema deterministico.
 
@@ -1936,7 +1943,7 @@ Nel caso di \FSA accettori con \ND, si dice che \(x \in I^\ast\) è \textbf{acce
 
 \textit{Informalmente}: tra le varie possibili esecuzioni (a parità di ingresso) dell'\NFA, è sufficiente che una di esse vada a buon fine \textit{(la stella di Kleene delle transizioni \(\delta^\ast\) ha almeno uno stato che fa parte dell'insieme di stati finali)}.
 
-Questa definizione prende il nome di \textbf{non determinismo esistenziale}, che si oppone al non determinsimo \textbf{universale}: \(\delta^\ast(q_0, x) \subseteq F\).
+Questa definizione prende il nome di \textbf{non determinismo esistenziale}, che si oppone al non determinismo \textbf{universale}: \(\delta^\ast(q_0, x) \subseteq F\).
 
 \bigskip
 
@@ -2248,9 +2255,9 @@ Nella Figura~\ref{fig:confronto-NPDA-NTM} è possibile osservare varie possibili
 
 \begin{enumerate}[label=\alph*), ref=(\alph*)]
   \item \label{enum:NTM-or-NPDA} \(\NTM \cup\NPDA \neq \emptyset\), quindi \NTM e \NPDA possono riconoscere dei linguaggi in comune
-  \item \label{enum:NPDA-in-NTM} \(\NPDA \subseteq \NTM\), quindi le \NTM rappresentano una sottocategoria delle \NPDA
-  \item \label{enum:NTM-in-NPDA} \(\NTM \subseteq \NPDA\), quindi le \NPDA rappresentano una sottocategoria delle \NTM
-  \item \label{enum:NTM-equiv-NPDA} \(\NTM \equiv \NPDA\), qundi le due categorie coincidono
+  \item \label{enum:NPDA-in-NTM} \(\NPDA \subseteq \NTM\), quindi le \NTM rappresentano una sotto categoria delle \NPDA
+  \item \label{enum:NTM-in-NPDA} \(\NTM \subseteq \NPDA\), quindi le \NPDA rappresentano una sotto categoria delle \NTM
+  \item \label{enum:NTM-equiv-NPDA} \(\NTM \equiv \NPDA\), quindi le due categorie coincidono
 \end{enumerate}
 
 Tuttavia, si dimostra che i casi:
@@ -2726,7 +2733,7 @@ Le espressioni regolari sono diverse dai sistemi di pattern e hanno diverso pote
 Le \RE \textbf{corrispondono esattamente} ai linguaggi regolari e hanno lo stesso potere espressivo di \RG e \FSA: per ogni \FSA è possibile costruire la \RE equivalente.
 
 \bigskip
-\textit{Per dimostare l'enunciato} è sufficiente osservare che:
+\textit{Per dimostrare l'enunciato} è sufficiente osservare che:
 
 \begin{itemize}
   \item Ogni linguaggio denotato da una \RE è regolare. Infatti:
@@ -2966,7 +2973,7 @@ Allora:
         \begin{itemize}[label=\(\rightarrow\)]
           \item in questo caso si usa la notazione \(F \equiv G\)
         \end{itemize}
-  \item La formula \(G\), sottoformula di \(F\) può essere sostituita da una formula \(H\)
+  \item La formula \(G\), sotto formula di \(F\) può essere sostituita da una formula \(H\)
         \begin{itemize}[label=\(\rightarrow\)]
           \item per indicare la formula risultante si usa la notazione \(F [G \, \backslash H]\)
         \end{itemize}
@@ -3115,7 +3122,7 @@ Infatti, frasi come \inlinequote{tutti gli esseri umani sono mortali} e \inlineq
         \end{itemize}
   \item Analogamente, il connettivo principale da usare con \(\exists\) è \(\land\)
         \begin{itemize}
-          \item \inlinequote{al Polimi qualcuno è brillante} si pu\`o tradurre con \[ \exists \, X \, (at(X, polimi) \land smart(X)) \] % a volte la o accentata mi sfancula il documento intero e non va più niente
+          \item \inlinequote{al Polimi qualcuno è brillante} si pu\`o tradurre con \[ \exists \, X \, (at(X, polimi) \land smart(X)) \] % a volte la o accentata mi rompe il documento intero e non va più niente
           \item notare che la formula \[ \forall \, X \, (at(X, polimi) \rightarrow smart(X)) \] significa che c'è qualcuno che o non è al Polimi o è brillante \textit{(o entrambe)}
         \end{itemize}
 \end{itemize}
@@ -3405,7 +3412,7 @@ Ne consegue che:
         \end{itemize}
   \item In \MFO non è possibile esprimere il linguaggio \(L_P\) rappresentante tutte e sole le parole di lunghezza pari con \(l = \{ a \}\)
         \begin{itemize}
-          \item La formula \MFO \(a(0) \land a(1) \land \lastop(1)\) definisce il linguaggio \(L_{P2}\) fatto dalla sola parola \(\{aa\}\) di lunghezza 2
+          \item La formula \MFO \(a(0) \land a(1) \land \lastop(1)\) definisce il linguaggio \(L_{P2}\) fatto dalla sola parola \(\{aa\}\) di lunghezza \(2\)
           \item Poiché \(L_P = L_{P2}^\ast\), a causa della mancata chiusura rispetto alla stella di Kleene, si spiega perché
         \end{itemize}
 \end{itemize}
@@ -3515,7 +3522,7 @@ Le precondizioni e postcondizioni possono essere definite in modi diversi, come:
   \item Linguaggi ad hoc
 \end{itemize}
 
-Tra di questi si riconosce innazitutto la \FOL, che può essere usata a questo scopo.
+Tra di questi si riconosce su tutte la \FOL, che può essere usata a questo scopo.
 
 \subsubsection{Specifiche}
 Una specifica deve essere usata come un \inlinequote{contratto}, che contiene tutte le informazioni necessarie senza assunzioni a priori.
@@ -3668,7 +3675,7 @@ dove \(x_1, x_2\), se esistono, sono i numeri razionali che soddisfano il sistem
 
 Si nota poi che è possibile far corrispondere biiettivamente \(\mathbb{Z}\) \textit{(numeri interi)} e \(\mathbb{Q}\) \textit{(numeri razionali)}  con \(\mathbb{N}\)  \textit{(numeri interi positivi)}, riducendo il problema al calcolo dell'opportuna funzione \(f: \mathbb{N} \rightarrow \mathbb{N}\) come proposto prima.
 
-Poiché tutti e 3 gli insiemi sono \textbf{enumerabili}, la correlazione esiste e può essere costruita.
+Poiché tutti e \(3\) gli insiemi sono \textbf{enumerabili}, la correlazione esiste e può essere costruita.
 Un esempio di tale correlazione è mostrata nella Tabella~\ref{tab:correlazione-z-n}.
 
 \begin{table}[htbp]
@@ -4288,9 +4295,9 @@ Si consideri infatti l'analoga formulazione \(\exists \, z \, | \, f_x(z) \neq \
   \item Se la computazione non termina, come è possibile accorgersene?
   \item Dimostrazione con metodo diagonale:
         \begin{enumerate}
-          \item Si simuli 1 passo di esecuzione di \(f_x(0)\). Se termina, allora la risposta è \texttt{SI}
+          \item Si simuli \(1\) passo di esecuzione di \(f_x(0)\). Se termina, allora la risposta è \texttt{SI}
           \item Altrimenti, si simuli un passo di computazione di \(f_x(1)\). Se termina, allora la risposta è \texttt{SI}
-          \item Ancora una volta si simuli 2 passi di \(f_x(0)\), 1 passo di \(f_x(2)\), 2 passi di \(f_x(1)\), 3 di \(f_x(0)\) e così via, secondo lo schema in Figura~\ref{fig:associazione-biunivoca-2} \textit{(già vista nella Sezione relativa alla \nameref{sec:macchina-turing-universale})}
+          \item Ancora una volta si simuli \(2\) passi di \(f_x(0)\), \(1\) passo di \(f_x(2)\), \(2\) passi di \(f_x(1)\), \(3\) di \(f_x(0)\) e così via, secondo lo schema in Figura~\ref{fig:associazione-biunivoca-2} \textit{(già vista nella Sezione relativa alla \nameref{sec:macchina-turing-universale})}
         \end{enumerate}
 \end{itemize}
 
@@ -4606,7 +4613,7 @@ Essi verranno sottoposti ad analisi quantitative su:
   \item Spazio di memoria occupato - \textit{complessità spaziale}
 \end{itemize}
 
-L'analisi si limiterà a criteri di costo \textbf{oggettivi} e formalizzabili, quindi non terrà conto di parametri come i costi di sviluppo e \textit{tradeoff} tra obiettivi contrastanti.
+L'analisi si limiterà a criteri di costo \textbf{oggettivi} e formalizzabili, quindi non terrà conto di parametri come i costi di sviluppo e \textit{trade off} tra obiettivi contrastanti.
 
 \bigskip
 Per la Tesi di Church \textit{(Sezione~\ref{sec:tesi-di-church})}, un problema è calcolabile indipendentemente dallo strumento usato, purché esso sia Turing completo.
@@ -4650,8 +4657,8 @@ Questa semplificazione implica une perdita di generalità perché ingressi diver
 \textit{Formalmente}:
 
 \begin{align*}
-  |x_1| = |x_2| \nRightarrow & \ T_M(x_1) = T_M(x_2) \\
-  |x_1| = |x_2| \nRightarrow & \ T_S(x_1) = T_S(x_2)
+  |x_1| = |x_2| \quad & \nRightarrow \quad \ T_M(x_1) = T_M(x_2) \\
+  |x_1| = |x_2| \quad & \nRightarrow \quad \ T_S(x_1) = T_S(x_2)
 \end{align*}
 
 \bigskip
@@ -4828,17 +4835,20 @@ Il risultato della trattazione è illustrato in Tabella~\ref{tab:complessita-mod
   \label{tab:complessita-modelli-calcolo}
 \end{table}
 
-\subsection{Teoremi di accelerazione lineare}
+\subsection{Teorema di accelerazione lineare}
 
-I quattro teoremi di accelerazione lineare e le loro dimostrazioni sono riportate nelle seguenti Sezioni, insieme a degli importanti risvolti pratici.
+Quattro enunciati analoghi del Teorema di accelerazione lineare sono mostrati nelle seguenti Sezioni, seguiti ai relativi risvolti pratici.
 
-\subsubsection[Teorema 1]{Teorema \(1\)}
-\label{sec:teorema-accelerazione-1}
+\subsubsection[Enunciato 1]{Enunciato \(1\)}
+\label{sec:enunciato-accelerazione-1}
 
 \indentquote{Se \(L\) è accettato da una \TM \(M\) a \(k\) nastri in \(S_M(n)\), per ogni \(c \in \mathbb{R}^+\) è possibile costruire una \TM \(M^\prime\) a \(k\) nastri che accetta \(L\) con \(S_{M^\prime}(n) < c \cdot S_M(n)\)}
 
-\paragraph[Dimostrazione Teorema 1]{Dimostrazione Teorema \(1\)}
-\label{par:dimostrazione-teorema-accelerazione-1}
+\bigskip
+Il Enunciato mostra che è possibile avere una accelerazione lineare \textit{(da qua il nome)} per un certo fattore \(c \in \mathbb{R}^+\) se \(0 < c < 1\).
+
+\paragraph[Dimostrazione Enunciato 1]{Dimostrazione Enunciato \(1\)}
+\label{par:dimostrazione-enunciato-accelerazione-1}
 
 \textit{Schema della dimostrazione:}
 \begin{enumerate}
@@ -4851,26 +4861,26 @@ I quattro teoremi di accelerazione lineare e le loro dimostrazioni sono riportat
         \end{itemize}
 \end{enumerate}
 
-\subsubsection[Teorema 2]{Teorema \(2\)}
-\label{sec:teorema-accelerazione-2}
+\subsubsection[Enunciato 2]{Enunciato \(2\)}
+\label{sec:enunciato-accelerazione-2}
 
-\indentquote{Se \(L\) è accettato da una \TM \(M\) a \(k\) nastri in \(S_M(n)\), è possibile costruire una \TM \(M^\prime\) a \(1\) nastro che accetta \(L\) con \(S_{M^\prime}(n) = S_M(n)\), concatenando tutti i nastri su una solo}
+\indentquote{Se \(L\) è accettato da una \TM \(M\) a \(k\) nastri in \(S_M(n)\), è possibile costruire una \TM \(M^\prime\) a \(1\) nastro che accetta \(L\) con \(S_{M^\prime}(n) = S_M(n)\), concatenando tutti i nastri su uno solo}
 
-\subsubsection[Teorema 3]{Teorema \(3\)}
+\subsubsection[Enunciato 3]{Enunciato \(3\)}
 
-\indentquote{Se \(L\) è accettato da una \TM \(M\) a \(k\) nastri in \(S_M(n)\), per ogni \(c \in \mathbb{R}^+\) è possibile costruire una \TM \(M^\prime\) a \(1\) nastro che accetta \(L\) con \(S_{M^\prime}(n) < S_M(n)\)}
+\indentquote{Se \(L\) è accettato da una \TM \(M\) a \(k\) nastri in \(S_M(n)\), per ogni \(c \in \mathbb{R}^+\) è possibile costruire una \TM \(M^\prime\) a \(1\) nastro che accetta \(L\) con \(S_{M^\prime}(n) < c \cdot S_M(n)\)}
 
-Il risultato è analogo a quello del \nameref{sec:teorema-accelerazione-2}, con in aggiunta la compressione già vista nel \nameref{sec:teorema-accelerazione-1}.
+Il risultato è analogo a quello del \nameref{sec:enunciato-accelerazione-2}, con in aggiunta la compressione già vista nel \nameref{sec:enunciato-accelerazione-1}.
 
-\subsubsection[Teorema 4]{Teorema \(4\)}
+\subsubsection[Enunciato 4]{Enunciato \(4\)}
 
-\indentquote{Se \(L\) è accettato a una \TM \(M\) a \(k\) nastri in \(T_M(n)\), per ogni \(c \in \mathbb{R}^+\), è possibile costruire una \TM \(M^\prime\) a \(k+1\) nastri che accetta \(L\) con \(T_{M^\prime}(n) = \max(n + 1, c \cdot T_M(n))\)}
+\indentquote{Se \(L\) è accettato a una \TM \(M\) a \(k\) nastri in \(T_M(n)\), per ogni \(c \in \mathbb{R}^+\), è possibile costruire una \TM \(M^\prime\) a \(k+1\) nastri che accetta \(L\) con \(T_{M^\prime}(n) = \max(n + 1,\ c \cdot T_M(n))\)}
 
-Il risultato è analogo a quello del \nameref{sec:teorema-accelerazione-2}, con in aggiunta la compressione già vista nel \nameref{sec:teorema-accelerazione-1}.
+Il risultato è analogo a quello del \nameref{sec:enunciato-accelerazione-2}, con in aggiunta la compressione già vista nel \nameref{sec:enunciato-accelerazione-1}.
 
-\paragraph[Dimostrazione Teorema 4]{Dimostrazione Teorema \(4\)}
+\paragraph[Dimostrazione Enunciato 4]{Dimostrazione Enunciato \(4\)}
 
-L'approccio della dimostrazione è analogo a quello già visto in \ref{par:dimostrazione-teorema-accelerazione-1}
+L'approccio della dimostrazione è analogo a quello già visto in \ref{par:dimostrazione-enunciato-accelerazione-1}
 
 \begin{enumerate}
   \item Si codifica in modo compresso i simboli dell'alfabeto di \(M\)
@@ -4903,7 +4913,7 @@ Questi teoremi portano alle seguenti conseguenze pratiche:
 L'introduzione della macchina \RAM consente di fare un passo per arrivare ad un livello di astrazione più vicino alla realtà.
 È infatti un modello classico, ispirato all'architettura di \textit{Von Neumann}.
 
-La\textbf{ macchina \RAM} è dotata di un nastro di \textbf{lettura} (\texttt{IN}) e uno di \textbf{scrittura} (\texttt{OUT}), similarmente ad una \TM.
+La \textbf{macchina \RAM} è dotata di un nastro di \textbf{lettura} (\texttt{IN}) e uno di \textbf{scrittura} (\texttt{OUT}), simili a quelli di cui può essere disposta una \TM.
 Il programma è cablato all'interno dell'organo di controllo tramite una serie \textit{(finita)} di istruzioni in un certo linguaggio.
 Esse \textbf{non sono alterabili} durante il funzionamento della macchina.
 L'indice dell'istruzione da eseguire in ogni dato momento è indicato dal \textit{program counter}.
@@ -4991,37 +5001,43 @@ Un'esempio di tale linguaggio è mostrato nella Tabella~\ref{tab:instruction-set
 \end{table}
 
 \subsubsection{Criterio di costo logaritmico}
+\label{sec:criterio-costo-logaritmico}
 
-L'approssimazione di costo tramite \(\Omega, \Theta\) funziona ma presenta molti limiti.
+L'approssimazione di costo tramite \(\Omega, \Theta\) è corretta ma presenta molti limiti.
 
 Infatti non si tiene conto di una limitatezza della memoria: una singola parola di memoria non può sempre contenere in un solo simboli tutti gli interi usati in un determinato algoritmo.
-Poiché non si considera il numero di cifre necessarie a rappresentare un numero, il calcolo della complessità può risultare molto sbagliato.
+Poiché non si considera il numero di cifre necessarie a rappresentare un numero, il calcolo della complessità può risultare molto errato in certe circostanze.
+Questo criterio di costo prende il nome di \textbf{costante} e si contrappone al criterio di costo \textbf{logaritmico}.
 
-Per effettuare un'approssimazione più simile alla realtà, è necessario tenere conto del numero di cifre necessarie a rappresentare un intero.
-Così facendo risulterà che caricare e salvare interi in memoria non sarà più a costo costante (ma varierà in funzione della lunghezza del numero), con effetti analoghi sulle operazioni algebriche.
+\bigskip
+Per effettuare una approssimazione più simile alla realtà, è necessario tenere conto del numero di cifre necessarie a rappresentare i numeri su cui si opera.
+Di conseguenza, al variare dell'ordine di grandezza degli operandi, potrà essere più o meno complicato eseguire istruzioni matematiche.
+Analogamente, le operazioni di accesso alla memoria \textit{(\texttt{LOAD} e \texttt{STORE})} avranno complessità variabile in funzione della lunghezza dei parametri.
 
-Alla luce di questi ragionamenti, sarà possibile calcolare la complessità per ogni categoria di operazione.
+Il criterio prende il nome di \textbf{logaritmico} perché per rappresentare un numero decimale \(x\) in base \(b\) serviranno un numero di simboli pari a \(\lceil \log_b(x) \rceil\).
+
+La complessità logaritmica delle operazioni elementari della macchina \RAM è mostrato nell'elenco seguente, diviso per ogni categoria di operazione.
 
 \begin{minipage}[htbp]{.99\textwidth}
   \bigskip
   \begin{itemize}
-    \item \textbf{Copiare}, \textbf{spostare}, \textbf{scrivere}, \textbf{leggere} un intero \(i\) avrà complessità pari al suo numero di cifre in base \(b\):
-          \begin{itemize}[label=\(\rightarrow\)]
-            \item \(log_b(i) = \Theta(\log_2(i))\)
-            \item con \(b = 2\) il costo corrisponde al numero di \texttt{bit} usati per rappresentare \(i\)
-          \end{itemize}
     \item Il costo delle operazioni \textbf{aritmetiche} e \textbf{logiche} elementari dipende dall'operazione. Ponendo \(d = \log_2(i)\):
           \begin{itemize}[label=\(\rightarrow\)]
-            \item \textbf{addizioni}, sottrazioni saranno \(\Theta(d)\)
-            \item \textbf{divisioni} e moltiplicazioni con \textbf{metodo scolastico} \(\Theta(d^2)\)
-            \item \textbf{divisioni} e moltiplicazioni con \textbf{algoritmi più efficienti} \(\Theta(n \log(n))\)
+            \item \textbf{lettura} e \textbf{scrittura} (\texttt{READ}, \texttt{WRITE}) ha costo \(\Theta(d)\)
+            \item \textbf{operazioni di memoria} (\texttt{LOAD}, \texttt{SAVE}) ha costo \(\Theta(d)\)
+            \item \textbf{addizioni} e \textbf{sottrazioni} (\texttt{ADD}, \texttt{SUB}) ha costo \(\Theta(d)\)
+            \item \textbf{divisioni} e \textbf{moltiplicazioni} (\texttt{MUL}, \texttt{DIV}) con \textbf{metodo scolastico} ha costo \(\Theta(d^2)\)
+                  \begin{itemize}[label=\(\rightarrow\)]
+                    \item usando \textbf{algoritmi più efficienti} ha costo \(\Theta\left(d \log{(d)}\right)\)
+                  \end{itemize}
+
           \end{itemize}
-    \item Operazioni di \textbf{salto}:
+    \item Il costo delle operazioni di \textbf{salto} (\texttt{JZ}, \texttt{JGZ}, \texttt{JLZ}) sarà costante:
           \begin{itemize}[label=\(\rightarrow\)]
-            \item il costo è \textbf{costante}, quindi \(\Theta(1)\)
+            \item sono tutte \(\Theta(1)\)
+            \item si sta sommando un \textit{offset} di lunghezza fissa al \textit{program counter} \textit{(anch'esso di lunghezza fissa)}
           \end{itemize}
   \end{itemize}
-  \bigskip
 \end{minipage}
 
 \subsubsection{Scelta del criterio di costo}
@@ -5039,13 +5055,22 @@ Infatti, se:
         \end{itemize}
 \end{itemize}
 
-allora il criterio di costo costante è adeguato.
+allora il \textbf{criterio di costo costante} è adeguato.
 In caso contrario è indispensabile il criterio di costo logaritmico, l'unico in grado di approssimare con correttezza il costo della funzione.
 
 \bigskip
 La conseguenza immediata di questa differenza di complessità implica che con macchine diverse lo stesso algoritmo può dare luogo a complessità diverse.
 Non è possibile identificare un modello \inlinequote{migliore} tra i vari formalismi studiati e non esiste un'analogo alla Tesi di Church (Sezione~\ref{sec:tesi-di-church}), però è possibile stabilire una relazione di maggiorazione a priori tra le complessità dei diversi modelli di calcolo.
 Essa prende il nome di \textit{\nameref{sec:tesi-correlazione-polinomiale}}.
+
+\paragraph{Relazione tra i criteri di costo}
+
+La relazione tra i due criteri di costo \textbf{non è fissa}.
+Infatti, non è possibile sempre affermare che \(C_{\text{log}} = C_{\text{cost}} \log{(n)}\).
+
+Questa uguaglianza sarà tuttavia valida nei casi in cui \(C_{\text{cost}} = n\) o \(C_{\text{cost}} = 1\).
+
+%TODO pagine 420 libro - esempio 9.15
 
 \subsection{Tesi di correlazione polinomiale}
 \label{sec:tesi-correlazione-polinomiale}
@@ -5068,42 +5093,45 @@ Verrà ora dimostrato il funzionamento della simulazione delle azioni una \TM a 
 Inizialmente, sarà necessario compiere questi passi per inizializzare la memoria della \RAM
 
 \begin{itemize}
-  \item La \TM viene mappata sulla \RAM:
+  \item La \TM viene \textbf{mappata} sulla \RAM:
         \begin{itemize}
           \item lo stato della \TM verrà posto sulla prima cella di memoria della \RAM
           \item verrà usata una cella di memoria della \RAM per ogni cella del nastro
           \item la memoria rimanente viene divisa in blocchi da \(4\) celle
         \end{itemize}
-  \item I blocchi vengono riempiti con la seguente strategia:
+  \item I blocchi vengono \textbf{riempiti} con la seguente strategia:
         \begin{itemize}
           \item Il blocco \(0\) conterrà le posizioni delle \(k\) testine
           \item I blocchi \(n\)-esimi, \(n > 0\), conterranno l'\(n\)-esimo simbolo di ognuno dei \(k\) nastri
         \end{itemize}
-  \item La \RAM emula la lettura di un carattere sotto la testina con un accesso indiretto, usando l'indice contenuto nel blocco \(0\)
+  \item La \RAM emula la lettura di un carattere sotto la testina con un accesso indiretto
+        \begin{itemize}
+          \item viene usato l'indice contenuto nel blocco \(0\)
+        \end{itemize}
 \end{itemize}
 
 Una volta inizializzata la memoria, sarà possibile simulare propriamente le azioni della \TM.
 In particolare:
 
 \begin{itemize}
-  \item Lettura dei nastri
+  \item \textbf{Lettura} dei nastri
         \begin{itemize}
-          \item lettura del blocco \(0\) e dello stato (\(\Theta(k)\) mosse)
-          \item lettura dei valori sui nastri in corrispondenza delle testine (\(\Theta(k)\) accessi indiretti)
+          \item lettura del blocco \(0\) e dello stato: \(\Theta(k)\) \textit{mosse}
+          \item lettura dei valori sui nastri in corrispondenza delle testine: \(\Theta(k)\) \textit{accessi indiretti}
         \end{itemize}
-  \item Scrittura dei nastri
+  \item \textbf{Scrittura} dei nastri
         \begin{itemize}
-          \item scrittura dello stato (\(\Theta(1)\))
-          \item scrittura della celle dei nastri (\(\Theta(k)\) accessi indiretti)
-          \item scrittura nel blocco \(0\) per aggiornare le posizioni delle \(k\) testine (\(\Theta(k)\) mosse)
+          \item scrittura dello stato: \(\Theta(1)\)
+          \item scrittura della celle dei nastri: \(\Theta(k)\) \textit{accessi indiretti}
+          \item scrittura nel blocco \(0\) per aggiornare le posizioni delle \(k\) testine: (\(\Theta(k)\) \textit{mosse}
         \end{itemize}
 \end{itemize}
 
 Per valutare la complessità, bisogna considerare che la \RAM emula una mossa della \TM con \(\Theta(k)\) mosse:
 
 \begin{itemize}
-  \item \(T_{RAM}(n) = \Theta\left(T_{\mathscr{M}}(n)\right)\) per il costo costante
-  \item \(T_{RAM}(n) = \Theta\left(T_{\mathscr{M}}(n)\right) \log\left(T_{\mathscr{M}}(n)\right)\) per il costo logaritmico
+  \item \(T_{RAM}(n) = \Theta\left(T_{\mathscr{M}}(n)\right)\) per il costo \textbf{costante}
+  \item \(T_{RAM}(n) = \Theta\left(T_{\mathscr{M}}(n)\right) \log\left(T_{\mathscr{M}}(n)\right)\) per il costo \textbf{logaritmico}
 \end{itemize}
 
 \paragraph[Simulazione di una \RAM nastri tramite \TM a k nastri]{Simulazione di una \RAM tramite \TM a \(k\) nastri}
@@ -5111,19 +5139,22 @@ Per valutare la complessità, bisogna considerare che la \RAM emula una mossa de
 In questo paragrafo verrà dimostrata la simulazione di una \RAM tramite \TM a \(k\) nastri, omettendo le operazioni \texttt{MUL} e \texttt{DIV} per semplicità.
 
 \begin{itemize}
-  \item Un nastro di memoria della \TM viene inizializzato come in Figura~\ref{fig:inizializzazione-memoria-ram}
+  \item Un nastro di memoria della \TM viene \textbf{inizializzato} come in Figura~\ref{fig:inizializzazione-memoria-ram}
         \begin{itemize}
           \item le celle di memoria indicizzate da \(i\) sono state coinvolte da almeno una operazione di \texttt{STORE}
           \item il simbolo \(\$\) è usato come delimitatore tra indice della cella e contenuto della cella
-          \item il simbolo \(\$\$\) è usato per separare tra di loro le celle di memoria
+          \item il simbolo \(\#\) è usato per separare tra di loro le celle di memoria
         \end{itemize}
-  \item Un secondo nastro di memoria ospita il contenuto dell'accumulatore \(\texttt{N}[0]\)
+  \item Un secondo nastro di memoria ospita il contenuto dell'\textbf{accumulatore} \(\texttt{N}[0]\)
         \begin{itemize}
-          \item il valore viene memorizzato con codifica binaria
+          \item il valore viene memorizzato con codifica \textbf{binaria}
         \end{itemize}
-  \item Un terzo nastro viene utilizzato come memoria temporanea
+  \item Un terzo nastro viene utilizzato come memoria \textbf{temporanea}
         \begin{itemize}
-          \item viene usato per spostare i dati qualora sia necessario memorizzare \(\texttt{N}[i_j]\) laddove \(\texttt{N}[i_k],\ \texttt{N}[i_l],\ i_k < i_j < i_l\)
+          \item viene usato per spostare i dati qualora sia necessario memorizzare \(\texttt{N}[i_j]\)
+                \begin{itemize}
+                  \item deve valere \(\texttt{N}[i_k],\ \texttt{N}[i_l],\ i_k < i_j < i_l\)
+                \end{itemize}
         \end{itemize}
 \end{itemize}
 
@@ -5137,6 +5168,7 @@ In questo paragrafo verrà dimostrata la simulazione di una \RAM tramite \TM a \
 \end{figure}
 
 Una volta inizializzata la memoria, sarà possibile simulare propriamente le azioni della macchina \RAM.
+
 In particolare:
 
 \begin{itemize}
@@ -5164,6 +5196,9 @@ In generale, la simulazione di una mossa della \RAM richiede alla \TM un numero 
 In simboli:
 \[ n \leq c \cdot \text{ lunghezza nastro principale } \]
 
+Di conseguenza:
+\[ T_{\RAM}  = \bigO(T_{\mathscr{M}}) \]
+
 \subsubsection{Lemma della Tesi di correlazione polinomiale}
 
 In seguito all'enunciazione e alla dimostrazione del Teorema di correlazione polinomiale, risulta che:
@@ -5173,10 +5208,10 @@ In seguito all'enunciazione e alla dimostrazione del Teorema di correlazione pol
 \paragraph{Dimostrazione del Lemma}
 
 \begin{itemize}
-  \item Ogni cella \(i_j\)-esima della \RAM occupa \(\log(i_j) + \log(\texttt{N}[i_j])\)
+  \item Ogni cella \(i_j\)-esima della \RAM occupa \(\log{(i_j)} + \log{(\texttt{N}[i_j])}\)
   \item Ogni cella della \RAM viene materializzata solo se la \RAM effettua una operazione di \texttt{STORE}
-  \item L'operazione \texttt{STORE} ha un costo per la \RAM pari a \(\log(i_j) + \log(\texttt{N}[i_j])\)
-  \item Per riempire \(r\) celle, la \RAM impiega \(\displaystyle \sum_{j=1}^{r} \log(i_j) + \log(\texttt{N}[i_j])\) unità di tempo, la stessa quantità di spazio occupata sul nastro
+  \item L'operazione \texttt{STORE} ha un costo per la \RAM pari a \(\log{(i_j)} + \log{(\texttt{N}[i_j])}\)
+  \item Per riempire \(r\) celle, la \RAM impiega \(\displaystyle \sum_{j=1}^{r} \log{(i_j)} + \log{(\texttt{N}[i_j])}\) unità di tempo, la stessa quantità di spazio occupata sul nastro
 \end{itemize}
 
 \subsubsection{Conclusioni sulla Tesi di correlazione}
@@ -5184,14 +5219,14 @@ In seguito all'enunciazione e alla dimostrazione del Teorema di correlazione pol
 A valle delle dimostrazioni, si può concludere che:
 
 \begin{itemize}
-  \item La \TM impiega al più \(\Theta(T_\text{RAM}(n))\) per simulare una mossa della \RAM
-  \item Se la \RAM ha complessità \(T_\text{RAM}(n)\), essa effettua al più \(T_\text{RAM}(n)\) mosse (ogni mossa costa almeno \(1\))
-  \item La simulazione completa della \RAM da parte della \TM costa al più \(\Theta\left((T_\text{RAM}(n))^2\right)\)
-  \item Il legame tra \(T_\text{RAM}(n)\) e \(T_\text{TM}(n)\) è polinomiale
+  \item La \TM impiega \textbf{al più} \(\Theta(T_\text{RAM}(n))\) per simulare \textbf{una mossa} della \RAM
+  \item Se la \RAM ha \textbf{complessità} \(T_\text{RAM}(n)\), essa effettua \textbf{al più} \(T_\text{RAM}(n)\) mosse (ogni mossa costa almeno \(1\))
+  \item La simulazione completa della \RAM da parte della \TM costa \textbf{al più} \(\Theta\left((T_\text{RAM}(n))^2\right)\)
+  \item Il legame tra \(T_\text{RAM}(n)\) e \(T_\text{TM}(n)\) è \textbf{polinomiale}
 \end{itemize}
 
 \bigskip
-Inoltre, è possibile fare le seguenti osservazioni:
+Infine, è possibile fare le seguenti \textit{osservazioni}:
 
 \begin{itemize}
   \item Per quanto grande possa essere il grado di un polinomio, sarà sempre inferiore ad una funzione esponenziale
@@ -5199,8 +5234,11 @@ Inoltre, è possibile fare le seguenti osservazioni:
           \item è sufficiente confrontare l'andamento delle funzioni \(n^k\) e \(2^n\)
         \end{itemize}
   \item Grazie al teorema di correlazione polinomiale è possibile parlare dei problemi risolvibili in tempo e/o spazio polinomiale astraendo dalla classe del calcolatore
-  \item classe dei problemi trattabili in pratica \(\equiv\) classe dei problemi risolvibili in tempo polinomiale, detta \Pset
-  \item I problemi di interesse pratico che sono in \Pset hanno anche grado del polinomio \inlinequote{accettabile}
+  \item \textit{classe dei problemi trattabili in pratica} \(\equiv\) \textit{classe dei problemi risolvibili in tempo polinomiale}
+        \begin{itemize}
+          \item questa classe prende il nome di \Pset
+          \item i problemi di interesse pratico che sono in \Pset hanno anche grado del polinomio \inlinequote{accettabile}
+        \end{itemize}
 \end{itemize}
 
 \clearpage
@@ -5218,6 +5256,7 @@ L'arco è detto \textbf{orientato} se \(u\) e \(v\) sono coppie di nodi consecut
 In caso contrario, è detto \textbf{non orientato} \textit{(Figura~\ref{fig:grafo-arco-non-orientato})}.
 
 \begin{figure}[htbp]
+  \bigskip
   \centering
   \begin{subfigure}[t]{0.495\textwidth}
     \centering
@@ -5245,6 +5284,9 @@ In caso contrario, è detto \textbf{non orientato} \textit{(Figura~\ref{fig:graf
     \caption{Grafo con arco non orientato}
     \label{fig:grafo-arco-non-orientato}
   \end{subfigure}
+  \caption{Grafo orientato e grafo non orientato}
+  \label{fig:grafo-orientato-non-orientato}
+  \bigskip
 \end{figure}
 
 \subsubsection{Tipi di Grafo}
@@ -5303,6 +5345,16 @@ Un esempio di albero è mostrato in Figura~\ref{fig:esempio-di-albero}.
   \bigskip
 \end{figure}
 
+\paragraph{Lemma di altezza dell'albero binario}
+\label{par:lemma-altezza-albero-binario}
+
+Il Lemma di altezza dell'albero binario recita che:
+
+\indentquote{Ogni albero binario di altezza \(h\) ha un numero di foglie al più pari a \(2^h\).}
+
+\bigskip
+La dimostrazione è banale e avviene per induzione.
+
 \subsubsection{Heap}
 \label{sec:heap}
 
@@ -5342,7 +5394,7 @@ In particolare, si definiscono:
         \end{itemize}
   \item \textbf{Algoritmo}: i passi da eseguire per risolvere un problema
         \begin{itemize}
-          \item un algoritmo prende gli \textit{input} in ingresso ad un problema e li trasforma in opportuni \textit{output}
+          \item prende gli \textit{input} in ingresso ad un problema e li trasforma in opportuni \textit{output}
           \item è formato da una sequenza di \textit{operazioni concrete}
           \item è eseguibile da una \textbf{macchina}
           \item deve essere \textbf{corretto}
@@ -5360,16 +5412,19 @@ La sintassi dello \textbf{pseudocodice} è la seguente:
 \begin{itemize}
   \item \textbf{Assegnamento}: \texttt{i := j}
         \begin{itemize}
-          \item assegnamento multiplo: \texttt{i := j := e}
+          \item è ammesso l'assegnamento multiplo: \texttt{i := j := e}
           \item le variabili sono locali alla procedura
-          \item è applicato da destra a sinistra
         \end{itemize}
   \item \textbf{Cicli} e \textbf{salti} condizionali: \texttt{while}, \texttt{for}, \texttt{if-then-else}
         \begin{itemize}
           \item la struttura a blocchi è determinata dall'indentazione
           \item non si usano le parentesi
         \end{itemize}
-  \item \textbf{Commenti}: \texttt{// commento}
+  \item \textbf{Commenti}:
+        \begin{itemize}
+          \item si indicano con la notazione \texttt{// commento}
+          \item sono sempre a riga singola
+        \end{itemize}
   \item \textbf{Array}: la notazione è analoga a quella del \texttt{C}
         \begin{itemize}
           \item il primo elemento può avere indice diverso da \(0\)
@@ -5380,14 +5435,14 @@ La sintassi dello \textbf{pseudocodice} è la seguente:
         \begin{itemize}
           \item possiedono degli attributi, anche detti campi
           \item per accedere all'attributo \texttt{attr} dell'oggetto \texttt{x}, si usa \texttt{x.attr}
-          \item gli \texttt{array} sono dati composti, quindi sono assimilabili ad oggetti
-                \begin{itemize}
+          \item gli \textbf{array} sono dati composti, quindi sono assimilabili ad oggetti
+                \begin{itemize}[label=\(\rightarrow\)]
                   \item ogni array ha un attributo \texttt{length} che indica la lunghezza dell'array
                 \end{itemize}
         \end{itemize}
   \item Una \textbf{variabile} che corrisponde ad un oggetto è un puntatore all'oggetto
         \begin{itemize}
-          \item analogo a quanto avviene in \texttt{C} o in \texttt{Java}
+          \item analogo a quanto avviene in \texttt{Java}
           \item un puntatore che non fa riferimento ad un oggetto ha valore \texttt{NIL}
         \end{itemize}
   \item Il \textbf{passaggio dei parametri} avviene per valore
@@ -5398,7 +5453,7 @@ La sintassi dello \textbf{pseudocodice} è la seguente:
 \end{itemize}
 
 \bigskip
-Per la valutazione della complessità di algoritmi scritti in pseudocodice si userà il \textbf{criterio di costo costante}, poiché non verranno manipolati dati più grandi rispetto a quelli in ingresso.
+Per la valutazione della complessità di algoritmi scritti in pseudocodice si userà il \textbf{criterio di costo costante} \textit{(Sezione~\ref{sec:criterio-costo-logaritmico})}, poiché non verranno manipolati dati più grandi rispetto a quelli in ingresso.
 Come conseguenza diretta, ogni istruzione \texttt{i} di pseudocodice verrà eseguita in un tempo costante \(c_\texttt{i}\)
 
 Grazie a questa assunzione sarà possibile trascurare il modello di calcolo dello pseudocodice \textit{(che sarà la macchina \RAM)}.
@@ -5407,7 +5462,7 @@ La complessità temporale sarà studiata più di quella spaziale perché più ri
 \subsubsection{Divide et Impera}
 \label{sec:divide-et-impera}
 
-La tecnica chiamata \textbf{Divide et Impera} è una tecnica algoritmica molto comune.
+La tecnica chiamata \textbf{Divide et Impera} \textit{(in Inglese Divide and Conquer)} è una tecnica algoritmica molto comune.
 Essa si applica a problemi grossi e difficili da risolvere e si articola nei seguenti passi:
 
 \begin{enumerate}
@@ -5417,15 +5472,15 @@ Essa si applica a problemi grossi e difficili da risolvere e si articola nei seg
 \end{enumerate}
 
 Dividendo a sufficienza i problemi, inevitabilmente si ottengono problemi risolubili senza che debbano essere divisi ulteriormente.
-Questa è una tecnica di natura ricorsiva, in quanto per risolvere i problemi più piccoli si applica lo stesso algoritmo del problema più grosso.
+Questa è una tecnica di natura ricorsiva, in quanto i problemi più piccoli sono risolti tramite l'algoritmo stesso.
 
 \bigskip
 In generale, un algoritmo \textbf{divide et impera} mostra le seguenti caratteristiche:
 
 \begin{itemize}
   \item si divide il problema \(a\) in sotto problemi, ognuno di dimensione \(\sfrac{1}{b}\) di quello originale
-  \item se il sotto problema ha dimensione \(n\) sufficientemente piccola \textit{(\(n < c\) con \(c\) costante)} allora esso può essere risolto in tempo costante \textit{(\(\Theta(1)\))}
-  \item Indicando con \(D(n)\) il costo di divisione e \(C(n)\) il costo di ricombinazione, si può esprimere il costo totale \(T(n)\) come:
+  \item se il sotto problema ha dimensione \(n\) sufficientemente piccola \textit{(tale per cui \(n < c\) con \(c\) costante)} allora esso può essere risolto in tempo costante \textit{(quindi in \(\Theta(1)\))}
+  \item Indicando con \(D(n)\) e \(C(n)\) i costi di divisione e ricombinazione, è possibile esprimere il costo totale \(T(n)\) come:
         \[ T(n) = \begin{cases} \Theta(1)                                 & \quad \text{ se } n < c   \\
               D(n) + aT\left(\sfrac{n}{b}\right) + C(n) & \quad \text{ altrimenti }
           \end{cases}\]
@@ -5437,7 +5492,7 @@ Una \textbf{ricorrenza} è una caratteristica delle funzioni ricorsive, ossia qu
 
 \begin{itemize}
   \item uno o più \textbf{casi base}
-  \item \textbf{chiamata a sé stesse}, con parametri più piccoli
+  \item una o più \textbf{chiamate} a sé stessa, con eventuali parametri più piccoli
 \end{itemize}
 
 Esistono \(3\) tecniche principali per il risolvimento delle ricorrenze:
@@ -5461,25 +5516,47 @@ Il metodo di sostituzione si articola in \(2\) passi:
 
 Può essere usato per trovare il limite superiore o il limite inferiore di una ricorrenza.
 
-Questo è un metodo potente, ma può essere applicato solo laddove è facile ipotizzare una soluzione.
+Questo metodo porta ad un risultato esatto, ma può essere applicato solo laddove è inizialmente facile ipotizzare una soluzione.
 
 \subsubsection{Metodo dell'albero di ricorsione}
 
-Questo metodo fornisce un risultato approssimato la cui validità va provata con altre tecniche.
+Questo metodo fornisce un risultato approssimato la cui validità va provata con altre tecniche \textit{(normalmente per sostituzione)}.
 
 \begin{enumerate}
-  \item Si disegna l'albero di ricorsione, tenendo conto che ad ogni livello la somma di ciascun nodo è pari alla dimensione della radice
-  \item Si somma la complessità di ogni livello per trovare la complessità totale
+  \item L'albero di ricorsione viene disegnato
+        \begin{itemize}[label=\(\rightarrow\)]
+          \item ad ogni livello la somma della dimensione di ciascun nodo è pari alla dimensione della radice
+        \end{itemize}
+  \item La complessità di ciascun livello viene sommata per trovare la complessità totale
 \end{enumerate}
 
 Questo metodo va usato insieme al metodo di sostituzione.
 Il metodo dell'albero di ricorsione, infatti, semplifica di molto il primo passo del metodo di sostituzione, ossia l'ipotesi della soluzione.
 
-Inoltre, questo metodo è molto comodo nei problemi di tipo \textit{Dividi et Impera}.
+\bigskip
+Questo tecnica è molto facile da applicare nei problemi di tipo \textit{Divide et Impera}, come sarà mostrato nel prossimo Paragrafo.
 
-\subsubsection{Teorema dell'esperto}
+\paragraph{Albero di ricorsione e tecnica \textit{Divide et Impera}}
 
-Il \textbf{Teorema dell'esperto} fornisce un metodo \inlinequote{da manuale} per risolvere le ricorrenze nella forma \(T(n) = aT(\sfrac{n}{b}) + f(n)\), dove \(a > 1,\ b \geq 1\) sono costanti e \(f\) è una funzione asintoticamente positiva.
+Come annunciato precedentemente, questa tecnica si adatta particolarmente agli algoritmi che adottano la tecninca \textit{Divide et Impera}.
+
+Infatti, se una ricorrenza è nella forma
+\[ T(n) = T(a) + T(b),\quad a + b = 1,\ a \geq b \]
+il corrispondente albero delle ricorrenze si esaurirà al livello \(k\), in corrispondenza del quale il parametro \(a\) avrà valore \textbf{unitario}.
+
+Ciò avverrà quando \(n \cdot a^k = 1\), quindi per \(k = \log_{\sfrac{1}{a}}{(n)}\).
+La complessità risultante andrà calcolata come la somma del costo del livello, che essendo composto da parametri unitari, è pari ad \(n\):
+\[ T(n) = n \log_{\sfrac{1}{a}}{(n)} \]
+
+Questo risultato va sempre verificato con il metodo di sostituzione.
+
+\subsubsection{Teorema dell'Esperto}
+\label{sec:teorema-dell-esperto}
+
+Il \textbf{Teorema dell'Esperto} fornisce un metodo \inlinequote{da manuale} per risolvere le ricorrenze nella forma:
+
+\[ T(n) = aT(\sfrac{n}{b}) + f(n), \quad a > 1,\ b \geq 1 \]
+
 Il teorema richiede di memorizzare tre casi, ma permette di trovare una soluzione alla ricorrenza con relativa semplicità.
 
 \bigskip
@@ -5492,19 +5569,19 @@ dove \(\sfrac{n}{b}\) è considerato arrotondato per difetto o per eccesso (quin
 
 \begin{enumerate}[label=\arabic*), ref=(\arabic*)]
   \item\label{enum:teorema-esperto-1} Se \(f(n) = \bigO\left(n^{\log_b(a) - \epsilon}\right)\) per una costante \(\epsilon > 0\), allora \(T(n) = \Theta\left(n^{\log_b (a)}\right)\)
-  \item\label{enum:teorema-esperto-2} Se \(f(n) = \Theta\left(n^{\log_b(a)}\right)\), allora \(T(n) = \Theta\left(n^{\log_b(a)} \log(n)\right)\)
+  \item\label{enum:teorema-esperto-2} Se \(f(n) = \Theta\left(n^{\log_b(a)}\right)\), allora \(T(n) = \Theta\left(n^{\log_b(a)} \log{(n)}\right)\)
   \item\label{enum:teorema-esperto-3} Se \(f(n) = \Omega\left(n^{\log_b(a) + \epsilon}\right)\) per una costante \(\epsilon > 0\) e se \(a \cdot f(\sfrac{n}{b}) \leq c \cdot f(n)\) per una costante \(c < 1\) \textit{(condizione di regolarità)} e dei valori di \(n\) sufficientemente grandi, allora \(T(n) = \Theta\left(f(n)\right)\)
 \end{enumerate}
 
 \bigskip
 \textit{Informalmente}, il teorema porta a confrontare \(f(n)\) con la funzione \(n^{\log_b(a)}\).
 
-Se, come nel caso \ref{enum:teorema-esperto-1}, la funzione \(n^{\log_b(a)}\) è la più grande, allora la soluzione è \(T(n) = \Theta\left(n^{\log_b (a)}\right)\).
+Se, come nel caso \ref{enum:teorema-esperto-1}, la funzione \(n^{\log_b(a)}\) è la più grande delle due, allora la soluzione è \(T(n) = \Theta\left(n^{\log_b (a)}\right)\).
 Se, invece, è \(f(n)\) ad essere la più grande, come nel caso \ref{enum:teorema-esperto-3}, allora la soluzione è \(T(n) = \Theta\left(f(n)\right)\).
-Infine, se come nel caso \ref{enum:teorema-esperto-2}, le due funzioni sono della stessa dimensione, moltiplicando per un fattore logaritmico risulta che la soluzione è \(T(n) = \Theta\left(n^{\log_b(a)} \log(n)\right) = \Theta\left(f(n) \log(n)\right)\).
+Infine, se come nel caso \ref{enum:teorema-esperto-2}, le due funzioni sono della stessa dimensione, moltiplicando per un fattore logaritmico risulta che la soluzione è \(T(n) = \Theta\left(n^{\log_b(a)} \log{(n)}\right) = \Theta\left(f(n) \log{(n)}\right)\).
 
 \bigskip
-Bisogna tuttavia tenere conto di alcuni dettagli tecnici.
+Prima di poter applicare il teorema, bisogna tenere conto di alcuni dettagli non \textit{ovvi}.
 
 Nel primo caso, \ref{enum:teorema-esperto-1}, non solo \(f(n)\) deve essere più piccola di \(n^{\log_b(a)}\), ma deve essere \textbf{polinomialmente più piccola}.
 Essa sarà, asintoticamente, più piccola di un fattore \(n^\epsilon,\ \epsilon>0\).
@@ -5520,7 +5597,7 @@ Se la funzione \(f(n)\) cade in uno di questi \inlinequote{vuoti}, o se la condi
 
 \paragraph{Confronto polinomiale}
 
-Per cercare di chiarire il concetto di \inlinequote{più piccolo} e \inlinequote{più grande}, verranno ora esposti degli \textit{esempi}.
+Per cercare di chiarire il concetto di polinomialmente \inlinequote{più piccolo} e \inlinequote{più grande}, verranno ora esposti degli \textit{esempi}.
 
 \begin{itemize}
   \item \(n\) è polinomialmente \textbf{più piccolo} di \(n^2\)
@@ -5528,13 +5605,17 @@ Per cercare di chiarire il concetto di \inlinequote{più piccolo} e \inlinequote
   \item \(n \log (n)\) è più grande di \(n\) ma \textbf{non polinomialmente}
 \end{itemize}
 
+\bigskip
+In generale, una funzione \(f(n)\) è polinomialmente \textbf{più grande} di una funzione \(g(n)\) se vale la relazione:
+\[\dfrac{f(n)}{g(n)} = \textit{ polinomio di grado } \geq 1 \]
+
 \paragraph{Casi particolari}
 
-Il teorema dell'Esperto si semplifica notevolmente qualora \(f(n)\) è una funzione \(\Theta(n^k)\), con \(k\) costante:
+Il Teorema dell'Esperto si semplifica notevolmente qualora \(f(n)\) è una funzione \(\Theta(n^k)\), con \(k\) costante:
 
 \begin{enumerate}[label=\arabic*), ref=(\arabic*)]
   \item\label{enum:caso-particolare-teorema-esperto-1} Se \(k < \log_b(a)\), allora \(T(n) = \Theta\left(n^{\log_b(a)}\right)\)
-  \item\label{enum:caso-particolare-teorema-esperto-2} Se \(k = \log_b(a)\), allora \(T(n) = \Theta\left(n^k \log(n)\right)\)
+  \item\label{enum:caso-particolare-teorema-esperto-2} Se \(k = \log_b(a)\), allora \(T(n) = \Theta\left(n^k \log{(n)}\right)\)
   \item\label{enum:caso-particolare-teorema-esperto-3} Se \(k > \log_b(a)\), allora \(T(n) = \Theta\left(n^k\right)\)
 \end{enumerate}
 
@@ -5545,7 +5626,7 @@ Nel caso \ref{enum:caso-particolare-teorema-esperto-3} la condizione aggiuntiva 
 \subsubsection{Operazioni sugli heap}
 
 \begin{center}
-  \begin{minipage}{0.3\textwidth}
+  \begin{minipage}{0.31\textwidth}
     \centering
     \begin{lstlisting}[style=pseudocode, numbers=none]
 PARENT(i):
@@ -5572,7 +5653,7 @@ Ogni array \texttt{A} che rappresenta uno heap ha \(2\) attributi:
   \item \texttt{A.length}, rappresentante il numero totale di elementi dell'array
   \item \texttt{A.heap-size}, rappresentante il numero totale di elementi dell'heap
         \begin{itemize}
-          \item \texttt{A.heap-size} \(\leq\) \texttt{A.length} \(\forall \, A\)
+          \item \texttt{A.heap-size} \(\leq\) \texttt{A.length} \(\forall \, \texttt{A}\)
           \item solo gli elementi fino a \texttt{A.heap-size} hanno le proprietà dello heap
           \item l'array potrebbe però contenere elementi dopo l'indice \texttt{A.heap-size}
         \end{itemize}
@@ -5601,12 +5682,12 @@ MAX-HEAPIFY(A, i)
 \paragraph{Analisi dell'algoritmo \texttt{MAX-HEAPIFY}}
 
 La complessità temporale di \texttt{MAX-HEAPIFY} è parti a
-\[ T_{\texttt{MAX-HEAPIFY}} = \bigO(h) = \bigO\left(\log(n)\right) \]
-dove \(h\) corrisponde all'altezza dell'albero, che essendo quasi completo è inferiore di \(\log(n)\).
+\[ T_{\texttt{MAX-HEAPIFY}} = \bigO(h) = \bigO\left(\log{(n)}\right) \]
+dove \(h\) corrisponde all'altezza dell'albero, che essendo quasi completo è inferiore di \(\log{(n)}\).
 
 \bigskip
-Sarebbe stato possibile giungere alla stessa soluzione usando il teorema dell'esperto per la ricorrenza
-\[ T(n) = T\left(\sfrac{2n}{3}\right) + \Theta(1) \]
+Sarebbe stato possibile giungere alla stessa soluzione usando il Teorema dell'Esperto per la ricorrenza
+\[ T(n) = T\left(\dfrac{2n}{3}\right) + \Theta(1) \]
 che rappresenta il tempo di esecuzione di \texttt{MAX-HEAPIFY} nel caso pessimo.
 
 In questo caso, infatti, l'ultimo livello dell'albero è pieno esattamente a metà.
@@ -5621,8 +5702,8 @@ La costruzione avviene \textit{bottom-up}, partendo dalle foglie fino alla radic
 Funziona grazie a due proprietà dello heap:
 
 \begin{itemize}
-  \item Tutti gli elementi oltre l'indice \texttt{A.length / 2} sono delle foglie, gli altri sono dei nodi interni
-  \item I sotto alberi fatti di solo foglie sono, presi singolarmente, max-heap in quanto costituiti da un solo elemento
+  \item Tutti gli elementi oltre l'indice \texttt{A.length / 2} sono delle \textbf{foglie}, gli altri sono dei \textbf{nodi interni}
+  \item I sotto alberi fatti di solo foglie sono max-heap in quanto costituiti da \textbf{un solo elemento}
 \end{itemize}
 
 \begin{lstlisting}[style=pseudocode]
@@ -5634,7 +5715,7 @@ BUILD-MAX-HEAP(A)
 
 \paragraph{Analisi dell'algoritmo \texttt{BUILD-MAX-HEAP}}
 
-Il costo dell'algoritmo \texttt{BUILD-MAX-HEAP}, a priori, potrebbe risultare pari a \(\bigO(\left(n \log(n)\right))\).
+Il costo dell'algoritmo \texttt{BUILD-MAX-HEAP}, a priori, potrebbe risultare pari a \(\bigO(\left(n \log{(n)}\right))\).
 Tuttavia, questo limite non fornisce una precisione sufficiente.
 
 Infatti, si osserva che:
@@ -5665,7 +5746,7 @@ Nelle prossime Sezioni alcuni di essi verranno analizzati in dettaglio.
 L'algoritmo \texttt{INSERTION-SORT} è uno dei più semplici algoritmi di ordinamento.
 
 \textit{Idea} dell'algoritmo:
-per ogni elemento \(x\) di una sequenza \(A\) di elementi, partendo dalla prima posizione, si inserisce l'elemento in una posizione successiva, fino a quando non viene trovata una posizione successiva in cui inserire \(x\).
+per ogni elemento \(x\) di una sequenza \(A\) di elementi, partendo dalla prima posizione, inserisce l'elemento viene prelevato e l'array viene scorso fino a quando non viene trovata una posizione valida in cui inserire \(x\).
 
 L'array viene quindi ordinato senza sul posto, senza bisogno di array ausiliari.
 
@@ -5705,24 +5786,24 @@ INSERTION-SORT(A)
 
 Il tempo di esecuzione di \texttt{INSERTION-SORT(A)} è:
 
-\[ T(n) = c_1 \cdot n + c_2 \cdot (n-1) + c_3 \cdot (n-1) + c_4 \cdot \displaystyle \sum_{j=2}^n t_j + c_5 \cdot \displaystyle \sum_{h-2}^n (t_j - 1) + c_6 \cdot \displaystyle \sum_{h-2}^n (t_j - 1) + c_7 \cdot (n-1) \]
+\[ T(n) = c_1 \cdot n + c_2 \cdot (n-1) + c_3 \cdot (n-1) + c_4 \cdot \displaystyle \sum_{j=2}^n t_j + c_5 \cdot \displaystyle \sum_{h=2}^n (t_j - 1) + c_6 \cdot \displaystyle \sum_{h=2}^n (t_j - 1) + c_7 \cdot (n-1) \]
 
 \begin{itemize}
   \item Caso \textbf{ottimo}:
         \begin{itemize}
           \item gli elementi sono già ordinati, \(t_2 = \ldots = t_n = 1\)
-          \item \(T(n) = an + b \quad \Rightarrow \quad T(n) = \Theta(n)\)
-          \item si può anche dire che \(T(n) = \Omega(n)\) perché il limite inferiore è funzione di \(\Theta(n)\)
+          \item \(T(n) \approx an + b \ \Rightarrow \  T(n) = \Theta(n)\)
+          \item si può anche affermare che \(T(n) = \Omega(n)\) perché il limite inferiore è funzione di \(\Theta(n)\)
         \end{itemize}
   \item Caso \textbf{pessimo}:
         \begin{itemize}
           \item gli elementi sono già ordinati ma in ordine decrescente \(t_2 = 2,\ t_3 = 3,\ \ldots\)
-          \item \(T(n) = an^2 + bn + c \quad \Rightarrow \quad T(n) = \Theta(n^2)\)
-          \item si può anche dire che \(T(n) = \bigO(n^2)\) perché il limite superiore è funzione di \(\Theta(n^2)\)
+          \item \(T(n) \approx an^2 + bn + c \ \Rightarrow \ T(n) = \Theta(n^2)\)
+          \item si può anche affermare che \(T(n) = \bigO(n^2)\) perché il limite superiore è funzione di \(\Theta(n^2)\)
         \end{itemize}
 \end{itemize}
 
-\subsubsection{\texttt{MERGESORT}}
+\subsubsection{\texttt{MERGE-SORT}}
 
 \textit{Idea} dell'algoritmo:
 
@@ -5730,9 +5811,10 @@ Il tempo di esecuzione di \texttt{INSERTION-SORT(A)} è:
   \item Se l'array da ordinare ha meno di \(2\) elementi, allora è ordinato per definizione
   \item Altrimenti:
         \begin{itemize}
-          \item si dive l'array in \(2\) sotto array, ognuno con la metà degli elementi di quello originario
-          \item si ordinano i \(2\) sotto array applicando di nuovo l'algoritmo
-          \item si fondono \textit{(tramite l'algoritmo \texttt{MERGE})} i \(2\) sotto array ora ordinati
+          \item l'array viene diviso in \(2\) sotto array, ognuno con la metà degli elementi di quello originario
+          \item i \(2\) sotto array vengono ordinati applicando di nuovo l'algoritmo
+          \item grazie all'algoritmo \texttt{MERGE} i \(2\) sotto array vengono combinati
+          \item gli elementi dell'array ottenuto sono ordinati
         \end{itemize}
 \end{itemize}
 
@@ -5742,11 +5824,10 @@ Per completare l'algoritmo, infatti, è necessario definire un sotto algoritmo \
 \textit{Idea} dell'algoritmo:
 
 \begin{enumerate}
-  \item Si va all'inizio dei \(2\) sotto array
-        \item\label{enum:begin-merge-loop} Si prende il minimo dei \(2\) elementi correnti
-  \item Si inserisce il minimo alla fine dell'array da restituire
-  \item Si avanza di uno nell'array da cui si è preso il minimo
-  \item Si ripete il passo \ref{enum:begin-merge-loop}
+  \item \label{enum:begin-merge-loop} Partendo dall'inizio dei \(2\) sotto array, viene cercato il minimo dei \(2\) elementi correnti
+  \item Il minimo viene inserito all'inizio dell'array da restituire
+  \item L'inizio dell'array da cui è stato prelevato il minimo viene avanzato di \(1\)
+  \item L'esecuzione riprende dal passo \ref{enum:begin-merge-loop}
 \end{enumerate}
 
 \begin{minipage}{0.99\textwidth}
@@ -5763,26 +5844,26 @@ MERGE-SORT(A, p, R)
     \centering
     \begin{minipage}[t]{0.495\textwidth}
       \begin{lstlisting}[style=pseudocode]
-      MERGE(A, p, q, r)
-        n1 := q - p + 1
-        n2 := r - q
-        alloca L[1 .. n1+1]
-        alloca R[1 .. n2+1]
-        for i := 1 to n1
-          L[i] := A[p+i-1]
-        for j := 1 to n2
-          R[j] := A[q+j]
-        L[n1+1] := $\infty$
-        R[n2+1] := $\infty$
-        i := 1
-        j := 1
-        for k := p to r
-          if L[i] <= R[j]
-            A[k] := L[i]
-            i := i + 1
-          else
-            A[k] := R[j]
-            j := j + 1
+MERGE(A, p, q, r)
+  n1 := q - p + 1
+  n2 := r - q
+  alloca L[1 .. n1+1]
+  alloca R[1 .. n2+1]
+  for i := 1 to n1
+    L[i] := A[p+i-1]
+  for j := 1 to n2
+    R[j] := A[q+j]
+  L[n1+1] := $\infty$
+  R[n2+1] := $\infty$
+  i := 1
+  j := 1
+  for k := p to r
+    if L[i] <= R[j]
+      A[k] := L[i]
+      i := i + 1
+    else
+      A[k] := R[j]
+      j := j + 1
           \end{lstlisting}
     \end{minipage}
     \begin{minipage}[t]{0.495\textwidth}
@@ -5808,6 +5889,12 @@ MERGE-SORT(A, p, R)
   \end{minipage}
 \end{minipage}
 
+\begin{itemize}
+  \item \texttt{A} è l'array di \textbf{input} di dimensione \(n\) \textit{(da ordinare)}
+  \item \texttt{p} è la posizione iniziale del primo elemento
+  \item \texttt{r} è la posizione dell'ultimo elemento
+\end{itemize}
+
 \paragraph{Analisi dell'algoritmo \texttt{MERGE}}
 
 Nell'algoritmo \texttt{MERGE} prima vengono copiati gli elementi dei \(2\) sotto array \texttt{A[p .. q]} e \texttt{A[q+1 .. r]} in \(2\) array temporanei \(L\) e \(R\) e poi vengono fusi in \texttt{A[p .. r]}.
@@ -5821,22 +5908,27 @@ La dimensione dei dati in input è \(\texttt{n} = \texttt{r} - \texttt{p} + 1\) 
           \item il primo è eseguito \(n_1\) volte, con \(\Theta(n_1) = \Theta(\texttt{q}-\texttt{p}+1) = \Theta(\sfrac{n}{2}) = \Theta(n)\)
           \item il secondo è eseguito \(n_2\) volte, con \(\Theta(n_2) = \Theta(\texttt{r}-\texttt{q}) = \Theta(\sfrac{n}{2}) = \Theta(n)\)
         \end{enumerate}
-  \item[\(\rightarrow\)] in totale, \(T_\texttt{MERGE} = \Theta(n)\)
 \end{itemize}
+Quindi combinando i due passi, \(T_\texttt{MERGE} = \Theta(n)\)
 
 \paragraph{Analisi delle ricorrenze dell'algoritmo \texttt{MERGE-SORT}}
 
-Siano \(a = b = c = 2\).
-Di conseguenza, \(D(n) = \Theta(1),\ C(n) = \Theta(n)\).
+Siano:
 
-La complessità totale sarà:
+\begin{itemize}
+  \item \(a = b = 2\) perché il problema viene diviso in due sotto problemi di dimensione \textit{quasi} analoga
+  \item \(D(n) = \Theta(1)\) perché la divisione del problema ha costo costante
+  \item \(C(n) = \Theta(n)\) perché è necessario scorrere tutti gli elementi dei sotto array per poterli ricombinare
+\end{itemize}
+
+La ricorrenza totale corrisponderà quindi a:
 
 \[T(n) = \begin{cases}
-    \Theta(1)                    & \quad \text{ se } n < 2   \\
-    2T(\sfrac{n}{2}) + \Theta(n) & \quad \text{ altrimenti }
+    \Theta(1)                                           & \quad \text{ se } n < 2   \\
+    \Theta(1) + 2T\left(\dfrac{n}{2}\right) + \Theta(n) & \quad \text{ altrimenti }
   \end{cases}\]
 
-In realtà la complessità dovrebbe essere \(T(\lfloor \sfrac{n}{2} \rfloor) + T(\lfloor \sfrac{n}{2} \rfloor)\) ma l'approssimazione a \(2T(\sfrac{n}{2})\) è sufficiente perché non influisce sul comportamento asintotico della funzione.
+Per essere più precisi, la ricorrenza dovrebbe essere \(T(\lfloor \sfrac{n}{2} \rfloor) + T(\lfloor \sfrac{n}{2} \rfloor)\) e non \(2T(\sfrac{n}{2})\), ma l'approssimazione è sufficiente perché non influisce sul comportamento asintotico della funzione.
 
 \bigskip
 
@@ -5844,12 +5936,14 @@ Riscrivendo la ricorrenza dell'algoritmo senza fare uso delle notazioni \textit{
 
 \[
   T(n) = \begin{cases}
-    c                     & \quad \text{ se } n < 2  \\
-    2T(\sfrac{n}{2}) + cn & \quad \text{ altrimenti}
+    c                                & \quad \text{ se } n < 2  \\
+    2T\left(\dfrac{n}{2}\right) + cn & \quad \text{ altrimenti}
   \end{cases}
 \]
 
-Per visualizzare le ricorsioni si può fare uso di un \textbf{albero di ricorsione}, scegliendo per semplicità il caso in cui \(n\) è una potenza di due.
+Per un appropriata costante \(c\).
+
+La ricorrenza può essere visualizzata tramite un \textbf{albero di ricorsione}, scegliendo per semplicità il caso in cui \(n\) è una potenza di \(2\) \textit{(e quindi ogni ramo viene diviso in due sotto rami senza problemi di arrotondamento)}.
 Una rappresentazione dell'albero di ricorsione è mostrata in Figura~\ref{fig:albero-ricorsione-algoritmo-merge-sort}.
 
 \begin{figure}[htbp]
@@ -5863,17 +5957,18 @@ Una rappresentazione dell'albero di ricorsione è mostrata in Figura~\ref{fig:al
 
 Sommando i costi dei vari livelli si ottiene:
 
-\[ T(n) = cn \log(n) + cn \quad \Rightarrow \quad T_\texttt{MERGE-SORT} = \Theta(n \log(n)) \]
+\[ T(n) = cn \log{(n)} + cn \quad \Rightarrow \quad T_\texttt{MERGE-SORT} = \Theta(n \log{(n)}) \]
 
 \bigskip
 Analogamente sarebbe stato possibile applicare il Teorema dell'Esperto, giungendo alla stessa soluzione.
 Infatti:
 
 \[ T(n) = 2T(\sfrac{n}{2}) + \Theta(n)\ \]
-dove \(a = b = 2,\ f(n) = n\) e di conseguenza \(n^{\log_b(a)} = n^1 = n\).
 
-Si ricade quindi nel caso \ref{enum:teorema-esperto-2} del teorema dell'esperto:
-\[ T_{\texttt{MERGE-SORT}} = \Theta(n \log(n)) \]
+dove \(a = b = 2,\ f(n) = n\), come nel caso~\ref{enum:teorema-esperto-2} del Teorema.
+
+Di conseguenza, \(n^{\log_b(a)} = n^1 = n\) e la complessità temporale è quindi:
+\[ T_{\texttt{MERGE-SORT}} = \Theta(n \log{(n)}) \]
 
 \subsubsection{\texttt{HEAPSORT}}
 \label{sec:heap-sort}
@@ -5894,21 +5989,24 @@ HEAPSORT(A)
     MAX-HEAPIFY(A, 1)
 \end{lstlisting}
 
+Dove \texttt{A} è l'array di \textbf{input} di dimensione \(n\) \textit{(da ordinare)}
+
 \paragraph{Analisi dell'algoritmo \texttt{HEAPSORT}}
 
-La complessità dell'algoritmo \texttt{HEAPSORT} è
-\[ T(n) = \bigO (n \log(n)) \]
-perché:
+La complessità dell'algoritmo \texttt{HEAPSORT} è data dalla somma delle seguenti ricorrenze:
 
 \begin{itemize}
-  \item \texttt{BUILD-MAX-HEAP} ha costo \(\bigO(n)\)
-  \item \texttt{MAX-HEAPIFY} è invocato \(n-1\) volte, con costo \(\bigO\left(\log(n)\right)\)
+  \item \texttt{BUILD-MAX-HEAP} è invocato una volta, con costo \(\bigO(n)\)
+  \item \texttt{MAX-HEAPIFY} è invocato \(n-1\) volte, con costo \(\bigO\left(\log{(n)}\right)\)
 \end{itemize}
+
+Quindi la complessità totale sarà:
+\[ T(n) = \bigO (n \log{(n)}) \]
 
 \subsubsection{\texttt{QUICKSORT}}
 
 L'algoritmo \texttt{QUICKSORT} è un algoritmo in stile \textit{\nameref{sec:divide-et-impera}}, che ordina sul posto.
-Nel caso pessimo ha complessità \(\Theta(n^2)\), superiore all'\nameref{sec:heap-sort}, ma nel caso medio ha complessità \(\Theta\left(n \log(n)\right)\).
+Nel caso pessimo ha complessità \(\Theta(n^2)\), superiore all'\nameref{sec:heap-sort}, ma nel caso medio ha complessità \(\Theta\left(n \log{(n)}\right)\).
 
 \textit{Idea} dell'algoritmo, dato un array \texttt{A[p..r]} da ordinare:
 
@@ -5954,6 +6052,12 @@ PARTITION(A, p, r):
   \end{minipage}
 \end{center}
 
+\begin{itemize}
+  \item \texttt{A} è l'array di \textbf{input} di dimensione \(n\) \textit{(da ordinare)}
+  \item \texttt{p} è la posizione iniziale del primo elemento
+  \item \texttt{r} è la posizione dell'ultimo elemento
+\end{itemize}
+
 \paragraph{Analisi di \texttt{QUICKSORT}}
 
 La complessità di \texttt{PARTITION} e \(\Theta(n),\ n = r - p + 1\).
@@ -5965,20 +6069,822 @@ Il tempo di esecuzione di \texttt{QUICKSORT} dipende da come viene partizionato 
   \item Se ogni volta uno dei \(2\) sotto array è vuoto mentre l'altro contiene \(n-1\) elementi si ha il caso \textbf{pessimo}:
         \begin{itemize}
           \item la ricorrenza è \(T(n) = T(n - 1) + \Theta(n)\)
-          \item risolvendo per sostituzione o tramite il Teorema dell'esperto dimostra che la soluzione è \(\Theta(n^2)\)
+          \item risolvendo per sostituzione o tramite il Teorema dell'Esperto dimostra che la soluzione è \(\Theta(n^2)\)
           \item questo caso si può verificare quando l'array è già ordinato
         \end{itemize}
   \item Se ogni volta i due sotto array hanno una dimensione pari a \(\sfrac{n}{2}\) si ha il caso \textbf{ottimo}:
         \begin{itemize}
           \item la ricorrenza è \(T(n) = 2T(\sfrac{n}{2}) + \Theta(n)\)
-          \item risolvendo si dimostra che la soluzione è \(\Theta(n \log(n))\)
+          \item risolvendo si dimostra che la soluzione è \(\Theta(n \log{(n)})\)
         \end{itemize}
 \end{itemize}
 
 Se la proporzione di divisione fosse diversa da \(\sfrac{1}{2}\) e \(\sfrac{1}{2}\), la complessità rimarrebbe la stessa.
 
 \bigskip
-Il caso \textbf{medio} va analizzato in modo diverso:
+Il caso \textbf{medio} va analizzato in modo diverso.
+Qualora le partizioni fossero bilanciate (e quindi i sotto array fossero di pari lunghezze \(\sfrac{n}{2}\)), infatti, la complessità sarebbe più bassa.
+
+Più nel dettaglio:
+
+\begin{itemize}
+  \item Il costo di una divisione \textbf{bilanciata}: \(\Theta(n)\)
+  \item Il costo di una divisione \textbf{non bilanciata}: \(\Theta(n)\)
+\end{itemize}
+
+Quindi il costo di una catena di divisioni è la stessa e quindi l'algoritmo sarà \(\Theta(n \log{(n)})\).
+
+\begin{figure}[htbp]
+  \bigskip
+  \centering
+  \tikzfig{image-28.tikz}
+  \caption{Partizione bilanciata e sbilanciata}
+  \label{fig:partizione-bilanciata-sbilanciata}
+  \bigskip
+\end{figure}
+
+\bigskip
+Lo stesso risultato sarebbe stato raggiunto anche applicando il Teorema dell'Esperto:
+
+\begin{itemize}
+  \item Nel caso ottimo, la ricorrenza è \(T(n) \leq 2T(\sfrac{n}{2}) + \Theta(n)\)
+        \begin{itemize}
+          \item la soluzione porterà a \(T(n) = \bigO\left(n \log{(n)}\right)\)
+        \end{itemize}
+  \item Nel caso pessimo, in cui l'algoritmo produce una divisione \(9\) a \(1\), la ricorrenza è \(T(n) \leq T(\sfrac{9n}{10}) + T(\sfrac{n}{10}) + c \cdot n\)
+        \begin{itemize}
+          \item la soluzione porterà a \(T(n) = \bigO\left(n^2\right)\)
+        \end{itemize}
+\end{itemize}
+
+\subsubsection{\texttt{COUNTING-SORT}}
+
+L'algoritmo \texttt{COUNTING-SORT} è un algoritmo di ordinamento che richiede che tutti i valori in ingresso \(a_0, \ldots a_k\) sono tutti i numeri compresi tra \(0\) ed una certa costante \(k\).
+
+\textit{Idea} di base:
+se nell'array ci sono \(m_e\) valori più piccoli di un certo elemento \(e\) di valore \(v_e\), nell'array ordinato quest'ultimo sarà in posizioni \(m_e + 1\).
+Quindi per ordinare l'array basta contare quante copie dello stesso valore \(v_e\) sono presenti all'interno dello stesso: questa informazione viene usata per determinare, per ogni elemento \(e, 0 \leq v_e \leq k\), quanti elementi sono più piccoli di \(e\).
+Infine bisogna tenere conto degli elementi ripetuti.
+
+\begin{lstlisting}[style=pseudocode]
+COUNTING-SORT(A, B, K):
+  for i := 0 to k
+    C[i] := 0
+  for j := 1 to A.length
+    C[A[j]] := C[A[j]] + 1
+    // ora C[i] contiene il numero di elementi = i
+  for i := 1 to k
+    C[i] := C[i] + C[i - 1]
+    // ora C[i] contiene il numero di elementi <= i
+  for j := A.length downto 1
+    B[C[A[j]]] := A[j]
+    C[A[j]] := C[A[j]] - 1
+\end{lstlisting}
+
+In cui i parametri sono:
+
+\begin{itemize}
+  \item \texttt{A} è l'array di \textbf{input} di dimensione \(n\) \textit{(da ordinare)}
+  \item \texttt{B} è l'array di \textbf{output} di dimensione \(n\) \textit{(ordinato)}
+  \item \texttt{k} è il valore massimo tra i valori di \texttt{A}
+\end{itemize}
+
+\paragraph{Analisi dell'algoritmo \texttt{COUNTING SORT}}
+
+La complessità dell'algoritmo \texttt{COUNTING-SORT} è data dai \(4\) cicli \textbf{\texttt{for}}:
+
+\begin{itemize}
+  \item Il \textbf{\texttt{for}} del ciclo che inizia alla riga \(2\) ha complessità \(\Theta(k)\).
+  \item Il \textbf{\texttt{for}} del ciclo che inizia alla riga \(4\) ha complessità \(\Theta(n)\).
+  \item Il \textbf{\texttt{for}} del ciclo che inizia alla riga \(7\) ha complessità \(\Theta(k)\).
+  \item Il \textbf{\texttt{for}} del ciclo che inizia alla riga \(10\) ha complessità \(\Theta(n)\).
+\end{itemize}
+
+La complessità totale sarà quindi \(\Theta(n+k)\).
+
+Se \(k = \bigO(n)\), allora l'algoritmo \texttt{COUNTING-SORT} ha complessità \(\bigO(n)\) \textit{(lineare)}.
+\texttt{COUNTING-SORT} è più veloce di \texttt{MERGE-SORT} e \texttt{HEAPSORT} perché fa delle forti assunzioni sulla distribuzione dei valori da ordinare \textit{(assumendo che ogni valore sia \(\leq k\))}.
+
+In caso contrario, la complessità dell'algoritmo \texttt{COUNTING-SORT} sarà superiore a quella degli altri algoritmi.
+
+\bigskip
+Si noti che è possibile ottenere una versione semplificata dell'algoritmo senza fare uso dell'array \texttt{B}, perdendo tuttavia stabilità.
+Se nell'array da ordinare ci fossero più elementi con lo stesso valore, questi appariranno nell'array ordinato mantenendo il loro ordine iniziale \textit{(proprietà garantita dall'uso dell'array \texttt{B})}.
+
+Questa non è una proprietà particolarmente interessante nell'ordinare i numeri, ma ordinando oggetti tramite un loro attributo chiave.
+
+\subsubsection{Limite inferiore della complessità nei problemi di ordinamento}
+
+Nelle Sezioni precedenti sono stati introdotti ed analizzati svariati algoritmi di ordinamento che sono in grado di ordinare \(n\) numeri in tempo \(\bigO(n \log{(n)})\).
+Questi algoritmi condividono una importante proprietà: \textit{l'ordine da essi determinato dipende solo da confronti tra gli elementi di input}.
+Essi prendono quindi il nome di \textbf{algoritmi di ordinamento comparativi}.
+
+Questi algoritmi possono essere visti in modo astratto tramite un \textbf{albero di decisione}, un albero binario che rappresenta i confronti tra gli elementi fatti da un determinato algoritmo di ordinamento con un certo input.
+L'esecuzione dell'algoritmo corrisponde al tracciamento di un percorso dalla radice alla foglia contenente gli elementi in ordine.
+
+Poiché ogni algoritmo deve poter creare le \(n!\) permutazioni, incluse quelle che possono apparire più volte, l'albero avrà un numero di foglie superiore a \(n!\).
+Un esempio di albero di decisione, insieme alla sua notazione, è mostrato nella Figura~\ref{fig:albero-di-decisione-esempio}.
+
+\begin{figure}[htbp]
+  \bigskip
+  \centering
+  \tikzfig{image-29.tikz}
+  \caption{Albero di decisione. Un nodo con la notazione \(i : j\) indica la permutazione tra gli elementi \(i\) e \(j\). Il percorso verde mostra la decisione dell'algoritmo di ordinamento quando avendo come input \(\langle a_1 = 9, a_2 = 6, a_3  = 2\rangle\). La permutazione \(\langle 3, 2, 1 \rangle\) nella foglia verde indica l'ordinamento corretto. Poiché ci sono \(3\) elementi, ci saranno \(3! = 6\) foglie.}
+  \label{fig:albero-di-decisione-esempio}
+  \bigskip
+\end{figure}
+
+Poiché è possibile costruire un albero di decisione per ogni dato \(n\), tenendo conto del \nameref{par:lemma-altezza-albero-binario}, \textit{(Paragrafo~\ref{par:lemma-altezza-albero-binario})}, si ottiene il seguente teorema:
+
+\indentquote{Ogni albero di decisione di ordinamento di \(n\) elementi ha altezza \(\Omega(n \log n)\).}
+
+\paragraph{Dimostrazione del limite inferiore della complessità}
+
+Sia \(f\) il numero di foglie dell'albero di decisione di ordinamento di \(n\) elementi.
+Come visto prima, \(f \geq n!\).
+
+Per il Lemma sarà valida la relazione:
+
+\[ n! \leq f \leq 2^h \ \Rightarrow \ 2^h \geq n! \]
+
+Quindi il limite inferiore della complessità è:
+
+\[ h \geq \log{(n!)} \geq \log\left(\left(\sfrac{n}{2}\right)^{\sfrac{n}{2}}\right) = \dfrac{n}{2} \log\left(\dfrac{n}{2}\right) = \Omega(n \log{(n)} )\]
+
+come volevasi dimostrare.
+
+\bigskip
+Alternativamente sarebbe stato possibile ottenere lo stesso risultato tramite l'approssimazione di Stirling:
+\[ n! > \left(\dfrac{n}{e}\right)^n \quad \Rightarrow \quad h \geq \log\left(\left(\sfrac{n}{e}\right)^n\right) = n \log\left(\sfrac{n}{e}\right) = n \log{(n)} - n \log{(e)} = \Omega(n \log{(n)})\]
+
+\clearpage
+
+\section{Strutture dati}
+
+Le strutture dati sono usate per \textbf{contenere oggetti}.
+Essi rappresentano \textit{collezioni (o insiemi dinamici)} di oggetti.
+
+Normalmente, gli oggetti di una struttura dati presentano:
+
+\begin{itemize}
+  \item Una \textbf{chiave}, usata per indicizzare l'oggetto
+  \item Dei \textbf{dati satellite}, ognuno associato ad una delle chiavi
+\end{itemize}
+
+Sono definiti \(2\) tipi di operazioni sulle strutture dati:
+
+\begin{itemize}
+  \item operazioni che \textbf{modificano} la collezione
+  \item operazioni che \textbf{interrogano} la collezione
+\end{itemize}
+
+\bigskip
+Le operazioni più usate, in pseudocodice, sono:
+
+\begin{itemize}
+  \item \texttt{SEARCH(S, k)} - \textit{interrogazione}
+        \begin{itemize}
+          \item restituisce il \textbf{riferimento all'oggetto} \texttt{x} corrispondente alla chiave \texttt{K} nella collezione \texttt{S}
+          \item se nessun elemento corrisponde alla chiave, restituisce \texttt{NIL}
+        \end{itemize}
+  \item \texttt{INSERT(S, x)} - \textit{modifica}
+        \begin{itemize}
+          \item \textbf{inserisce} l'oggetto \texttt{x} nella collezione \texttt{S}
+        \end{itemize}
+  \item \texttt{DELETE(S, x)} - \textit{modifica}
+        \begin{itemize}
+          \item \textbf{elimina} l'oggetto \texttt{x} dalla collezione \texttt{S}
+        \end{itemize}
+  \item \texttt{MINIMUM(S)} - \textit{interrogazione}
+        \begin{itemize}
+          \item restituisce l'oggetto nella collezione \texttt{S} con la \textbf{chiave più piccola}
+        \end{itemize}
+  \item \texttt{MAXIMUM(S)} - \textit{interrogazione}
+        \begin{itemize}
+          \item restituisce l'oggetto nella collezione \texttt{S} con la \textbf{chiave più grande}
+        \end{itemize}
+  \item \texttt{SUCCESSOR(S, x)} - \textit{interrogazione}
+        \begin{itemize}
+          \item restituisce l'oggetto nella collezione \texttt{S} con la \textbf{chiave successiva} alla chiave dell'oggetto \texttt{x}
+          \item necessita di una qualche forma di ordinamento all'interno di \texttt{S}, definita dalla struttura dati
+        \end{itemize}
+  \item \texttt{PREDECESSOR(S, x)} - \textit{interrogazione}
+        \begin{itemize}
+          \item restituisce l'oggetto nella collezione \texttt{S} con la \textbf{chiave precedente} alla chiave dell'oggetto \texttt{x}
+          \item necessita di una qualche forma di ordinamento all'interno di \texttt{S}, definita dalla struttura dati
+        \end{itemize}
+\end{itemize}
+
+\subsection{Pila - \textit{stack}}
+
+Una \textbf{pila} è una collezione di oggetti sulla quale è possibile compiere le seguenti operazioni:
+
+\begin{itemize}
+  \item \textbf{Controllare} se è vuota
+  \item \textbf{Inserire} un elemento nella collezione - operazione di \texttt{PUSH}
+  \item \textbf{Cancellare} l'elemento \textbf{in cima} alla collezione, restituendolo - operazione di \texttt{POP}
+\end{itemize}
+
+Una pila è gestita quindi con una politica \texttt{LIFO} \textit{(last-in, first-out)}: l'elemento che viene cancellato è l'\textbf{ultimo} ad essere stato inserito.
+Eseguendo una operazione \texttt{PUSH} di un elemento \texttt{e} su una pila \texttt{S}, seguita immediatamente da una \texttt{POP} di nuovo su \texttt{S}, l'elemento restituito dall'ultima operazione sarà di nuovo \texttt{e}.
+
+\bigskip
+La pila può essere implementata come un \texttt{array}.
+Infatti, se la pila può contenere al massimo \(n\) elementi, allora è possibile allocare un array di dimensione \(n\) e usarlo come pila.
+Per tenere traccia dell'indice dell'elemento che è stato inserito per ultimo viene introdotto un attributo chiamato \texttt{top} che indica l'indice dell'ultimo elemento inserito.
+
+Usando questa implementazione, considerando una pila \texttt{S}, se:
+
+\begin{itemize}
+  \item \texttt{S.top = t}, allora \texttt{S[1], S[2], ..., S[t]} contengono tutti gli elementi della pila
+  \item \texttt{S.top = 0}, allora la pila è vuota e nessun elemento può essere cancellato
+  \item \texttt{S.top = n}, allora la pila è piena e nessun elemento può essere inserito
+\end{itemize}
+
+\bigskip
+Lo pseudocodice di queste funzioni è mostrato nel listato seguente.
+
+\begin{minipage}[t]{0.495\textwidth}
+  \begin{lstlisting}[style=pseudocode]
+PUSH(S, x)
+  if S.top == S.length
+    error "overflow"
+  else S.top := S.top + 1
+    S[S.top] := x
+  \end{lstlisting}
+\end{minipage}
+\begin{minipage}[t]{0.495\textwidth}
+  \begin{lstlisting}[style=pseudocode]
+POP(S)
+  if S.top == 0
+    error "underflow"
+  else S.top := S.top - 1
+    x := S[S.top + 1]
+  \end{lstlisting}
+\end{minipage}
+
+La complessità temporale delle operazioni è \(\bigO(1)\).
+
+\subsection{Coda - \textit{queue}}
+
+Una \textbf{coda} è una collezione di oggetti sulla quale è possibile compiere le seguenti operazioni:
+
+\begin{itemize}
+  \item \textbf{Controllare} se è vuota
+  \item \textbf{Inserire} un elemento della collezione - operazione di \texttt{ENQUEUE}
+  \item \textbf{Cancellare} un elemento \textbf{dal fondo} della collezione, restituendolo - operazione do \texttt{DEQUEUE}
+\end{itemize}
+
+Una coda è gestita quindi con una politica \texttt{FIFO} \textit{(first-in, first-out)}: l'elemento che viene cancellato è il \textbf{primo} ad essere stato inserito.
+
+\bigskip
+La coda può essere implementata come un array.
+Infatti, se la coda può contenere al massimo \(n\) elementi, allora è possibile allocare un array di dimensione \(n+1\) e usarlo come coda.
+Per tenere traccia degli indici del primo e dell'ultimo elemento inserito \textit{(rispettivamente)}, vengono introdotti due attributi chiamati \texttt{head} e \texttt{tail}.
+
+Usando questa implementazione, gli attributi della coda \texttt{Q} indicheranno:
+
+\begin{itemize}
+  \item \texttt{Q.head} l'indice dell'elemento da più da più tempo nell'array
+  \item \texttt{Q.tail} l'indice in cui il prossimo elemento dovrà essere inserito
+  \item \texttt{Q.tail - 1} l'indice dell'elemento da meno da meno tempo nell'array
+\end{itemize}
+
+Inoltre, per poter scrivere lo pseudocodice, è necessario analizzare ulteriormente il funzionamento della coda:
+
+\begin{itemize}
+  \item Gli elementi della coda \texttt{Q} avranno indici \(\texttt{Q.head},\ \texttt{Q.head + 1},\ \ldots,\ \texttt{Q.tail - 1},\ \texttt{Q.tail}\)
+  \item La coda ha funzionamento circolare:
+        \begin{itemize}
+          \item e \(\texttt{Q.tail} = \texttt{Q.length}\) e un nuovo elemento viene inserito, il prossimo valore di \texttt{Q.tail} sarà \(1\)
+          \item se \(\texttt{Q.head} = \texttt{Q.tail}\) allora la coda è vuota
+          \item se \(\texttt{Q.head} = \texttt{Q.tail + 1}\) allora la coda è piena
+        \end{itemize}
+  \item Se la coda non è piena, c'è sempre almeno una cella libera tra \texttt{Q.tail} e \texttt{Q.head}
+\end{itemize}
+
+\bigskip
+Lo pseudocodice di queste funzioni è mostrato nel listato seguente.
+
+\begin{minipage}[t]{0.495\textwidth}
+  \begin{lstlisting}[style=pseudocode]
+ENQUEUE(Q, x)
+    if Q.tail = Q.length
+      Q.tail := 1
+    else Q.tail := Q.tail + 1
+  \end{lstlisting}
+\end{minipage}
+\begin{minipage}[t]{0.495\textwidth}
+  \begin{lstlisting}[style=pseudocode]
+DEQUEUE(Q)
+    x := Q[Q.head]
+    if Q.head = Q.tail
+      Q.head := 1
+    else
+      Q.head := Q.head + 1
+    return x
+  \end{lstlisting}
+\end{minipage}
+
+La complessità temporale della delle operazioni è \(\bigO(1)\).
+
+\subsection{Liste \textit{(doppiamente)} concatenate - \textit{deque}}
+
+Una lista concatenata è una struttura dati in cui gli elementi sono sistemati in un ordine lineare, in modo simile ad un array.
+L'ordine non è dato dagli indici degli elementi \textit{(che possono essere ordinati in un qualsiasi modo nella memoria del calcolatore)}, ma da una \textit{catena} di puntatori.
+
+Una \textbf{lista doppiamente concatenata} \textit{(deque)} è costituita da oggetti con \(3\) attributi:
+
+\begin{itemize}
+  \item \texttt{key}, rappresentante il \textbf{contenuto} dell'oggetto
+  \item \texttt{next}, puntatore all'oggetto \textbf{seguente}
+  \item \texttt{prev}, puntatore all'oggetto \textbf{precedente}
+\end{itemize}
+
+Sia \texttt{x} un oggetto della lista.
+Allora:
+
+\begin{itemize}
+  \item Se \(\texttt{x.next} = \texttt{NIL}\), allora \(x\) non ha successore ed è l'\textbf{ultimo} elemento della lista
+  \item Se \(\texttt{x.prev} = \texttt{NIL}\), allora \(x\) non ha predecessore ed è il \textbf{primo} elemento della lista
+  \item Ogni lista \texttt{L} ha un attributo \texttt{L.head} che \textbf{punta al primo} elemento della lista
+\end{itemize}
+
+Una \textbf{lista \textit{(singolarmente)} concatenata} ha un funzionamento analogo, con le stesse funzioni, ma senza avere il riferimento all'oggetto precedente \textit{(ha solamente il riferimento all'elemento successivo, \texttt{next})}
+
+\bigskip
+Su una lista doppiamente concatenata è possibile eseguire \(3\) operazioni:
+
+\begin{itemize}
+  \item \textbf{Ricercare} un elemento, tramite la funzione \texttt{LIST-SEARCH}
+  \item \textbf{Inserire} un elemento, tramite la funzione \texttt{LIST-INSERT}
+  \item \textbf{Cancellare} un elemento, tramite la funzione \texttt{LIST-DELETE}
+\end{itemize}
+
+\bigskip
+Un esempio di lista doppiamente concatenata è mostrata in Figura~\ref{fig:lista-doppiamente-concatenata}.
+
+\begin{figure}[htbp]
+  \bigskip
+  \centering
+  \tikzfig{image-30.tikz}
+  \caption{Lista doppiamente concatenata}
+  \label{fig:lista-doppiamente-concatenata}
+  \bigskip
+\end{figure}
+
+\subsubsection{Operazioni sulle liste}
+
+Nei prossimi Paragrafi verranno illustrati gli pseudocodici delle operazioni sulle liste, insieme alle loro complessità temporali.
+
+\paragraph{Ricerca di un elemento}
+
+\textit{Input}: la lista \texttt{L} in cui cercare e la chiave \texttt{k} dell'elemento desiderato.
+
+\textit{Output}: il puntatore all'elemento desiderato se esso è trovato nella lista, \texttt{NIL} in caso contrario.
+
+\textit{Complessità temporale}: \(\Theta(n)\) nel caso pessimo \textit{(la chiave non è nella lista)}.
+
+\begin{lstlisting}[style=pseudocode]
+LIST-SEARCH(L, k)
+  x := L.head
+  while x != NIL and x.key != k
+    x := x.next
+  return x
+\end{lstlisting}
+
+\paragraph{Inserimento di un elemento}
+
+\textit{Input}: la lista \texttt{L} in cui cercare e l'oggetto \texttt{x} da aggiungere \textit{(inizializzato dalla chiave)}.
+
+\textit{Output}: nessuno, la lista \texttt{L} viene alterata senza che ne venga creata una nuova.
+
+\textit{Complessità temporale}: \(\bigO(1)\).
+
+\begin{lstlisting}[style=pseudocode]
+LIST-INSERT(L, x)
+  x.next := L.head
+  if L.head != NIL
+    L.head.prev := x
+  L.head := x
+  x.prev := NIL
+  \end{lstlisting}
+
+\paragraph{Inserimento di un elemento}
+
+\textit{Input}: la lista \texttt{L} in cui cercare e l'oggetto \texttt{x} da cancellare.
+Non è sufficientemente passare solo la chiave dell'oggetto: \textbf{è necessario passare tutto l'oggetto}.
+
+\textit{Output}: nessuno, la lista \texttt{L} viene alterata senza che ne venga creata una nuova.
+
+\textit{Complessità temporale}: \(\bigO(1)\).
+
+\begin{lstlisting}[style=pseudocode]
+LIST-DELETE(L, x)
+  if x.prev != NIL
+    x.prev.next := x.next
+  else
+    L.head := x.next
+  if x.next != NIL
+    x.next.prev := x.prev
+  \end{lstlisting}
+
+\subsubsection{Altri tipi di liste}
+
+Oltre alle liste doppiamente concatenate, delle liste comunemente usate sono:
+
+\begin{itemize}
+  \item \textbf{Ordinate}
+        \begin{itemize}
+          \item l'ordinamento degli elementi corrisponde a quello delle chiavi
+          \item il primo elemento ha la chiave minima, l'ultimo la massima
+        \end{itemize}
+  \item \textbf{Non ordinate}
+  \item \textbf{Circolari}
+        \begin{itemize}
+          \item il puntatore \texttt{prev} della testa \texttt{(\texttt{head})} punta alla coda (\texttt{tail})
+          \item il puntatore \texttt{next} della coda \texttt{(\texttt{tail})} punta alla testa (\texttt{head})
+        \end{itemize}
+\end{itemize}
+
+\subsection{Dizionari ed indirizzamento diretto}
+
+Un \textbf{dizionario} è una struttura dati costituita da un insieme dinamico di oggetti che supporta solo le operazioni di:
+
+\begin{itemize}
+  \item \textbf{Ricerca} di un elemento della collezione
+  \item \textbf{Inserimento} di un elemento nella collezione
+  \item \textbf{Cancellazione} di un elemento dalla collezione
+\end{itemize}
+
+Gli oggetti all'interno di un dizionario sono indirizzati tramite le loro chiavi, che si assume essere sempre numeri naturali \textit{(se così non fosse, si potrebbe comunque usare la loro rappresentazione in memoria come stringhe di bit)}.
+
+Se la cardinalità \(m\) dell'insieme delle possibili chiavi \(U\) \textit{(quindi \(m = |U|\))} è ragionevolmente piccola, il dizionario può essere implementato tramite un array di \(m\) elementi.
+In questo caso l'array prende il nome di \textbf{tabella ad indirizzamento diretto}.
+Ogni elemento \(\texttt{T}[\texttt{k}]\) dell'array contiene il riferimento all'oggetto con chiave \texttt{k} se un tale oggetto esiste nella tabella, altrimenti \texttt{NIL}.
+
+\bigskip
+Lo pseudocodice delle funzioni appena elencate è mostrato nel seguente listato.
+I parametri \texttt{T} e \texttt{k} rappresentano rispettivamente il \textbf{dizionario} e la \textbf{chiave} dell'elemento da cercare.
+
+\begin{lstlisting}[style=pseudocode]
+DIRECT-ADDRESS-SEARCH(T, k)
+  return T[k]
+  \end{lstlisting}
+
+\begin{lstlisting}[style=pseudocode]
+DIRECT-ADDRESS-INSERT(T, k)
+  T[x.key] = x
+  \end{lstlisting}
+
+\begin{lstlisting}[style=pseudocode]
+DIRECT-ADDRESS-SEARCH(T, k)
+  T[x.key] := NIL
+  \end{lstlisting}
+
+La complessità delle operazioni è \(\bigO(1)\), quindi i dizionari sono le strutture dati più efficienti tra quelle analizzate fin'ora.
+Tuttavia, se il numero di chiavi memorizzate è di molto inferiore alla cardinalità dell'insieme delle possibili chiavi, lo spazio occupato sarà inutilmente alto.
+
+\bigskip
+Un esempio di dizionario è mostrato nella Tabella~\ref{fig:dizionario}.
+
+\begin{figure}[htbp]
+  \bigskip
+  \centering
+  \tikzfig{image-31.tikz}
+  \caption{Dizionario}
+  \label{fig:dizionario}
+  \bigskip
+\end{figure}
+
+\subsection{Tabelle Hash}
+
+Una tabella hash usa una memoria proporzionale al numero di chiavi effettivamente memorizzate nel dizionario, indipendentemente dalla cardinalità dell'insieme \(U\) di chiavi.
+
+\textit{Idea}: un oggetto di chiave \texttt{k} è memorizzato in tabella in una cella di indice \(h(\texttt{k})\), \(h\) è una \textbf{funzione di hash}:
+
+\begin{itemize}
+  \item Se \(m\) è la dimensione della tabella, allora \(h\) è una funzione definita come \(h: \rightarrow \{0, \ldots, m-1\}\)
+        \begin{itemize}
+          \item il \textbf{dominio} corrisponde al possibile numero di elementi dell'insieme
+          \item il \textbf{codominio} corrisponde all'indice degli elementi
+          \item \(h(\texttt{k})\) è detto valore \textbf{hash} della chiave \texttt{k}
+        \end{itemize}
+  \item La tabella \texttt{T} ha \(m\) celle \(\texttt{T}[0], \texttt{T}[1], \ldots, \texttt{T}[m-1]\)
+\end{itemize}
+
+\subsubsection{Collisioni}
+
+Ammettendo di avere \(|U|\) possibili chiavi, la funzione \(h\) deve mapparle su un numero \(m < |U|\) di righe della tabella.
+Di conseguenza, chiavi diverse daranno origine ad hash uguali:
+\[\exists \, k_1, k_2 \ \Rightarrow \ h(k_1) = h_(k_2) \]
+Questo fenomeno prende il nome di \textbf{collisione}.
+
+Una delle tecniche per risolvere le collisioni prende il nome di \textbf{concatenamento}.
+\textit{Idea} della tecnica: gli oggetti che vengono mappati sullo stesso slot sono posti in una lista concatenata.
+
+\bigskip
+La collisioni e le loro risoluzioni sono mostrate rispettivamente nelle Figure~\ref{fig:collisioni-dizionario}~e~\ref{fig:risoluzione-collisioni-dizionario}.
+
+\begin{figure}[htbp]
+  \bigskip
+  \centering
+  \tikzfig[0.9]{image-32.tikz}
+  \caption{Collisioni in un dizionario}
+  \label{fig:collisioni-dizionario}
+  \bigskip
+\end{figure}
+
+\begin{figure}[htbp]
+  \bigskip
+  \centering
+  \tikzfig[0.9]{image-33.tikz}
+  \caption{Risoluzione delle collisioni tramite concatenamento}
+  \label{fig:risoluzione-collisioni-dizionario}
+  \bigskip
+\end{figure}
+
+\subsubsection{Operazioni sulle tabelle hash}
+
+\begin{lstlisting}[style=pseudocode]
+CHAINED-HASH-INSERT(T, x)
+  inserisci X in testa alla lista T[h(x.key)]
+\end{lstlisting}
+\begin{lstlisting}[style=pseudocode]
+CHAINED-HASH-SEARCH(T, k)
+  cerca un elemento con chiave k nella lista T[h(k)]
+  \end{lstlisting}
+\begin{lstlisting}[style=pseudocode]
+CHAINED-HASH-DELETE(T, x)
+  cancella x dalla lista T[h(x.key)]
+    \end{lstlisting}
+
+Le complessità di queste operazioni è:
+
+\begin{itemize}
+  \item \(\bigO(1)\) per l'\textbf{inserzione} - \texttt{CHAINED-HASH-INSERT}
+        \begin{itemize}
+          \item per ipotesi, l'elemento non è già nella tabella
+        \end{itemize}
+  \item \(\bigO(\texttt{T}[h(k)])\) per la \textbf{ricerca} - \texttt{CHAINED-HASH-SEARCH}
+  \item \(\bigO(1)\) per la \textbf{cancellazione} - \texttt{CHAINED-HASH-DELETE}
+        \begin{itemize}
+          \item se la lista è singolarmente concatenata, allora la complessità è \(\bigO(\texttt{T}[h(x.key)])\)
+        \end{itemize}
+\end{itemize}
+
+\bigskip
+Nel caso pessimo, in cui tutti gli \(n\) elementi memorizzati finiscono nello stesso slot, la complessità è quella di una ricerca in una lista di \(n\) elementi \textit{(quindi \(\bigO(n)\))}.
+Nella realtà, tuttavia, si dimostra che la complessità è più bassa.
+
+Data una tabella hash \texttt{T} di dimensione \(m\) contenente \(n\) elementi.
+Allora si definisce il \textbf{fattore di carico} \(\alpha\) come il numero medio di elementi per ogni slot della tabella \textit{(la lunghezza della catena di una cella)}:
+\(\alpha = \sfrac{n}{m}\)
+
+Poiché il numero di elementi è compreso tra \(0\) e il numero massimo di chiavi \textit{(infatti \(0 \leq n \leq |U|\))}, per ogni tabella è verificata la relazione \( 0 \leq \alpha \leq \sfrac{|U|}{m} \)
+
+\bigskip
+Ipotizzando ora che ogni chiave abbia la stessa probabilità di finire in una delle qualsiasi \(m\) celle di \texttt{T} \textit{(la probabilità è quindi \(\sfrac{1}{m}\))}, la lunghezza della media di una lista è:
+\[ E[n_j] = \displaystyle \dfrac{1}{m} \sum_{i=1}^{m} n_i = \dfrac{n}{m} = \alpha \]
+Questa condizione è detta \textbf{ipotesi dell'hashing uniforme semplice}.
+
+Il tempo medio necessario a cercare una chiave \(k\) non presente nella lista \textit{(il caso peggiore peggiore per la ricerca)} è \(\Theta(1 + \alpha)\).
+Il termine \(1\) è dato dalla complessità del calcolo di \(h(k)\), che viene considerato costante.
+
+\bigskip
+Allo stesso tempo, il tempo medio per la ricerca di un elemento presente nella lista è \(\Theta(1+\alpha)\).
+Questo valore richiede una dimostrazione aggiuntiva.
+
+Infatti, se \(n = \bigO(m)\), allora il fattore di carico è \(\alpha = \sfrac{n}{m} = \sfrac{\bigO(m)}{m} = \bigO(1)\).
+Di conseguenza, la complessità temporale è, in media, \textbf{costante per tutte le operazioni}.
+
+\subsubsection{Funzioni hash}
+
+Fin'ora non è stato discusso il modo in cui una funzione possa creare un hash ma solo che esistono funzioni che possono farlo.
+La domanda che sorge spontanea è quindi:
+
+\indentquote{Come si definisce una funzione hash? Quali devono essere le sue caratteristiche?}
+
+In primo luogo, una funzione deve soddisfare l'ipotesi di hashing uniforme semplice.
+A tale scopo, essa deve essere in grado di \inlinequote{separare} tra di loro chiavi \inlinequote{vicine}.
+Se esse fossero distribuite \textbf{uniformemente} in un intervallo \([0, \ldots, K-1]\), sarebbe sufficiente prendere una funzione del tipo \(h(k) = \lfloor \sfrac{k}{L} \cdot m \rfloor\).
+Tipicamente, si impiegano delle funzioni euristiche basate sul dominio delle chiavi.
+
+Un'altra ipotesi delle funzioni hash è che la chiave \(k\) sia un \textbf{intero non negativo} \textit{(e quindi \(\forall \, k \in K, \ k \in \mathbb{N}\))}.
+Questa ipotesi non crea un vincolo difficile da risolvere in quanto ogni valore può essere trattato come intero positivo interpretando correttamente la sua codifica \textit{(per esempio, facendo un cast da float ad intero senza segno)}.
+
+\paragraph{Metodo della divisione}
+
+Nel \textbf{metodo della divisione}, una chiave \(k\) viene mappata in uno degli \(m\) slot disponibili nella tabella considerando il resto di \(k\) diviso da \(m\).
+La funzione di hash è quindi:
+\[ h(k) = k \modop m \]
+
+\bigskip
+Questa tecnica fornisce funzioni di hashing molto facili da calcolare \textit{(necessitano di una sola operazione)}.
+
+Per evitare risultati vicini tra di loro \textit{(per ridurre le collisioni)} è necessario non prendere valori di \(k\) nella forma \(k = 2^p\).
+Se così non fosse, \(h(k)\) dipenderebbe solo dai \(p\) bit meno significativi di \(k\).
+A tal scopo si scelgono valori di \(m\) \textbf{primi} e sufficientemente \textbf{lontani da una potenza di \(2\)}.
+
+\paragraph{Metodo della moltiplicazione}
+
+Nel \textbf{metodo della moltiplicazione}, il valore di \(k\) viene moltiplicato per una costante \(A\) reale compresa tra \(0\) ed \(1\):
+\[ A \in \mathbb{R},\ 0 < A < 1 \]
+Dopodiché si considera la parte frazionaria di \(kA\) moltiplicata per \(m\), prendendone la parte intera.
+
+La funzione \(h(k)\) ha quindi forma:
+\[h(k) = \left\lfloor m (kA \modop 1) \right\rfloor \]
+In questa formula \(x \modop 1 = x - \lfloor x \rfloor\) corrisponde alla parte frazionaria di \(x\).
+
+Tramite questa funzione il valore di \(m\) non è critico, perché le eventuali collisioni dipenderanno dal valore di \(A\).
+Normalmente si scelgono valori di \(m\) pari a potenza di \(2\) \textit{(cioè \(m = 2^p\))} per rendere più semplici i calcoli.
+
+\bigskip
+È utile prendere come \(A\) un valore che sia nella forma \(\sfrac{s}{2^w}\), con \(w\) pari alla dimensione della parola di memoria del calcolatore e \(0 < s < 2^w\).
+
+Se \(k\) è minore della lunghezza della parola (\(k < 2^w\)), allora \(k \cdot s = k \cdot A \cdot 2^w\) è il numero di \(2w\) bit della forma \(r_1 2^w + r_0\) ed i suoi \(w\) bit meno significativi \textit{(rappresentato da \(r_0\))} costituiscono \(kA \modop 1\).
+Il valore dell'hash cercato \textit{(se \(m = 2^p\))} è costituito dai \(p\) bit più significativi di \(r_0\).
+
+Un valore di \(A\) proposto da \textit{David Knuth} è pari all'inverso della sezione aurea:
+\[ A = \dfrac{\sqrt{5} - 1}{2} \approx 0.6180339887 \ldots \]
+
+Applicando il calcolo precedente, è necessario prendere come valore di \(A\) la frazione nella forma \(\sfrac{s}{2^w}\) più vicina a questo valore.
+
+\subsubsection{Hashing universale}
+
+Scegliendo accuratamente un insieme di chiavi, può accadere che la funzione di hash le assegni tutte allo stesso slot, portando il tempo medio di accesso ai dati a \(\Theta(n)\) \textit{(a causa della necessità di scorrere la lista associata allo slot)}.
+Ogni funzione di hash è vulnerabile a questo tipo di problema.
+
+Come soluzione, la funzione di hash viene scelta \textbf{casualmente} in una classe di funzioni all'inizio dell'esecuzione.
+Grazie alla sua caratteristica aleatoria, l'algoritmo può comportarsi in modo diverso ad ogni esecuzione del programma, anche per input uguali.
+
+La scelta di alcuni algoritmi potrebbe portare a prestazioni ridotte con un determinato insieme di chiavi, ma la probabilità di tale avvenimento è limitata ed uniforme per ogni funzione scelta.
+
+\bigskip
+Sia \(\mathscr{H}\) un \textbf{insieme finito di funzioni} di hash che mappano un dato universo \(U\) di chiavi nell'insieme \(\{0,\, 1, \, \ldots, \, m-1\}\).
+Questo insieme è detto \textbf{universale} se per ogni paio di chiavi distinte \(k, l \in U\) il numero di funzioni di hash \(h \in \mathscr{H}\) tale per cui la probabilità che \(h(k) = h(l)\) è al massimo \(\dfrac{|\mathscr{H}|}{m}\).
+
+\bigskip
+In altre parole, con una funzione di hashing scelta casualmente in \(\mathscr{H}\), la probabilità di una collisione tra chiavi diverse \(k, l\) è non più della probabilità \(\sfrac{1}{m}\) di una collisione se \(h(k)\) ed \(h(l)\) fossero scelte casualmente ed indipendentemente dall'insieme \(\{0, \, 1, \, \ldots, \, m-1\}\).
+
+\subsubsection{Indirizzamento aperto}
+La tecnica dell'\textbf{indirizzamento aperto} serve a ridurre le collisioni.
+In questo caso la tabella contiene tutte le chiavi possibili e non sarà necessaria memoria ulteriore per le liste concatenate.
+Di conseguenza il fattore di carico \(\alpha\) non sarà mai maggiore di \(1\).
+
+Il vantaggio sta nel minor uso di memoria: non dovendo impiegare puntatori, sarà possibile costruire tabelle di memoria più grandi che però occupano lo stesso spazio, potenzialmente riducendo le collisioni e velocizzando la ricerca degli elementi.
+
+Per effettuare inserzioni usando l'indirizzamento aperto, le celle della tabella vengono successivamente analizzate finché non ne viene trovata una vuota, grazie una \textbf{sequenza di ispezione} calcolata dalla funzione di hash in base alla chiave dell'oggetto.
+Le celle analizzate potrebbero \textit{(e in molti casi lo sono)} non essere in ordine numerico.
+
+La funzione di hash avrà forma:
+\[ h: U \times \left\{0, 1, \ldots, m-1\right\} \rightarrow \left\{0, 1, \ldots, m-1\right\} \]
+Ogni sequenza di permutazione generata da \(h\), costruita come:
+\[\langle h(k, 0),\, h(k, 1),\, \ldots\ ,\, h(k, m-1)  \rangle\]
+è una permutazione di \(\langle 0, \ldots, m-1\rangle\)
+
+\subsubsection{Operazioni in caso di indirizzamento aperto}
+
+Nei prossimi Paragrafi verranno illustrati gli pseudocodici delle operazioni sulle tabelle hash con indirizzamento aperto, insieme alle loro complessità temporali.
+
+\paragraph{Inserimento}
+
+\begin{lstlisting}[style=pseudocode]
+HASH-INSERT(T, k)
+i := 0
+repeat
+  j := h(k, i)
+  if T[j] = NULL
+    T[j] := k
+    return j
+  else
+    i := i + 1
+until i = m
+error "hash table overflow"
+\end{lstlisting}
+
+Per inserire un elemento di chiave \texttt{k} nella collezione \texttt{T} l'algoritmo procede secondo la \textbf{sequenza di ispezione}, controllando il contenuto di ogni corrispondente cella \textit{candidata}.
+
+\paragraph{Ricerca}
+
+\begin{lstlisting}[style=pseudocode]
+HASH-SEARCH(T, k)
+  i := 0
+  repeat
+    j := h(k, i)
+    if t[j] = k
+      return j
+    else:
+      i := i + 1
+  until t[j] = NIL or i = m
+  return NIL
+\end{lstlisting}
+
+L'algoritmo per la ricerca della chiave \(k\) controlla \textbf{la stessa sequenza di slot} usata nell'algoritmo di inserzione.
+La ricerca può quindi terminare con successo qualora venisse trovato uno slot vuoto, poiché \(k\) sarebbe stata inserita in quest ultimo e non in uno slot successivo nella sequenza.
+
+L'algoritmo prende come input una tabella di hash \texttt{T} ed una chiave \texttt{k}, restituendo \texttt{j} se lo slot \texttt{j} contiene la chiave \texttt{k} oppure \texttt{NIL} se la chiave non è presente nella tabella.
+
+\paragraph{Cancellazione}
+
+La cancellazione è una operazione più complicata, in quanto impostare a \texttt{NIL} lo slot desiderato non è possibile.
+Se così fosse, la ricerca di chiavi successive a quella cancellata non sarebbe permesso.
+
+Una possibile soluzione sta nel rimpiazzare il valore \texttt{NIL} con un valore convenzionale \texttt{DELETED}.
+Così facendo tuttavia le complessità non dipenderebbero più dal fattore di carico \textit{(come si vedrà più avanti)}.
+
+\paragraph{Complessità temporale}
+
+Il tempo impiegato per trovare lo slot desiderato \textit{(sia esso relativo ad un oggetto da eliminare o da inserire)} dipende dalla sequenza di ispezione restituita dalla funzione \(h\), quindi dipende dalla sua implementazione.
+
+Ipotizzando che le chiavi e le sequenze di ispezione abbiano distribuzione uniforme \textit{(ipotesi di \textbf{hashing uniforme})}, ognuna delle \(m!\) permutazioni di \(\langle 0, \ldots, m-1 \rangle\) ha la stessa probabilità di essere scelta.
+Questa è una estensione alla sequenza di ispezione della precedente condizione di hashing uniforme semplice.
+
+L'analisi della complessità viene fatta in funzione del fattore di carico \(\alpha\), che grazie alla struttura della tabella rispetterà le condizioni \(0 \leq \alpha \leq 1,\ \alpha = \sfrac{n}{m} \Rightarrow n \leq m\).
+
+Sotto ipotesi di hashing uniforme, il numero medio di ispezioni necessarie per effettuare l'inserimento di in nuovo oggetto nella tabella è \(m\) se \(\alpha = 1\) \textit{(la tabella è piena)} e non più di \(\sfrac{1}{1-\alpha}\) se \(\alpha<1\) \textit{(se la tabella ha spazio disponibile)}.
+Il numero medio di ispezioni necessarie per trovare un elemento presente in tabella è:
+
+\[  T(\alpha) \begin{cases}
+    = \dfrac{m+1}{2}                                         & \quad \text{ se } \alpha = 1 \\[5pt]
+    < \dfrac{1}{\alpha} \log\left(\dfrac{1}{1-\alpha}\right) & \quad \text{ se } \alpha < 1
+  \end{cases}  \]
+
+\subsubsection{Tecniche di ispezione}
+
+Nella pratica, costruire funzioni di hash che soddisfino l'ipotesi di hashing fin'ora ricercate è molto difficili.
+Per questo motivo si accettano delle approssimazioni che si rivelano soddisfacenti.
+Esistono \(3\) tecniche:
+
+\begin{enumerate}
+  \item Ispezione lineare
+  \item Ispezione quadratica
+  \item Doppio hashing
+\end{enumerate}
+
+Seppur nessuna di queste tecniche produca le \(m!\) permutazioni che sarebbero necessarie per soddisfare l'ipotesi di hashing uniforme, nella pratica forniscono una distribuzione di chiavi sufficientemente uniforme.
+
+Tutte le tecniche necessitano di una \textbf{funzione di hash ausiliaria} nella forma \(h^\prime : U \rightarrow \left\{0, 1, \ldots, m-1\right\}\).
+
+\paragraph{Ispezione lineare}
+
+Data una funzione di hash ordinaria \(h^\prime : U \mapsto \{0, 1, \ldots, m-1\}\) \textit{(detta funzione di hash ausiliaria)}, il metodo di \textbf{ispezione lineare} usa la funzione di hash definita come:
+\[ h(k, i) = (h^\prime(k) + i) \modop m, \quad i = 0, 1, \ldots, m-1 \]
+
+Data una chiave \(k\), la sequenza inizia dallo slot \(T\left([h^\prime (k)]\right)\) per proseguire con \(T\left([h^\prime (k) + 1]\right)\) fino a \(T[m-1]\).
+Dopodiché l'algoritmo ricomincia da \(T[0]\) esplorando tutti gli slot di \(T\).
+
+Poiché il valore iniziale determina l'intera sequenza di ispezione, solo \(m\) sequenze distinte possono essere generate.
+
+\bigskip
+Questo algoritmo, facile da implementare, soffre di un problema noto come \textbf{addensamento primario} \textit{(primary clustering)}.
+La presenza di uno slot vuoto preceduto da \(i\) slot pieni viene riempito con probabilità pari a \(\sfrac{(i+1)}{m}\).
+Serie lunghe di slot occupati tendono ad allungarsi ulteriormente, aumentando di conseguenza il tempo medio di ricerca.
+
+\paragraph{Ispezione quadratica}
+
+Il metodo di \textbf{ispezione quadratica} usa una funzione di hash nella forma:
+\[ h(k, i) = \left(h^\prime(k) + c_1 i + c_2 i ^2\right), \quad c_2 \neq 0,\ i = 0, 1, \ldots, m-1 \]
+in cui \(h^\prime( k)\) prende il nome di \textit{funzione di hash ausiliaria} e \(c_1, c_2\) sono chiamate \textit{costanti ausiliarie}.
+
+La posizione iniziale della sequenza è \(T\left[h^\prime (k)\right]\), seguita da posizioni la cui distanza dipende in modo quadratico dal valore di \(i\).
+
+I valori delle costanti \(c_1,\) e \(c_2\) non sono scelti in modo libero ma sono forzati dalla forma della tabella.
+
+\bigskip
+Se due chiavi hanno gli stessi elementi iniziali della sequenza di ispezione (se \(h(k_1, 0) = h(k_2, 0)\)) allora condivideranno la stessa sequenza (\(h(k_1, i) = h(k_2, i) \, \forall \, i\)).
+Questa proprietà porta ad una forma di addensamento, detta \textbf{addensamento secondario} \textit{(secondary clustering)}.
+
+Come nell'ispezione lineare, poiché lo slot di partenza determina tutta la sequenza, esisteranno solo \(m\) sequenze distinte.
+
+\paragraph{Doppio hashing}
+
+Il metodo di \textbf{doppio hashing} una funzione di hash nella forma:
+\[ h(k, i) = \left(h_1(k) + i h_2(k)\right) \modop m, \quad i = 0, 1, \ldots, m-1 \]
+dove \(h_1, h_2\) sono funzioni di hash ausiliarie.
+
+La posizione iniziale della sequenza è \(T\left[h_1(k)\right]\) mentre le posizioni successive hanno distanza dalla precedente pari a \(h_2(k) \modop m\).
+
+\bigskip
+Contrariamente ai metodi visti fin'ora, la sequenza generata dal doppio hashing dipende in due modi dalla chiave \(k\), dato che la posizione iniziale e la distanza tra posizioni successive della sequenza possono variare.
+
+Il valore di \(h_2(k)\) non deve avere divisori comuni \textit{(se non \(1\))} con la dimensione \(m\) della tabella di hash per permettere la ricerca dell'intera tabella stessa.
+
+Un modo comodo per assicurare questa è scegliere \(m\) pari ad una potenza di \(2\) e scegliere \(h_2\) in modo che produca sempre numeri dispari.
+
+Alternativamente si può scegliere \(m\) numero primo e scegliere \(h_2\) in modo che produca sempre un intero positivo minore di \(m\).
+Allora \(h_1\) e \(h_2\) assumono la forma:
+
+\begin{align*}
+  h_1(k) & = k \modop n                         \\
+  h_2(k) & = 1 + \left(k \modop n^\prime\right)
+\end{align*}
+
+\bigskip
+Il numero di sequenze generate tramite questa tecnica è quindi \(\Theta(m^2)\) \textit{(e non più \(\Theta(m)\) come visto fin'ora)} visto che ogni possibile coppia \(\langle h_1(k), h_2(k) \rangle\) genera una sequenza differente.
+
+Le performance del doppio hashing sono molto vicine alle performance dello schema ideale di hashing uniforme.
+Di conseguenza, questo è considerato il metodo migliore per generare sequenze di ispezione.
 
 \clearpage
 
@@ -5989,10 +6895,18 @@ L'obiettivo di questa Sezione sarà ricapitolare delle conclusioni tratte nelle 
 \subsection{Ripasso di matematica}
 
 \begin{itemize}
-  \item La formula \(\log_a(b)\) indica il numero reale \(c\) che realizza l'uguaglianza \(a^c = b\), \(a, b > 0,\ a \neq 1\)
-  \item Formula di cambio di base per i logaritmi \(\log_a(b) = \dfrac{\log_c(b)}{\log_(a)}\) con \(a, b, c > 0,\ c \neq 1\)
-  \item Formula di Gauss \(\displaystyle \sum_{i=1}^k i = \dfrac{k(k+1)}{2}\)
-  \item Sommatoria di una serie geometrica \(\displaystyle \sum_{n=0}^{+\infty} q^n = \dfrac{1}{1-q}\) con \(|q| < 1\)
+  \item Formula di Gauss: \(\displaystyle \sum_{i=1}^k i = \dfrac{k(k+1)}{2}\)
+  \item Sommatoria di una serie geometrica: \(\displaystyle \sum_{n=0}^{+\infty} q^n = \dfrac{1}{1-q}\) con \(|q| < 1\)
+\end{itemize}
+
+\subsubsection{Proprietà dei logaritmi}
+
+\begin{itemize}
+  \item Definizione di logaritmo:  \(a^{\log_a{(b)}} = b,\ a, b > 0,\ a \neq 1\)
+  \item Logaritmo del prodotto: \(\log_a{(b \cdot c)} = \log_a{(b) \cdot \log_a{(c)}}\)
+  \item Logaritmo del rapporto: \(\log_a{\left(\dfrac{b}{c}\right)} = \log_a{(b)} - \log_a{(c)}\)
+  \item Regola dell'esponente: \(\log_a{\left(b^c\right)} = c \cdot \log_a{(b)}\)
+  \item Formula di cambio di base per i logaritmi: \(\log_a{(b)} = \dfrac{\log_c{(b)}}{\log_c{(a)}}\) con \(a, b, c > 0,\ c \neq 1\)
 \end{itemize}
 
 \subsection{Scala di potenza delle classi di automi}
@@ -6174,12 +7088,12 @@ Si ricordi che un insieme di funzioni è banale se è \textbf{vuoto} o se è l'i
 \subsection{Complessità}
 
 \begin{itemize}
-  \item Tutti i logaritmi sono nello stesso \(\Theta\) indipendentemente dalla base
+  \item Tutti i logaritmi sono nello stesso \(\Theta\) si può non omettere la \textbf{base}
         \begin{itemize}
           \item la formula di cambio base comporta un fattore moltiplicativo
-          \item grazie a questa proprietà si può non indicare la base del logaritmo quando si valuta l'andamento asintotico
+          \item è possibile non indicare la base del logaritmo quando si valuta l'andamento asintotico
         \end{itemize}
-  \item Contrariamente a quanto avviene nei logaritmi, negli esponenziali è importante specificare la base
+  \item Contrariamente a quanto avviene nei logaritmi, negli esponenziali è importante specificare la \textbf{base}
 \end{itemize}
 
 \end{document}
