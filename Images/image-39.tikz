@@ -1,0 +1,44 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=white, draw={rgb,255: red,191; green,0; blue,64}, text={rgb,255: red,191; green,0; blue,64}] (40) at (10, -6) {\(1\)};
+		\node [style=none] (6) at (7, -11) {};
+		\node [style=none] (7) at (7, 0) {};
+		\node [style=none] (19) at (16, -11) {};
+		\node [style=none] (20) at (16, 0) {};
+		\node [style=white] (22) at (20, -2) {\(0\)};
+		\node [style=white] (23) at (18, -6) {\(3\)};
+		\node [style=white] (24) at (22, -6) {\(2\)};
+		\node [style=white] (35) at (3, -2) {\(0\)};
+		\node [style=white] (36) at (1, -6) {\(1\)};
+		\node [style=white] (37) at (5, -6) {\(2\)};
+		\node [style=white] (38) at (0, -10) {\(3\)};
+		\node [style=white] (39) at (12, -2) {\(0\)};
+		\node [style=white] (41) at (14, -6) {\(2\)};
+		\node [style=white] (42) at (9, -10) {\(3\)};
+		\node [style=none] (43) at (10.75, -3.5) {};
+		\node [style=none] (44) at (11.25, -4.75) {};
+		\node [style=none] (45) at (10.25, -4.5) {};
+		\node [style=none] (46) at (11.75, -3.75) {};
+		\node [style=none] (47) at (9.25, -7.25) {};
+		\node [style=none] (48) at (9.75, -8.5) {};
+		\node [style=none] (49) at (8.75, -8.25) {};
+		\node [style=none] (50) at (10.25, -7.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=thin] (6.center) to (7.center);
+		\draw [style=thin] (19.center) to (20.center);
+		\draw [style=solid arrow] (22) to (23);
+		\draw [style=solid arrow] (22) to (24);
+		\draw [style=solid arrow] (35) to (36);
+		\draw [style=solid arrow] (36) to (38);
+		\draw [style=solid arrow] (35) to (37);
+		\draw [style=solid arrow] (39) to (40);
+		\draw [style=solid arrow] (40) to (42);
+		\draw [style=solid arrow] (39) to (41);
+		\draw [style=solid arrow, in=120, out=-165] (39) to (42);
+		\draw [style=red line] (45.center) to (46.center);
+		\draw [style=red line] (44.center) to (43.center);
+		\draw [style=red line] (49.center) to (50.center);
+		\draw [style=red line] (48.center) to (47.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

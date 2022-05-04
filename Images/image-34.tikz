@@ -1,0 +1,53 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=white] (0) at (0, 0) {\footnotesize \(2\)};
+		\node [style=white] (1) at (4, -3) {\footnotesize \(8\)};
+		\node [style=white] (2) at (-4, -3) {\footnotesize \(1\)};
+		\node [style=white] (3) at (-6, -6) {\footnotesize \(3\)};
+		\node [style=white] (4) at (-2, -6) {\footnotesize \(5\)};
+		\node [style=white] (5) at (-2, -9) {\footnotesize \(9\)};
+		\node [style=white] (6) at (4, -6) {\footnotesize \(7\)};
+		\node [style=white] (7) at (1.75, -9) {\footnotesize \(4\)};
+		\node [style=white] (8) at (6, -9) {\footnotesize \(6\)};
+		\node [style=none] (9) at (1, 1) {};
+		\node [style=none] (10) at (1, -1) {};
+		\node [style=none] (11) at (-1, -1) {};
+		\node [style=none] (12) at (-1, 1) {};
+		\node [style=none, text={rgb,255: red,255; green,117; blue,56}] (13) at (0, 1.5) {radice};
+		\node [style=none] (14) at (-1, -2) {};
+		\node [style=none] (15) at (-1, -10) {};
+		\node [style=none] (16) at (-7, -10) {};
+		\node [style=none] (17) at (-7, -2) {};
+		\node [style=none] (18) at (1, -10) {};
+		\node [style=none] (19) at (1, -2) {};
+		\node [style=none] (20) at (7, -2) {};
+		\node [style=none] (21) at (7, -10) {};
+		\node [style=none, text={rgb,255: red,191; green,0; blue,64}] (22) at (-4, -10.5) {sottoalbero sinistro};
+		\node [style=none, text={rgb,255: red,0; green,128; blue,128}] (23) at (4, -10.5) {sottoalbero destro};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=solid] (0) to (2);
+		\draw [style=solid] (0) to (1);
+		\draw [style=solid] (3) to (2);
+		\draw [style=solid] (2) to (4);
+		\draw [style=solid] (5) to (4);
+		\draw [style=solid] (6) to (1);
+		\draw [style=solid] (7) to (6);
+		\draw [style=solid] (6) to (8);
+		\draw [style=orange line] (10.center)
+			 to (9.center)
+			 to (12.center)
+			 to (11.center)
+			 to cycle;
+		\draw [style=red line] (16.center)
+			 to (15.center)
+			 to (14.center)
+			 to (17.center)
+			 to cycle;
+		\draw [style=green line] (19.center)
+			 to (18.center)
+			 to (21.center)
+			 to (20.center)
+			 to cycle;
+	\end{pgfonlayer}
+\end{tikzpicture}

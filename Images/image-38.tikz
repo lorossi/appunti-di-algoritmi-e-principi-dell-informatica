@@ -1,0 +1,38 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=white] (0) at (3, -2) {\(0\)};
+		\node [style=white] (1) at (1, -6) {\(1\)};
+		\node [style=white] (2) at (5, -6) {\(2\)};
+		\node [style=none] (6) at (7, -11) {};
+		\node [style=none] (7) at (7, 0) {};
+		\node [style=white] (16) at (13, -2) {\(0\)};
+		\node [style=white] (17) at (11, -6) {\(1\)};
+		\node [style=white] (18) at (15, -6) {\(2\)};
+		\node [style=none] (19) at (17, -11) {};
+		\node [style=none] (20) at (17, 0) {};
+		\node [style=white] (21) at (10, -3.5) {\(3\)};
+		\node [style=white] (22) at (22, -2) {\(0\)};
+		\node [style=white] (23) at (20, -6) {\(3\)};
+		\node [style=white] (24) at (24, -6) {\(2\)};
+		\node [style=white] (30) at (19, -10) {\(1\)};
+		\node [style=none] (31) at (11.5, -3.5) {};
+		\node [style=none] (32) at (12.5, -4.5) {};
+		\node [style=none] (33) at (12.75, -3.5) {};
+		\node [style=none] (34) at (11.25, -4.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=thin] (6.center) to (7.center);
+		\draw [style=thin] (19.center) to (20.center);
+		\draw [style=solid arrow] (0) to (1);
+		\draw [style=solid arrow] (0) to (2);
+		\draw [style=solid arrow] (16) to (17);
+		\draw [style=solid arrow] (16) to (18);
+		\draw [style=solid arrow, bend right] (16) to (21);
+		\draw [style=solid arrow, bend right=45] (21) to (17);
+		\draw [style=solid arrow] (22) to (23);
+		\draw [style=solid arrow] (23) to (30);
+		\draw [style=solid arrow] (22) to (24);
+		\draw [style=red line] (31.center) to (32.center);
+		\draw [style=red line] (34.center) to (33.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

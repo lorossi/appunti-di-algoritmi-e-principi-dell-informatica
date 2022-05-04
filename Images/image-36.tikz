@@ -1,0 +1,42 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=white] (2) at (4, -3) {\footnotesize\(1\)};
+		\node [style=white] (5) at (2, -6) {\footnotesize\(5\)};
+		\node [style=white] (6) at (6, -6) {\footnotesize\(2\)};
+		\node [style=white] (11) at (1, -9) {\footnotesize\(7\)};
+		\node [style=white] (12) at (3, -9) {\footnotesize\(6\)};
+		\node [style=white] (13) at (5, -9) {\footnotesize\(4\)};
+		\node [style=white] (14) at (7, -9) {\footnotesize\(3\)};
+		\node [style=white] (31) at (0, 0) {\footnotesize\(0\)};
+		\node [style=white] (32) at (-4, -3) {\footnotesize\(8\)};
+		\node [style=white] (33) at (-2, -6) {\footnotesize\(9\)};
+		\node [style=white] (34) at (-6, -6) {\footnotesize\(12\)};
+		\node [style=white] (35) at (-1, -9) {\footnotesize\(10\)};
+		\node [style=white] (36) at (-3, -9) {\footnotesize\(11\)};
+		\node [style=white] (37) at (-5, -9) {\footnotesize\(13\)};
+		\node [style=white] (38) at (-7, -9) {\footnotesize\(14\)};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=solid] (2) to (5);
+		\draw [style=solid] (11) to (5);
+		\draw [style=green arrow] (5) to (12);
+		\draw [style=solid] (13) to (6);
+		\draw [style=green arrow] (6) to (14);
+		\draw [style=green arrow] (2) to (6);
+		\draw [style=solid] (32) to (31);
+		\draw [style=green arrow] (32) to (33);
+		\draw [style=green arrow] (33) to (35);
+		\draw [style=solid] (33) to (36);
+		\draw [style=green arrow] (34) to (37);
+		\draw [style=solid] (38) to (34);
+		\draw [style=solid] (34) to (32);
+		\draw [style=green arrow] (31) to (2);
+		\draw [style=green arrow, dash pattern=on 3pt off 1pt] (14) to (13);
+		\draw [style=green arrow, dash pattern=on 3pt off 1pt] (13) to (5);
+		\draw [style=green arrow, dash pattern=on 3pt off 1pt] (12) to (11);
+		\draw [style=green arrow, dash pattern=on 3pt off 1pt, bend right, looseness=1.25] (11) to (32);
+		\draw [style=green arrow, dash pattern=on 3pt off 1pt] (35) to (36);
+		\draw [style=green arrow, dash pattern=on 3pt off 1pt] (36) to (34);
+		\draw [style=green arrow, dash pattern=on 3pt off 1pt] (37) to (38);
+	\end{pgfonlayer}
+\end{tikzpicture}

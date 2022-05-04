@@ -146,9 +146,17 @@
   showtabs=false,
   showlines=false,
   tabsize=2,
-  morekeywords={and,ceil,downto,else,end,error,floor,for,if,in,nand,NIL,nor,or,repeat,return,swap,then,to,while,xnor,xor,do,until},
+  morekeywords={and,ceil,downto,else,end,error,floor,for,if,in,nand,new,NIL,nor,or,repeat,return,swap,then,to,while,xnor,xor,do,until},
   mathescape=true,
   morecomment=[l][commentstyle]{//},
+}
+% rename List into Codice o Code (according to language)
+\iflanguage{italian} {
+  \renewcommand\lstlistingname{Listato}
+  \renewcommand\lstlistlistingname{Listati}
+}{
+  \renewcommand\lstlistingname{Code}
+  \renewcommand\lstlistlistingname{Codes}
 }
 
 % command for indented quote block

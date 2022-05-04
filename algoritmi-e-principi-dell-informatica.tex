@@ -15,11 +15,12 @@
 \newcommand{\vero}{\textcolor{ForestGreen}{\texttt{vero}}\xspace} % green check
 \newcommand{\falso}{\textcolor{BrickRed}{\texttt{falso}}\xspace} % red
 \newcommand{\blank}{\texttt{b}} % similar to ƀ
-\newcommand{\controlla}[1]{\textcolor{BrickRed}{!#1! \texttt{CONTROLLA}}\xspace} % red cross
 
 % don't ask
 \usepackage{mathrsfs}
 \newcommand{\flower}{\ding{97}\xspace}
+
+% TODO una volta finiti gli appunti, ri numerare le immagini in modo che sia tutto in ordine
 
 \begin{document}
 
@@ -1852,8 +1853,6 @@ A tal proposito, si consulti la Figura~\ref{fig:configurazione-MT-nastro-singolo
   \item \(\overline{q}\) è un'opportuna codifica dello stato \(M\)
 \end{itemize}
 
-% TODO sostituire * e % rispettivamente con $ e # sia nell'immagine che nella lista
-
 \begin{figure}[htbp]
   \bigskip
   \centering
@@ -2826,7 +2825,7 @@ All'interno del corso verranno usati la \PL e la \FOL \textit{(introdotte nelle 
 \begin{itemize}
   \item Definire i linguaggi \textit{(Sezione~\ref{sec:logica-linguaggi})}
   \item Specificare le proprietà di programmi \textit{(Sezione~\ref{sec:precondizioni-postcondizioni})}
-  \item Specificare le proprietà dei sistemi % TODO aggiungere ref alla sezione in cui avviene
+  \item Specificare le proprietà dei sistemi \textit{(Sezione~\ref{sec:specifiche})}
 \end{itemize}
 
 \subsection{Logica proposizionale - \PL}
@@ -3525,6 +3524,8 @@ Le precondizioni e postcondizioni possono essere definite in modi diversi, come:
 Tra di questi si riconosce su tutte la \FOL, che può essere usata a questo scopo.
 
 \subsubsection{Specifiche}
+\label{sec:specifiche}
+
 Una specifica deve essere usata come un \inlinequote{contratto}, che contiene tutte le informazioni necessarie senza assunzioni a priori.
 Quando una qualche condizione viene eliminata dalla precondizione, la specifica diventa insoddisfacente.
 
@@ -5243,13 +5244,14 @@ Infine, è possibile fare le seguenti \textit{osservazioni}:
 
 \clearpage
 
-\section{Algoritmi e Grafi}
+\section{Algoritmi}
 
 L'obiettivo di questa sezione sarà introdurre i concetti di base dei grafi e degli algoritmi, per poi iniziare ad analizzare alcuni problemi di ordinamento.
+Una analisi più approfondita dei grafi verrà fatta più avanti \textit{(nella Sezione~\ref{sec:grafi})}.
 
-\subsection{Grafi}
+\subsection{Introduzione ai Grafi}
 
-Un grafo e una coppia \(\langle V, E \rangle\) in cui \(V\) è un insieme finito di \textbf{nodi} (detti anche \textbf{vertici}) e \(E \subseteq V \times V\) è una relazione binaria \textit{(costituente un insieme finito)} su \(V\) di coppie di nodi (dette anche \textbf{archi}).
+Un grafo è una coppia \(\langle V, E \rangle\) in cui \(V\) è un insieme finito di \textbf{nodi} (detti anche \textbf{vertici}) e \(E \subseteq V \times V\) è una relazione binaria \textit{(costituente un insieme finito)} su \(V\) di coppie di nodi (dette anche \textbf{archi}).
 
 Se \(u\) e \(v\) sono nodi del grafo, la coppia \(\langle u, v \rangle\) è un arco.
 L'arco è detto \textbf{orientato} se \(u\) e \(v\) sono coppie di nodi consecutivi, ovvero \(u = v + 1\) \textit{(Figura~\ref{fig:grafo-arco-orientato})}.
@@ -5296,9 +5298,9 @@ In caso contrario, è detto \textbf{non orientato} \textit{(Figura~\ref{fig:graf
         \begin{itemize}
           \item in caso contrario, è detto \textbf{non orientato}
         \end{itemize}
-  \item n \textbf{cammino} è una sequenza di nodi \(v_0, v_1, \ldots, v_n\) tali che tra ogni coppia di nodi della sequenza \(\langle v_i, v_{i+1} \rangle\) esiste un arco
+  \item n \textbf{cammino} è una sequenza di nodi \(v_0,\,c v_1,\,c \ldots,\,c v_n\) tali che tra ogni coppia di nodi della sequenza \(\langle v_i, v_{i+1} \rangle\) esiste un arco
         \begin{itemize}
-          \item i nodi \(v_0, v_1, \ldots, v_n\) appartengono tutti al cammino
+          \item i nodi \(v_0,\,c v_1,\,c \ldots,\,c v_n\) appartengono tutti al cammino
           \item la lunghezza del cammino è data da \(n\) \textit{(il numero di vertici \(-1\))}
         \end{itemize}
   \item In un grafo \textbf{non orientato}, il cammino forma un \textbf{ciclo} se \(v_0 = v_n\)
@@ -5309,6 +5311,7 @@ In caso contrario, è detto \textbf{non orientato} \textit{(Figura~\ref{fig:graf
 \end{itemize}
 
 \subsubsection{Alberi}
+\label{sec:alberi}
 
 Un \textbf{albero} è un grafo connesso, aciclico, non orientato.
 È detto \textbf{radicato} se un nodo viene indicato come \textbf{radice}.
@@ -5316,7 +5319,14 @@ Un \textbf{albero} è un grafo connesso, aciclico, non orientato.
 Ogni nodo del grafico è \textbf{raggiungibile} dalla radice tramite un \textbf{cammino}.
 Esso sarà \textbf{unico} in quanto il grafo è aciclico.
 Gli ultimi nodi dei cammini dalla radice sono detti \textbf{foglie}.
-Viene detta \textbf{altezza} dell'albero la distanza massima tra la radice e una sua foglia
+Viene detta \textbf{altezza} dell'albero la distanza massima tra la radice e una sua foglia.
+
+Un albero è detto \textbf{completo} se sono valide le seguenti proprietà:
+
+\begin{itemize}
+  \item Tutte le \textbf{foglie} hanno la stessa \textbf{profondità} \textit{(distanza dalla radice)} \(h\)
+  \item Tutti i \textbf{nodi interni} hanno esattamente \(2\) figli.
+\end{itemize}
 
 \bigskip
 Ogni \textbf{nodo} ha un \textbf{padre} \textit{(tranne la radice)} e uno o più \textbf{figli} \textit{(tranne le foglie)}.
@@ -5359,17 +5369,20 @@ La dimostrazione è banale e avviene per induzione.
 \label{sec:heap}
 
 Uno \textbf{heap binario} è un albero binario detto \textbf{quasi completo}.
-Tutti i suoi livelli sono completi, tranne l'ultimo che potrebbe essere completo solo fino ad un certo punto da sinistra.
-L'albero binario che deriva dall'interpretazione di un array come albero è quasi completo.
+Infatti tutti i suoi livelli sono completi \textit{(su ogni livello ogni nodo ha due figli)}, tranne l'ultimo che potrebbe essere completo solo fino ad un certo punto da sinistra.
 
 Un \textbf{max-heap} è uno heap tale che, per ogni nodo \(x\) dell'albero, il valore contenuto nel padre di \(x\) è \(\geq\) del contenuto di \(x\).
 Considerando i singoli nodi, \(A\left(\left\lfloor\sfrac{i}{2}\right\rfloor\right) \geq A[i]\).
-
 Nei \textbf{min-heap}, al contrario, il valore contenuto nel padre di \(x\) è \(\leq\) del contenuto di \(x\).
+
+\bigskip
+È sempre possibile costruire e rappresentare un heap tramite un \textbf{array}.
+L'albero binario che deriva da questa interpretazione è quasi completo.
 
 \bigskip
 Un esempio di \textbf{max-heap} e la sua corrispondenza con un array è mostrata nella Figura~\ref{fig:esempio-di-max-heap}.
 
+% TODO sistemare la dimensione dell'array, i rettangoli sono troppo grossi
 \begin{figure}[htbp]
   \bigskip
   \centering
@@ -5379,7 +5392,7 @@ Un esempio di \textbf{max-heap} e la sua corrispondenza con un array è mostrata
   \bigskip
 \end{figure}
 
-\subsection{Algoritmi}
+\subsection{Introduzione agli Algoritmi}
 
 \textit{Informalmente}, un \textbf{algoritmo} è una qualsiasi procedura ben definita che prende un valore \textit{(o un insieme di valori)} in input e restituisce un valore \textit{(o un insieme di valori)} in output, calcolato tramite una serie ben definita di operazioni.
 L'algoritmo può essere visto anche come uno strumento per risolvere un particolare problema di computazione.
@@ -5538,7 +5551,7 @@ Questo tecnica è molto facile da applicare nei problemi di tipo \textit{Divide 
 
 \paragraph{Albero di ricorsione e tecnica \textit{Divide et Impera}}
 
-Come annunciato precedentemente, questa tecnica si adatta particolarmente agli algoritmi che adottano la tecninca \textit{Divide et Impera}.
+Come annunciato precedentemente, questa tecnica si adatta particolarmente agli algoritmi che adottano la tecnica \textit{Divide et Impera}.
 
 Infatti, se una ricorrenza è nella forma
 \[ T(n) = T(a) + T(b),\quad a + b = 1,\ a \geq b \]
@@ -5555,12 +5568,12 @@ Questo risultato va sempre verificato con il metodo di sostituzione.
 
 Il \textbf{Teorema dell'Esperto} fornisce un metodo \inlinequote{da manuale} per risolvere le ricorrenze nella forma:
 
-\[ T(n) = aT(\sfrac{n}{b}) + f(n), \quad a > 1,\ b \geq 1 \]
+\[ T(n) = aT(\sfrac{n}{b}) + f(n), \quad a \geq 1,\ b > 1 \]
 
 Il teorema richiede di memorizzare tre casi, ma permette di trovare una soluzione alla ricorrenza con relativa semplicità.
 
 \bigskip
-\textit{Formalmente}, siano \(a > 1,\ b \geq 1\) due costanti e \(f(n)\) una funzione dal comportamento asintotico positivo.
+\textit{Formalmente}, siano \(a \geq 1,\ b > 1\) due costanti e \(f(n)\) una funzione dal comportamento asintotico positivo.
 A partire da essi è possibile definire \(T(n),\ n \in \mathbb{N}\) tramite la ricorrenza:
 \[ T(n) = aT(\sfrac{n}{b}) + f(n) \]
 dove \(\sfrac{n}{b}\) è considerato arrotondato per difetto o per eccesso (quindi rispettivamente \(\lfloor\sfrac{n}{b}\rfloor\) o \(\lceil\sfrac{n}{b}\rceil\)).
@@ -5621,6 +5634,21 @@ Il Teorema dell'Esperto si semplifica notevolmente qualora \(f(n)\) è una funzi
 
 Nel caso \ref{enum:caso-particolare-teorema-esperto-3} la condizione aggiuntiva di regolarità è automaticamente verificata.
 
+\bigskip
+Un'altro caso particolare è identificato nel caso in cui la ricorrenza abbia forma
+\[T(n) = \begin{cases}
+    \Theta(1) \quad                                                           & \text{se } n \leq m \leq h \\
+    \displaystyle \sum_{1 \leq i \leq h} a_i \cdot T(n-i) + c \cdot n^k \quad & \text{altrimenti}
+  \end{cases}\]
+in cui i coefficienti \(a_i \in \mathbb{N} \, \forall \, i\).
+
+Ponendo \(a = \displaystyle \sum_{i \leq i \leq h} a_i\), se:
+
+\begin{itemize}
+  \item \(a = 1\), allora \(T(n) = \bigO(n^{k+1})\)
+  \item \(a \geq 2\), allora \(T(n) = \bigO(a^n n^k)\)
+\end{itemize}
+
 \subsection{Algoritmi di supporto}
 
 \subsubsection{Operazioni sugli heap}
@@ -5662,9 +5690,12 @@ Ogni array \texttt{A} che rappresenta uno heap ha \(2\) attributi:
 \subsubsection{Algoritmo \texttt{MAX-HEAPIFY}}
 \label{sec:algoritmo-max-heapify}
 
-L'algoritmo di \texttt{MAX-HEAPIFY} è una funzione che modifica un \textbf{array}, tale per cui i suoi figli sinistro e destro sono max-heap ma in cui \texttt{A[i]} \textit{(la radice del sotto albero)} potrebbe essere \textit{minore} dei suoi figli, in modo che tutto l'albero di radice \texttt{A[i]} sia un \textbf{max-heap}.
+L'algoritmo di \texttt{MAX-HEAPIFY} è una funzione che ordina i nodi di un \textbf{heap}, trasformandolo in un \textbf{max-heap}.
+La proprietà caratteristica dei \textit{max-heap} è che il valore di ogni nodo dell'albero è sempre maggiore o uguale di quello dei figli.
 
-\begin{lstlisting}[style=pseudocode]
+L'algoritmo è di tipo ricorsivo ed è illustrato nel Listato~\ref{lst:costruzione-max-heap}.
+
+\begin{lstlisting}[style=pseudocode, caption={Costruzione di un max-heap}, label={lst:costruzione-max-heap}]
 MAX-HEAPIFY(A, i)
   l := LEFT(i)
   r := RIGHT(i)
@@ -5674,16 +5705,16 @@ MAX-HEAPIFY(A, i)
     max := i
   if r < A.heap-size and A[r] > A[max]
     max := r
-  if max != i then
+  if max != i
     swap A[i], A[max]
     MAX-HEAPIFY(A, max)
 \end{lstlisting}
 
 \paragraph{Analisi dell'algoritmo \texttt{MAX-HEAPIFY}}
 
-La complessità temporale di \texttt{MAX-HEAPIFY} è parti a
+La complessità temporale di \texttt{MAX-HEAPIFY} è pari a
 \[ T_{\texttt{MAX-HEAPIFY}} = \bigO(h) = \bigO\left(\log{(n)}\right) \]
-dove \(h\) corrisponde all'altezza dell'albero, che essendo quasi completo è inferiore di \(\log{(n)}\).
+dove \(h\) corrisponde all'altezza dell'albero, che essendo quasi completo è inferiore a \(\log{(n)}\).
 
 \bigskip
 Sarebbe stato possibile giungere alla stessa soluzione usando il Teorema dell'Esperto per la ricorrenza
@@ -5698,6 +5729,7 @@ L'algoritmo viene applicato ricorsivamente sul sotto albero sinistro (contenente
 
 L'algoritmo \texttt{BUILD-MAX-HEAP} permette di costruire un \textbf{max-heap} partendo da un \textbf{array}.
 La costruzione avviene \textit{bottom-up}, partendo dalle foglie fino alla radice.
+Lo pseudocodice dell'algoritmo è mostrato nel Listato~\ref{lst:algoritmo-build-max-heap}.
 
 Funziona grazie a due proprietà dello heap:
 
@@ -5706,10 +5738,10 @@ Funziona grazie a due proprietà dello heap:
   \item I sotto alberi fatti di solo foglie sono max-heap in quanto costituiti da \textbf{un solo elemento}
 \end{itemize}
 
-\begin{lstlisting}[style=pseudocode]
+\begin{lstlisting}[style=pseudocode, caption={Algoritmo di costruzione di un max-heap}, label={lst:algoritmo-build-max-heap}]
 BUILD-MAX-HEAP(A)
   A.heap-size := A.length
-  for i := A.length / 2 downto 1 do
+  for i := A.length / 2 downto 1
     MAX-HEAPIFY(A, i)
 \end{lstlisting}
 
@@ -5721,7 +5753,7 @@ Tuttavia, questo limite non fornisce una precisione sufficiente.
 Infatti, si osserva che:
 
 \begin{itemize}
-  \item L'altezza di un albero quasi completo di \(n\) nodi è \(\left\lfloor \log_2(n) \right\lfloor\)
+  \item L'altezza di un albero quasi completo di \(n\) nodi è \(\left\lfloor \log_2(n) \right\rfloor\)
   \item Definendo come \inlinequote{altezza di un nodo di uno heap} la lunghezza del cammino più lungo che porta ad una foglia, il costo dell'algoritmo invocato su un nodo di altezza \(h\) è \(\bigO(h)\)
   \item Il numero massimo di nodi di altezza \(h\) di uno heap è \(\left\lceil \dfrac{n}{2^{h+1}} \right\rceil\) volte ad ogni altezza \(h\)
 \end{itemize}
@@ -5757,7 +5789,7 @@ L'array viene quindi ordinato senza sul posto, senza bisogno di array ausiliari.
     \centering
     \begin{lstlisting}[style=pseudocode]
 INSERTION-SORT(A)
-  for j := 2 to A.length
+  for j := 1 to A.length
     key := A[j]
     i := j - 1
     while i > 0 and A[i] > key
@@ -6020,8 +6052,9 @@ Nel caso pessimo ha complessità \(\Theta(n^2)\), superiore all'\nameref{sec:hea
   \item \textbf{Combina}: l'array \texttt{A[p..r]} è già ordinato
 \end{itemize}
 
-La parte \inlinequote{complicata} da implementare riguarda la partizione: essa viene effettuata tramite l'algoritmo \texttt{PARTITION}:
-viene scelto un elemento di come \textit{pivot}:
+La parte \inlinequote{complicata} da implementare riguarda la partizione: essa viene effettuata tramite l'algoritmo \texttt{PARTITION},che avrà l'incarico di scegliere un elemento di \textit{pivot}.
+
+Proprietà del \textit{pivot}:
 
 \begin{itemize}
   \item Tutti gli elementi \textbf{minori} di \texttt{pivot} vengono posti nel sotto array \textbf{sinistro}
@@ -6302,10 +6335,10 @@ Usando questa implementazione, considerando una pila \texttt{S}, se:
 \end{itemize}
 
 \bigskip
-Lo pseudocodice di queste funzioni è mostrato nel listato seguente.
+Lo pseudocodice di queste funzioni è mostrato nei Listati~\ref{lst:push-pila}~e~\ref{lst:pop-pila}.
 
 \begin{minipage}[t]{0.495\textwidth}
-  \begin{lstlisting}[style=pseudocode]
+  \begin{lstlisting}[style=pseudocode, caption={Push in pila}, label={lst:push-pila}]
 PUSH(S, x)
   if S.top == S.length
     error "overflow"
@@ -6314,7 +6347,7 @@ PUSH(S, x)
   \end{lstlisting}
 \end{minipage}
 \begin{minipage}[t]{0.495\textwidth}
-  \begin{lstlisting}[style=pseudocode]
+  \begin{lstlisting}[style=pseudocode, caption={Pop in pila}, label={lst:pop-pila}]
 POP(S)
   if S.top == 0
     error "underflow"
@@ -6364,10 +6397,10 @@ Inoltre, per poter scrivere lo pseudocodice, è necessario analizzare ulteriorme
 \end{itemize}
 
 \bigskip
-Lo pseudocodice di queste funzioni è mostrato nel listato seguente.
+Lo pseudocodice di queste funzioni è mostrato nei Listati~\ref{lst:enqueue-coda}~e~\ref{lst:dequeue-coda}.
 
 \begin{minipage}[t]{0.495\textwidth}
-  \begin{lstlisting}[style=pseudocode]
+  \begin{lstlisting}[style=pseudocode, caption={Enqueue in coda}, label={lst:enqueue-coda}]
 ENQUEUE(Q, x)
     if Q.tail = Q.length
       Q.tail := 1
@@ -6375,7 +6408,7 @@ ENQUEUE(Q, x)
   \end{lstlisting}
 \end{minipage}
 \begin{minipage}[t]{0.495\textwidth}
-  \begin{lstlisting}[style=pseudocode]
+  \begin{lstlisting}[style=pseudocode, caption={Dequeue in coda}, label={lst:dequeue-coda}]
 DEQUEUE(Q)
     x := Q[Q.head]
     if Q.head = Q.tail
@@ -6389,6 +6422,7 @@ DEQUEUE(Q)
 La complessità temporale della delle operazioni è \(\bigO(1)\).
 
 \subsection{Liste \textit{(doppiamente)} concatenate - \textit{deque}}
+\label{sec:liste-concatenate}
 
 Una lista concatenata è una struttura dati in cui gli elementi sono sistemati in un ordine lineare, in modo simile ad un array.
 L'ordine non è dato dagli indici degli elementi \textit{(che possono essere ordinati in un qualsiasi modo nella memoria del calcolatore)}, ma da una \textit{catena} di puntatori.
@@ -6524,21 +6558,22 @@ In questo caso l'array prende il nome di \textbf{tabella ad indirizzamento diret
 Ogni elemento \(\texttt{T}[\texttt{k}]\) dell'array contiene il riferimento all'oggetto con chiave \texttt{k} se un tale oggetto esiste nella tabella, altrimenti \texttt{NIL}.
 
 \bigskip
-Lo pseudocodice delle funzioni appena elencate è mostrato nel seguente listato.
+Lo pseudocodice delle funzioni appena elencate è mostrato nei Listati~\ref{lst:search-dizionario},~\ref{lst:insert-dizionario}~e~\ref{lst:delete-dizionario}.
+
 I parametri \texttt{T} e \texttt{k} rappresentano rispettivamente il \textbf{dizionario} e la \textbf{chiave} dell'elemento da cercare.
 
-\begin{lstlisting}[style=pseudocode]
+\begin{lstlisting}[style=pseudocode, caption={Ricerca}, label={lst:search-dizionario}]
 DIRECT-ADDRESS-SEARCH(T, k)
   return T[k]
   \end{lstlisting}
 
-\begin{lstlisting}[style=pseudocode]
+\begin{lstlisting}[style=pseudocode, caption={Inserzione}, label={lst:insert-dizionario}]
 DIRECT-ADDRESS-INSERT(T, k)
   T[x.key] = x
   \end{lstlisting}
 
-\begin{lstlisting}[style=pseudocode]
-DIRECT-ADDRESS-SEARCH(T, k)
+\begin{lstlisting}[style=pseudocode, caption={Eliminazione}, label={lst:delete-dizionario}]
+DIRECT-ADDRESS-DELETE(T, k)
   T[x.key] := NIL
   \end{lstlisting}
 
@@ -6888,6 +6923,302 @@ Di conseguenza, questo è considerato il metodo migliore per generare sequenze d
 
 \clearpage
 
+\section{Grafi}
+\label{sec:grafi}
+
+\subsection{Alberi binari}
+
+Come già introdotto nella Sezione~\ref{sec:alberi}, un \textbf{albero binario} è composto da \(3\) elementi:
+
+\begin{itemize}
+  \item un nodo \textbf{radice}
+  \item un albero binario, suo \textbf{sotto albero sinistro}
+  \item un albero binario, suo \textbf{sotto albero destro}
+\end{itemize}
+
+Normalmente gli alberi binari sono rappresentati nella memoria del calcolatore usando delle strutture di dati concatenate, come le liste concatenate \textit{(viste nella Sezione~\ref{sec:liste-concatenate})}.
+Alternativamente, come per gli \textit{heap} \textit{(Sezione~\ref{sec:heap})}, possono essere rappresentati tramite array \textit{(enumerando i nodi)}.
+
+Ogni nodo dell'albero è rappresentato da un oggetto che ha i seguenti attributi:
+
+\begin{itemize}
+  \item \texttt{key}, la \textbf{chiave} del nodo
+        \begin{itemize}
+          \item può rappresentare il contenuto del nodo
+          \item può avere anche dati satelliti
+        \end{itemize}
+  \item \texttt{p}, il \textbf{puntatore} al nodo \textbf{padre}
+        \begin{itemize}
+          \item se \texttt{x.p = NIL}, allora \texttt{x} è la radice
+        \end{itemize}
+  \item \texttt{left}, il \textbf{puntatore} alla radice del \textbf{sotto albero sinistro}
+        \begin{itemize}[label=\(\rightarrow\)]
+          \item se \texttt{left = NIL}, allora il sotto albero sinistro è \textbf{vuoto}
+        \end{itemize}
+  \item \texttt{right}, il \textbf{puntatore} alla radice del \textbf{sotto albero destro}
+  \item   \begin{itemize}[label=\(\rightarrow\)]
+          \item se \texttt{right = NIL}, allora il sotto albero destro è \textbf{vuoto}
+        \end{itemize}
+\end{itemize}
+
+Inoltre ogni albero \texttt{T} ha un attributo \texttt{root}, il \textbf{puntatore} alla \textbf{radice} dell'albero stesso.
+
+\bigskip
+Un esempio di albero binario è mostrato nella Figura~\ref{fig:esempio-albero-binario}.
+
+\begin{figure}[htbp]
+  \bigskip
+  \centering
+  \tikzfig{image-34.tikz}
+  \caption{Esempio di albero binario}
+  \label{fig:esempio-albero-binario}
+  \bigskip
+\end{figure}
+
+\subsubsection{Operazioni sugli alberi binari}
+
+Nei Paragrafi seguenti \textit{(\ref{attraversamento-albero-binario}~-~\ref{par:eliminazione-albero-binario})} verranno analizzate delle operazioni comunemente applicate agli alberi binari, insieme a delle immagini esplicative.
+
+\paragraph{Attraversamento}
+\label{attraversamento-albero-binario}
+
+L'attraversamento di un albero binario può avvenire esplorando prima in larghezza o prima in profondità.
+Nel primo caso si userà l'algoritmo \texttt{BFS} \textit{(Breadth First Search)}, mentre nel secondo si userà l'algoritmo \texttt{DFS} \textit{(Depth First Search)}.
+
+\begin{itemize}
+  \item Nel caso del \texttt{BFS}, si cerca di visitare il nodo più lontano dalla radice, a patto che sia figlio di un nodo già visitato
+        \begin{itemize}
+          \item non è necessario ricordare i nodi che sono stati visitati
+        \end{itemize}
+  \item Nel caso del \texttt{DFS}, si cerca di visitare il nodo più vicino alla radice, a patto che non sia già stato visitato
+        \begin{itemize}
+          \item è necessario tenere traccia di quali nodi sono già stati visitati
+        \end{itemize}
+\end{itemize}
+
+\bigskip
+Un confronto grafico tra i due algoritmi e l'ordine di attraversamento è mostrato nelle Figure~\ref{fig:attraversamento-albero-bfs}~e~\ref{fig:attraversamento-albero-dfs}.
+
+\begin{figure}
+  \bigskip
+  \centering
+  \begin{subfigure}[t]{0.45\textwidth}
+    \centering
+    \tikzfig[0.8]{image-36.tikz}
+    \caption{Attraversamento tramite \textit{BFS}}
+    \label{fig:attraversamento-albero-bfs}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.45\textwidth}
+    \centering
+    \tikzfig[0.8]{image-37.tikz}
+    \caption{Attraversamento tramite \textit{DFS}}
+    \label{fig:attraversamento-albero-dfs}
+  \end{subfigure}
+  \caption{Confronto negli attraversamenti di un albero binario tramite \textit{BFS} e \textit{DFS}}
+  \label{fig:confronto-attraversamento-bfs-dfs}
+  \bigskip
+\end{figure}
+
+\paragraph{Inserzione}
+\label{par:inserzione-albero-binario}
+
+L'inserzione di un nodo in un albero binario è leggermente diversa se essa vuole operare su un nodo \textbf{foglia} \textit{(esterno)} o un nodo \textbf{interno}:
+
+\begin{itemize}
+  \item nel primo caso basta segnare il nodo come sotto albero
+  \item nel secondo caso bisogna cambiare uno dei sotto alberi, assegnandoli al nuovo nodo \texttt{n}
+\end{itemize}
+
+\bigskip
+Il processo di inserzione è illustrato nella Figura~\ref{fig:inserzione-albero-binario}.
+
+\begin{figure}[htbp]
+  \bigskip
+  \centering
+  \tikzfig[0.8]{image-38.tikz}
+  \caption{Inserzione di un nodo in un albero binario}
+  \label{fig:inserzione-albero-binario}
+  \bigskip
+\end{figure}
+
+\paragraph{Eliminazione}
+\label{par:eliminazione-albero-binario}
+
+L'eliminazione di un elemento da un nodo non è sempre possibile senza creare ambiguità: se un nodo con due sotto alberi viene eliminato, non sarà possibile costruire un nuovo albero binario.
+
+Per eliminare un nodo
+
+\begin{itemize}
+  \item \textbf{con un solo sotto albero}, è sufficiente assegnare al padre di \texttt{n} il sotto albero di \texttt{n} nell'attributo corretto \textit{(sia esso \texttt{left} o \texttt{right})}
+  \item \textbf{senza sotto alberi}, è sufficiente assegnare al padre di \texttt{n} il valore di \texttt{NIL} nell'attributo corretto \textit{(sia esso \texttt{left} o \texttt{right})}
+\end{itemize}
+
+\bigskip
+Il processo di eliminazione è illustrato nella Figura~\ref{fig:eliminazione-albero-binario}.
+
+\begin{figure}[htbp]
+  \bigskip
+  \centering
+  \tikzfig[0.8]{image-39.tikz}
+  \caption{Eliminazione di un nodo in un albero binario}
+  \label{fig:eliminazione-albero-binario}
+  \bigskip
+\end{figure}
+
+\subsection{Alberi binari di ricerca - \textit{Binary Search Trees}}
+
+Un \textbf{albero binario di ricerca} \textit{(in Inglese Binary Search Tree, \BST)} è un albero binario che soddisfa la seguente proprietà:
+
+Sia \(x\) un nodo di un \BST.
+Se \(y\) è parte del:
+
+\begin{itemize}
+  \item Sotto albero \textbf{sinistro} di \(x\), allora \(key[y] \leq key[x]\)
+  \item Sotto albero \textbf{destro} di \(x\), allora \(key[x] \leq key[y]\)
+\end{itemize}
+
+Più semplicemente, il figlio sinistro di un nodo sarà sempre \textit{minore o uguale} del figlio destro dello stesso nodo.
+Allo stesso modo, il figlio destro sarà \textit{maggiore o uguale} di quello sinistro.
+
+\bigskip
+L'altezza di un \BST è, per ogni \(n \geq 1\), è pari a \(h \leq \log{\left(\dfrac{n+1}{2}\right)}\).
+
+\bigskip
+Un esempio di \BST è mostrato nella Figura~\ref{fig:esempio-bst}.
+
+\begin{figure}[htbp]
+  \bigskip
+  \centering
+  \tikzfig{image-35.tikz}
+  \caption{Esempio di binary search tree - \BST}
+  \label{fig:esempio-bst}
+  \bigskip
+\end{figure}
+
+\bigskip
+Grazie alla loro costruzione, è possible attraversare un \BST visitando le chiavi in ordine crescente tramite un semplice algoritmo ricorsivo, detto attraversamento simmetrico o \texttt{INORDER-TREE-WALK}.
+Il suo nome deriva dalla sua caratteristica di funzionamento:
+
+\begin{itemize}
+  \item il sotto albero sinistro viene visitato ed i suoi nodi vengono restituiti
+  \item la radice viene restituita
+  \item il sotto albero destro viene visitato ed i suoi nodi vengono restituiti
+\end{itemize}.
+
+Sono definiti altri algoritmi che funzionano in modo analogo:
+
+\begin{itemize}
+  \item anticipato, o \texttt{PREORDER-TREE-WALK}, in cui la radice è restituita dopo i sotto alberi
+  \item posticipato, o \texttt{POSTORDER-TREE-WALK}, in cui la radice è restituita dopo i sotto alberi
+\end{itemize}
+
+\subsubsection{Attraversamento di \BST}
+
+\paragraph{\texttt{INORDER-TREE-WALK} }
+
+\begin{lstlisting}[style=pseudocode]
+INORDER-TREE-WALK(x)
+  if x != NIL
+    INORDER-TREE-WALK(x.left)
+    print(x.key)
+    INORDER-TREE-WALK(x.right)
+\end{lstlisting}
+
+dove \texttt{x} è la radice del \BST che si vuole visitare.
+
+\bigskip
+Chiamando questo algoritmo su un \BST \texttt{T}, tutti i suoi elementi verranno stampati in ordine crescente.
+
+Con \(n\) nodi nel sotto albero, il tempo di esecuzione è \(\Theta(n)\).
+Questo valore può essere dimostrato per induzione:
+
+\begin{enumerate}
+  \item se l'albero è \textbf{vuoto}, l'algoritmo è eseguito in tempo costante \(c\)
+  \item se l'albero ha \(2\) sotto alberi di dimensioni \(k\) `\(n - k - 1\), \(T(n)\) è dato dalla ricorrenza
+        \[ T(n) = T(k) + T(n - k - 1) + d \]
+\end{enumerate}
+
+\paragraph{\texttt{PREORDER-TREE-WALK} e \texttt{POSTORDER-TREE-WALK}}
+
+\begin{minipage}[t]{0.495\textwidth}
+  \begin{lstlisting}[style=pseudocode]
+PREORDER-TREE-WALK(x)
+  if x != NIL
+    print(x.key)
+    PREORDER-TREE-WALK(x.left)
+    PREORDER-TREE-WALK(x.right)
+  \end{lstlisting}
+\end{minipage}
+\begin{minipage}[t]{0.495\textwidth}
+  \begin{lstlisting}[style=pseudocode]
+POSTORDER-TREE-WALK(x)
+  if x != NIL
+    POSTORDER-TREE-WALK(x.left)
+    POSTORDER-TREE-WALK(x.right)
+    print(x.key)
+    \end{lstlisting}
+\end{minipage}
+
+Il funzionamento di queste due funzioni è analogo a quello di \texttt{INORDER-TREE-WALK}, ma le chiavi vengono stampate in ordine diverso.
+La complessità sarà la stessa.
+
+\subsubsection{Operazioni sui \BST}
+
+Nei Paragrafi seguenti \textit{(\ref{par:ricerca-bst}~\ref{par:predecessore-successore-bst})} verranno analizzate delle operazioni comunemente applicate ai \BST, insieme alle loro relative complessità.
+
+\paragraph{Ricerca}
+\label{par:ricerca-bst}
+
+Per effettuare la ricerca di un nodo con una data chiave in un \BST, dato un puntatore alla radice dell'albero e la chiave \texttt{k}, si usa la procedura riportata nel Listato~\ref{lst:tree-search}.
+Essa ritornerà il puntatore al nodo \texttt{x} se presente nell'albero, altrimenti ritornerà \texttt{NIL}.
+
+La procedura inizia dal nodo radice e traccia un percorso verso le foglie dell'albero.
+Per ogni nodo \texttt{x} che incontra, confronta il valore \texttt{x.key} con \texttt{k}:
+
+\begin{itemize}
+  \item Se sono uguali o se \texttt{x} non ha un sotto albero, allora la ricerca termina
+  \item Se \texttt{k} è minore di \texttt{x.key}, allora la ricerca continua nel sotto albero sinistro
+  \item Se \texttt{k} è maggiore di \texttt{x.key}, allora la ricerca continua nel sotto albero destro
+\end{itemize}
+
+\begin{lstlisting}[style=pseudocode, caption={Ricerca di un nodo in un \BST}, label={lst:tree-search}]
+TREE-SEARCH(x, k)
+  if x = NIL or k = x.key
+    return x
+  if k < key[x]
+    return TREE-SEARCH(x.left, k)
+  else
+    return TREE-SEARCH(x.right, k)
+\end{lstlisting}
+
+\bigskip
+Lo stesso algoritmo può essere implementato in modo \textit{ricorsivo} tramite un ciclo while.
+Un esempio di questo codice è mostrato nel Listato~\ref{lst:iterative-tree-search}.
+
+\begin{lstlisting}[style=pseudocode, caption={Ricerca iterativa di un nodo in un BST}, label={lst:iterative-tree-search}]
+ITERATIVE-TREE-SEARCH(x, k)
+  while x != NIL and k != x.key:
+    if k < x.key
+      x = x.left
+    else
+      x = x.right
+\end{lstlisting}
+
+\bigskip
+La complessità temporale dell'algoritmo è \(\bigO(h)\), con \(h = \text{ altezza dell'albero }\).
+
+\paragraph{Massimo e minimo}
+\label{par:massimo-minimo-bst}
+
+%TODO
+
+\paragraph{Predecessore e successore}
+\label{par:predecessore-successore-bst}
+
+%TODO
+
+\clearpage
+
 \section{Conclusioni sparse delle precedenti Sezioni}
 
 L'obiettivo di questa Sezione sarà ricapitolare delle conclusioni tratte nelle precedenti sezioni, con particolare riguardo agli esercizi ed alle applicazioni pratiche.
@@ -7094,6 +7425,18 @@ Si ricordi che un insieme di funzioni è banale se è \textbf{vuoto} o se è l'i
           \item è possibile non indicare la base del logaritmo quando si valuta l'andamento asintotico
         \end{itemize}
   \item Contrariamente a quanto avviene nei logaritmi, negli esponenziali è importante specificare la \textbf{base}
+  \item A meno che non sia esplicitamente indicato, negli esercizi con pseudocodice si usa il criterio di costo costante
+\end{itemize}
+
+\subsubsection{Complessità dei cicli}
+
+Si supponga che un ciclo viene eseguito \(n\) volte.
+Se, ad ogni ciclo, il contatore:
+
+\begin{itemize}
+  \item Viene incrementato di un valore costante \texttt{k}: la complessità è \(\Theta(n) = \Theta(n)\)
+  \item Viene moltiplicato per un valore costante \texttt{k}: la complessità è \(\Theta(n) = \Theta\left(\log_\texttt{k}{(n)}\right) = \Theta\left(\log{(n)}\right)\)
+  \item Viene elevato ad un valore costante \texttt{k}: la complessità è \(\Theta(n) = \Theta\left(\log{\left(\log{(n)}\right)}\right)\)
 \end{itemize}
 
 \end{document}

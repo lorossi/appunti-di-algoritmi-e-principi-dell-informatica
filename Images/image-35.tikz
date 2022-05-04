@@ -1,0 +1,35 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=white] (0) at (0, 0) {\footnotesize \(3\)};
+		\node [style=white] (1) at (4, -3) {\footnotesize \(7\)};
+		\node [style=white] (2) at (-4, -3) {\footnotesize \(2\)};
+		\node [style=white] (3) at (-6, -6) {\footnotesize \(4\)};
+		\node [style=white] (4) at (-2, -6) {\footnotesize \(8\)};
+		\node [style=white] (5) at (2, -6) {\footnotesize \(5\)};
+		\node [style=white] (6) at (6, -6) {\footnotesize \(9\)};
+		\node [style=white] (7) at (-7, -9) {\footnotesize \(10\)};
+		\node [style=white] (8) at (-5, -9) {\footnotesize \(12\)};
+		\node [style=white] (9) at (-3, -9) {\footnotesize \(16\)};
+		\node [style=white] (10) at (-1, -9) {\footnotesize \(19\)};
+		\node [style=white] (11) at (1, -9) {\footnotesize \(11\)};
+		\node [style=white] (12) at (3, -9) {\footnotesize \(13\)};
+		\node [style=white] (13) at (5, -9) {\footnotesize \(17\)};
+		\node [style=white] (14) at (7, -9) {\footnotesize \(21\)};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=solid] (7) to (3);
+		\draw [style=solid] (3) to (2);
+		\draw [style=solid] (2) to (0);
+		\draw [style=solid] (1) to (0);
+		\draw [style=solid] (2) to (4);
+		\draw [style=solid] (8) to (3);
+		\draw [style=solid] (9) to (4);
+		\draw [style=solid] (4) to (10);
+		\draw [style=solid] (11) to (5);
+		\draw [style=solid] (5) to (12);
+		\draw [style=solid] (6) to (13);
+		\draw [style=solid] (14) to (6);
+		\draw [style=solid] (6) to (1);
+		\draw [style=solid] (1) to (5);
+	\end{pgfonlayer}
+\end{tikzpicture}
