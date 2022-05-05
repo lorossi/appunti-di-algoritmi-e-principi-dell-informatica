@@ -5362,7 +5362,6 @@ Il Lemma di altezza dell'albero binario recita che:
 
 \indentquote{Ogni albero binario di altezza \(h\) ha un numero di foglie al più pari a \(2^h\).}
 
-\bigskip
 La dimostrazione è banale e avviene per induzione.
 
 \subsubsection{Heap}
@@ -5401,7 +5400,7 @@ In particolare, si definiscono:
 \begin{itemize}
   \item \textbf{Problema}: il compito da svolgere
         \begin{itemize}
-          \item quali \textit{output} vogliamo ottenere a fronte di certi \textit{input}
+          \item quali \textit{output} si vuole ottenere a fronte di certi \textit{input}
           \item quali \textit{operazioni} devono essere effettuate (la funzione che deve svolgere)
         \end{itemize}
   \item \textbf{Algoritmo}: i passi da eseguire per risolvere un problema
@@ -5483,15 +5482,15 @@ Essa si applica a problemi grossi e difficili da risolvere e si articola nei seg
   \item \textbf{Combina} - le soluzioni vengono combinate al fine di ottenere il risultato finale
 \end{enumerate}
 
-Dividendo a sufficienza i problemi, inevitabilmente si ottengono problemi risolubili senza che debbano essere divisi ulteriormente.
-Questa è una tecnica di natura ricorsiva, in quanto i problemi più piccoli sono risolti tramite l'algoritmo stesso.
+Dividendo a sufficienza i problemi, inevitabilmente si ottengono sotto problemi più facili, risolubili senza che essi debbano essere divisi ulteriormente.
+Questa è una tecnica di natura ricorsiva, in quanto i sotto problemi sono risolti tramite l'algoritmo stesso.
 
 \bigskip
-In generale, un algoritmo \textbf{divide et impera} mostra le seguenti caratteristiche:
+In generale, un algoritmo \textbf{divide et impera} presenta le seguenti caratteristiche:
 
 \begin{itemize}
-  \item si divide il problema \(a\) in sotto problemi, ognuno di dimensione \(\sfrac{1}{b}\) di quello originale
-  \item se il sotto problema ha dimensione \(n\) sufficientemente piccola \textit{(tale per cui \(n < c\) con \(c\) costante)} allora esso può essere risolto in tempo costante \textit{(quindi in \(\Theta(1)\))}
+  \item Il problema viene \textbf{diviso} \(a\) in sotto problemi, ognuno di dimensione \(\sfrac{1}{b}\) di quello originale
+  \item Se il sotto problema ha dimensione \(n\) sufficientemente piccola \textit{(tale per cui \(n < c\) con \(c\) costante)} allora esso può essere \textbf{risolto} in tempo costante \textit{(quindi in \(\Theta(1)\))}
   \item Indicando con \(D(n)\) e \(C(n)\) i costi di divisione e ricombinazione, è possibile esprimere il costo totale \(T(n)\) come:
         \[ T(n) = \begin{cases} \Theta(1)                                 & \quad \text{ se } n < c   \\
               D(n) + aT\left(\sfrac{n}{b}\right) + C(n) & \quad \text{ altrimenti }
@@ -5500,7 +5499,7 @@ In generale, un algoritmo \textbf{divide et impera} mostra le seguenti caratteri
 
 \subsubsection{Ricorrenze}
 
-Una \textbf{ricorrenza} è una caratteristica delle funzioni ricorsive, ossia quelle funzioni con:
+Una \textbf{ricorrenza} è una caratteristica delle funzioni ricorsive, ossia quelle funzioni caratterizzate da:
 
 \begin{itemize}
   \item uno o più \textbf{casi base}
@@ -5510,9 +5509,9 @@ Una \textbf{ricorrenza} è una caratteristica delle funzioni ricorsive, ossia qu
 Esistono \(3\) tecniche principali per il risolvimento delle ricorrenze:
 
 \begin{enumerate}
-  \item Sostituzione
-  \item Albero di ricorsione
-  \item Teorema dell'Esperto (dall'Inglese \textit{Master Theorem})
+  \item \textbf{Sostituzione}
+  \item \textbf{Albero di ricorsione}
+  \item \textbf{Teorema dell'Esperto} (dall'Inglese \textit{Master Theorem})
 \end{enumerate}
 
 Tutte queste tecniche verranno analizzate più nel dettaglio nelle seguenti Sezioni.
@@ -5532,7 +5531,8 @@ Questo metodo porta ad un risultato esatto, ma può essere applicato solo laddov
 
 \subsubsection{Metodo dell'albero di ricorsione}
 
-Questo metodo fornisce un risultato approssimato la cui validità va provata con altre tecniche \textit{(normalmente per sostituzione)}.
+Il metodo dell'albero di ricorsione fornisce un risultato approssimato la cui validità va provata con altre tecniche \textit{(normalmente per sostituzione)}.
+Questo metodo, infatti, semplifica di molto il primo passo del metodo di sostituzione, ossia l'ipotesi della soluzione.
 
 \begin{enumerate}
   \item L'albero di ricorsione viene disegnato
@@ -5541,9 +5541,6 @@ Questo metodo fornisce un risultato approssimato la cui validità va provata con
         \end{itemize}
   \item La complessità di ciascun livello viene sommata per trovare la complessità totale
 \end{enumerate}
-
-Questo metodo va usato insieme al metodo di sostituzione.
-Il metodo dell'albero di ricorsione, infatti, semplifica di molto il primo passo del metodo di sostituzione, ossia l'ipotesi della soluzione.
 
 \bigskip
 Questo tecnica è molto facile da applicare nei problemi di tipo \textit{Divide et Impera}, come sarà mostrato nel prossimo Paragrafo.
@@ -5566,15 +5563,14 @@ Questo risultato va sempre verificato con il metodo di sostituzione.
 \label{sec:teorema-dell-esperto}
 
 Il \textbf{Teorema dell'Esperto} fornisce un metodo \inlinequote{da manuale} per risolvere le ricorrenze nella forma:
-
-\[ T(n) = aT(\sfrac{n}{b}) + f(n), \quad a \geq 1,\ b > 1 \]
+\[ T(n) = aT(\sfrac{n}{b}) + f(n)\]
 
 Il teorema richiede di memorizzare tre casi, ma permette di trovare una soluzione alla ricorrenza con relativa semplicità.
 
 \bigskip
 \textit{Formalmente}, siano \(a \geq 1,\ b > 1\) due costanti e \(f(n)\) una funzione dal comportamento asintotico positivo.
 A partire da essi è possibile definire \(T(n),\ n \in \mathbb{N}\) tramite la ricorrenza:
-\[ T(n) = aT(\sfrac{n}{b}) + f(n) \]
+\[ T(n) = aT(\sfrac{n}{b}) + f(n) , \quad a \geq 1,\ b > 1 \]
 dove \(\sfrac{n}{b}\) è considerato arrotondato per difetto o per eccesso (quindi rispettivamente \(\lfloor\sfrac{n}{b}\rfloor\) o \(\lceil\sfrac{n}{b}\rceil\)).
 
 \(T(n)\) può essere limitato asintoticamente come segue:
@@ -5779,7 +5775,7 @@ L'algoritmo \texttt{INSERTION-SORT} è uno dei più semplici algoritmi di ordina
 \textit{Idea} dell'algoritmo:
 per ogni elemento \(x\) di una sequenza \(A\) di elementi, partendo dalla prima posizione, inserisce l'elemento viene prelevato e l'array viene scorso fino a quando non viene trovata una posizione valida in cui inserire \(x\).
 
-L'array viene quindi ordinato senza sul posto, senza bisogno di array ausiliari.
+L'array viene quindi ordinato senza sul posto, senza bisogno di spazio di memoria ausiliario.
 
 \begin{minipage}{0.99\textwidth}
   \bigskip
@@ -5838,21 +5834,19 @@ Il tempo di esecuzione di \texttt{INSERTION-SORT(A)} è:
 
 \textit{Idea} dell'algoritmo:
 
-\begin{itemize}
-  \item Se l'array da ordinare ha meno di \(2\) elementi, allora è ordinato per definizione
-  \item Altrimenti:
+Se l'array da ordinare ha meno di \(2\) elementi, allora è ordinato per definizione.
+Altrimenti:
         \begin{itemize}
           \item l'array viene diviso in \(2\) sotto array, ognuno con la metà degli elementi di quello originario
           \item i \(2\) sotto array vengono ordinati applicando di nuovo l'algoritmo
           \item grazie all'algoritmo \texttt{MERGE} i \(2\) sotto array vengono combinati
           \item gli elementi dell'array ottenuto sono ordinati
         \end{itemize}
-\end{itemize}
 
 Il \texttt{MERGE-SORT} è un algoritmo ricorsivo e adotta la tecnica \textbf{divide ed impera}.
 Per completare l'algoritmo, infatti, è necessario definire un sotto algoritmo \texttt{MERGE} che combina le soluzioni dei problemi divisi.
 
-\textit{Idea} dell'algoritmo:
+\textit{Idea} dell'algoritmo \texttt{MERGE}:
 
 \begin{enumerate}
   \item \label{enum:begin-merge-loop} Partendo dall'inizio dei \(2\) sotto array, viene cercato il minimo dei \(2\) elementi correnti
@@ -5867,7 +5861,7 @@ MERGE-SORT(A, p, R)
   if p < r
     q := floor((p + r) / 2)
     MERGE-SORT(A, p, q)
-    MERGE-SORT(A, q+1, r)
+    MERGE-SORT(A, q + 1, r)
     MERGE(A, p, q, r)
 \end{lstlisting}
 
@@ -5883,9 +5877,9 @@ MERGE(A, p, q, r)
   for i := 1 to n1
     L[i] := A[p+i-1]
   for j := 1 to n2
-    R[j] := A[q+j]
-  L[n1+1] := $\infty$
-  R[n2+1] := $\infty$
+    R[j] := A[q + j]
+  L[n1 + 1] := $\infty$
+  R[n2 + 1] := $\infty$
   i := 1
   j := 1
   for k := p to r
@@ -6051,7 +6045,7 @@ Nel caso pessimo ha complessità \(\Theta(n^2)\), superiore all'\nameref{sec:hea
   \item \textbf{Combina}: l'array \texttt{A[p..r]} è già ordinato
 \end{itemize}
 
-La parte \inlinequote{complicata} da implementare riguarda la partizione: essa viene effettuata tramite l'algoritmo \texttt{PARTITION},che avrà l'incarico di scegliere un elemento di \textit{pivot}.
+La parte \inlinequote{complicata} da implementare riguarda la partizione: essa viene effettuata tramite l'algoritmo \texttt{PARTITION}, che avrà l'incarico di scegliere un elemento di \textit{pivot}.
 
 Proprietà del \textit{pivot}:
 
@@ -6092,7 +6086,7 @@ PARTITION(A, p, r):
 
 \paragraph{Analisi di \texttt{QUICKSORT}}
 
-La complessità di \texttt{PARTITION} e \(\Theta(n),\ n = r - p + 1\).
+La complessità di \texttt{PARTITION} è \(\Theta(n),\ n = r - p + 1\).
 
 \bigskip
 Il tempo di esecuzione di \texttt{QUICKSORT} dipende da come viene partizionato l'array:
@@ -6141,17 +6135,17 @@ Lo stesso risultato sarebbe stato raggiunto anche applicando il Teorema dell'Esp
 \begin{itemize}
   \item Nel caso ottimo, la ricorrenza è \(T(n) \leq 2T(\sfrac{n}{2}) + \Theta(n)\)
         \begin{itemize}
-          \item la soluzione porterà a \(T(n) = \bigO\left(n \log{(n)}\right)\)
+          \item la soluzione sarà pari a \(T(n) = \bigO\left(n \log{(n)}\right)\)
         \end{itemize}
   \item Nel caso pessimo, in cui l'algoritmo produce una divisione \(9\) a \(1\), la ricorrenza è \(T(n) \leq T(\sfrac{9n}{10}) + T(\sfrac{n}{10}) + c \cdot n\)
         \begin{itemize}
-          \item la soluzione porterà a \(T(n) = \bigO\left(n^2\right)\)
+          \item la soluzione sarà pari a \(T(n) = \bigO\left(n^2\right)\)
         \end{itemize}
 \end{itemize}
 
 \subsubsection{\texttt{COUNTING-SORT}}
 
-L'algoritmo \texttt{COUNTING-SORT} è un algoritmo di ordinamento che richiede che tutti i valori in ingresso \(a_0, \ldots a_k\) sono tutti i numeri compresi tra \(0\) ed una certa costante \(k\).
+L'algoritmo \texttt{COUNTING-SORT} è un algoritmo di ordinamento che richiede che tutti i valori in ingresso \(a_0,\, \ldots,\, a_k\) sono tutti i numeri compresi tra \(0\) ed una certa costante \(k\).
 
 \textit{Idea} di base:
 se nell'array ci sono \(m_e\) valori più piccoli di un certo elemento \(e\) di valore \(v_e\), nell'array ordinato quest'ultimo sarà in posizioni \(m_e + 1\).
@@ -7472,7 +7466,7 @@ L'obiettivo di questa Sezione sarà ricapitolare delle conclusioni tratte nelle 
 \begin{itemize}
   \item Definizione di logaritmo:  \(a^{\log_a{(b)}} = b,\ a, b > 0,\ a \neq 1\)
   \item Logaritmo del prodotto: \(\log_a{(b \cdot c)} = \log_a{(b) \cdot \log_a{(c)}}\)
-  \item Logaritmo del rapporto: \(\log_a{\left(\dfrac{b}{c}\right)} = \log_a{(b)} - \log_a{(c)}\)
+  \item Logaritmo del rapporto: \(\log_a{\left(\sfrac{b}{c}\right)} = \log_a{(b)} - \log_a{(c)}\)
   \item Regola dell'esponente: \(\log_a{\left(b^c\right)} = c \cdot \log_a{(b)}\)
   \item Formula di cambio di base per i logaritmi: \(\log_a{(b)} = \dfrac{\log_c{(b)}}{\log_c{(a)}}\) con \(a, b, c > 0,\ c \neq 1\)
 \end{itemize}
