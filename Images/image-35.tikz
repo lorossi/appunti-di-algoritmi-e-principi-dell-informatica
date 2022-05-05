@@ -1,20 +1,20 @@
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=white] (0) at (0, 0) {\footnotesize \(3\)};
-		\node [style=white] (1) at (4, -3) {\footnotesize \(7\)};
-		\node [style=white] (2) at (-4, -3) {\footnotesize \(2\)};
-		\node [style=white] (3) at (-6, -6) {\footnotesize \(4\)};
-		\node [style=white] (4) at (-2, -6) {\footnotesize \(8\)};
-		\node [style=white] (5) at (2, -6) {\footnotesize \(5\)};
-		\node [style=white] (6) at (6, -6) {\footnotesize \(9\)};
-		\node [style=white] (7) at (-7, -9) {\footnotesize \(10\)};
-		\node [style=white] (8) at (-5, -9) {\footnotesize \(12\)};
-		\node [style=white] (9) at (-3, -9) {\footnotesize \(16\)};
-		\node [style=white] (10) at (-1, -9) {\footnotesize \(19\)};
-		\node [style=white] (11) at (1, -9) {\footnotesize \(11\)};
-		\node [style=white] (12) at (3, -9) {\footnotesize \(13\)};
-		\node [style=white] (13) at (5, -9) {\footnotesize \(17\)};
-		\node [style=white] (14) at (7, -9) {\footnotesize \(21\)};
+		\node [style=white, minimum size=17pt] (0) at (0, 0) {\footnotesize \(15\)};
+		\node [style=white, minimum size=17pt] (1) at (4, -3) {\footnotesize \(22\)};
+		\node [style=white, minimum size=17pt] (2) at (-4, -3) {\footnotesize \(12\)};
+		\node [style=white, minimum size=17pt] (3) at (-6, -6) {\footnotesize \(4\)};
+		\node [style=white, minimum size=17pt] (4) at (-2, -6) {\footnotesize \(13\)};
+		\node [style=white, minimum size=17pt] (5) at (2, -6) {\footnotesize \(20\)};
+		\node [style=white, minimum size=17pt] (6) at (6, -6) {\footnotesize \(24\)};
+		\node [style=white, minimum size=17pt] (7) at (-7, -9) {\footnotesize \(2\)};
+		\node [style=white, minimum size=17pt] (8) at (-5, -9) {\footnotesize \(5\)};
+		\node [style=white, minimum size=17pt] (9) at (-3, -9) {\footnotesize \(9\)};
+		\node [style=white, minimum size=17pt] (10) at (-1, -9) {\footnotesize \(14\)};
+		\node [style=white, minimum size=17pt] (11) at (1, -9) {\footnotesize \(19\)};
+		\node [style=white, minimum size=17pt] (12) at (3, -9) {\footnotesize \(21\)};
+		\node [style=white, minimum size=17pt] (13) at (5, -9) {\footnotesize \(23\)};
+		\node [style=white, minimum size=17pt] (14) at (7, -9) {\footnotesize \(26\)};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [style=solid] (7) to (3);

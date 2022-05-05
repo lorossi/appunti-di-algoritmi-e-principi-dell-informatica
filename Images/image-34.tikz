@@ -1,14 +1,14 @@
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=white] (0) at (0, 0) {\footnotesize \(2\)};
-		\node [style=white] (1) at (4, -3) {\footnotesize \(8\)};
-		\node [style=white] (2) at (-4, -3) {\footnotesize \(1\)};
-		\node [style=white] (3) at (-6, -6) {\footnotesize \(3\)};
-		\node [style=white] (4) at (-2, -6) {\footnotesize \(5\)};
-		\node [style=white] (5) at (-2, -9) {\footnotesize \(9\)};
-		\node [style=white] (6) at (4, -6) {\footnotesize \(7\)};
-		\node [style=white] (7) at (1.75, -9) {\footnotesize \(4\)};
-		\node [style=white] (8) at (6, -9) {\footnotesize \(6\)};
+		\node [style=white, minimum size=10pt] (0) at (0, 0) {\footnotesize \(2\)};
+		\node [style=white, minimum size=10pt] (1) at (4, -3) {\footnotesize \(8\)};
+		\node [style=white, minimum size=10pt] (2) at (-4, -3) {\footnotesize \(1\)};
+		\node [style=white, minimum size=10pt] (3) at (-6, -6) {\footnotesize \(3\)};
+		\node [style=white, minimum size=10pt] (4) at (-2, -6) {\footnotesize \(5\)};
+		\node [style=white, minimum size=10pt] (5) at (-2, -9) {\footnotesize \(9\)};
+		\node [style=white, minimum size=10pt] (6) at (4, -6) {\footnotesize \(7\)};
+		\node [style=white, minimum size=10pt] (7) at (1.75, -9) {\footnotesize \(4\)};
+		\node [style=white, minimum size=10pt] (8) at (6, -9) {\footnotesize \(6\)};
 		\node [style=none] (9) at (1, 1) {};
 		\node [style=none] (10) at (1, -1) {};
 		\node [style=none] (11) at (-1, -1) {};
