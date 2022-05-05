@@ -1,0 +1,21 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=white, minimum size=10pt, inner sep=1pt] (0) at (0, 0) {\tiny\(10\)};
+		\node [style=white, minimum size=10pt, inner sep=1pt] (1) at (3.5, -6) {\tiny\(5\)};
+		\node [style=white, minimum size=10pt, inner sep=1pt] (2) at (2, -2) {\tiny\(15\)};
+		\node [style=white, minimum size=10pt, inner sep=1pt] (5) at (3.75, -8) {\tiny\(13\)};
+		\node [style=white, minimum size=10pt, inner sep=1pt] (6) at (3, -4) {\tiny\(19\)};
+		\node [style=none] (7) at (-4.5, 0) {};
+		\node [style=none] (8) at (-4.5, -8) {};
+		\node [style=none, rotate=90] (9) at (-5, -4) {\small\(n\)};
+		\node [style=none] (10) at (-4.5, -4) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=solid, in=135, out=-45] (0) to (2);
+		\draw [style=solid] (2) to (6);
+		\draw [style=solid arrow] (10.center) to (7.center);
+		\draw [style=solid arrow] (10.center) to (8.center);
+		\draw [style=solid] (6) to (1);
+		\draw [style=solid] (1) to (5);
+	\end{pgfonlayer}
+\end{tikzpicture}

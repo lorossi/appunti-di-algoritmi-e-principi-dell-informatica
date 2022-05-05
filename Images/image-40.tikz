@@ -1,0 +1,19 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=white, minimum size=20pt] (0) at (0, 0) {};
+		\node [style=white, minimum size=20pt] (1) at (-2, -2) {};
+		\node [style=white, minimum size=20pt] (2) at (2, -2) {};
+		\node [style=white, minimum size=20pt] (3) at (-1, -4) {};
+		\node [style=white, minimum size=20pt] (4) at (-3, -4) {};
+		\node [style=white, minimum size=20pt] (5) at (1, -4) {};
+		\node [style=white, minimum size=20pt] (6) at (3, -4) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=solid] (1) to (4);
+		\draw [style=solid] (1) to (3);
+		\draw [style=solid] (5) to (2);
+		\draw [style=solid] (2) to (6);
+		\draw [style=solid] (1) to (0);
+		\draw [style=solid] (0) to (2);
+	\end{pgfonlayer}
+\end{tikzpicture}

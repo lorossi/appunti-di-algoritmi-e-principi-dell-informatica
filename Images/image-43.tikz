@@ -1,0 +1,68 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=white, minimum size=17pt] (0) at (0, 0) {\footnotesize\(10\)};
+		\node [style=white, minimum size=17pt] (1) at (-3, -3) {\footnotesize\(5\)};
+		\node [style=white, minimum size=17pt, draw={rgb,255: red,191; green,0; blue,64}, text={rgb,255: red,191; green,0; blue,64}] (2) at (3, -3) {\footnotesize\(19\)};
+		\node [style=white, minimum size=17pt] (3) at (-1, -6) {\footnotesize\(6\)};
+		\node [style=white, minimum size=17pt] (4) at (-5, -6) {\footnotesize\(4\)};
+		\node [style=white, minimum size=17pt] (5) at (1, -6) {\footnotesize\(12\)};
+		\node [style=white, minimum size=17pt] (6) at (5, -6) {\footnotesize\(24\)};
+		\node [style=white, minimum size=17pt] (8) at (4, -9) {\footnotesize\(22\)};
+		\node [style=white, minimum size=17pt] (9) at (6, -9) {\footnotesize\(26\)};
+		\node [style=white, minimum size=17pt] (10) at (4, -12) {\footnotesize\(20\)};
+		\node [style=none] (11) at (7.5, -14) {};
+		\node [style=none] (12) at (7.5, 2) {};
+		\node [style=white, minimum size=17pt] (13) at (14, 0) {\footnotesize\(10\)};
+		\node [style=white, minimum size=17pt] (14) at (11, -3) {\footnotesize\(5\)};
+		\node [style=white, minimum size=17pt, draw={rgb,255: red,191; green,0; blue,64}, text={rgb,255: red,191; green,0; blue,64}] (15) at (17, -3) {\footnotesize\(19\)};
+		\node [style=white, minimum size=17pt] (16) at (13, -6) {\footnotesize\(6\)};
+		\node [style=white, minimum size=17pt] (17) at (9, -6) {\footnotesize\(4\)};
+		\node [style=white, minimum size=17pt] (18) at (15, -6) {\footnotesize\(12\)};
+		\node [style=white, minimum size=17pt] (19) at (19, -6) {\footnotesize\(24\)};
+		\node [style=white, minimum size=17pt] (20) at (18, -9) {\footnotesize\(22\)};
+		\node [style=white, minimum size=17pt] (21) at (20, -9) {\footnotesize\(26\)};
+		\node [style=white, minimum size=17pt, draw={rgb,255: red,0; green,128; blue,128}, text={rgb,255: red,0; green,128; blue,128}] (22) at (18, -12) {\footnotesize\(20\)};
+		\node [style=white, minimum size=17pt] (23) at (28, 0) {\footnotesize\(10\)};
+		\node [style=white, minimum size=17pt] (24) at (25, -3) {\footnotesize\(5\)};
+		\node [style=white, minimum size=17pt, draw={rgb,255: red,0; green,128; blue,128}, text={rgb,255: red,0; green,128; blue,128}] (25) at (31, -3) {\footnotesize\(20\)};
+		\node [style=white, minimum size=17pt] (26) at (27, -6) {\footnotesize\(6\)};
+		\node [style=white, minimum size=17pt] (27) at (23, -6) {\footnotesize\(4\)};
+		\node [style=white, minimum size=17pt] (28) at (29, -6) {\footnotesize\(12\)};
+		\node [style=white, minimum size=17pt] (29) at (33, -6) {\footnotesize\(24\)};
+		\node [style=white, minimum size=17pt] (30) at (32, -9) {\footnotesize\(22\)};
+		\node [style=white, minimum size=17pt] (31) at (34, -9) {\footnotesize\(26\)};
+		\node [style=none] (33) at (21.5, -14) {};
+		\node [style=none] (34) at (21.5, 2) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=solid] (1) to (4);
+		\draw [style=solid] (1) to (3);
+		\draw [style=solid] (5) to (2);
+		\draw [style=solid] (2) to (6);
+		\draw [style=solid] (1) to (0);
+		\draw [style=solid] (0) to (2);
+		\draw [style=solid] (8) to (6);
+		\draw [style=solid] (9) to (6);
+		\draw [style=solid] (10) to (8);
+		\draw [style=thin] (12.center) to (11.center);
+		\draw [style=solid] (14) to (17);
+		\draw [style=solid] (14) to (16);
+		\draw [style=solid] (18) to (15);
+		\draw [style=solid] (15) to (19);
+		\draw [style=solid] (14) to (13);
+		\draw [style=solid] (13) to (15);
+		\draw [style=solid] (20) to (19);
+		\draw [style=solid] (21) to (19);
+		\draw [style=solid] (22) to (20);
+		\draw [style=green arrow, dash pattern=on 3pt off 1pt, in=-75, out=135, looseness=0.75] (22) to (15);
+		\draw [style=solid] (24) to (27);
+		\draw [style=solid] (24) to (26);
+		\draw [style=solid] (28) to (25);
+		\draw [style=solid] (25) to (29);
+		\draw [style=solid] (24) to (23);
+		\draw [style=solid] (23) to (25);
+		\draw [style=solid] (30) to (29);
+		\draw [style=solid] (31) to (29);
+		\draw [style=thin] (34.center) to (33.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
