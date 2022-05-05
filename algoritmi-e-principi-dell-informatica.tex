@@ -5310,7 +5310,7 @@ In caso contrario, è detto \textbf{non orientato} \textit{(Figura~\ref{fig:graf
   \item Un grafo \textbf{non orientato} è connesso se tra ogni coppia di vertici esiste un cammino.
 \end{itemize}
 
-\subsubsection{Alberi}
+\subsubsection{alberi}
 \label{sec:alberi}
 
 Un \textbf{albero} è un grafo connesso, aciclico, non orientato.
@@ -5382,11 +5382,10 @@ L'albero binario che deriva da questa interpretazione è quasi completo.
 \bigskip
 Un esempio di \textbf{max-heap} e la sua corrispondenza con un array è mostrata nella Figura~\ref{fig:esempio-di-max-heap}.
 
-% TODO sistemare la dimensione dell'array, i rettangoli sono troppo grossi
 \begin{figure}[htbp]
   \bigskip
   \centering
-  \tikzfig[0.8]{image-27.tikz}
+  \tikzfig{image-27.tikz}
   \caption{Esempio di max heap}
   \label{fig:esempio-di-max-heap}
   \bigskip
@@ -5787,7 +5786,7 @@ L'array viene quindi ordinato senza sul posto, senza bisogno di array ausiliari.
   \centering
   \begin{minipage}{0.45\textwidth}
     \centering
-    \begin{lstlisting}[style=pseudocode]
+    \begin{lstlisting}[style=pseudocode, label={Pseudocodice dell'algoritmo di Insertion Sort}, label={lst:pseudocodice-insertion-sort}]
 INSERTION-SORT(A)
   for j := 1 to A.length
     key := A[j]
@@ -5863,7 +5862,7 @@ Per completare l'algoritmo, infatti, è necessario definire un sotto algoritmo \
 \end{enumerate}
 
 \begin{minipage}{0.99\textwidth}
-  \begin{lstlisting}[style=pseudocode]
+  \begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo di Merge Sort}, label={lst:pseudocodice-merge-sort}]
 MERGE-SORT(A, p, R)
   if p < r
     q := floor((p + r) / 2)
@@ -5875,7 +5874,7 @@ MERGE-SORT(A, p, R)
   \begin{minipage}{0.99\textwidth}
     \centering
     \begin{minipage}[t]{0.495\textwidth}
-      \begin{lstlisting}[style=pseudocode]
+      \begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo di Merge}, label={lst:pseudocodice-merge}]
 MERGE(A, p, q, r)
   n1 := q - p + 1
   n2 := r - q
@@ -6012,7 +6011,7 @@ Questo algoritmo farà uso degli algoritmi \textit{di supporto} \texttt{BUILD-MA
 Ad ogni ciclo viene preso l'elemento più grande \textit{(primo dell'array, in quanto max-heap)} in fondo alla parte di array ancora da ordinare \textit{(corrispondente allo heap).}
 Lo heap viene decrementato di \(1\) e viene ricostruito il max-heap mettendo come radice l'ultima foglia a destra dell'ultimo livello e invocando \texttt{MAX-HEAPIFY}.
 
-\begin{lstlisting}[style=pseudocode]
+\begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo Heapsort}, label={sec:algoritmo-heapsort}]
 HEAPSORT(A)
   BUILD-MAX-HEAP(A)
   for i := A.length downto 2
@@ -6063,7 +6062,7 @@ Proprietà del \textit{pivot}:
 
 \begin{center}
   \begin{minipage}[t]{0.495\textwidth}
-    \begin{lstlisting}[style=pseudocode]
+    \begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo QUICKSORT}, label={sec:algoritmo-quicksort}]
 QUICKSORT(A, p, r):
   if p < r:
     q := PARTITION(A, p, r)
@@ -6072,7 +6071,7 @@ QUICKSORT(A, p, r):
         \end{lstlisting}
   \end{minipage}
   \begin{minipage}[t]{0.495\textwidth}
-    \begin{lstlisting}[style=pseudocode]
+    \begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo PARTITION}, label={sec:algoritmo-partition}]
 PARTITION(A, p, r):
     x := A[r]
     i := p - 1
@@ -6159,7 +6158,7 @@ se nell'array ci sono \(m_e\) valori più piccoli di un certo elemento \(e\) di 
 Quindi per ordinare l'array basta contare quante copie dello stesso valore \(v_e\) sono presenti all'interno dello stesso: questa informazione viene usata per determinare, per ogni elemento \(e, 0 \leq v_e \leq k\), quanti elementi sono più piccoli di \(e\).
 Infine bisogna tenere conto degli elementi ripetuti.
 
-\begin{lstlisting}[style=pseudocode]
+\begin{lstlisting}[style=pseudocode, caption={Pseudocodice algorimo Counting Sort}, label={lst:counting-sort}]
 COUNTING-SORT(A, B, K):
   for i := 0 to k
     C[i] := 0
@@ -6479,7 +6478,7 @@ Nei prossimi Paragrafi verranno illustrati gli pseudocodici delle operazioni sul
 
 \textit{Complessità temporale}: \(\Theta(n)\) nel caso pessimo \textit{(la chiave non è nella lista)}.
 
-\begin{lstlisting}[style=pseudocode]
+\begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo List Search}, label={lst:list-search}]
 LIST-SEARCH(L, k)
   x := L.head
   while x != NIL and x.key != k
@@ -6495,7 +6494,7 @@ LIST-SEARCH(L, k)
 
 \textit{Complessità temporale}: \(\bigO(1)\).
 
-\begin{lstlisting}[style=pseudocode]
+\begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo List Insert}, label={lst:list-insert}]
 LIST-INSERT(L, x)
   x.next := L.head
   if L.head != NIL
@@ -6513,7 +6512,7 @@ Non è sufficientemente passare solo la chiave dell'oggetto: \textbf{è necessar
 
 \textit{Complessità temporale}: \(\bigO(1)\).
 
-\begin{lstlisting}[style=pseudocode]
+\begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo List Delete}, label={lst:list-delete}]
 LIST-DELETE(L, x)
   if x.prev != NIL
     x.prev.next := x.next
@@ -6641,15 +6640,15 @@ La collisioni e le loro risoluzioni sono mostrate rispettivamente nelle Figure~\
 
 \subsubsection{Operazioni sulle tabelle hash}
 
-\begin{lstlisting}[style=pseudocode]
+\begin{lstlisting}[style=pseudocode, numbers=none]
 CHAINED-HASH-INSERT(T, x)
   inserisci X in testa alla lista T[h(x.key)]
 \end{lstlisting}
-\begin{lstlisting}[style=pseudocode]
+\begin{lstlisting}[style=pseudocode, numbers=none]
 CHAINED-HASH-SEARCH(T, k)
   cerca un elemento con chiave k nella lista T[h(k)]
   \end{lstlisting}
-\begin{lstlisting}[style=pseudocode]
+\begin{lstlisting}[style=pseudocode, numbers=none]
 CHAINED-HASH-DELETE(T, x)
   cancella x dalla lista T[h(x.key)]
     \end{lstlisting}
@@ -6784,7 +6783,7 @@ Nei prossimi Paragrafi verranno illustrati gli pseudocodici delle operazioni sul
 
 \paragraph{Inserimento}
 
-\begin{lstlisting}[style=pseudocode]
+\begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo di inserimento}, label={sec:inserimento-ind-aperto}]
 HASH-INSERT(T, k)
 i := 0
 repeat
@@ -6802,7 +6801,7 @@ Per inserire un elemento di chiave \texttt{k} nella collezione \texttt{T} l'algo
 
 \paragraph{Ricerca}
 
-\begin{lstlisting}[style=pseudocode]
+\begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo di ricerca}, label={sec:ricerca-ind-aperto}]
 HASH-SEARCH(T, k)
   i := 0
   repeat
@@ -6926,7 +6925,7 @@ Di conseguenza, questo è considerato il metodo migliore per generare sequenze d
 \section{Grafi}
 \label{sec:grafi}
 
-\subsection{Alberi binari}
+\subsection{alberi binari}
 
 Come già introdotto nella Sezione~\ref{sec:alberi}, un \textbf{albero binario} è composto da \(3\) elementi:
 
@@ -7065,23 +7064,20 @@ Il processo di eliminazione è illustrato nella Figura~\ref{fig:eliminazione-alb
   \bigskip
 \end{figure}
 
-\subsection{Alberi binari di ricerca - \textit{Binary Search Trees}}
+\subsection{alberi binari di ricerca - \textit{Binary Search Trees}, \BST}
 
 Un \textbf{albero binario di ricerca} \textit{(in Inglese Binary Search Tree, \BST)} è un albero binario che soddisfa la seguente proprietà:
 
-Sia \(x\) un nodo di un \BST.
-Se \(y\) è parte del:
+Sia \texttt{x} un nodo di un \BST.
+Se \texttt{y} è parte del:
 
 \begin{itemize}
-  \item Sotto albero \textbf{sinistro} di \(x\), allora \(key[y] \leq key[x]\)
-  \item Sotto albero \textbf{destro} di \(x\), allora \(key[x] \leq key[y]\)
+  \item sotto albero \textbf{sinistro} di \texttt{x}, allora \(\texttt{y.key} \leq \texttt{x.key}\)
+  \item sotto albero \textbf{destro} di \texttt{x}, allora \(\texttt{y.key} \geq \texttt{x.key}\)
 \end{itemize}
 
-Più semplicemente, il figlio sinistro di un nodo sarà sempre \textit{minore o uguale} del figlio destro dello stesso nodo.
-Allo stesso modo, il figlio destro sarà \textit{maggiore o uguale} di quello sinistro.
-
-\bigskip
-L'altezza di un \BST è, per ogni \(n \geq 1\), è pari a \(h \leq \log{\left(\dfrac{n+1}{2}\right)}\).
+Più semplicemente, il figlio sinistro di un nodo sarà sempre \textit{minore o uguale} del nodo stesso.
+Allo stesso modo, il figlio destro sarà \textit{maggiore o uguale}.
 
 \bigskip
 Un esempio di \BST è mostrato nella Figura~\ref{fig:esempio-bst}.
@@ -7112,11 +7108,41 @@ Sono definiti altri algoritmi che funzionano in modo analogo:
   \item posticipato, o \texttt{POSTORDER-TREE-WALK}, in cui la radice è restituita dopo i sotto alberi
 \end{itemize}
 
+\subsubsection{Altezza di un \BST}
+
+In generale, l'altezza di un \BST è pari a:
+\[ h \leq \log{\left(\dfrac{n+1}{2}\right)}, \quad \forall \, n \geq 1\]
+Più precisamente, l'altezza è \(\Theta(\log{(n)})\) per un albero bilanciato mentre è \(\Theta(n)\) nel caso pessimo, in cui tutti i nodi sono in linea.
+
+\bigskip
+É poi possibile dimostrare che l'altezza attesa di un albero costruito inserendo le chiavi in ordine casuale con distribuzione uniforme è \(\bigO\left(\log{(n)}\right)\).
+
+\bigskip
+Il confronto tra i due casi avviene nella Figura~\ref{fig:altezza-albero-binario}
+
+\begin{figure}[htbp]
+  \bigskip
+  \centering
+  \begin{subfigure}[b]{0.495\textwidth}
+    \centering
+    \tikzfig{image-44.tikz}
+    \caption{albero completo}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.495\textwidth}
+    \centering
+    \tikzfig{image-45.tikz}
+    \caption{albero in linea}
+  \end{subfigure}
+  \caption{Altezza di un albero binario}
+  \label{fig:altezza-albero-binario}
+  \bigskip
+\end{figure}
+
 \subsubsection{Attraversamento di \BST}
 
 \paragraph{\texttt{INORDER-TREE-WALK} }
 
-\begin{lstlisting}[style=pseudocode]
+\begin{lstlisting}[style=pseudocode, caption={Attraversamento di un BST in modo simmetrico}, label={lst:attraversamento-bst-inorder}]
 INORDER-TREE-WALK(x)
   if x != NIL
     INORDER-TREE-WALK(x.left)
@@ -7141,7 +7167,7 @@ Questo valore può essere dimostrato per induzione:
 \paragraph{\texttt{PREORDER-TREE-WALK} e \texttt{POSTORDER-TREE-WALK}}
 
 \begin{minipage}[t]{0.495\textwidth}
-  \begin{lstlisting}[style=pseudocode]
+  \begin{lstlisting}[style=pseudocode, caption={Attraversamento di un BST in modo anticipato}, label={lst:attraversamento-bst-preorder}]
 PREORDER-TREE-WALK(x)
   if x != NIL
     print(x.key)
@@ -7150,7 +7176,7 @@ PREORDER-TREE-WALK(x)
   \end{lstlisting}
 \end{minipage}
 \begin{minipage}[t]{0.495\textwidth}
-  \begin{lstlisting}[style=pseudocode]
+  \begin{lstlisting}[style=pseudocode, caption={Attraversamento di un BST in modo posticipato}, label={lst:attraversamento-bst-postorder}]
 POSTORDER-TREE-WALK(x)
   if x != NIL
     POSTORDER-TREE-WALK(x.left)
@@ -7164,7 +7190,7 @@ La complessità sarà la stessa.
 
 \subsubsection{Operazioni sui \BST}
 
-Nei Paragrafi seguenti \textit{(\ref{par:ricerca-bst}~\ref{par:predecessore-successore-bst})} verranno analizzate delle operazioni comunemente applicate ai \BST, insieme alle loro relative complessità.
+Nei Paragrafi seguenti \textit{(\ref{par:ricerca-bst}~\ref{par:eliminazione-bst})} verranno analizzate delle operazioni comunemente applicate ai \BST, insieme alle loro relative complessità.
 
 \paragraph{Ricerca}
 \label{par:ricerca-bst}
@@ -7210,12 +7236,223 @@ La complessità temporale dell'algoritmo è \(\bigO(h)\), con \(h = \text{ altez
 \paragraph{Massimo e minimo}
 \label{par:massimo-minimo-bst}
 
-%TODO
+Dato un \BST, può essere importante trovare gli elementi le cui chiavi rappresentano i valori massimi o minimi.
 
-\paragraph{Predecessore e successore}
-\label{par:predecessore-successore-bst}
+Un elemento dell'albero binario il cui valore è il minimo è sempre trovato seguendo il sotto albero sinistro \textit{(tramite i puntatori \texttt{left})} partendo dalla radice finché non si incontra un nodo senza sotto albero (il cui puntatore ha valore \texttt{NIL}).
+Allo stesso modo, il valore massimo è trovato seguendo sempre il sotto albero destro \textit{(tramite i puntatori \texttt{right})}.
 
-%TODO
+I gli pseudocodici delle due funzioni sono illustrati nei Listati~\ref{lst:min-bst}~e~\ref{lst:max-bst}.
+Essi sono reciprocamente simmetrici.
+
+\begin{minipage}[t]{0.495\textwidth}
+  \begin{lstlisting}[style=pseudocode, caption={Minimo di un BST}, label={lst:min-bst}]
+TREE-MINIMUM(x)
+  while x.left != NIL
+    x = x.left
+  return x
+  \end{lstlisting}
+\end{minipage}
+\begin{minipage}[t]{0.495\textwidth}
+  \begin{lstlisting}[style=pseudocode, caption={Massimo di un BST}, label={lst:max-bst}]
+TREE-MAXIMUM(x)
+  while x.right != NIL
+    x = x.right
+  return x
+  \end{lstlisting}
+\end{minipage}
+
+dove \texttt{x} è il puntatore alla radice dell'albero e il valore restituito sarà il puntatore al valore massimo o minimo, a seconda del caso.
+
+\bigskip
+La complessità temporale di entrambi gli algoritmi è \(\bigO(h)\), con \(h = \text{ altezza dell'albero }\).
+
+\paragraph{Successore e predecessore}
+\label{par:successore-predecessore-bst}
+
+Dato un nodo di un \BST, può essere importante trovare il suo successore o predecessore.
+
+Se tutte le chiavi sono diverse, il successore di n nodo \texttt{x} è definito come il nodo con la chiave più piccola che è maggiore di \texttt{x.key}.
+Allo stesso modo il predecessore di \texttt{x} è il nodo con la chiave più grande che è minore di \texttt{x.key}.
+La struttura del \BST, tuttavia, permette di di eseguire queste operazioni senza dovere effettivamente confrontare le chiavi.
+
+Gli pseudocodici delle due funzioni sono illustrati nei Listati~\ref{lst:predecessore-bst}~e~\ref{lst:successore-bst}.
+
+\begin{minipage}[t]{0.495\textwidth}
+  \begin{lstlisting}[style=pseudocode, caption={Successore di di un nodo}, label={lst:successore-bst}]
+TREE-SUCCESSOR(x)
+    if x.right != NIL
+      return TREE-MINIMUM(x.right)
+    y := x.parent
+    while y != NIL and x = y.right
+      x := y
+      y := y.parent
+  return y
+  \end{lstlisting}
+\end{minipage}
+\begin{minipage}[t]{0.495\textwidth}
+  \begin{lstlisting}[style=pseudocode, caption={Successore di di un nodo}, label={lst:predecessore-bst}]
+TREE-PREDECESSOR(x)
+  if x.left != NIL
+    return TREE-MAXIMUM(x.left)
+  y := x.parent
+  while y != NIL and x = y.left
+    x := y
+    y := y.parent
+  return y
+      \end{lstlisting}
+\end{minipage}
+
+Gli algoritmi restituiscono rispettivamente il successore e il predecessore di un nodo \texttt{x}.
+
+\bigskip
+Se il sotto albero destro di \texttt{x} è vuoto, il successore di \texttt{x} è il primo elemento \texttt{y} che si incontra risalendo nell'albero da \texttt{x} tale che \texttt{x} è nel sotto albero sinistro di \texttt{y}.
+Allo stesso modo se il sotto albero sinistro di \texttt{x} è vuoto, il predecessore di \texttt{x} è il primo elemento \texttt{y} che si incontra risalendo nell'albero da \texttt{x} tale che \texttt{x} è nel sotto albero destro di \texttt{y}.
+
+\bigskip
+La complessità temporale di entrambi gli algoritmi è \(\bigO(h)\), con \(h = \text{ altezza dell'albero }\).
+
+\paragraph{Inserimento}
+\label{par:inserimento-bst}
+
+L'operazione di inserimento causa modifiche nella rappresentazione del \BST.
+La struttura dati deve essere modificata in modo da rispettare la proprietà dei \BST.
+
+L'inserzione di un nuovo valore è una operazione relativamente immediata.
+
+Per inserire un nuovo valore \texttt{v} all'interno del \BST \texttt{T}, viene usato l'algoritmo \texttt{TREE-INSERT}.
+Esso prende come parametro un puntatore al nodo \texttt{z} tale per cui \(\texttt{z.key } = \texttt{ v}\), \(\texttt{z.left } = \texttt{ NIL}\), \(\texttt{z.right } = \texttt{ NIL}\).
+Modifica \texttt{T} e alcuni dei campi di \texttt{z} in modo che il nuovo nodo sia inserito nella posizione appropriata dell'albero.
+
+Lo pseudocodice dell'algoritmo è mostrato nel Listato~\ref{lst:inserimento-bst}.
+
+\begin{lstlisting}[style=pseudocode, caption={Inserimento di un nuovo nodo}, label={lst:inserimento-bst}]
+TREE-INSERT(T, z)
+  y := NIL
+  x := T.root
+  while x != NIL
+    y := x
+    if z.key < x.key
+      x := x.left
+    else
+      x := x.right
+  z.parent := y
+  if y = NIL
+    T.root := z
+  else if z.key < y.key
+    y.left := z
+  else
+    y.right := z
+\end{lstlisting}
+
+\bigskip
+La complessità temporale di entrambi gli algoritmi è \(\bigO(h)\), con \(h = \text{ altezza dell'albero }\).
+
+\paragraph{Eliminazione}
+\label{par:eliminazione-bst}
+
+Analogamente a quanto già descritto nell'inserimento, l'operazione di eliminazione causa modifiche nella struttura del \BST.
+
+Infatti, per eliminare un nodo \texttt{z} da un \BST \texttt{T}:
+
+\begin{itemize}
+  \item Se \texttt{z} non ha sotto alberi, allora è sufficiente modificare il padre di \texttt{z}, rimuovendo i suoi figli
+  \item Se \texttt{z} ha un solo sotto albero, allora è sufficiente modificare il padre di \texttt{z}, aggiungendo come sotto albero \texttt{z}
+  \item Se \texttt{z} ha due sotto alberi, è necessario:
+        \begin{itemize}
+          \item trovare il successore \texttt{s} di \texttt{z}
+          \item copiare \texttt{s.key}, \texttt{s.left}, \texttt{s.right} in \texttt{z} e cancellare \texttt{s}
+        \end{itemize}
+\end{itemize}
+
+Lo pseudocodice dell'algoritmo è mostrato nel Listato~\ref{lst:eliminazione-bst}, mentre una raffigurazione dei tre casi è mostrata nelle Figure \ref{fig:eliminazione-nodo-bst-senza-sotto-alberi}, \ref{fig:eliminazione-nodo-bst-con-un-solo-sotto-albero} e \ref{fig:eliminazione-nodo-bst-con-due-sotto-alberi}.
+
+\begin{lstlisting}[style=pseudocode, caption={Eliminazione di un nodo}, label={lst:eliminazione-bst}]
+TREE-DELETE(T, z):
+  if z.left = NIL or z.right = NIL
+    y := z
+  else
+    y := TREE-SUCCESSOR(z)
+  if y.left != NIL
+    x := y.left
+  else
+    x := y.right
+  if x != NIL
+    x.parent := y.parent
+  if y.parent = NIL
+    T.root := x
+  else if y = y.parent.left
+    y.parent.left := x
+  else
+    y.parent.right := x
+  if y != z
+    z.key := y.key
+  return y
+\end{lstlisting}
+
+Dove \texttt{T} è la radice dell'albero e \texttt{z} è il nodo da eliminare.
+
+\begin{figure}[htbp]
+  \bigskip
+  \centering
+  \tikzfig[0.7]{image-41.tikz}
+  \caption{Eliminazione di un nodo senza sotto alberi}
+  \label{fig:eliminazione-nodo-bst-senza-sotto-alberi}
+  \bigskip
+\end{figure}
+
+\begin{figure}[htbp]
+  \bigskip
+  \centering
+  \tikzfig[0.7]{image-42.tikz}
+  \caption{Eliminazione di un nodo con un solo sotto albero}
+  \label{fig:eliminazione-nodo-bst-con-un-solo-sotto-albero}
+  \bigskip
+\end{figure}
+
+\begin{figure}[htbp]
+  \bigskip
+  \centering
+  \tikzfig[0.7]{image-43.tikz}
+  \caption{Eliminazione di un nodo con due sotto alberi}
+  \label{fig:eliminazione-nodo-bst-con-due-sotto-alberi}
+  \bigskip
+\end{figure}
+
+Funzionamento dell'algoritmo:
+
+\begin{itemize}
+  \item Il nodo \texttt{y} è quello effettivamente da eliminare
+  \item Se \texttt{z} non ha più di un sotto albero, allora \texttt{y} coincide con \texttt{z}. In caso contrario, \texttt{y} è il nodo successore di \texttt{z} \textit{(linee \(2-4\))}
+  \item Nelle linee \(5-7\) viene assegnato a \texttt{x} la radice del sotto albero di \texttt{y} se presente o \texttt{NIL} altrimenti
+  \item Le linee \(8-14\) sostituiscono \texttt{y} con il suo sotto albero, avente \texttt{x} come radice
+  \item Nelle linee \(15-16\), se \texttt{z} ha \(2\) sotto alberi, la chiave di \texttt{z} è sostituita con quella del suo successore \texttt{y}
+\end{itemize}
+
+\bigskip
+La complessità temporale di entrambi gli algoritmi è \(\bigO(h)\), con \(h = \text{ altezza dell'albero }\).
+
+\subsection{Alberi bilanciati}
+
+Esistono svariate definizioni di albero bilanciato.
+
+\textit{Informalmente}, un albero è detto \textbf{bilanciato} se e solo se non esistono due foglie nell'albero tali che la distanza dalla radice di una sia molto maggiore dell'altra.
+
+Una possibile definizione formale \textit{(definita da Adelson-Velskii e Landis)}, è la seguente:
+
+\indentquote{Un albero è bilanciato se e solo se, per ogni nodo \texttt{x} dell'albero, le altezze dei due sotto alberi di \texttt{x} differiscono al massimo di \(1\).}
+
+Esistono varie tecniche per mantenere un albero bilanciato.
+Durante corso verranno esplorati gli alberi \textbf{rosso-neri} \textit{(in Inglese red-black)} e \textbf{AVL} \textit{(di Adelson-Velskii e Landis)} nelle Sezioni~\ref{sec:alberi-rosso-neri}~e~\ref{sec:alberi-AVL}.
+
+\subsection{Alberi rosso-neri}
+\label{sec:alberi-rosso-neri}
+
+\TODO
+
+\subsection{Alberi AVL}
+\label{sec:alberi-AVL}
+
+\TODO
 
 \clearpage
 
