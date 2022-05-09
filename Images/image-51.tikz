@@ -1,0 +1,69 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=black] (0) at (0, 0) {\footnotesize\(7\)};
+		\node [style=black] (1) at (2, -3) {\footnotesize\(9\)};
+		\node [style=red] (2) at (-2, -3) {\footnotesize\(5\)};
+		\node [style=red] (3) at (-3, -6) {\footnotesize\(3\)};
+		\node [style=bottom align] (4) at (-3.5, -7.5) {\(\alpha\)};
+		\node [style=bottom align] (5) at (-2.5, -7.5) {\(\beta\)};
+		\node [style=bottom align] (6) at (-1.25, -5) {\(\gamma\)};
+		\node [style=bottom align] (7) at (1.5, -5) {\(\delta\)};
+		\node [style=bottom align] (8) at (2.5, -5) {\(\epsilon\)};
+		\node [style=right align] (9) at (-2.5, -3) {\texttt{x}};
+		\node [style=right align] (10) at (-3.5, -6) {\texttt{z}};
+		\node [style=left align] (11) at (2.5, -3) {\texttt{y}};
+		\node [style=none] (12) at (4, -3) {};
+		\node [style=none] (13) at (7, -3) {};
+		\node [style=red] (14) at (11.5, 0) {\footnotesize\(7\)};
+		\node [style=black] (15) at (13.5, -3) {\footnotesize\(9\)};
+		\node [style=black] (16) at (9.5, -3) {\footnotesize\(5\)};
+		\node [style=red] (17) at (8.5, -6) {\footnotesize\(3\)};
+		\node [style=bottom align] (18) at (8, -7.5) {\(\alpha\)};
+		\node [style=bottom align] (19) at (9, -7.5) {\(\beta\)};
+		\node [style=bottom align] (20) at (10.25, -5) {\(\gamma\)};
+		\node [style=bottom align] (21) at (13, -5) {\(\delta\)};
+		\node [style=bottom align] (22) at (14, -5) {\(\epsilon\)};
+		\node [style=right align] (23) at (9, -3) {\texttt{x}};
+		\node [style=right align] (24) at (8, -6) {\texttt{z}};
+		\node [style=left align] (25) at (14, -3) {\texttt{y}};
+		\node [style=none] (26) at (15.25, -3) {};
+		\node [style=none] (27) at (18.25, -3) {};
+		\node [style=black] (28) at (22.5, 0) {\footnotesize\(5\)};
+		\node [style=red] (29) at (24.5, -3) {\footnotesize\(7\)};
+		\node [style=red] (30) at (20.5, -3) {\footnotesize\(3\)};
+		\node [style=black] (31) at (25.5, -6) {\footnotesize\(9\)};
+		\node [style=bottom align] (32) at (20, -5) {\(\alpha\)};
+		\node [style=bottom align] (33) at (21, -5) {\(\beta\)};
+		\node [style=bottom align] (34) at (23.75, -5) {\(\gamma\)};
+		\node [style=bottom align] (35) at (25, -7.5) {\(\delta\)};
+		\node [style=bottom align] (36) at (26, -7.5) {\(\epsilon\)};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=solid] (0) to (2);
+		\draw [style=solid] (2) to (3);
+		\draw [style=solid] (0) to (1);
+		\draw [style=solid] (3) to (4);
+		\draw [style=solid] (3) to (5);
+		\draw [style=solid] (2) to (6);
+		\draw [style=solid] (1) to (7);
+		\draw [style=solid] (1) to (8);
+		\draw [style=big arrow] (12.center) to (13.center);
+		\draw [style=solid] (14) to (16);
+		\draw [style=solid] (16) to (17);
+		\draw [style=solid] (14) to (15);
+		\draw [style=solid] (17) to (18);
+		\draw [style=solid] (17) to (19);
+		\draw [style=solid] (16) to (20);
+		\draw [style=solid] (15) to (21);
+		\draw [style=solid] (15) to (22);
+		\draw [style=big arrow] (26.center) to (27.center);
+		\draw [style=solid] (28) to (30);
+		\draw [style=solid] (28) to (29);
+		\draw [style=solid] (32) to (30);
+		\draw [style=solid] (30) to (33);
+		\draw [style=solid] (34) to (29);
+		\draw [style=solid] (31) to (29);
+		\draw [style=solid] (35) to (31);
+		\draw [style=solid] (31) to (36);
+	\end{pgfonlayer}
+\end{tikzpicture}

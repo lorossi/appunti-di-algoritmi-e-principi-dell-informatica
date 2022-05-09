@@ -1,0 +1,49 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [minimum size=20pt, style=black] (0) at (0, 0) {\footnotesize\(13\)};
+		\node [minimum size=20pt, style=red] (1) at (-4, -3) {\footnotesize\(8\)};
+		\node [minimum size=20pt, style=red] (2) at (4, -3) {\footnotesize\(17\)};
+		\node [minimum size=20pt, style=black] (3) at (-6, -6) {\footnotesize\(1\)};
+		\node [minimum size=20pt, style=black] (4) at (-2, -6) {\footnotesize\(11\)};
+		\node [minimum size=20pt, style=black] (5) at (2, -6) {\footnotesize\(15\)};
+		\node [minimum size=20pt, style=black] (6) at (6, -6) {\footnotesize\(25\)};
+		\node [minimum size=20pt, style=red] (7) at (-5, -9) {\footnotesize\(6\)};
+		\node [minimum size=20pt, style=black, shape=rectangle] (10) at (0, -13) {\tiny\texttt{NIL}};
+		\node [minimum size=20pt, style=red] (17) at (3, -9) {\footnotesize\(16\)};
+		\node [style=none] (18) at (0, -13) {};
+		\node [style=none] (20) at (0.25, -13.5) {};
+		\node [style=none] (21) at (-7, -3.25) {};
+		\node [style=none] (22) at (-5.75, -13.5) {};
+		\node [style=none] (23) at (-0.25, -13.5) {};
+		\node [style=red] (24) at (7, -9) {\footnotesize\(27\)};
+		\node [style=none] (25) at (-0.5, -12.45) {};
+		\node [style=none] (26) at (0.5, -12.75) {};
+		\node [style=none] (27) at (0.5, -13.25) {};
+		\node [style=none] (28) at (6.75, -13) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=solid arrow] (0) to (1);
+		\draw [style=solid arrow] (1) to (3);
+		\draw [style=solid arrow] (1) to (4);
+		\draw [style=solid arrow] (0) to (2);
+		\draw [style=solid arrow] (2) to (5);
+		\draw [style=solid arrow] (2) to (6);
+		\draw [style=solid arrow] (3) to (7);
+		\draw [style=solid arrow] (5) to (17);
+		\draw [style=solid arrow, in=-165, out=-90, looseness=1.50] (3) to (10);
+		\draw [style=solid arrow, in=105, out=-90] (4) to (10);
+		\draw [style=solid arrow, in=45, out=-105, looseness=1.25] (17) to (10);
+		\draw [style=solid arrow, in=75, out=-90] (5) to (10);
+		\draw [style=solid arrow, in=0, out=-90, looseness=1.50] (6) to (10);
+		\draw [style=solid arrow, in=165, out=-90, looseness=0.75] (7) to (10);
+		\draw [style=solid arrow, in=-105, out=-45] (22.center) to (23.center);
+		\draw [style=solid, in=-120, out=135, looseness=0.75] (22.center) to (21.center);
+		\draw [style=solid, bend right] (0) to (21.center);
+		\draw [style=solid arrow, in=120, out=-60] (7) to (25.center);
+		\draw [style=solid arrow, in=15, out=-75] (17) to (26.center);
+		\draw [style=solid arrow] (6) to (24);
+		\draw [style=solid arrow, in=-15, out=-90, looseness=1.25] (24) to (27.center);
+		\draw [style=solid arrow, in=-75, out=-135, looseness=0.75] (28.center) to (20.center);
+		\draw [style=solid, in=45, out=-60, looseness=1.25] (24) to (28.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

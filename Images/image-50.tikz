@@ -1,0 +1,49 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=black] (0) at (0, 0) {\footnotesize\(7\)};
+		\node [style=red] (1) at (-2, -3) {\footnotesize\(3\)};
+		\node [style=red] (2) at (-1, -6) {\footnotesize\(5\)};
+		\node [style=black] (3) at (2, -3) {\footnotesize\(9\)};
+		\node [style=right align] (4) at (-2.5, -3) {\texttt{x}};
+		\node [style=left align] (5) at (2.5, -3) {\texttt{y}};
+		\node [style=left align] (6) at (-0.5, -6) {\texttt{z}};
+		\node [style=bottom align] (7) at (1.5, -4.5) {\(\delta\)};
+		\node [style=bottom align] (8) at (2.5, -4.5) {\(\epsilon\)};
+		\node [style=bottom align] (9) at (-1.5, -7.5) {\(\beta\)};
+		\node [style=bottom align] (10) at (-0.5, -7.5) {\(\gamma\)};
+		\node [style=bottom align] (11) at (-2.75, -5) {\(\alpha\)};
+		\node [style=none] (12) at (4.5, -3) {};
+		\node [style=none] (13) at (8.5, -3) {};
+		\node [style=black] (14) at (14.5, 0) {\footnotesize\(7\)};
+		\node [style=red] (15) at (12.5, -3) {\footnotesize\(5\)};
+		\node [style=red] (16) at (11.5, -6) {\footnotesize\(3\)};
+		\node [style=black] (17) at (16.5, -3) {\footnotesize\(9\)};
+		\node [style=right align] (18) at (12, -3) {\(\texttt{x}^\prime=\texttt{z}\)};
+		\node [style=left align] (19) at (17, -3) {\texttt{y}};
+		\node [style=bottom align] (21) at (16, -4.5) {\(\delta\)};
+		\node [style=bottom align] (22) at (17, -4.5) {\(\epsilon\)};
+		\node [style=bottom align] (23) at (10.75, -8) {\(\alpha\)};
+		\node [style=bottom align] (24) at (12, -8) {\(\beta\)};
+		\node [style=bottom align] (25) at (13, -5) {\(\gamma\)};
+		\node [style=right align] (26) at (11, -6) {\(\texttt{z}^\prime=\texttt{x}\)};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=solid] (0) to (1);
+		\draw [style=solid] (1) to (2);
+		\draw [style=solid] (0) to (3);
+		\draw [style=solid] (7) to (3);
+		\draw [style=solid] (8) to (3);
+		\draw [style=solid] (9) to (2);
+		\draw [style=solid] (2) to (10);
+		\draw [style=solid] (11) to (1);
+		\draw [style=big arrow] (12.center) to (13.center);
+		\draw [style=solid] (14) to (15);
+		\draw [style=solid] (15) to (16);
+		\draw [style=solid] (14) to (17);
+		\draw [style=solid] (21) to (17);
+		\draw [style=solid] (22) to (17);
+		\draw [style=solid] (23) to (16);
+		\draw [style=solid] (16) to (24);
+		\draw [style=solid] (25) to (15);
+	\end{pgfonlayer}
+\end{tikzpicture}

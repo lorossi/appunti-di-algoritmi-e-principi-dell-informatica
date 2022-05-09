@@ -3737,25 +3737,25 @@ Alternativamente può indicare un metodo per descrivere una serie astratta di co
 Una definizione formale di algoritmo sarebbe di difficile formulazione, quindi ci si limita a descriverne delle proprietà in modo informale:
 
 \begin{enumerate}[label=\Alph*), ref=(\Alph*)]
-  \item \label{enum:algoritmi-1} Un algoritmo contiene una sequenza \textbf{finita} di istruzioni
+  \item \label{enum:proprieta-1-algoritmi} Un algoritmo contiene una sequenza \textbf{finita} di istruzioni
   \item Ogni istruzione deve essere \textbf{immediatamente eseguibile} tramite qualche procedimento meccanico
-  \item  \label{enum:algoritmi-3} Il processore è dotato di \textbf{dispositivi di memoria} in cui possono essere immagazzinati i risultati intermedi
-  \item \label{enum:algoritmi-4} La computazione è un processo \textbf{discreto}
+  \item  \label{enum:proprieta-3-algoritmi} Il processore è dotato di \textbf{dispositivi di memoria} in cui possono essere immagazzinati i risultati intermedi
+  \item \label{enum:proprieta-4-algoritmi} La computazione è un processo \textbf{discreto}
         \begin{itemize}[label=\(\rightarrow\)]
           \item l'informazione è codificata in forma digitale
           \item la computazione procede attraverso passi discreti
         \end{itemize}
-  \item \label{enum:algoritmi-5} Gli algoritmi sono eseguiti in modo \textbf{deterministico}
-  \item \textbf{Non esiste un limite} alla quantità di \textbf{dati} di ingresso e uscita
-  \item \textbf{Non esiste un limite} alla quantità di \textbf{memoria} richiesta per effettuare i calcoli
-  \item \label{enum:algoritmi-8} \textbf{Non esiste limite} al numero di passi discreti richiesti per effettuare un calcolo
+  \item \label{enum:proprieta-5-algoritmi} Gli algoritmi sono eseguiti in modo \textbf{deterministico}
+  \item \label{enum:proprieta-6-algoritmi} \textbf{Non esiste un limite} alla quantità di \textbf{dati} di ingresso e uscita
+  \item \label{enum:proprieta-7-algoritmi} \textbf{Non esiste un limite} alla quantità di \textbf{memoria} richiesta per effettuare i calcoli
+  \item \label{enum:proprieta-8-algoritmi} \textbf{Non esiste limite} al numero di passi discreti richiesti per effettuare un calcolo
         \begin{itemize}[label=\(\rightarrow\)]
           \item si possono avere computazioni infinite
         \end{itemize}
 \end{enumerate}
 
-Le ipotesi dalla \ref{enum:algoritmi-1}~alla~\ref{enum:algoritmi-4} si applicano agli algoritmi nei calcolatori digitali, mentre quelle dalla \ref{enum:algoritmi-5}~alla~\ref{enum:algoritmi-8} si applicano in senso generale.
-Il punto~\ref{enum:algoritmi-4} relativo al non determinismo è una semplificazione \textit{(analogamente al punto~\ref{enum:algoritmi-3} riguardante la memoria)} rispetto al formalismo delle \TM.
+Le ipotesi dalla \ref{enum:proprieta-1-algoritmi}~alla~\ref{enum:proprieta-4-algoritmi} si applicano agli algoritmi nei calcolatori digitali, mentre quelle dalla \ref{enum:proprieta-5-algoritmi}~alla~\ref{enum:proprieta-8-algoritmi} si applicano in senso generale.
+Il punto~\ref{enum:proprieta-4-algoritmi} relativo al non determinismo è una semplificazione \textit{(analogamente al punto~\ref{enum:proprieta-3-algoritmi} riguardante la memoria)} rispetto al formalismo delle \TM.
 
 \subsection{Tesi di Church}
 \label{sec:tesi-di-church}
@@ -5690,7 +5690,7 @@ La proprietà caratteristica dei \textit{max-heap} è che il valore di ogni nodo
 
 L'algoritmo è di tipo ricorsivo ed è illustrato nel Listato~\ref{lst:costruzione-max-heap}.
 
-\begin{lstlisting}[style=pseudocode, caption={Costruzione di un max-heap}, label={lst:costruzione-max-heap}]
+\begin{lstlisting}[style=pseudocode, caption={Costruzione di un \texttt{MAX-HEAP}}, label={lst:costruzione-max-heap}]
 MAX-HEAPIFY(A, i)
   l := LEFT(i)
   r := RIGHT(i)
@@ -5733,7 +5733,7 @@ Funziona grazie a due proprietà dello heap:
   \item I sotto alberi fatti di solo foglie sono max-heap in quanto costituiti da \textbf{un solo elemento}
 \end{itemize}
 
-\begin{lstlisting}[style=pseudocode, caption={Algoritmo di costruzione di un max-heap}, label={lst:algoritmo-build-max-heap}]
+\begin{lstlisting}[style=pseudocode, caption={Algoritmo \texttt{BUILD-MAX-HEAP}}, label={lst:algoritmo-build-max-heap}]
 BUILD-MAX-HEAP(A)
   A.heap-size := A.length
   for i := A.length / 2 downto 1
@@ -5836,12 +5836,12 @@ Il tempo di esecuzione di \texttt{INSERTION-SORT(A)} è:
 
 Se l'array da ordinare ha meno di \(2\) elementi, allora è ordinato per definizione.
 Altrimenti:
-        \begin{itemize}
-          \item l'array viene diviso in \(2\) sotto array, ognuno con la metà degli elementi di quello originario
-          \item i \(2\) sotto array vengono ordinati applicando di nuovo l'algoritmo
-          \item grazie all'algoritmo \texttt{MERGE} i \(2\) sotto array vengono combinati
-          \item gli elementi dell'array ottenuto sono ordinati
-        \end{itemize}
+\begin{itemize}
+  \item l'array viene diviso in \(2\) sotto array, ognuno con la metà degli elementi di quello originario
+  \item i \(2\) sotto array vengono ordinati applicando di nuovo l'algoritmo
+  \item grazie all'algoritmo \texttt{MERGE} i \(2\) sotto array vengono combinati
+  \item gli elementi dell'array ottenuto sono ordinati
+\end{itemize}
 
 Il \texttt{MERGE-SORT} è un algoritmo ricorsivo e adotta la tecnica \textbf{divide ed impera}.
 Per completare l'algoritmo, infatti, è necessario definire un sotto algoritmo \texttt{MERGE} che combina le soluzioni dei problemi divisi.
@@ -5856,7 +5856,7 @@ Per completare l'algoritmo, infatti, è necessario definire un sotto algoritmo \
 \end{enumerate}
 
 \begin{minipage}{0.99\textwidth}
-  \begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo di Merge Sort}, label={lst:pseudocodice-merge-sort}]
+  \begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{MERGE-SORT}}, label={lst:pseudocodice-merge-sort}]
 MERGE-SORT(A, p, R)
   if p < r
     q := floor((p + r) / 2)
@@ -5868,7 +5868,7 @@ MERGE-SORT(A, p, R)
   \begin{minipage}{0.99\textwidth}
     \centering
     \begin{minipage}[t]{0.495\textwidth}
-      \begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo di Merge}, label={lst:pseudocodice-merge}]
+      \begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{MERGE}}, label={lst:pseudocodice-merge}]
 MERGE(A, p, q, r)
   n1 := q - p + 1
   n2 := r - q
@@ -6005,7 +6005,7 @@ Questo algoritmo farà uso degli algoritmi \textit{di supporto} \texttt{BUILD-MA
 Ad ogni ciclo viene preso l'elemento più grande \textit{(primo dell'array, in quanto max-heap)} in fondo alla parte di array ancora da ordinare \textit{(corrispondente allo heap).}
 Lo heap viene decrementato di \(1\) e viene ricostruito il max-heap mettendo come radice l'ultima foglia a destra dell'ultimo livello e invocando \texttt{MAX-HEAPIFY}.
 
-\begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo Heapsort}, label={sec:algoritmo-heapsort}]
+\begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{HEAPSORT}}, label={sec:algoritmo-heapsort}]
 HEAPSORT(A)
   BUILD-MAX-HEAP(A)
   for i := A.length downto 2
@@ -6056,7 +6056,7 @@ Proprietà del \textit{pivot}:
 
 \begin{center}
   \begin{minipage}[t]{0.495\textwidth}
-    \begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo QUICKSORT}, label={sec:algoritmo-quicksort}]
+    \begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{QUICKSORT}}, label={sec:algoritmo-quicksort}]
 QUICKSORT(A, p, r):
   if p < r:
     q := PARTITION(A, p, r)
@@ -6065,7 +6065,7 @@ QUICKSORT(A, p, r):
         \end{lstlisting}
   \end{minipage}
   \begin{minipage}[t]{0.495\textwidth}
-    \begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo PARTITION}, label={sec:algoritmo-partition}]
+    \begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{PARTITION}}, label={sec:algoritmo-partition}]
 PARTITION(A, p, r):
     x := A[r]
     i := p - 1
@@ -6152,7 +6152,7 @@ se nell'array ci sono \(m_e\) valori più piccoli di un certo elemento \(e\) di 
 Quindi per ordinare l'array basta contare quante copie dello stesso valore \(v_e\) sono presenti all'interno dello stesso: questa informazione viene usata per determinare, per ogni elemento \(e, 0 \leq v_e \leq k\), quanti elementi sono più piccoli di \(e\).
 Infine bisogna tenere conto degli elementi ripetuti.
 
-\begin{lstlisting}[style=pseudocode, caption={Pseudocodice algorimo Counting Sort}, label={lst:counting-sort}]
+\begin{lstlisting}[style=pseudocode, caption={Pseudocodice algorimo \texttt{COUNTING-SORT}}, label={lst:counting-sort}]
 COUNTING-SORT(A, B, K):
   for i := 0 to k
     C[i] := 0
@@ -6331,18 +6331,18 @@ Usando questa implementazione, considerando una pila \texttt{S}, se:
 Lo pseudocodice di queste funzioni è mostrato nei Listati~\ref{lst:push-pila}~e~\ref{lst:pop-pila}.
 
 \begin{minipage}[t]{0.495\textwidth}
-  \begin{lstlisting}[style=pseudocode, caption={Push in pila}, label={lst:push-pila}]
+  \begin{lstlisting}[style=pseudocode, caption={\texttt{PUSH} in pila}, label={lst:push-pila}]
 PUSH(S, x)
-  if S.top == S.length
+  if S.top = S.length
     error "overflow"
   else S.top := S.top + 1
     S[S.top] := x
   \end{lstlisting}
 \end{minipage}
 \begin{minipage}[t]{0.495\textwidth}
-  \begin{lstlisting}[style=pseudocode, caption={Pop in pila}, label={lst:pop-pila}]
+  \begin{lstlisting}[style=pseudocode, caption={\texttt{POP} in pila}, label={lst:pop-pila}]
 POP(S)
-  if S.top == 0
+  if S.top = 0
     error "underflow"
   else S.top := S.top - 1
     x := S[S.top + 1]
@@ -6393,7 +6393,7 @@ Inoltre, per poter scrivere lo pseudocodice, è necessario analizzare ulteriorme
 Lo pseudocodice di queste funzioni è mostrato nei Listati~\ref{lst:enqueue-coda}~e~\ref{lst:dequeue-coda}.
 
 \begin{minipage}[t]{0.495\textwidth}
-  \begin{lstlisting}[style=pseudocode, caption={Enqueue in coda}, label={lst:enqueue-coda}]
+  \begin{lstlisting}[style=pseudocode, caption={\texttt{ENQUEUE} in coda}, label={lst:enqueue-coda}]
 ENQUEUE(Q, x)
     if Q.tail = Q.length
       Q.tail := 1
@@ -6401,7 +6401,7 @@ ENQUEUE(Q, x)
   \end{lstlisting}
 \end{minipage}
 \begin{minipage}[t]{0.495\textwidth}
-  \begin{lstlisting}[style=pseudocode, caption={Dequeue in coda}, label={lst:dequeue-coda}]
+  \begin{lstlisting}[style=pseudocode, caption={\texttt{DEQUEUE} in coda}, label={lst:dequeue-coda}]
 DEQUEUE(Q)
     x := Q[Q.head]
     if Q.head = Q.tail
@@ -6472,7 +6472,7 @@ Nei prossimi Paragrafi verranno illustrati gli pseudocodici delle operazioni sul
 
 \textit{Complessità temporale}: \(\Theta(n)\) nel caso pessimo \textit{(la chiave non è nella lista)}.
 
-\begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo List Search}, label={lst:list-search}]
+\begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{LIST-SEARCH}}, label={lst:list-search}]
 LIST-SEARCH(L, k)
   x := L.head
   while x != NIL and x.key != k
@@ -6488,7 +6488,7 @@ LIST-SEARCH(L, k)
 
 \textit{Complessità temporale}: \(\bigO(1)\).
 
-\begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo List Insert}, label={lst:list-insert}]
+\begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{LIST-INSERT}}, label={lst:list-insert}]
 LIST-INSERT(L, x)
   x.next := L.head
   if L.head != NIL
@@ -6497,7 +6497,7 @@ LIST-INSERT(L, x)
   x.prev := NIL
   \end{lstlisting}
 
-\paragraph{Inserimento di un elemento}
+\paragraph{Cancellazione di un elemento}
 
 \textit{Input}: la lista \texttt{L} in cui cercare e l'oggetto \texttt{x} da cancellare.
 Non è sufficientemente passare solo la chiave dell'oggetto: \textbf{è necessario passare tutto l'oggetto}.
@@ -6506,7 +6506,7 @@ Non è sufficientemente passare solo la chiave dell'oggetto: \textbf{è necessar
 
 \textit{Complessità temporale}: \(\bigO(1)\).
 
-\begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo List Delete}, label={lst:list-delete}]
+\begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{LIST-DELETE}}, label={lst:list-delete}]
 LIST-DELETE(L, x)
   if x.prev != NIL
     x.prev.next := x.next
@@ -6565,7 +6565,7 @@ DIRECT-ADDRESS-INSERT(T, k)
   T[x.key] = x
   \end{lstlisting}
 
-\begin{lstlisting}[style=pseudocode, caption={Eliminazione}, label={lst:delete-dizionario}]
+\begin{lstlisting}[style=pseudocode, caption={Cancellazione}, label={lst:delete-dizionario}]
 DIRECT-ADDRESS-DELETE(T, k)
   T[x.key] := NIL
   \end{lstlisting}
@@ -6777,7 +6777,7 @@ Nei prossimi Paragrafi verranno illustrati gli pseudocodici delle operazioni sul
 
 \paragraph{Inserimento}
 
-\begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo di inserimento}, label={sec:inserimento-ind-aperto}]
+\begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{HASH-INSERT}}, label={sec:inserimento-ind-aperto}]
 HASH-INSERT(T, k)
 i := 0
 repeat
@@ -6795,7 +6795,7 @@ Per inserire un elemento di chiave \texttt{k} nella collezione \texttt{T} l'algo
 
 \paragraph{Ricerca}
 
-\begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo di ricerca}, label={sec:ricerca-ind-aperto}]
+\begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{HASH-SEARCH}}, label={sec:ricerca-ind-aperto}]
 HASH-SEARCH(T, k)
   i := 0
   repeat
@@ -6970,7 +6970,7 @@ Un esempio di albero binario è mostrato nella Figura~\ref{fig:esempio-albero-bi
 
 \subsubsection{Operazioni sugli alberi binari}
 
-Nei Paragrafi seguenti \textit{(\ref{attraversamento-albero-binario}~-~\ref{par:eliminazione-albero-binario})} verranno analizzate delle operazioni comunemente applicate agli alberi binari, insieme a delle immagini esplicative.
+Nei Paragrafi seguenti \textit{(\ref{attraversamento-albero-binario}~-~\ref{par:cancellazione-albero-binario})} verranno analizzate delle operazioni comunemente applicate agli alberi binari, insieme a delle immagini esplicative.
 
 \paragraph{Attraversamento}
 \label{attraversamento-albero-binario}
@@ -7034,10 +7034,10 @@ Il processo di inserzione è illustrato nella Figura~\ref{fig:inserzione-albero-
   \bigskip
 \end{figure}
 
-\paragraph{Eliminazione}
-\label{par:eliminazione-albero-binario}
+\paragraph{cancellazione}
+\label{par:cancellazione-albero-binario}
 
-L'eliminazione di un elemento da un nodo non è sempre possibile senza creare ambiguità: se un nodo con due sotto alberi viene eliminato, non sarà possibile costruire un nuovo albero binario.
+La cancellazione di un elemento da un nodo non è sempre possibile senza creare ambiguità: se un nodo con due sotto alberi viene eliminato, non sarà possibile costruire un nuovo albero binario.
 
 Per eliminare un nodo
 
@@ -7047,14 +7047,14 @@ Per eliminare un nodo
 \end{itemize}
 
 \bigskip
-Il processo di eliminazione è illustrato nella Figura~\ref{fig:eliminazione-albero-binario}.
+Il processo di cancellazione è illustrato nella Figura~\ref{fig:cancellazione-albero-binario}.
 
 \begin{figure}[htbp]
   \bigskip
   \centering
   \tikzfig[0.8]{image-39.tikz}
-  \caption{Eliminazione di un nodo in un albero binario}
-  \label{fig:eliminazione-albero-binario}
+  \caption{cancellazione di un nodo in un albero binario}
+  \label{fig:cancellazione-albero-binario}
   \bigskip
 \end{figure}
 
@@ -7183,8 +7183,9 @@ Il funzionamento di queste due funzioni è analogo a quello di \texttt{INORDER-T
 La complessità sarà la stessa.
 
 \subsubsection{Operazioni sui \BST}
+\label{sec:operazioni-bst}
 
-Nei Paragrafi seguenti \textit{(\ref{par:ricerca-bst}~\ref{par:eliminazione-bst})} verranno analizzate delle operazioni comunemente applicate ai \BST, insieme alle loro relative complessità.
+Nei Paragrafi seguenti \textit{(\ref{par:ricerca-bst}~\ref{par:cancellazione-bst})} verranno analizzate delle operazioni comunemente applicate ai \BST, insieme alle loro relative complessità.
 
 \paragraph{Ricerca}
 \label{par:ricerca-bst}
@@ -7341,10 +7342,10 @@ TREE-INSERT(T, z)
 \bigskip
 La complessità temporale di entrambi gli algoritmi è \(\bigO(h)\), con \(h = \text{ altezza dell'albero }\).
 
-\paragraph{Eliminazione}
-\label{par:eliminazione-bst}
+\paragraph{cancellazione}
+\label{par:cancellazione-bst}
 
-Analogamente a quanto già descritto nell'inserimento, l'operazione di eliminazione causa modifiche nella struttura del \BST.
+Analogamente a quanto già descritto nell'inserimento, l'operazione di cancellazione causa modifiche nella struttura del \BST.
 
 Infatti, per eliminare un nodo \texttt{z} da un \BST \texttt{T}:
 
@@ -7358,9 +7359,9 @@ Infatti, per eliminare un nodo \texttt{z} da un \BST \texttt{T}:
         \end{itemize}
 \end{itemize}
 
-Lo pseudocodice dell'algoritmo è mostrato nel Listato~\ref{lst:eliminazione-bst}, mentre una raffigurazione dei tre casi è mostrata nelle Figure \ref{fig:eliminazione-nodo-bst-senza-sotto-alberi}, \ref{fig:eliminazione-nodo-bst-con-un-solo-sotto-albero} e \ref{fig:eliminazione-nodo-bst-con-due-sotto-alberi}.
+Lo pseudocodice dell'algoritmo è mostrato nel Listato~\ref{lst:cancellazione-bst}, mentre una raffigurazione dei tre casi è mostrata nelle Figure \ref{fig:cancellazione-nodo-bst-senza-sotto-alberi}, \ref{fig:cancellazione-nodo-bst-con-un-solo-sotto-albero} e \ref{fig:cancellazione-nodo-bst-con-due-sotto-alberi}.
 
-\begin{lstlisting}[style=pseudocode, caption={Eliminazione di un nodo}, label={lst:eliminazione-bst}]
+\begin{lstlisting}[style=pseudocode, caption={Cancellazione di un nodo}, label={lst:cancellazione-bst}]
 TREE-DELETE(T, z):
   if z.left = NIL or z.right = NIL
     y := z
@@ -7389,8 +7390,8 @@ Dove \texttt{T} è la radice dell'albero e \texttt{z} è il nodo da eliminare.
   \bigskip
   \centering
   \tikzfig[0.7]{image-41.tikz}
-  \caption{Eliminazione di un nodo senza sotto alberi}
-  \label{fig:eliminazione-nodo-bst-senza-sotto-alberi}
+  \caption{Cancellazione di un nodo senza sotto alberi}
+  \label{fig:cancellazione-nodo-bst-senza-sotto-alberi}
   \bigskip
 \end{figure}
 
@@ -7398,8 +7399,8 @@ Dove \texttt{T} è la radice dell'albero e \texttt{z} è il nodo da eliminare.
   \bigskip
   \centering
   \tikzfig[0.7]{image-42.tikz}
-  \caption{Eliminazione di un nodo con un solo sotto albero}
-  \label{fig:eliminazione-nodo-bst-con-un-solo-sotto-albero}
+  \caption{Cancellazione di un nodo con un solo sotto albero}
+  \label{fig:cancellazione-nodo-bst-con-un-solo-sotto-albero}
   \bigskip
 \end{figure}
 
@@ -7407,8 +7408,8 @@ Dove \texttt{T} è la radice dell'albero e \texttt{z} è il nodo da eliminare.
   \bigskip
   \centering
   \tikzfig[0.7]{image-43.tikz}
-  \caption{Eliminazione di un nodo con due sotto alberi}
-  \label{fig:eliminazione-nodo-bst-con-due-sotto-alberi}
+  \caption{Cancellazione di un nodo con due sotto alberi}
+  \label{fig:cancellazione-nodo-bst-con-due-sotto-alberi}
   \bigskip
 \end{figure}
 
@@ -7438,15 +7439,463 @@ Una possibile definizione formale \textit{(definita da Adelson-Velskii e Landis)
 Esistono varie tecniche per mantenere un albero bilanciato.
 Durante corso verranno esplorati gli alberi \textbf{rosso-neri} \textit{(in Inglese red-black)} e \textbf{AVL} \textit{(di Adelson-Velskii e Landis)} nelle Sezioni~\ref{sec:alberi-rosso-neri}~e~\ref{sec:alberi-AVL}.
 
-\subsection{Alberi rosso-neri}
+\subsection{Alberi rosso-neri - \RB}
 \label{sec:alberi-rosso-neri}
 
-\TODO
+Gli \textbf{alberi rosso-neri} \textit{(o dall'Inglese red-black, \RB)} sono alberi bilanciati.
+Le operazioni fondamentali mostrate nella Sezione precedente avranno complessità temporale pari a \(\bigO(\log{(n)})\), con \(h = \text{ altezza dell'albero}\), minore di quanto riscontrato negli \BST.
 
-\subsection{Alberi AVL}
-\label{sec:alberi-AVL}
+I nodi degli alberi \RB hanno un bit aggiuntivo, relativo al colore, che può indicare se esso è rosso o nero.
+Distribuendo i colori nel modo corretto, viene garantito che nessun percorso dalla radice alle foglie sia più lungo di un altro.
 
-\TODO
+Ogni nodo dell'albero contiene gli attributi \texttt{color}, \texttt{key}, \texttt{left}, \texttt{right} e\texttt{parent}.
+Se un nodo non ha un padre o dei sotto alberi, allora il suo valore è \texttt{NIL}.
+
+Un albero binario è da considerarsi rosso-nero se ha le seguenti \(5\) \textit{proprietà}:
+
+\begin{enumerate}[label=\arabic*., ref=(\arabic*)]
+  \item \label{enum:proprieta-1-nodi-rb}Ogni nodo è \textbf{rosso} o \textbf{nero}
+  \item \label{enum:proprieta-2-nodi-rb}La \textbf{radice} è \textbf{nera}
+  \item \label{enum:proprieta-3-nodi-rb}Ogni \textbf{foglia} è \textbf{nera}
+  \item \label{enum:proprieta-4-nodi-rb}Se un nodo è \textbf{rosso}, entrambi i suoi figli sono \textbf{neri}
+  \item \label{enum:proprieta-5-nodi-rb} Per ogni nodo, ogni percorso dal nodo alle foglie discendenti contiene lo stesso numero di nodi neri
+        \begin{itemize}
+          \item il numero di nodi neri del nodo \texttt{x} è detto \(bh(\texttt{x})\)
+          \item il nodo stesso non è conteggiato in \(bh(\texttt{x})\) anche se nero
+        \end{itemize}
+\end{enumerate}
+
+Per comodità, spesso tutte le foglie vengono rappresentate da un solo valore \texttt{NIL} anziché avere puntatori diversi.
+Questo nodo sarà accessibile come attributo dell'albero \texttt{T} e ogni riferimento a \texttt{NIL} sarà rimpiazzato da un puntatore a \texttt{T.nil}.
+
+\bigskip
+Il confronto tra le due rappresentazioni è mostrato nella Figura~\ref{fig:confronto-tra-le-rappresentazioni-degli-alberi-RB}.
+
+\begin{figure}[htbp]
+  \bigskip
+  \centering
+  \begin{subfigure}[b]{.495\textwidth}
+    \centering
+    \tikzfig[.9]{image-46.tikz}
+    \caption{Ogni foglia è rappresentata come \texttt{NIL}}
+    \bigskip
+    \label{fig:foglia-rappresentata-come-NIL}
+  \end{subfigure}
+  \begin{subfigure}[b]{.495\textwidth}
+    \centering
+    \tikzfig[.9]{image-47.tikz}
+    \caption{Tutte le foglie sono rappresentate da un solo nodo}
+    \bigskip
+    \label{fig:foglie-rappresentate-da-un-solo-nodo}
+  \end{subfigure}
+  \caption{Confronto tra le rappresentazioni degli alberi \RB}
+  \label{fig:confronto-tra-le-rappresentazioni-degli-alberi-RB}
+  \bigskip
+\end{figure}
+
+\bigskip
+Grazie al modo in cui è costruito, un albero \RB con \(n\) nodi interni (quindi \(n\) nodi con chiave) ha altezza:
+\[h \leq 2 \log_2{(n+1)}\]
+
+Il numero di nodi interni di un albero \textit{(o di un sotto albero)} con radice \texttt{x} è sempre \(\geq 2^{bh(\texttt{x})-1}\).
+Questa proprietà può essere dimostrata per induzione sull'altezza di \texttt{x}.
+
+Per la proprietà \ref{enum:proprieta-5-nodi-rb} degli alberi, almeno metà dei nodi dalla radice \texttt{x} \textit{(esclusa)} ad una foglia sono neri.
+Di conseguenza \(bh(\texttt{x}) \geq \sfrac{x}{2}\) e \(n \geq 2^{\sfrac{h}{2}}\) e:
+\[ h \leq 2 \log_2{(n+1)} \]
+
+\subsubsection{Operazioni sugli alberi \RB}
+
+Nei Paragrafi seguenti \textit{(\ref{par:operazioni-rb-analoghe-a-bst}~\ref{par:cancellazione-rb})} verranno analizzate delle operazioni comunemente applicate ai \BST, insieme alle loro relative complessità.
+
+\paragraph{Ricerca, massimo, minimo, successore e predecessore}
+\label{par:operazioni-rb-analoghe-a-bst}
+
+Lo pseudocodice delle operazioni di:
+
+\begin{itemize}
+  \item \textbf{Ricerca}
+  \item \textbf{Massimo} e \textbf{Minimo}
+  \item \textbf{Successore} e \textbf{Predecessore}
+\end{itemize}
+
+è analogo a quello mostrato nelle operazioni dei \BST, nella Sezione~\ref{sec:operazioni-bst}.
+
+Grazie alla formula relativa all'altezza di un albero, ricavata nella Sezione precedente, la complessità temporale di tutte le operazioni fin'ora trattate è:
+
+\[ \bigO\left(h\right) = \bigO\left(\log{(n)}\right)\]
+
+Con \(n\) pari al numero di nodi dell'albero.
+
+\paragraph{Rotazioni}
+\label{par:rotazioni-rb}
+
+Le operazioni di Inserimento e Cancellazione (Sezioni \ref{par:inserimento-rb} e \ref{par:cancellazione-rb}), impiegate su un albero \RB, hanno complessità temporale \(\bigO\left(\log{(n)}\right)\).
+Siccome essi modificano l'albero, il l'albero risultante da queste operazioni potrebbe violare le proprietà elencate nella Sezione~\ref{sec:alberi-rosso-neri}.
+
+Per ripristinare queste proprietà, il colore di alcuni nodi nell'albero e la struttura dei puntatori devono essere modificati.
+Quest'ultima viene alterata tramite una operazione detta \textbf{rotazione}, che può essere \textit{sinistra} o \textit{destra}.
+
+Una rotazione \textbf{destra} su un nodo di un albero \RB richiede che il suo figlio \textbf{destro} non sia \texttt{T.nil}, mentre il suo figlio sinistro può essere un nodo qualsiasi.
+Allo stesso modo, una rotazione \textbf{sinistra} richiede che il figlio \textbf{sinistro} non sia \texttt{T.nil}.
+
+Una rotazione sinistra sul nodo \texttt{x} con figlio \texttt{y} \inlinequote{ruota} attorno all'arco tra i due, trasformando \texttt{y} nella nuova radice con \texttt{x} come figlio sinistro e il figlio sinistro di \texttt{y} come figlio destro di \texttt{x}.
+La rotazione sinistra avrà comportamento speculare.
+
+\bigskip
+Gli pseudocodici delle funzione \texttt{LEFT-ROTATE} e \texttt{RIGHT-ROTATE} sono mostrati nei Listati~\ref{lst:rotazione-sinistra-nodo-rt}~e~\ref{lst:rotazione-destra-nodo-rt}.
+
+\begin{minipage}[t]{0.495\linewidth}
+  \begin{lstlisting}[style=pseudocode, caption={Rotazione sinistra di un nodo in un RB}, label={lst:rotazione-sinistra-nodo-rt}]
+LEFT-ROTATE(T, x)
+  y := x.right
+  x.right := y.left
+  if y.left != T.nil
+    y.left.parent := x
+  y.parent := x.parent
+  if x.parent = T.nil
+    T.root := y
+  else if x.parent.left = x
+    x.parent.left := y
+  else
+    x.parent.right := y
+  y.left := x
+  x.parent := y
+  \end{lstlisting}
+\end{minipage}
+\begin{minipage}[t]{0.495\linewidth}
+  \begin{lstlisting}[style=pseudocode, caption={Rotazione destra di un nodo in un RB}, label={lst:rotazione-destra-nodo-rt}]
+RIGHT-ROTATE(T, x)
+  y := x.left
+  x.left := y.right
+  if y.right != T.nil
+    y.right.parent := x
+  y.parent := x.parent
+  if x.parent = T.nil
+    T.root := y
+  else if x.parent.right = x
+    x.parent.right := y
+  else
+    x.parent.left := y
+  y.right := x
+  x.parent := y
+  \end{lstlisting}
+\end{minipage}
+
+\bigskip
+Entrambe le procedure hanno complessità temporale \(\bigO(1)\).
+Inoltre l'operazione di rotazione su un \BST mantiene la proprietà di essere \BST.
+
+\bigskip
+Una rappresentazione grafica dell'operazione è mostrata nell'immagine~\ref{fig:rotazione-sinistra-destra-rb}.
+
+\begin{figure}[htbp]
+  \bigskip
+  \centering
+  \tikzfig[1]{image-48.tikz}
+  \caption{Rotazione sinistra e destra di un albero \RB}
+  \label{fig:rotazione-sinistra-destra-rb}
+  \bigskip
+\end{figure}
+
+\paragraph{Inserimento}
+\label{par:inserimento-rb}
+
+L'inserimento è analogo a quello dell'\BST, illustrato nel Paragrafo~\ref{par:inserimento-bst}.
+Tuttavia a fine procedura è necessario ristabilire le proprietà degli alberi \RB se esse sono state violate tramite l'algoritmo \texttt{RB-INSERT-FIXUP}.
+
+\bigskip
+Gli pseudocodici dei due algoritmi sono mostrati nei Listati~\ref{lst:insermento-nodo-rb}~e~\ref{lst:rb-insert-fixup}.
+
+\begin{minipage}[t]{0.445\textwidth}
+  \begin{lstlisting}[style=pseudocode, caption={Inserimento in un RB}, label={lst:insermento-nodo-rb}]
+RB-INSERT(T, z)
+  y := T.nil
+  x := T.root
+  while x != T.nil
+    y := x
+    if z.key < x.key
+      x := x.left
+    else
+      x := x.right
+  z.parent := y
+  if y = T.nil
+    T.root := z
+  else if z.key < y.key
+    y.left := z
+  else
+    y.right := z
+  z.left := T.nil
+  z.right := T.nil
+  z.color := RED
+  RB-INSERT-FIXUP(T, z)
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[t]{0.55\textwidth}
+  \begin{lstlisting}[style=pseudocode, caption={Fixup dopo inserimento}, label={lst:rb-insert-fixup}]
+RB-INSERT-FIXUP(T, z)
+  while z.parent.color = RED
+    if z.parent = z.parent.parent.left
+      y := z.parent.parent.right
+      if y.color = RED
+        // caso 1
+        z.parent.color := BLACK
+        y.color := BLACK
+        z.parent.parent.color := RED
+        z = z.parent.parent
+      else if z = z.parent.right
+        // caso 2
+        z := z.parent
+        LEFT-ROTATE(T, z)
+      // caso 3
+      z.parent.color := BLACK
+      z.parent.parent.color := RED
+      RIGHT-ROTATE(T, z.parent.parent)
+    else
+      come le linee 3-18 con
+        left and right invertiti
+  T.root.color := BLACK
+  \end{lstlisting}
+\end{minipage}
+
+Per comprendere il funzionamento della funzione \texttt{RB-INSERT-FIXUP} è necessario dividere il codice in \(3\) casi principali, per poi analizzare l'obiettivo del ciclo \textbf{\texttt{while}} delle linee \(2-21\).
+
+Le proprietà \ref{enum:proprieta-1-nodi-rb} e \ref{enum:proprieta-3-nodi-rb} continuano ad essere valide poiché i figli di entrambi i nodi rossi inseriti sono \texttt{T.nil}.
+Allo stesso modo la proprietà~\ref{enum:proprieta-5-nodi-rb}, che regola il numero di nodi neri tra su ogni percorso, è ancora soddisfatta.
+
+Le uniche proprietà escluse sono:
+
+\begin{itemize}
+  \item la \ref{enum:proprieta-2-nodi-rb}, che richiede che la radice sia nera
+        \begin{itemize}
+          \item violata solo se \texttt{z} è la radice
+        \end{itemize}
+  \item la \ref{enum:proprieta-4-nodi-rb}, che richiede che entrambi i figli di un nodo rosso siano neri
+        \begin{itemize}
+          \item violata solo se il padre di \texttt{z} è rosso
+        \end{itemize}
+\end{itemize}
+
+\bigskip
+Il ciclo \textbf{\texttt{while}} del codice nel Listato~\ref{lst:rb-insert-fixup} mantiene valide le seguenti \(3\) proprietà:
+
+\begin{enumerate}
+  \item Il nodo \texttt{z} è rosso
+  \item Se \texttt{z.parent} è la radice, allora \texttt{z.parent} è nero
+  \item Se si dovesse presentare una violazione delle proprietà dell'albero \RB, allora è sicuramente una violazione della proprietà \ref{enum:proprieta-2-nodi-rb} o \ref{enum:proprieta-4-nodi-rb}:
+        \begin{itemize}
+          \item se la proprietà \ref{enum:proprieta-2-nodi-rb} è violata, allora \texttt{z} è la radice ed è rossa
+          \item se la proprietà \ref{enum:proprieta-4-nodi-rb} è violata, allora sia \texttt{z} che \texttt{z.parent} sono rossi
+        \end{itemize}
+\end{enumerate}
+
+Quindi, come evidenziato nel Listato~\ref{lst:rb-insert-fixup}, sono evidenziati \(3\) casi:
+
+\begin{itemize}
+  \item[Caso \(1\):] \texttt{y} è rosso, \texttt{x} è rosso, \texttt{y} è rosso \textit{(Figura~\ref{fig:caso-1-algoritmo-rb-insert-fixup})}.
+    \begin{itemize}
+      \item la proprietà \ref{enum:proprieta-4-nodi-rb} è violata
+      \item bisogna ripetere la procedura su \texttt{x.parent} perché suo padre potrebbe essere rosso
+      \item la situazione è evoluta nel caso \(2\)
+    \end{itemize}
+  \item[Caso \(2\):] \texttt{y} è nero, \texttt{z} è il figlio destro di \texttt{x} \textit{(Figura~\ref{fig:caso-2-algoritmo-rb-insert-fixup})}.
+    \begin{itemize}
+      \item la proprietà \ref{enum:proprieta-2-nodi-rb} è violata
+      \item la situazione è evoluta nel caso \(3\)
+    \end{itemize}
+  \item[Caso \(3\):] \texttt{y} è nero, \texttt{z} è il figlio sinistro di \texttt{x} \textit{(Figura~\ref{fig:caso-3-algoritmo-rb-insert-fixup})}.
+\end{itemize}
+
+\begin{figure}[htbp]
+  \begin{subfigure}{0.99\textwidth}
+    \centering
+    \bigskip
+    \tikzfig[0.7]{image-49.tikz}
+    \caption{caso \(1\) dell'algoritmo \texttt{RB-INSERT-FIXUP}}
+    \label{fig:caso-1-algoritmo-rb-insert-fixup}
+    \bigskip
+  \end{subfigure}
+  \begin{subfigure}{0.99\textwidth}
+    \centering
+    \bigskip
+    \tikzfig[0.7]{image-50.tikz}
+    \caption{caso \(2\) dell'algoritmo \texttt{RB-INSERT-FIXUP}}
+    \label{fig:caso-2-algoritmo-rb-insert-fixup}
+    \bigskip
+  \end{subfigure}
+  \begin{subfigure}{0.99\textwidth}
+    \centering
+    \bigskip
+    \tikzfig[0.7]{image-51.tikz}
+    \caption{caso \(3\) dell'algoritmo \texttt{RB-INSERT-FIXUP}}
+    \label{fig:caso-3-algoritmo-rb-insert-fixup}
+    \bigskip
+  \end{subfigure}
+  \caption{Casi di \texttt{RB-INSERT-FIXUP}}
+  \label{fig:casi-algoritmo-rb-insert-fixup}
+\end{figure}
+
+\bigskip
+Ogni volta che \texttt{RB-INSERT-FIXUP} viene eseguito, esso può terminare \textit{(come nei casi \(2\) e \(3\))}, oppure può venire applicato ricorsivamente risalendo \(2\) livelli nell'albero \textit{(come nel caso \(1\))}.
+In quest'ultimo caso, vengono effettuate \(2\) rotazioni \textit{(durante l'ultima chiamata)}.
+
+Quindi, nel caso peggiore, esso viene invocato al massimo \(h\) volte, dove \(h\) è l'altezza dell'albero.
+Di conseguenza la complessità temporale sarà \(\bigO(h) = \bigO(\log{(n)})\).
+
+\paragraph{Cancellazione}
+\label{par:cancellazione-rb}
+
+La procedura \texttt{RB-DELETE} è una versione adattata dell'analogo \texttt{TREE-DELETE} \textit{(Paragrafo~\ref{par:cancellazione-albero-binario})}.
+Dopo l'eliminazione del nodo, una procedura secondaria chiamata \texttt{RB-DELETE-FIXUP} viene chiamata per assicurarsi che le proprietà dell'albero \RB siano mantenute.
+
+Il codice delle procedure è mostrato nel Listati~\ref{lst:cancellazione-nodo-rb}~e~\ref{lst:rb-delete-fixup}.
+
+\begin{lstlisting}[style=pseudocode, caption={Cancellazione in un RB}, label={lst:cancellazione-nodo-rb}]
+RB-DELETE(T, z)
+  if z.left = T.nil or z.right = T.nil
+    y := z
+  else
+    y := TREE-SUCCESSOR(z)
+  if y.left != T.nil
+    x := y.left
+  else
+    x := y.right
+  x.parent := y.parent
+  if y.parent = T.nil
+    T.root := x
+  else if y.parent.left = y
+    y.parent.left := x
+  else
+    y.parent.right := x
+  if y != z
+    z.key := y.key
+  if y.color = BLACK
+    RB-DELETE-FIXUP(T, x)
+\end{lstlisting}
+\begin{lstlisting}[style=pseudocode, caption={Fixup dopo cancellazione}, label={lst:rb-delete-fixup}]
+RB-DELETE-FIXUP(T, x)
+  if x.color = RED or x.parent = T.nil
+    // caso 0
+    x.color := BLACK
+  else if x = x.parent.left
+    w := x.parent.right
+    if w.color = RED
+      // caso 1
+      w.color := BLACK
+      x.parent.color := RED
+      LEFT-ROTATE(T, x.parent)
+      w := x.parent.right
+    if w.left.color = BLACK and w.right.color = BLACK
+      // caso 2
+      w.color := RED
+      RB-DELETE-FIXUP(T, x.parent)
+    else if w.right.color = BLACK
+      // caso 3
+      w.left.color := BLACK
+      w.color := RED
+      RIGHT-ROTATE(T, w)
+      w := x.parent.right
+    w.color := x.parent.color
+    x.parent.color := BLACK
+    w.right.color := BLACK
+    LEFT-ROTATE(T, x.parent)
+  else
+  come le linee 2-26 con
+    left and right invertiti
+  \end{lstlisting}
+
+
+\bigskip
+Il funzionamento di \texttt{RB-DELETE}, come già introdotto, molto simile alla cancellazione di un nodo in un albero binario.
+Possono essere evidenziate le seguenti differenze:
+
+\begin{itemize}
+  \item Viene usato \texttt{T.NIL} al posto del valore \texttt{NIL}
+  \item Se un nodo rosso viene cancellato, non è necessario modificare il valore degli altri nodi
+  \item Per la struttura di dell'algoritmo, se viene cancellato un nodo \texttt{y} con al massimo un figlio, allora \texttt{y} è nero
+\end{itemize}
+
+Se \texttt{y} è nero, le proprietà dell'albero \RB potrebbero non essere mantenute:
+
+\begin{itemize}
+  \item il numero di nodi neri incontrati in un cammino potrebbe essere diversa \textit{(Proprietà~\ref{enum:proprieta-5-nodi-rb} degli alberi \RB)}
+  \item due nodi neri potrebbero essere adiacenti (\textit{(Proprietà~\ref{enum:proprieta-5-nodi-rb} degli alberi \RB)})
+  \item \texttt{y} sarebbe potuta essere la radice, quindi essa potrebbe non essere più nera (\textit{(Proprietà~\ref{enum:proprieta-2-nodi-rb} degli alberi \RB)})
+\end{itemize}
+
+\bigskip
+Il nodo passato alla funzione \texttt{RB-DELETE-FIXUP} è un tra:
+
+\begin{itemize}
+  \item Il nodo figlio (unico) di \texttt{y} prima che esso venisse eliminato
+  \item Il nodo sentinella \texttt{T.nil} se \texttt{y} non aveva figli
+\end{itemize}
+
+Nel secondo caso, l'assegnamento nella linea \(10\) assicura che il padre di \texttt{x} e ora il nodo precedentemente padre di \texttt{y}, sia esso un nodo con valore o \texttt{T.nil}.
+
+All'interno del codice si delineano \(4\) casi:
+
+\begin{itemize}
+  \item[Caso \(0\):] \texttt{x} è un nodo rosso, oppure è la radice.
+  \item[Caso \(1\):] \texttt{x} è un nodo nero, suo fratello destro \texttt{w} è rosso \textit{(Figura~\ref{fig:caso-1-algoritmo-rb-delete-fixup})}.
+  \begin{itemize}
+    \item il padre di \texttt{x} è nero
+    \item la struttura evolve nei casi \(2\), \(3\) o \(4\)
+  \end{itemize}
+\item[Caso \(2\):] \texttt{x} è un nodo nero, suo fratello destro \texttt{w} è nero con i figli entrambi neri \textit{(Figura~\ref{fig:caso-2-algoritmo-rb-delete-fixup})}.
+\begin{itemize}
+  \item se si proviene dal caso \(1\), allora \texttt{x.parent} è rosso. L'invocazione di \texttt{RB-DELETE-FIXUP} termina subito
+\end{itemize}
+\item[Caso \(3\):] \texttt{x} è nero, suo fratello destro \texttt{w} è nero con figlio sinistro rosso e figlio destro nero \textit{(Figura~\ref{fig:caso-3-algoritmo-rb-delete-fixup})}.
+\begin{itemize}
+  \item la struttura evolve nel caso \(4\)
+\end{itemize}
+\item[Caso \(4\):] \texttt{x} è nero, suo fratello destro \texttt{w} è nero con figlio destro rosso \textit{(Figura~\ref{fig:caso-4-algoritmo-rb-delete-fixup})}.
+\end{itemize}
+
+Ogni volta che \texttt{RB-DELETE-FIXUP} viene invocata, essa può terminare \textit{(casi \(0,\ 1,\ 3,\ 4\))} o venire applicato ricorsivamente risalendo un livello \textit{(caso \(2\) non proveniente da \(1\))}.
+Una catena di invocazioni esegue al massimo \(3\) rotazioni \textit{(evoluzione \(1 \rightarrow 3 \rightarrow 4\))}.
+
+\texttt{RB-DELETE-FIXUP} può essere quindi invocata al massimo \(h\) volte, dove \(h\) è l'altezza dell'albero.
+Di conseguenza la complessità temporale sarà \(\bigO(h) = \bigO(\log{(n)})\).
+
+\begin{figure}[htbp]
+  \begin{subfigure}{0.99\textwidth}
+    \centering
+    \bigskip
+    \tikzfig[0.7]{image-52.tikz}
+    \caption{caso \(1\) dell'algoritmo \texttt{RB-DELETE-FIXUP}}
+    \label{fig:caso-1-algoritmo-rb-delete-fixup}
+    \bigskip
+  \end{subfigure}
+  \begin{subfigure}{0.99\textwidth}
+    \centering
+    \bigskip
+    \tikzfig[0.7]{image-53.tikz}
+    \caption{caso \(2\) dell'algoritmo \texttt{RB-DELETE-FIXUP}}
+    \label{fig:caso-2-algoritmo-rb-delete-fixup}
+    \bigskip
+  \end{subfigure}
+  \begin{subfigure}{0.99\textwidth}
+    \centering
+    \bigskip
+    \tikzfig[0.7]{image-54.tikz}
+    \caption{caso \(3\) dell'algoritmo \texttt{RB-DELETE-FIXUP}}
+    \label{fig:caso-3-algoritmo-rb-delete-fixup}
+    \bigskip
+  \end{subfigure}
+  \begin{subfigure}{0.99\textwidth}
+    \centering
+    \bigskip
+    \tikzfig[0.7]{image-55.tikz}
+    \caption{caso \(4\) dell'algoritmo \texttt{RB-DELETE-FIXUP}}
+    \label{fig:caso-4-algoritmo-rb-delete-fixup}
+    \bigskip
+  \end{subfigure}
+
+  \caption{Casi di \texttt{RB-DELETE-FIXUP}}
+  \label{fig:casi-algoritmo-rb-delete-fixup}
+\end{figure}
 
 \clearpage
 
