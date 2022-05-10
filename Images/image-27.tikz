@@ -1,17 +1,17 @@
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=white, minimum width=17pt] (0) at (0, 0) {\footnotesize\(a_1\)};
-		\node [style=white, minimum width=17pt] (1) at (-5, -4) {\footnotesize\(a_2\)};
-		\node [style=white, minimum width=17pt] (2) at (5, -4) {\small \(a_3\)};
-		\node [style=white, minimum width=17pt] (3) at (-7.5, -8) {\footnotesize\(a_4\)};
-		\node [style=white, minimum width=17pt] (4) at (-2.5, -8) {\footnotesize\(a_5\)};
-		\node [style=white, minimum width=17pt] (5) at (2, -8) {\footnotesize\(a_6\)};
-		\node [style=white, minimum width=17pt] (6) at (7.5, -8) {\footnotesize\(a_7\)};
-		\node [style=white, minimum width=17pt] (7) at (-9.25, -12) {\footnotesize\(a_8\)};
-		\node [style=white, minimum width=17pt] (8) at (-6, -12) {\footnotesize\(a_9\)};
-		\node [style=white, minimum width=17pt] (9) at (-4, -12) {\footnotesize\(a_{10}\)};
-		\node [style=white, minimum width=17pt] (10) at (-1, -12) {\footnotesize\(a_{11}\)};
-		\node [style=white, minimum width=17pt] (11) at (1, -12) {\footnotesize\(a_{12}\)};
+		\node [style=white] (0) at (0, 0) {\footnotesize\(a_1\)};
+		\node [style=white] (1) at (-5, -4) {\footnotesize\(a_2\)};
+		\node [style=white] (2) at (5, -4) {\small \(a_3\)};
+		\node [style=white] (3) at (-7.5, -8) {\footnotesize\(a_4\)};
+		\node [style=white] (4) at (-2.5, -8) {\footnotesize\(a_5\)};
+		\node [style=white] (5) at (2, -8) {\footnotesize\(a_6\)};
+		\node [style=white] (6) at (7.5, -8) {\footnotesize\(a_7\)};
+		\node [style=white] (7) at (-9.25, -12) {\footnotesize\(a_8\)};
+		\node [style=white] (8) at (-6, -12) {\footnotesize\(a_9\)};
+		\node [style=white] (9) at (-4, -12) {\footnotesize\(a_{10}\)};
+		\node [style=white] (10) at (-1, -12) {\footnotesize\(a_{11}\)};
+		\node [style=white] (11) at (1, -12) {\footnotesize\(a_{12}\)};
 		\node [style=right align] (12) at (-1, 0) {\footnotesize\(1\)};
 		\node [style=right align] (13) at (-6, -4) {\footnotesize\(2\)};
 		\node [style=right align] (14) at (4, -4) {\footnotesize\(3\)};

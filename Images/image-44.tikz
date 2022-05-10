@@ -1,12 +1,12 @@
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=white, minimum size=10pt, inner sep=1pt] (0) at (0, 0) {\tiny\(10\)};
-		\node [style=white, minimum size=10pt, inner sep=1pt] (1) at (-2, -2) {\tiny\(5\)};
-		\node [style=white, minimum size=10pt, inner sep=1pt] (2) at (2, -2) {\tiny\(15\)};
-		\node [style=white, minimum size=10pt, inner sep=1pt] (3) at (-3, -4) {\tiny\(2\)};
-		\node [style=white, minimum size=10pt, inner sep=1pt] (4) at (-1, -4) {\tiny\(7\)};
-		\node [style=white, minimum size=10pt, inner sep=1pt] (5) at (1, -4) {\tiny\(13\)};
-		\node [style=white, minimum size=10pt, inner sep=1pt] (6) at (3, -4) {\tiny\(19\)};
+		\node [style=white, minimum size=10pt] (0) at (0, 0) {\tiny\(10\)};
+		\node [style=white, minimum size=10pt] (1) at (-2, -2) {\tiny\(5\)};
+		\node [style=white, minimum size=10pt] (2) at (2, -2) {\tiny\(15\)};
+		\node [style=white, minimum size=10pt] (3) at (-3, -4) {\tiny\(2\)};
+		\node [style=white, minimum size=10pt] (4) at (-1, -4) {\tiny\(7\)};
+		\node [style=white, minimum size=10pt] (5) at (1, -4) {\tiny\(13\)};
+		\node [style=white, minimum size=10pt] (6) at (3, -4) {\tiny\(19\)};
 		\node [style=none] (7) at (-4.5, 0) {};
 		\node [style=none] (8) at (-4.5, -4) {};
 		\node [style=none, rotate=90] (9) at (-5, -2) {\small\(\log{(n)}\)};

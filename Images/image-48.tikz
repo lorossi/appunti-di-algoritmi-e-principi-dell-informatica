@@ -5,17 +5,17 @@
 		\node [style=top align] (2) at (-2, -2) {\(\alpha\)};
 		\node [style=top align] (3) at (1, -4) {\footnotesize\(\beta\)};
 		\node [style=top align] (4) at (3, -4) {\(\gamma\)};
-		\node [style=black] (5) at (17, 0) {\texttt{y}};
-		\node [style=red] (6) at (15, -2) {\texttt{x}};
-		\node [style=top align] (7) at (19, -2) {\(\gamma\)};
-		\node [style=top align] (8) at (16, -4) {\footnotesize\(\beta\)};
-		\node [style=top align] (9) at (14, -4) {\(\alpha\)};
-		\node [style=none] (10) at (5, -0.75) {};
-		\node [style=none] (11) at (11, -0.75) {};
-		\node [style=none] (12) at (11, -2.75) {};
-		\node [style=none] (13) at (5.25, -2.75) {};
-		\node [style=none] (14) at (7.75, -0.25) {\footnotesize\texttt{LEFT-ROTATE(T, x)}};
-		\node [style=none] (15) at (8.5, -3.25) {\footnotesize\texttt{LEFT-ROTATE(T, x)}};
+		\node [style=black] (5) at (12.25, 0) {\texttt{y}};
+		\node [style=red] (6) at (10.25, -2) {\texttt{x}};
+		\node [style=top align] (7) at (14.25, -2) {\(\gamma\)};
+		\node [style=top align] (8) at (11.25, -4) {\footnotesize\(\beta\)};
+		\node [style=top align] (9) at (9.25, -4) {\(\alpha\)};
+		\node [style=none] (10) at (4.25, -1) {};
+		\node [style=none] (11) at (8.25, -1) {};
+		\node [style=none] (12) at (8.25, -2) {};
+		\node [style=none] (13) at (4.25, -2) {};
+		\node [style=top align] (14) at (6.25, -1) {\tiny\texttt{LEFT-ROTATE(T, x)}};
+		\node [style=bottom align] (15) at (6.25, -2) {\tiny\texttt{LEFT-ROTATE(T, x)}};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [style=solid] (0) to (1);

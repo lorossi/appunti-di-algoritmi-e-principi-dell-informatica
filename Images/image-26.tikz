@@ -1,21 +1,21 @@
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=black] (0) at (10, 0) {};
-		\node [style=black] (1) at (4, -4) {};
-		\node [style=black] (2) at (10, -4) {};
-		\node [style=black] (3) at (16, -4) {};
-		\node [style=black] (4) at (6, -8) {};
-		\node [style=black] (5) at (2, -8) {};
-		\node [style=black] (6) at (2, -12) {};
-		\node [style=black] (7) at (13, -8) {};
-		\node [style=black] (8) at (16, -8) {};
-		\node [style=black] (9) at (19, -8) {};
-		\node [style=black] (10) at (10, -8) {};
-		\node [style=black] (11) at (6, -12) {};
-		\node [style=black] (12) at (8, -12) {};
-		\node [style=black] (13) at (10, -12) {};
-		\node [style=black] (14) at (12, -12) {};
-		\node [style=black] (15) at (14, -12) {};
+		\node [style=black, minimum size=1pt] (0) at (10, 0) {};
+		\node [style=black, minimum size=1pt] (1) at (4, -4) {};
+		\node [style=black, minimum size=1pt] (2) at (10, -4) {};
+		\node [style=black, minimum size=1pt] (3) at (16, -4) {};
+		\node [style=black, minimum size=1pt] (4) at (6, -8) {};
+		\node [style=black, minimum size=1pt] (5) at (2, -8) {};
+		\node [style=black, minimum size=1pt] (6) at (2, -12) {};
+		\node [style=black, minimum size=1pt] (7) at (13, -8) {};
+		\node [style=black, minimum size=1pt] (8) at (16, -8) {};
+		\node [style=black, minimum size=1pt] (9) at (19, -8) {};
+		\node [style=black, minimum size=1pt] (10) at (10, -8) {};
+		\node [style=black, minimum size=1pt] (11) at (6, -12) {};
+		\node [style=black, minimum size=1pt] (12) at (8, -12) {};
+		\node [style=black, minimum size=1pt] (13) at (10, -12) {};
+		\node [style=black, minimum size=1pt] (14) at (12, -12) {};
+		\node [style=black, minimum size=1pt] (15) at (14, -12) {};
 		\node [style=left align] (16) at (10.75, 0) {radice};
 		\node [style=none] (17) at (10.75, 0.75) {};
 		\node [style=none] (19) at (1.25, -11.25) {};
@@ -39,30 +39,32 @@
 		\node [style=none] (37) at (11, -4.75) {};
 		\node [style=none] (38) at (17, -4.75) {};
 		\node [style=none] (39) at (17, -3.25) {};
-		\node [style=none] (40) at (3, -3.25) {};
-		\node [style=none] (41) at (3, -4.75) {};
+		\node [style=none] (40) at (1.25, -3.25) {};
+		\node [style=none] (41) at (2.75, -4.75) {};
 		\node [style=none] (42) at (9, -4.75) {};
 		\node [style=left align] (43) at (17, -4) {nodi interni};
 		\node [style=none] (44) at (0, -12) {};
 		\node [style=none] (45) at (0, 0) {};
 		\node [style=none, rotate=90] (46) at (-0.75, -6) {altezza = \(3\)};
+		\node [style=none] (47) at (1.25, -9) {};
+		\node [style=none] (48) at (2.75, -9) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [style=big] (1) to (0);
-		\draw [style=big] (0) to (2);
-		\draw [style=big] (0) to (3);
-		\draw [style=big] (5) to (1);
-		\draw [style=big] (4) to (1);
-		\draw [style=big] (6) to (5);
-		\draw [style=big] (10) to (2);
-		\draw [style=big] (7) to (3);
-		\draw [style=big] (3) to (8);
-		\draw [style=big] (9) to (3);
-		\draw [style=big] (10) to (15);
-		\draw [style=big] (14) to (10);
-		\draw [style=big] (13) to (10);
-		\draw [style=big] (12) to (10);
-		\draw [style=big] (11) to (10);
+		\draw [style=solid] (1) to (0);
+		\draw [style=solid] (0) to (2);
+		\draw [style=solid] (0) to (3);
+		\draw [style=solid] (5) to (1);
+		\draw [style=solid] (4) to (1);
+		\draw [style=solid] (6) to (5);
+		\draw [style=solid] (10) to (2);
+		\draw [style=solid] (7) to (3);
+		\draw [style=solid] (3) to (8);
+		\draw [style=solid] (9) to (3);
+		\draw [style=solid] (10) to (15);
+		\draw [style=solid] (14) to (10);
+		\draw [style=solid] (13) to (10);
+		\draw [style=solid] (12) to (10);
+		\draw [style=solid] (11) to (10);
 		\draw [style=dashed] (29.center)
 			 to (30.center)
 			 to (22.center)
@@ -75,20 +77,22 @@
 			 to (19.center)
 			 to (27.center)
 			 to (28.center)
-			 to cycle;
+			 to [in=180, out=0] cycle;
 		\draw [style=dashed] (17.center)
 			 to (24.center)
 			 to (25.center)
 			 to (26.center)
 			 to cycle;
-		\draw [style=dashed] (36.center)
+		\draw [style=dashed] (35.center)
+			 to (36.center)
 			 to (37.center)
 			 to (38.center)
 			 to (39.center)
-			 to (40.center)
+			 to [in=360, out=180] (40.center)
+			 to (47.center)
+			 to (48.center)
 			 to (41.center)
 			 to (42.center)
-			 to (35.center)
 			 to cycle;
 		\draw [style=double arrow] (44.center) to (45.center);
 	\end{pgfonlayer}

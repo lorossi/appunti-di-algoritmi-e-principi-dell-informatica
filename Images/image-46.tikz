@@ -24,25 +24,25 @@
 		\node [minimum size=20pt, style=black, shape=rectangle] (23) at (7.75, -12) {\tiny\texttt{NIL}};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [style=solid arrow] (0) to (1);
-		\draw [style=solid arrow] (1) to (3);
-		\draw [style=solid arrow] (1) to (4);
-		\draw [style=solid arrow] (0) to (2);
-		\draw [style=solid arrow] (2) to (5);
-		\draw [style=solid arrow] (2) to (6);
-		\draw [style=solid arrow] (6) to (9);
-		\draw [style=solid arrow] (3) to (7);
-		\draw [style=solid arrow] (3) to (10);
-		\draw [style=solid arrow] (4) to (11);
-		\draw [style=solid arrow] (4) to (12);
-		\draw [style=solid arrow] (5) to (13);
-		\draw [style=solid arrow] (7) to (15);
-		\draw [style=solid arrow] (7) to (16);
-		\draw [style=solid arrow] (5) to (17);
-		\draw [style=solid arrow] (6) to (19.center);
-		\draw [style=solid arrow] (9) to (22);
-		\draw [style=solid arrow] (9) to (23);
-		\draw [style=solid arrow] (17) to (20);
-		\draw [style=solid arrow] (17) to (21);
+		\draw [style=solid] (0) to (1);
+		\draw [style=solid] (1) to (3);
+		\draw [style=solid] (1) to (4);
+		\draw [style=solid] (0) to (2);
+		\draw [style=solid] (2) to (5);
+		\draw [style=solid] (2) to (6);
+		\draw [style=solid] (6) to (9);
+		\draw [style=solid] (3) to (7);
+		\draw [style=solid] (3) to (10);
+		\draw [style=solid] (4) to (11);
+		\draw [style=solid] (4) to (12);
+		\draw [style=solid] (5) to (13);
+		\draw [style=solid] (7) to (15);
+		\draw [style=solid] (7) to (16);
+		\draw [style=solid] (5) to (17);
+		\draw [style=solid] (6) to (19.center);
+		\draw [style=solid] (9) to (22);
+		\draw [style=solid] (9) to (23);
+		\draw [style=solid] (17) to (20);
+		\draw [style=solid, in=105, out=-75] (17) to (21);
 	\end{pgfonlayer}
 \end{tikzpicture}
