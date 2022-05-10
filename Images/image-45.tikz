@@ -1,9 +1,9 @@
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
 		\node [style=white, minimum size=10pt] (0) at (0, 0) {\tiny\(10\)};
-		\node [style=white, minimum size=10pt] (1) at (3.5, -6) {\tiny\(5\)};
+		\node [style=white, minimum size=10pt] (1) at (3.5, -6) {\tiny\(12\)};
 		\node [style=white, minimum size=10pt] (2) at (2, -2) {\tiny\(15\)};
-		\node [style=white, minimum size=10pt] (5) at (3.75, -8) {\tiny\(13\)};
+		\node [style=white, minimum size=10pt] (5) at (3.75, -8) {\tiny\(17\)};
 		\node [style=white, minimum size=10pt] (6) at (3, -4) {\tiny\(19\)};
 		\node [style=none] (7) at (-4.5, 0) {};
 		\node [style=none] (8) at (-4.5, -8) {};

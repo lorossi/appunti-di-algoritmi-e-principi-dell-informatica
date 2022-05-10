@@ -11,11 +11,10 @@
 		\node [style=black, minimum size=1pt] (8) at (16, -8) {};
 		\node [style=black, minimum size=1pt] (9) at (19, -8) {};
 		\node [style=black, minimum size=1pt] (10) at (10, -8) {};
-		\node [style=black, minimum size=1pt] (11) at (6, -12) {};
-		\node [style=black, minimum size=1pt] (12) at (8, -12) {};
-		\node [style=black, minimum size=1pt] (13) at (10, -12) {};
-		\node [style=black, minimum size=1pt] (14) at (12, -12) {};
-		\node [style=black, minimum size=1pt] (15) at (14, -12) {};
+		\node [style=black, minimum size=1pt] (11) at (8, -12) {};
+		\node [style=black, minimum size=1pt] (12) at (9.25, -12) {};
+		\node [style=black, minimum size=1pt] (14) at (10.5, -12) {};
+		\node [style=black, minimum size=1pt] (15) at (11.75, -12) {};
 		\node [style=left align] (16) at (10.75, 0) {radice};
 		\node [style=none] (17) at (10.75, 0.75) {};
 		\node [style=none] (19) at (1.25, -11.25) {};
@@ -62,7 +61,6 @@
 		\draw [style=solid] (9) to (3);
 		\draw [style=solid] (10) to (15);
 		\draw [style=solid] (14) to (10);
-		\draw [style=solid] (13) to (10);
 		\draw [style=solid] (12) to (10);
 		\draw [style=solid] (11) to (10);
 		\draw [style=dashed] (29.center)

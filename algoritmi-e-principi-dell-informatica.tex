@@ -2200,11 +2200,13 @@ Un esempio di albero di configurazione per una \NTM è mostrato in Figura~\ref{f
   \item Le linee tratteggiate configurazione che non terminano
 \end{itemize}
 
+% TODO sistema questa
+
 \begin{figure}[htbp]
   \bigskip
   \centering
   \tikzfig[0.8]{image-9.tikz}
-  \caption{Albero delle configurazioni di una \NTM}
+  \caption{Albero delle computazioni di una \NTM}
   \label{fig:albero-configurazioni-NTM}
   \bigskip
 \end{figure}
@@ -4830,7 +4832,7 @@ Il risultato della trattazione è illustrato in Tabella~\ref{tab:complessita-mod
     \textit{modello}              & \textit{complessità spaziale} & \textit{complessità temporale} & \textit{note}                               \\ \hline
     \FSA                          & \(S(n) \in \Theta(1)\)        & \(T(n) \in \Theta(n)\)         & \footnotesize più precisamente \(T(n) = n\) \\
     \PDA                          & \(S(n) \in \bigO(n)\)         & \(T(n) \in \Theta(n)\)                                                       \\
-    \TM \textit{a nastro singolo} & \(S(n) \in \Theta(n)\)        & \(T(n) \in \Theta(n^2)\)       & \footnotesize meno efficienti dei \PDA      \\
+    \TM \textit{a nastro singolo} & \(S(n) \in \Theta(n)\)        & \(T(n) \in \Theta(n^2)\)       & \footnotesize meno efficienti di \PDA       \\
   \end{tabular}
   \bigskip
   \caption{Complessità dei modelli di calcolo}
@@ -5005,7 +5007,7 @@ Un'esempio di tale linguaggio è mostrato nella Tabella~\ref{tab:instruction-set
 \subsubsection{Criterio di costo logaritmico}
 \label{sec:criterio-costo-logaritmico}
 
-L'approssimazione di costo tramite \(\Omega, \Theta\) è corretta ma presenta molti limiti.
+L'approssimazione di costo tramite \(\Omega\), \(\Theta\) e \(\bigO\) è corretta ma presenta molti \textbf{limiti}.
 
 Infatti non si tiene conto di una limitatezza della memoria: una singola parola di memoria non può sempre contenere in un solo simboli tutti gli interi usati in un determinato algoritmo.
 Poiché non si considera il numero di cifre necessarie a rappresentare un numero, il calcolo della complessità può risultare molto errato in certe circostanze.
@@ -5037,7 +5039,7 @@ La complessità logaritmica delle operazioni elementari della macchina \RAM è m
     \item Il costo delle operazioni di \textbf{salto} (\texttt{JZ}, \texttt{JGZ}, \texttt{JLZ}) sarà costante:
           \begin{itemize}[label=\(\rightarrow\)]
             \item sono tutte \(\Theta(1)\)
-            \item si sta sommando un \textit{offset} di lunghezza fissa al \textit{program counter} \textit{(anch'esso di lunghezza fissa)}
+            \item viene sommato un \textit{offset} di lunghezza fissa al \textit{program counter} \textit{(anch'esso di lunghezza fissa)}
           \end{itemize}
   \end{itemize}
 \end{minipage}
@@ -5068,8 +5070,8 @@ Essa prende il nome di \textit{\nameref{sec:tesi-correlazione-polinomiale}}.
 \paragraph{Relazione tra i criteri di costo}
 
 La relazione tra i due criteri di costo \textbf{non è fissa}.
-Infatti, non è possibile sempre affermare che \(C_{\text{log}} = C_{\text{cost}} \log{(n)}\).
-
+Infatti, non è possibile sempre affermare che sia valida la relazione:
+\[ C_{\text{log}} = C_{\text{cost}} \log{(n)} \]
 Questa uguaglianza sarà tuttavia valida nei casi in cui \(C_{\text{cost}} = n\) o \(C_{\text{cost}} = 1\).
 
 %TODO pagine 420 libro - esempio 9.15
@@ -5213,7 +5215,10 @@ In seguito all'enunciazione e alla dimostrazione del Teorema di correlazione pol
   \item Ogni cella \(i_j\)-esima della \RAM occupa \(\log{(i_j)} + \log{(\texttt{N}[i_j])}\)
   \item Ogni cella della \RAM viene materializzata solo se la \RAM effettua una operazione di \texttt{STORE}
   \item L'operazione \texttt{STORE} ha un costo per la \RAM pari a \(\log{(i_j)} + \log{(\texttt{N}[i_j])}\)
-  \item Per riempire \(r\) celle, la \RAM impiega \(\displaystyle \sum_{j=1}^{r} \log{(i_j)} + \log{(\texttt{N}[i_j])}\) unità di tempo, la stessa quantità di spazio occupata sul nastro
+  \item Per riempire \(r\) celle, la \RAM impiega \(\displaystyle \sum_{j=1}^{r} \log{(i_j)} + \log{(\texttt{N}[i_j])}\) unità di tempo
+        \begin{itemize}[label=\(\rightarrow\)]
+          \item la stessa quantità di spazio occupata sul nastro
+        \end{itemize}
 \end{itemize}
 
 \subsubsection{Conclusioni sulla Tesi di correlazione}
@@ -5301,12 +5306,8 @@ In questi ultimi l'ordine dei vertici negli archi non è rilevante.
   \bigskip
 \end{figure}
 
-Con il simbolo \(|V|\) viene indicato il numero di vertici nel grafo, mentre \(|E|\) denota il numero di archi: per costruzione è sempre verificato che:
-\[ 0 \leq |E| \leq |V|^2 \]
-Un grafo è detto \textbf{denso} se il numero di lati è \inlinequote{abbastanza vicino} al numero massimo di lati, cioè quindi quando è verificata la relazione \(|E| \approx |V|^2\).
-In caso contrario, è detto \textbf{sparso}.
-
-\subsubsection{Tipi di Grafo}
+\bigskip
+\textbf{Proprietà} dei grafi:
 
 \begin{itemize}
   \item Se tutti gli archi di un grafo sono \textbf{orientati}, allora il grafo è detto \textbf{orientato}
@@ -5324,6 +5325,14 @@ In caso contrario, è detto \textbf{sparso}.
         \end{itemize}
   \item Un grafo \textbf{non orientato} è connesso se tra ogni coppia di vertici esiste un cammino
   \item Un grafo \textbf{non orientato} e \textbf{aciclico} prende il nome di \textit{DAG}, o \textit{directed acyclic graph}
+  \item \(|V|\) indica il numero di \textbf{vertici}, \(|E|\) denota il numero di \textbf{archi}
+        \begin{itemize}
+          \item tra i due intercorre la relazione \(0 \leq |E| \leq |V|^2\)
+        \end{itemize}
+  \item un grafo è detto \textbf{denso} se \(|E| \approx |V|^2\) (il numero di lati è prossimo al numero massimo)
+        \begin{itemize}
+          \item in caso contrario è detto \textbf{sparso}
+        \end{itemize}
 \end{itemize}
 
 \subsubsection{Alberi}
@@ -6061,25 +6070,26 @@ Nel caso pessimo ha complessità \(\Theta(n^2)\), superiore all'\nameref{sec:hea
   \item \textbf{Combina}: l'array \texttt{A[p..r]} è già ordinato
 \end{itemize}
 
-La parte \inlinequote{complicata} da implementare riguarda la partizione: essa viene effettuata tramite l'algoritmo \texttt{PARTITION}, che avrà l'incarico di scegliere un elemento di \textit{pivot}.
-Proprietà del \textit{pivot}:
+La parte \inlinequote{complicata} da implementare riguarda la partizione: essa viene effettuata tramite l'algoritmo \texttt{PARTITION}, che avrà l'incarico di scegliere un elemento attorno al quale gli elementi ruoteranno, detto \texttt{pivot}.
+
+Proprietà dell'elemento \texttt{pivot}:
 
 \begin{itemize}
   \item Tutti gli elementi \textbf{minori} di \texttt{pivot} vengono posti nel sotto array \textbf{sinistro}
   \item Tutti gli elementi \textbf{maggiori} di \texttt{pivot} vengono posti nel sotto array \textbf{destro}
 \end{itemize}
 
-  \begin{minipage}[t]{0.495\textwidth}
-    \begin{lstlisting}[style=pseudocode, caption={Pseudocodice di \texttt{QUICKSORT}}, label={sec:algoritmo-quicksort}]
+\begin{minipage}[t]{0.495\textwidth}
+  \begin{lstlisting}[style=pseudocode, caption={Pseudocodice di \texttt{QUICKSORT}}, label={sec:algoritmo-quicksort}]
 QUICKSORT(A, p, r):
   if p < r:
     q := PARTITION(A, p, r)
     QUICKSORT(A, p, q - 1)
     QUICKSORT(A, q + 1, r)
         \end{lstlisting}
-  \end{minipage}
-  \begin{minipage}[t]{0.495\textwidth}
-    \begin{lstlisting}[style=pseudocode, caption={Pseudocodice di \texttt{PARTITION}}, label={sec:algoritmo-partition}]
+\end{minipage}
+\begin{minipage}[t]{0.495\textwidth}
+  \begin{lstlisting}[style=pseudocode, caption={Pseudocodice di \texttt{PARTITION}}, label={sec:algoritmo-partition}]
 PARTITION(A, p, r):
     x := A[r]
     i := p - 1
@@ -6089,7 +6099,7 @@ PARTITION(A, p, r):
             swap A[i], A[j]
     return i + 1
   \end{lstlisting}
-  \end{minipage}
+\end{minipage}
 
 \begin{itemize}
   \item \texttt{A} è l'array di \textbf{input} di dimensione \(n\) \textit{(da ordinare)}
@@ -6151,10 +6161,9 @@ La soluzione sarà quindi pari a: \[ T(n) = \bigO\left(n \log{(n)}\right) \]
 Nel caso pessimo, \textit{in cui l'algoritmo produce una divisione \(9\) a \(1\)}, la ricorrenza è \(T(n) \leq T(\sfrac{9n}{10}) + T(\sfrac{n}{10}) + c \cdot n\).
 La soluzione sarà quindi pari a: \[ T(n) = \bigO\left(n^2\right) \]
 
-
 \subsubsection{\texttt{COUNTING-SORT}}
 
-L'algoritmo \texttt{COUNTING-SORT} è un algoritmo di ordinamento che richiede che tutti i valori in ingresso \(a_0,\, \ldots,\, a_k\) sono tutti i numeri compresi tra \(0\) ed una certa costante \(k\).
+L'algoritmo \texttt{COUNTING-SORT} è un algoritmo di ordinamento che richiede che tutti i valori in ingresso \(a_0,\, \ldots,\, a_k\) siano tutti i numeri compresi tra \(0\) ed una certa costante \(k\).
 
 \textit{Idea} di dell'algoritmo:
 se nell'array ci sono \(m_e\) valori più piccoli di un certo elemento \(e\) di valore \(v_e\), nell'array ordinato quest'ultimo sarà in posizioni \(m_e + 1\).
@@ -6332,8 +6341,8 @@ Usando questa implementazione, considerando una pila \texttt{S}, se:
 
 \begin{itemize}
   \item \texttt{S.top = t}, allora \texttt{S[1], S[2], ..., S[t]} contengono tutti gli elementi della pila
-  \item \texttt{S.top = 0}, allora la pila è vuota e nessun elemento può essere cancellato
-  \item \texttt{S.top = n}, allora la pila è piena e nessun elemento può essere inserito
+  \item \texttt{S.top = 0}, allora la pila è \textbf{vuota} e nessun elemento può essere \textbf{cancellato}
+  \item \texttt{S.top = n}, allora la pila è \textbf{piena} e nessun elemento può essere \textbf{inserito}
 \end{itemize}
 
 \bigskip
@@ -6408,7 +6417,8 @@ Lo pseudocodice di queste funzioni è mostrato nei Listati~\ref{lst:enqueue-coda
 ENQUEUE(Q, x)
   if Q.tail = Q.length
     Q.tail := 1
-  else Q.tail := Q.tail + 1
+  else
+    Q.tail := Q.tail + 1
   \end{lstlisting}
 \end{minipage}
 \begin{minipage}[t]{0.495\textwidth}
@@ -6417,12 +6427,13 @@ DEQUEUE(Q)
   x := Q[Q.head]
   if Q.head = Q.tail
     Q.head := 1
-  else Q.head := Q.head + 1
+  else
+    Q.head := Q.head + 1
   return x
   \end{lstlisting}
 \end{minipage}
 
-La complessità temporale della delle operazioni è \(\bigO(1)\).
+La complessità temporale delle operazioni è \(\bigO(1)\).
 
 \subsection{Liste \textit{(doppiamente)} concatenate - \textit{deque}}
 \label{sec:liste-concatenate}
@@ -6565,7 +6576,7 @@ Lo pseudocodice delle funzioni appena elencate è mostrato nei Listati~\ref{lst:
 
 I parametri \texttt{T} e \texttt{k} rappresentano rispettivamente il \textbf{dizionario} e la \textbf{chiave} dell'elemento da cercare.
 
-\begin{lstlisting}[style=pseudocode, caption={Ricerca}, label={lst:search-dizionario}]
+\begin{lstlisting}[numbers=none, style=pseudocode, caption={Ricerca}, label={lst:search-dizionario}]
 DIRECT-ADDRESS-SEARCH(T, k)
   return T[k]
   \end{lstlisting}
@@ -6575,7 +6586,7 @@ DIRECT-ADDRESS-INSERT(T, k)
   T[x.key] = x
   \end{lstlisting}
 
-\begin{lstlisting}[style=pseudocode, caption={Cancellazione}, label={lst:delete-dizionario}]
+\begin{lstlisting}[numbers=none, style=pseudocode, caption={Cancellazione}, label={lst:delete-dizionario}]
 DIRECT-ADDRESS-DELETE(T, k)
   T[x.key] := NIL
   \end{lstlisting}
@@ -6617,9 +6628,9 @@ Ammettendo di avere \(|U|\) possibili chiavi, la funzione \(h\) deve mapparle su
 Di conseguenza, chiavi diverse daranno origine ad hash uguali:
 \[\exists \, k_1, k_2 \ \Rightarrow \ h(k_1) = h_(k_2) \]
 Questo fenomeno prende il nome di \textbf{collisione}.
-
 Una delle tecniche per risolvere le collisioni prende il nome di \textbf{concatenamento}.
-\textit{Idea} della tecnica: gli oggetti che vengono mappati sullo stesso slot sono posti in una lista concatenata.
+
+\textit{Idea} della tecnica: gli oggetti che vengono mappati sullo stesso slot vengono posti in una lista concatenata.
 
 \bigskip
 La collisioni e le loro risoluzioni sono mostrate rispettivamente nelle Figure~\ref{fig:collisioni-dizionario}~e~\ref{fig:risoluzione-collisioni-dizionario}.
@@ -6843,7 +6854,7 @@ L'analisi della complessità viene fatta in funzione del fattore di carico \(\al
 Sotto ipotesi di hashing uniforme, il numero medio di ispezioni necessarie per effettuare l'inserimento di in nuovo oggetto nella tabella è \(m\) se \(\alpha = 1\) \textit{(la tabella è piena)} e non più di \(\sfrac{1}{1-\alpha}\) se \(\alpha<1\) \textit{(se la tabella ha spazio disponibile)}.
 Il numero medio di ispezioni necessarie per trovare un elemento presente in tabella è:
 
-\[  T(\alpha) \begin{cases}
+\[  T(\alpha) \ \begin{cases}
     = \dfrac{m+1}{2}                                         & \quad \text{ se } \alpha = 1 \\[5pt]
     < \dfrac{1}{\alpha} \log\left(\dfrac{1}{1-\alpha}\right) & \quad \text{ se } \alpha < 1
   \end{cases}  \]
@@ -6952,6 +6963,7 @@ Ogni nodo dell'albero è rappresentato da un oggetto che ha i seguenti attributi
         \end{itemize}
   \item \texttt{p}, il \textbf{puntatore} al nodo \textbf{padre}
         \begin{itemize}
+          \item a volte viene chiamato \texttt{parent}
           \item se \texttt{x.p = NIL}, allora \texttt{x} è la radice
         \end{itemize}
   \item \texttt{left}, il \textbf{puntatore} alla radice del \textbf{sotto albero sinistro}
@@ -7111,21 +7123,19 @@ Il suo nome deriva dalla sua caratteristica di funzionamento:
 Sono definiti altri algoritmi che funzionano in modo analogo:
 
 \begin{itemize}
-  \item anticipato, o \texttt{PREORDER-TREE-WALK}, in cui la radice è restituita dopo i sotto alberi
-  \item posticipato, o \texttt{POSTORDER-TREE-WALK}, in cui la radice è restituita dopo i sotto alberi
+  \item \textbf{anticipato}, nel \texttt{PREORDER-TREE-WALK}, in cui la radice è restituita dopo i sotto alberi
+  \item \textbf{posticipato}, nel \texttt{POSTORDER-TREE-WALK}, in cui la radice è restituita dopo i sotto alberi
 \end{itemize}
 
 \subsubsection{Altezza di un \BST}
 
 In generale, l'altezza di un \BST è pari a:
 \[ h \leq \log{\left(\dfrac{n+1}{2}\right)}, \quad \forall \, n \geq 1\]
-Più precisamente, l'altezza è \(\Theta(\log{(n)})\) per un albero bilanciato mentre è \(\Theta(n)\) nel caso pessimo, in cui tutti i nodi sono in linea.
+Ragionando in termini asintotici l'altezza è \(\Theta(\log{(n)})\) per un albero bilanciato mentre è \(\Theta(n)\) nel caso pessimo, in cui tutti i nodi sono in linea.
+Il confronto tra i due casi avviene nella Figura~\ref{fig:altezza-albero-binario}
 
 \bigskip
 É poi possibile dimostrare che l'altezza attesa di un albero costruito inserendo le chiavi in ordine casuale con distribuzione uniforme è \(\bigO\left(\log{(n)}\right)\).
-
-\bigskip
-Il confronto tra i due casi avviene nella Figura~\ref{fig:altezza-albero-binario}
 
 \begin{figure}[htbp]
   \bigskip
@@ -7149,7 +7159,7 @@ Il confronto tra i due casi avviene nella Figura~\ref{fig:altezza-albero-binario
 
 \paragraph{\texttt{INORDER-TREE-WALK} }
 
-\begin{lstlisting}[float, style=pseudocode, caption={Attraversamento di un BST in modo simmetrico}, label={lst:attraversamento-bst-inorder}]
+\begin{lstlisting}[float, style=pseudocode, caption={Attraversamento simmetrico di \BST}, label={lst:attraversamento-bst-inorder}]
 INORDER-TREE-WALK(x)
   if x != NIL
     INORDER-TREE-WALK(x.left)
@@ -7174,7 +7184,7 @@ Questo valore può essere dimostrato per induzione:
 \paragraph{\texttt{PREORDER-TREE-WALK} e \texttt{POSTORDER-TREE-WALK}}
 
 \begin{minipage}[t]{0.495\textwidth}
-  \begin{lstlisting}[style=pseudocode, caption={Attraversamento di un BST in modo anticipato}, label={lst:attraversamento-bst-preorder}]
+  \begin{lstlisting}[style=pseudocode, caption={Attraversamento anticipato di \BST}, label={lst:attraversamento-bst-preorder}]
 PREORDER-TREE-WALK(x)
   if x != NIL
     print(x.key)
@@ -7183,7 +7193,7 @@ PREORDER-TREE-WALK(x)
   \end{lstlisting}
 \end{minipage}
 \begin{minipage}[t]{0.495\textwidth}
-  \begin{lstlisting}[style=pseudocode, caption={Attraversamento di un BST in modo posticipato}, label={lst:attraversamento-bst-postorder}]
+  \begin{lstlisting}[style=pseudocode, caption={Attraversamento posticipato di un \BST}, label={lst:attraversamento-bst-postorder}]
 POSTORDER-TREE-WALK(x)
   if x != NIL
     POSTORDER-TREE-WALK(x.left)
@@ -7239,7 +7249,7 @@ ITERATIVE-TREE-SEARCH(x, k)
 \end{lstlisting}
 
 \bigskip
-La complessità temporale dell'algoritmo è \(\bigO(h)\), con \(h = \text{ altezza dell'albero }\).
+La complessità temporale dell'algoritmo è \(\bigO(h)\), con \(h = \text{altezza dell'albero}\).
 
 \paragraph{Massimo e minimo}
 \label{par:massimo-minimo-bst}
@@ -7272,7 +7282,7 @@ TREE-MAXIMUM(x)
 dove \texttt{x} è il puntatore alla radice dell'albero e il valore restituito sarà il puntatore al valore massimo o minimo, a seconda del caso.
 
 \bigskip
-La complessità temporale di entrambi gli algoritmi è \(\bigO(h)\), con \(h = \text{ altezza dell'albero }\).
+La complessità temporale di entrambi gli algoritmi è \(\bigO(h)\), con \(h = \text{altezza dell'albero}\).
 
 \paragraph{Successore e predecessore}
 \label{par:successore-predecessore-bst}
@@ -7317,7 +7327,7 @@ Se il sotto albero destro di \texttt{x} è vuoto, il successore di \texttt{x} è
 Allo stesso modo se il sotto albero sinistro di \texttt{x} è vuoto, il predecessore di \texttt{x} è il primo elemento \texttt{y} che si incontra risalendo nell'albero da \texttt{x} tale che \texttt{x} è nel sotto albero destro di \texttt{y}.
 
 \bigskip
-La complessità temporale di entrambi gli algoritmi è \(\bigO(h)\), con \(h = \text{ altezza dell'albero }\).
+La complessità temporale di entrambi gli algoritmi è \(\bigO(h)\), con \(h = \text{altezza dell'albero}\).
 
 \paragraph{Inserimento}
 \label{par:inserimento-bst}
@@ -7353,7 +7363,7 @@ TREE-INSERT(T, z)
 \end{lstlisting}
 
 \bigskip
-La complessità temporale di entrambi gli algoritmi è \(\bigO(h)\), con \(h = \text{ altezza dell'albero }\).
+La complessità temporale di entrambi gli algoritmi è \(\bigO(h)\), con \(h = \text{altezza dell'albero}\).
 
 \paragraph{cancellazione}
 \label{par:cancellazione-bst}
@@ -7437,7 +7447,7 @@ Funzionamento dell'algoritmo:
 \end{itemize}
 
 \bigskip
-La complessità temporale di entrambi gli algoritmi è \(\bigO(h)\), con \(h = \text{ altezza dell'albero }\).
+La complessità temporale di entrambi gli algoritmi è \(\bigO(h)\), con \(h = \text{altezza dell'albero}\).
 
 \subsection{Alberi bilanciati}
 
@@ -7456,7 +7466,7 @@ Nella sezione seguente verranno esplorati gli alberi \textbf{rosso-neri}.
 \label{sec:alberi-rosso-neri}
 
 Gli \textbf{alberi rosso-neri} \textit{(o dall'Inglese red-black, \RB)} sono alberi bilanciati.
-Le operazioni fondamentali mostrate nella Sezione precedente avranno complessità temporale pari a \(\bigO(\log{(n)})\), con \(h = \text{ altezza dell'albero}\), minore di quanto riscontrato negli \BST.
+Le operazioni fondamentali mostrate nella Sezione precedente avranno complessità temporale pari a \(\bigO(\log{(n)})\), con \(h = \text{altezza dell'albero}\), minore di quanto riscontrato negli \BST.
 
 I nodi degli alberi \RB hanno un attributo aggiuntivo, relativo al colore, che può indicare se esso è rosso o nero.
 Distribuendo i colori nel modo corretto, viene garantito che nessun percorso dalla radice alle foglie sia più lungo di un altro.
@@ -7473,7 +7483,7 @@ Un albero binario è da considerarsi rosso-nero se ha le seguenti \(5\) \textit{
   \item \label{enum:proprieta-4-nodi-rb}Se un nodo è \textbf{rosso}, entrambi i suoi figli sono \textbf{neri}
   \item \label{enum:proprieta-5-nodi-rb} Per ogni \textbf{nodo}, ogni percorso dal nodo alle foglie discendenti contiene lo stesso numero di \textbf{nodi neri}
         \begin{itemize}
-          \item il numero di nodi neri del nodo \texttt{x} è detto \(bh(\texttt{x})\)
+          \item il numero di nodi neri nel percorso che part dal nodo \texttt{x} è detto \(bh(\texttt{x})\)
           \item il nodo stesso non è conteggiato in \(bh(\texttt{x})\) anche se nero
         \end{itemize}
 \end{enumerate}
@@ -7729,7 +7739,7 @@ Quindi, come evidenziato nel Listato~\ref{lst:rb-insert-fixup}, sono evidenziati
     \label{fig:caso-1-algoritmo-rb-insert-fixup}
     \bigskip
   \end{subfigure}
-  \begin{subfigure}{0.99\textwidth}
+  \begin{subfigure}{\textwidth}
     \centering
     \bigskip
     \tikzfig[0.8]{image-50.tikz}
@@ -7737,7 +7747,7 @@ Quindi, come evidenziato nel Listato~\ref{lst:rb-insert-fixup}, sono evidenziati
     \label{fig:caso-2-algoritmo-rb-insert-fixup}
     \bigskip
   \end{subfigure}
-  \begin{subfigure}{0.99\textwidth}
+  \begin{subfigure}{\textwidth}
     \centering
     \bigskip
     \tikzfig[0.8]{image-51.tikz}
@@ -7881,7 +7891,7 @@ Di conseguenza la complessità temporale sarà \(\bigO(h) = \bigO(\log{(n)})\).
     \label{fig:caso-1-algoritmo-rb-delete-fixup}
     \bigskip
   \end{subfigure}
-  \begin{subfigure}{0.99\textwidth}
+  \begin{subfigure}{\textwidth}
     \centering
     \bigskip
     \tikzfig[0.8]{image-53.tikz}
@@ -7889,7 +7899,7 @@ Di conseguenza la complessità temporale sarà \(\bigO(h) = \bigO(\log{(n)})\).
     \label{fig:caso-2-algoritmo-rb-delete-fixup}
     \bigskip
   \end{subfigure}
-  \begin{subfigure}{0.99\textwidth}
+  \begin{subfigure}{\textwidth}
     \centering
     \bigskip
     \tikzfig[0.8]{image-54.tikz}
@@ -8145,7 +8155,7 @@ Il peso del cammino minimo dal nodo \(v\) al nodo \(v^\prime\) è quindi:
   \end{cases}\]
 
 L'uscita dell'algoritmo fornisce, per ogni vertice, il costo del cammino dal nodo di partenza fino ad esso.
-Per un nodo \(v\), il costo viene rappresentato come \(d[v] = \Delta(s, v)\).
+Per un nodo \(v\), il costo viene rappresentato come \(d[v] = \delta(s, v)\).
 Il predecessore di un nodo \(v\) nel cammino minimo è indicato con \(Pi[v]\).
 
 Inizialmente il costo viene impostato come \(d[v] = \infty\) ed esso viene progressivamente ridotto tramite rilassamenti.
@@ -8271,7 +8281,7 @@ Allo stesso modo, si possono costruire delle gerarchie per \(DSPACE(T),\ NTIME(T
 
 \bigskip
 Ci si dedicherà ora alle computazioni non deterministiche.
-Data una \TM non deterministica \(\mathcal{M}\), la sua complessità temporale \(T_{\mathcal{m}}(x)\) relativa al riconoscimento di una stringa \(x\) è definita come la lunghezza della computazione più breve tra tutte quelle che accettano \(x\).
+Data una \TM non deterministica \(\mathcal{M}\), la sua complessità temporale \(T_{\mathcal{M}}(x)\) relativa al riconoscimento di una stringa \(x\) è definita come la lunghezza della computazione più breve tra tutte quelle che accettano \(x\).
 \(T_{\mathcal{M}}(n)\) sarà poi il caso pessimo tra tutti i \(T_{\mathcal{M}}(x)\) con \(|X| = n\).
 
 \(NTIME(T)\) sarà la classe dei linguaggi ricorsivi riconoscibili in tempo \(T\) mediante \TM non deterministiche.
@@ -8282,8 +8292,6 @@ Se fosse possibile costruire una tecnica \inlinequote{poco costosa} per passare 
 Questo metodo, ovviamente, non esiste.
 Come mostrato nel passaggio da \FSA a \NFA (avvenuto nella Sezione~\ref{sec:conversione-nfa-dfa}), infatti, il meccanismo si complica in modo esponenziale.
 Lo stesso concetto può essere mostrato per qualsiasi altro meccanismo di calcolo.
-
-\subsection[P vs NP]{\Pset vs \NPset}
 
 \clearpage
 
@@ -8502,9 +8510,9 @@ Si supponga che un ciclo viene eseguito \(n\) volte.
 Se, ad ogni ciclo, il contatore:
 
 \begin{itemize}
-  \item Viene incrementato di un valore costante \texttt{k}: la complessità è \(\Theta(n) = \Theta(n)\)
-  \item Viene moltiplicato per un valore costante \texttt{k}: la complessità è \(\Theta(n) = \Theta\left(\log_\texttt{k}{(n)}\right) = \Theta\left(\log{(n)}\right)\)
-  \item Viene elevato ad un valore costante \texttt{k}: la complessità è \(\Theta(n) = \Theta\left(\log{\left(\log{(n)}\right)}\right)\)
+  \item Viene incrementato di un valore costante \texttt{k}: la complessità è \(T(n) = \Theta(n)\)
+  \item Viene moltiplicato per un valore costante \texttt{k}: la complessità è \(T(n) = \Theta\left(\log_\texttt{k}{(n)}\right) = \Theta\left(\log{(n)}\right)\)
+  \item Viene elevato ad un valore costante \texttt{k}: la complessità è \(T(n) = \Theta\left(\log{\left(\log{(n)}\right)}\right)\)
 \end{itemize}
 
 \end{document}
