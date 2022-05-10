@@ -958,7 +958,7 @@ La \textbf{pila} è una forma di memoria in cui:
   \item La pila viene \textbf{letta dalla cima}
   \item Un simbolo letto viene \textbf{estratto dalla cima}
         \begin{itemize}
-          \item[\(\rightarrow\)] si attua una politica \texttt{LIFO}
+          \item[\(\rightarrow\)] si attua una politica \LIFO
         \end{itemize}
   \item L'ultimo elemento in basso della pila è occupato da un particolare simbolo \(Z_0\)
 \end{itemize}
@@ -2043,6 +2043,7 @@ Il precedente teorema, infatti, produce un insieme di stati di cardinalità \(2^
 Inoltre, la formalizzazione più naturale di un problema è quella descritta mediante un \NFA.
 
 \subsubsection{Conversione da \NFA a \DFA}
+\label{sec:conversione-nfa-dfa}
 
 \textit{Operativamente}, per convertire un \FSA in un \DFA bisogna:
 
@@ -5251,11 +5252,20 @@ Una analisi più approfondita dei grafi verrà fatta più avanti \textit{(nella 
 
 \subsection{Introduzione ai Grafi}
 
-Un grafo è una coppia \(\langle V, E \rangle\) in cui \(V\) è un insieme finito di \textbf{nodi} (detti anche \textbf{vertici}) e \(E \subseteq V \times V\) è una relazione binaria \textit{(costituente un insieme finito)} su \(V\) di coppie di nodi (dette anche \textbf{archi}).
+Un grafo è una coppia \(G = \langle V, E \rangle\) in cui:
 
-Se \(u\) e \(v\) sono nodi del grafo, la coppia \(\langle u, v \rangle\) è un arco.
-L'arco è detto \textbf{orientato} se \(u\) e \(v\) sono coppie di nodi consecutivi, ovvero \(u = v + 1\) \textit{(Figura~\ref{fig:grafo-arco-orientato})}.
+\begin{itemize}
+  \item \(V\) è un insieme finito di \textbf{nodi} (detti anche \textbf{vertici})
+  \item \(E \subseteq V \times V\) è una relazione binaria \textit{(costituente un insieme finito)} su \(V\) di coppie di nodi
+        \begin{itemize}
+          \item gli elementi della relazione sono detti \textbf{archi}
+          \item se \(u\) e \(v\) sono nodi del grafo, la coppia \(\langle u, v \rangle\) è un arco.
+        \end{itemize}
+\end{itemize}
+
+L'arco è detto \textbf{orientato} se \(u\) e \(v\) sono coppie di nodi ordinati, ovvero se esiste una relazione di ordinamento tra i due \textit{(Figura~\ref{fig:grafo-arco-orientato})}.
 In caso contrario, è detto \textbf{non orientato} \textit{(Figura~\ref{fig:grafo-arco-non-orientato})}.
+In questi ultimi l'ordine dei vertici negli archi non è rilevante.
 
 \begin{figure}[htbp]
   \bigskip
@@ -5291,6 +5301,11 @@ In caso contrario, è detto \textbf{non orientato} \textit{(Figura~\ref{fig:graf
   \bigskip
 \end{figure}
 
+Con il simbolo \(|V|\) viene indicato il numero di vertici nel grafo, mentre \(|E|\) denota il numero di archi: per costruzione è sempre verificato che:
+\[ 0 \leq |E| \leq |V|^2 \]
+Un grafo è detto \textbf{denso} se il numero di lati è \inlinequote{abbastanza vicino} al numero massimo di lati, cioè quindi quando è verificata la relazione \(|E| \approx |V|^2\).
+In caso contrario, è detto \textbf{sparso}.
+
 \subsubsection{Tipi di Grafo}
 
 \begin{itemize}
@@ -5298,7 +5313,7 @@ In caso contrario, è detto \textbf{non orientato} \textit{(Figura~\ref{fig:graf
         \begin{itemize}
           \item in caso contrario, è detto \textbf{non orientato}
         \end{itemize}
-  \item n \textbf{cammino} è una sequenza di nodi \(v_0,\,c v_1,\,c \ldots,\,c v_n\) tali che tra ogni coppia di nodi della sequenza \(\langle v_i, v_{i+1} \rangle\) esiste un arco
+  \item Un \textbf{cammino} è una sequenza di nodi \(v_0,\,c v_1,\,c \ldots,\,c v_n\) tali che tra ogni coppia di nodi della sequenza \(\langle v_i, v_{i+1} \rangle\) esiste un arco
         \begin{itemize}
           \item i nodi \(v_0,\,c v_1,\,c \ldots,\,c v_n\) appartengono tutti al cammino
           \item la lunghezza del cammino è data da \(n\) \textit{(il numero di vertici \(-1\))}
@@ -5307,13 +5322,14 @@ In caso contrario, è detto \textbf{non orientato} \textit{(Figura~\ref{fig:graf
         \begin{itemize}
           \item un grafo che non contiene cicli è detto \textbf{aciclico}
         \end{itemize}
-  \item Un grafo \textbf{non orientato} è connesso se tra ogni coppia di vertici esiste un cammino.
+  \item Un grafo \textbf{non orientato} è connesso se tra ogni coppia di vertici esiste un cammino
+  \item Un grafo \textbf{non orientato} e \textbf{aciclico} prende il nome di \textit{DAG}, o \textit{directed acyclic graph}
 \end{itemize}
 
 \subsubsection{Alberi}
 \label{sec:alberi}
 
-Un \textbf{albero} è un grafo connesso, aciclico, non orientato.
+Un \textbf{albero} è un grafo connesso, aciclico e non orientato.
 È detto \textbf{radicato} se un nodo viene indicato come \textbf{radice}.
 
 Ogni nodo del grafico è \textbf{raggiungibile} dalla radice tramite un \textbf{cammino}.
@@ -5350,7 +5366,7 @@ Un esempio di albero è mostrato in Figura~\ref{fig:esempio-di-albero}.
   \bigskip
   \centering
   \tikzfig{image-26.tikz}
-  \caption{Esempio di albero}
+  \caption{Esempio di albero \textit{non binario}}
   \label{fig:esempio-di-albero}
   \bigskip
 \end{figure}
@@ -5392,7 +5408,7 @@ Un esempio di \textbf{max-heap} e la sua corrispondenza con un array è mostrata
 
 \subsection{Introduzione agli Algoritmi}
 
-\textit{Informalmente}, un \textbf{algoritmo} è una qualsiasi procedura ben definita che prende un valore \textit{(o un insieme di valori)} in input e restituisce un valore \textit{(o un insieme di valori)} in output, calcolato tramite una serie ben definita di operazioni.
+\textit{Informalmente}, un \textbf{algoritmo} è una qualsiasi procedura ben definita che prende un valore \textit{(o un insieme di valori)} in \textbf{input} e restituisce un valore \textit{(o un insieme di valori)} in \textbf{output}, calcolato tramite una serie ben definita di operazioni.
 L'algoritmo può essere visto anche come uno strumento per risolvere un particolare problema di computazione.
 
 In particolare, si definiscono:
@@ -5408,12 +5424,13 @@ In particolare, si definiscono:
           \item prende gli \textit{input} in ingresso ad un problema e li trasforma in opportuni \textit{output}
           \item è formato da una sequenza di \textit{operazioni concrete}
           \item è eseguibile da una \textbf{macchina}
-          \item deve essere \textbf{corretto}
+          \item è sempre \textbf{corretto}
         \end{itemize}
 \end{itemize}
 
-Gli algoritmi possono essere descritti in diversi linguaggi, \textit{(come ad esempio, in \texttt{C}, \texttt{Java}, \texttt{Python}, \ldots)}.
-La complessità di un algoritmo non varia significativamente in base al linguaggio in cui è implementato. Essa varierà solo di un fattore moltiplicativo.
+Gli algoritmi possono essere descritti in diversi linguaggi \textit{(ad esempio, in \texttt{C}, \texttt{Java}, \texttt{Python}, \ldots)}.
+La complessità di un algoritmo non varia significativamente in base al linguaggio in cui è implementato.
+Infatti essa potrà differire solo di un fattore moltiplicativo.
 All'interno del corso si userà lo \textbf{pseudocodice}, che assomiglia nella sintassi ad un linguaggio vero e proprio senza tuttavia esserlo.
 
 \subsubsection{Pseudocodice}
@@ -5466,14 +5483,15 @@ La sintassi dello \textbf{pseudocodice} è la seguente:
 \bigskip
 Per la valutazione della complessità di algoritmi scritti in pseudocodice si userà il \textbf{criterio di costo costante} \textit{(Sezione~\ref{sec:criterio-costo-logaritmico})}, poiché non verranno manipolati dati più grandi rispetto a quelli in ingresso.
 Come conseguenza diretta, ogni istruzione \texttt{i} di pseudocodice verrà eseguita in un tempo costante \(c_\texttt{i}\)
+Grazie a questa assunzione sarà possibile trascurare il modello di calcolo della macchina che esegue lo pseudocodice \textit{(normalmente la macchina \RAM)}.
 
-Grazie a questa assunzione sarà possibile trascurare il modello di calcolo dello pseudocodice \textit{(che sarà la macchina \RAM)}.
-La complessità temporale sarà studiata più di quella spaziale perché più rilevante nella realtà.
+La complessità temporale sarà studiata con più dovizia di quella spaziale perché più rilevante nella realtà.
+Infatti, mentre la memoria ha un costo limitato, il tempo è una risorsa più significativa e costosa ai fini della risoluzione di un determinato problema.
 
 \subsubsection{Divide et Impera}
 \label{sec:divide-et-impera}
 
-La tecnica chiamata \textbf{Divide et Impera} \textit{(in Inglese Divide and Conquer)} è una tecnica algoritmica molto comune.
+La tecnica chiamata \textbf{Divide et Impera} \textit{(dall'Inglese Divide and Conquer)} è una tecnica algoritmica molto comune.
 Essa si applica a problemi grossi e difficili da risolvere e si articola nei seguenti passi:
 
 \begin{enumerate}
@@ -5556,6 +5574,8 @@ il corrispondente albero delle ricorrenze si esaurirà al livello \(k\), in corr
 Ciò avverrà quando \(n \cdot a^k = 1\), quindi per \(k = \log_{\sfrac{1}{a}}{(n)}\).
 La complessità risultante andrà calcolata come la somma del costo del livello, che essendo composto da parametri unitari, è pari ad \(n\):
 \[ T(n) = n \log_{\sfrac{1}{a}}{(n)} \]
+Di conseguenza:
+\[ T(n) = \bigO(n \log{(n)})  \]
 
 Questo risultato va sempre verificato con il metodo di sostituzione.
 
@@ -5571,7 +5591,7 @@ Il teorema richiede di memorizzare tre casi, ma permette di trovare una soluzion
 \textit{Formalmente}, siano \(a \geq 1,\ b > 1\) due costanti e \(f(n)\) una funzione dal comportamento asintotico positivo.
 A partire da essi è possibile definire \(T(n),\ n \in \mathbb{N}\) tramite la ricorrenza:
 \[ T(n) = aT(\sfrac{n}{b}) + f(n) , \quad a \geq 1,\ b > 1 \]
-dove \(\sfrac{n}{b}\) è considerato arrotondato per difetto o per eccesso (quindi rispettivamente \(\lfloor\sfrac{n}{b}\rfloor\) o \(\lceil\sfrac{n}{b}\rceil\)).
+Il valore di \(\sfrac{n}{b}\) è considerato arrotondato per difetto o per eccesso (quindi rispettivamente \(\lfloor\sfrac{n}{b}\rfloor\) o \(\lceil\sfrac{n}{b}\rceil\)).
 
 \(T(n)\) può essere limitato asintoticamente come segue:
 
@@ -5637,12 +5657,13 @@ Un'altro caso particolare è identificato nel caso in cui la ricorrenza abbia fo
   \end{cases}\]
 in cui i coefficienti \(a_i \in \mathbb{N} \, \forall \, i\).
 
+\bigskip
 Ponendo \(a = \displaystyle \sum_{i \leq i \leq h} a_i\), se:
 
-\begin{itemize}
-  \item \(a = 1\), allora \(T(n) = \bigO(n^{k+1})\)
-  \item \(a \geq 2\), allora \(T(n) = \bigO(a^n n^k)\)
-\end{itemize}
+\[\begin{cases}
+    a = 1  \ \Rightarrow \      & T(n) = \bigO(n^{k+1}) \\
+    a \geq 2  \  \Rightarrow \  & T(n) = \bigO(a^n n^k)
+  \end{cases}\]
 
 \subsection{Algoritmi di supporto}
 
@@ -5690,7 +5711,7 @@ La proprietà caratteristica dei \textit{max-heap} è che il valore di ogni nodo
 
 L'algoritmo è di tipo ricorsivo ed è illustrato nel Listato~\ref{lst:costruzione-max-heap}.
 
-\begin{lstlisting}[style=pseudocode, caption={Costruzione di un \texttt{MAX-HEAP}}, label={lst:costruzione-max-heap}]
+\begin{lstlisting}[float, style=pseudocode, caption={Costruzione di un \texttt{MAX-HEAP}}, label={lst:costruzione-max-heap}]
 MAX-HEAPIFY(A, i)
   l := LEFT(i)
   r := RIGHT(i)
@@ -5708,7 +5729,7 @@ MAX-HEAPIFY(A, i)
 \paragraph{Analisi dell'algoritmo \texttt{MAX-HEAPIFY}}
 
 La complessità temporale di \texttt{MAX-HEAPIFY} è pari a
-\[ T_{\texttt{MAX-HEAPIFY}} = \bigO(h) = \bigO\left(\log{(n)}\right) \]
+\[ T = \bigO(h) = \bigO\left(\log{(n)}\right) \]
 dove \(h\) corrisponde all'altezza dell'albero, che essendo quasi completo è inferiore a \(\log{(n)}\).
 
 \bigskip
@@ -5733,7 +5754,7 @@ Funziona grazie a due proprietà dello heap:
   \item I sotto alberi fatti di solo foglie sono max-heap in quanto costituiti da \textbf{un solo elemento}
 \end{itemize}
 
-\begin{lstlisting}[style=pseudocode, caption={Algoritmo \texttt{BUILD-MAX-HEAP}}, label={lst:algoritmo-build-max-heap}]
+\begin{lstlisting}[float, style=pseudocode, caption={Algoritmo \texttt{BUILD-MAX-HEAP}}, label={lst:algoritmo-build-max-heap}]
 BUILD-MAX-HEAP(A)
   A.heap-size := A.length
   for i := A.length / 2 downto 1
@@ -5757,7 +5778,7 @@ Grazie a queste proprietà, il costo di computazione dell'algoritmo \texttt{BUIL
 \[ \displaystyle \sum_{n=0}^{\left\lfloor \log_2(n) \right\rfloor} \left[ \dfrac{n}{n^{h+1}} \right] \bigO(h) = \bigO \left(n \displaystyle \sum_{n=0}^{\left\lfloor \log_2(n) \right\rfloor} \dfrac{h}{2^h} \right) = \bigO (n)\]
 
 Il passo finale della soluzione deriva dall'uguaglianza
-\[ \sum_{n=0}^{\left\lfloor \log_2(n) \right\rfloor} \dfrac{h}{2^h} = \dfrac{\sfrac{1}{2}}{(1 - \sfrac{1}{2})^2} \]
+\[ \sum_{h=0}^{\left\lfloor \log_2(n) \right\rfloor} \dfrac{1}{2^h} = \dfrac{1}{1 - \sfrac{1}{2}} \]
 come sommatoria di una serie geometrica.
 
 \subsection{Problemi di ordinamento}
@@ -5833,7 +5854,6 @@ Il tempo di esecuzione di \texttt{INSERTION-SORT(A)} è:
 \subsubsection{\texttt{MERGE-SORT}}
 
 \textit{Idea} dell'algoritmo:
-
 Se l'array da ordinare ha meno di \(2\) elementi, allora è ordinato per definizione.
 Altrimenti:
 \begin{itemize}
@@ -5855,8 +5875,7 @@ Per completare l'algoritmo, infatti, è necessario definire un sotto algoritmo \
   \item L'esecuzione riprende dal passo \ref{enum:begin-merge-loop}
 \end{enumerate}
 
-\begin{minipage}{0.99\textwidth}
-  \begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{MERGE-SORT}}, label={lst:pseudocodice-merge-sort}]
+\begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{MERGE-SORT}}, label={lst:pseudocodice-merge-sort}]
 MERGE-SORT(A, p, R)
   if p < r
     q := floor((p + r) / 2)
@@ -5865,21 +5884,19 @@ MERGE-SORT(A, p, R)
     MERGE(A, p, q, r)
 \end{lstlisting}
 
-  \begin{minipage}{0.99\textwidth}
-    \centering
-    \begin{minipage}[t]{0.495\textwidth}
-      \begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{MERGE}}, label={lst:pseudocodice-merge}]
+\begin{minipage}[t]{0.495\textwidth}
+  \begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{MERGE}}, label={lst:pseudocodice-merge}]
 MERGE(A, p, q, r)
-  n1 := q - p + 1
-  n2 := r - q
-  alloca L[1 .. n1+1]
-  alloca R[1 .. n2+1]
-  for i := 1 to n1
+  $\texttt{n}_{\texttt{1}}$ := q - p + 1
+  $\texttt{n}_{\texttt{2}}$ := r - q
+  alloca L[1 .. $\texttt{n}_{\texttt{1}}$+1]
+  alloca R[1 .. $\texttt{n}_{\texttt{2}}$+1]
+  for i := 1 to $\texttt{n}_{\texttt{1}}$
     L[i] := A[p+i-1]
-  for j := 1 to n2
+  for j := 1 to $\texttt{n}_{\texttt{2}}$
     R[j] := A[q + j]
-  L[n1 + 1] := $\infty$
-  R[n2 + 1] := $\infty$
+  L[$\texttt{n}_{\texttt{1}}$ + 1] := $\infty$
+  R[$\texttt{n}_{\texttt{2}}$ + 1] := $\infty$
   i := 1
   j := 1
   for k := p to r
@@ -5890,28 +5907,27 @@ MERGE(A, p, q, r)
       A[k] := R[j]
       j := j + 1
           \end{lstlisting}
-    \end{minipage}
-    \begin{minipage}[t]{0.495\textwidth}
-      \begin{tabular}[t]{ccc}
-        \textit{riga} & \textit{costo}  & \textit{ripetizioni}        \\ \hline
-        \(2\)         & \(c_1\)         & \(1\)                       \\
-        \(3\)         & \(c_2\)         & \(1\)                       \\
-        \(4\)         & \(\Theta(n)\)   & \(1\)                       \\
-        \(5\)         & \(\Theta(n_1)\) & \(n_1\)                     \\
-        \(8\)         & \(\Theta(n_2)\) & \(n_2\)                     \\
-        \(10\)        & \(c_3\)         & 1                           \\
-        \(11\)        & \(c_4\)         & 1                           \\
-        \(12\)        & \(c_5\)         & 1                           \\
-        \(13\)        & \(c_7\)         & 1                           \\
-        \(14\)        & \(\Theta(n)\)   & \(\texttt{r} - \texttt{p}\) \\
-        \(15\)        & \(c_8\)         & 1                           \\
-        \(16\)        & \(c_9\)         & 1                           \\
-        \(17\)        & \(c_10\)        & 1                           \\
-        \(19\)        & \(c_11\)        & 1                           \\
-        \(20\)        & \(c_12\)        & 1                           \\
-      \end{tabular}
-    \end{minipage}
-  \end{minipage}
+\end{minipage}
+\begin{minipage}[t]{0.495\textwidth}
+  \centering
+  \begin{tabular}[t]{ccc}
+    \textit{riga} & \textit{costo}                      & \textit{ripetizioni}        \\ \hline
+    \(2\)         & \(c_1\)                             & \(1\)                       \\
+    \(3\)         & \(c_2\)                             & \(1\)                       \\
+    \(4\)         & \(\Theta(\texttt{n})\)              & \(1\)                       \\
+    \(5\)         & \(\Theta(\texttt{n}_{\texttt{1}})\) & \(\texttt{n}_{\texttt{1}}\) \\
+    \(8\)         & \(\Theta(\texttt{n}_{\texttt{2}})\) & \(\texttt{n}_{\texttt{2}}\) \\
+    \(10\)        & \(c_3\)                             & 1                           \\
+    \(11\)        & \(c_4\)                             & 1                           \\
+    \(12\)        & \(c_5\)                             & 1                           \\
+    \(13\)        & \(c_7\)                             & 1                           \\
+    \(14\)        & \(\Theta(\texttt{n})\)              & \(\texttt{r} - \texttt{p}\) \\
+    \(15\)        & \(c_8\)                             & 1                           \\
+    \(16\)        & \(c_9\)                             & 1                           \\
+    \(17\)        & \(c_{10}\)                          & 1                           \\
+    \(19\)        & \(c_{11}\)                          & 1                           \\
+    \(20\)        & \(c_{12}\)                          & 1                           \\
+  \end{tabular}
 \end{minipage}
 
 \begin{itemize}
@@ -5934,7 +5950,7 @@ La dimensione dei dati in input è \(\texttt{n} = \texttt{r} - \texttt{p} + 1\) 
           \item il secondo è eseguito \(n_2\) volte, con \(\Theta(n_2) = \Theta(\texttt{r}-\texttt{q}) = \Theta(\sfrac{n}{2}) = \Theta(n)\)
         \end{enumerate}
 \end{itemize}
-Quindi combinando i due passi, \(T_\texttt{MERGE} = \Theta(n)\)
+Quindi combinando i due passi, \(T(n) = \Theta(n)\)
 
 \paragraph{Analisi delle ricorrenze dell'algoritmo \texttt{MERGE-SORT}}
 
@@ -5982,7 +5998,7 @@ Una rappresentazione dell'albero di ricorsione è mostrata in Figura~\ref{fig:al
 
 Sommando i costi dei vari livelli si ottiene:
 
-\[ T(n) = cn \log{(n)} + cn \quad \Rightarrow \quad T_\texttt{MERGE-SORT} = \Theta(n \log{(n)}) \]
+\[ T(n) = cn \log{(n)} + cn \quad \Rightarrow \quad T(n) = \Theta(n \log{(n)}) \]
 
 \bigskip
 Analogamente sarebbe stato possibile applicare il Teorema dell'Esperto, giungendo alla stessa soluzione.
@@ -5993,7 +6009,7 @@ Infatti:
 dove \(a = b = 2,\ f(n) = n\), come nel caso~\ref{enum:teorema-esperto-2} del Teorema.
 
 Di conseguenza, \(n^{\log_b(a)} = n^1 = n\) e la complessità temporale è quindi:
-\[ T_{\texttt{MERGE-SORT}} = \Theta(n \log{(n)}) \]
+\[ T(n) = \Theta(n \log{(n)}) \]
 
 \subsubsection{\texttt{HEAPSORT}}
 \label{sec:heap-sort}
@@ -6005,7 +6021,7 @@ Questo algoritmo farà uso degli algoritmi \textit{di supporto} \texttt{BUILD-MA
 Ad ogni ciclo viene preso l'elemento più grande \textit{(primo dell'array, in quanto max-heap)} in fondo alla parte di array ancora da ordinare \textit{(corrispondente allo heap).}
 Lo heap viene decrementato di \(1\) e viene ricostruito il max-heap mettendo come radice l'ultima foglia a destra dell'ultimo livello e invocando \texttt{MAX-HEAPIFY}.
 
-\begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{HEAPSORT}}, label={sec:algoritmo-heapsort}]
+\begin{lstlisting}[style=pseudocode, float, caption={Pseudocodice dell'algoritmo \texttt{HEAPSORT}}, label={sec:algoritmo-heapsort}]
 HEAPSORT(A)
   BUILD-MAX-HEAP(A)
   for i := A.length downto 2
@@ -6036,17 +6052,16 @@ Nel caso pessimo ha complessità \(\Theta(n^2)\), superiore all'\nameref{sec:hea
 \textit{Idea} dell'algoritmo, dato un array \texttt{A[p..r]} da ordinare:
 
 \begin{itemize}
-  \item \textbf{Divide}: \texttt{A} viene diviso in \(2\) sotto array \texttt{A[p..q]} e \texttt{A[q+1..r]}
+  \item \textbf{Divide}: \texttt{A} viene diviso in \(2\) sotto array \texttt{A[p..q-1]} e \texttt{A[q+1..r]}
         \begin{itemize}
-          \item \texttt{q} è il minimo elemento del sotto array \texttt{A[p..q]} (\texttt{A[n]} \(\leq\) \texttt{A[q]} \(\forall\) \texttt{n} \(\in [\texttt{p}, \texttt{q}]\))
-          \item \texttt{q} è il massimo elemento del sotto array \texttt{A[q+1..r]} (\texttt{A[n]} \(\geq\) \texttt{A[q]} \(\forall\) \texttt{n} \(\in [\texttt{q}+1, \texttt{r}]\))
+          \item \texttt{q} è il minimo elemento del sotto array \texttt{A[p..q-1]} (\texttt{A[n]} \(\leq\) \texttt{A[q]} \(\forall\) \texttt{n} \(\in [\texttt{p}, \texttt{q-1}]\))
+          \item \texttt{q} è il massimo elemento del sotto array \texttt{A[q+1..r]} (\texttt{A[n]} \(\geq\) \texttt{A[q]} \(\forall\) \texttt{n} \(\in [\texttt{q+1}, \texttt{r}]\))
         \end{itemize}
   \item \textbf{Impera}: i sotto array \texttt{A[p...q-1]} e \texttt{A[q+1...r]} vengono ordinati utilizzando \texttt{QUICKSORT}
   \item \textbf{Combina}: l'array \texttt{A[p..r]} è già ordinato
 \end{itemize}
 
 La parte \inlinequote{complicata} da implementare riguarda la partizione: essa viene effettuata tramite l'algoritmo \texttt{PARTITION}, che avrà l'incarico di scegliere un elemento di \textit{pivot}.
-
 Proprietà del \textit{pivot}:
 
 \begin{itemize}
@@ -6054,9 +6069,8 @@ Proprietà del \textit{pivot}:
   \item Tutti gli elementi \textbf{maggiori} di \texttt{pivot} vengono posti nel sotto array \textbf{destro}
 \end{itemize}
 
-\begin{center}
   \begin{minipage}[t]{0.495\textwidth}
-    \begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{QUICKSORT}}, label={sec:algoritmo-quicksort}]
+    \begin{lstlisting}[style=pseudocode, caption={Pseudocodice di \texttt{QUICKSORT}}, label={sec:algoritmo-quicksort}]
 QUICKSORT(A, p, r):
   if p < r:
     q := PARTITION(A, p, r)
@@ -6065,7 +6079,7 @@ QUICKSORT(A, p, r):
         \end{lstlisting}
   \end{minipage}
   \begin{minipage}[t]{0.495\textwidth}
-    \begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{PARTITION}}, label={sec:algoritmo-partition}]
+    \begin{lstlisting}[style=pseudocode, caption={Pseudocodice di \texttt{PARTITION}}, label={sec:algoritmo-partition}]
 PARTITION(A, p, r):
     x := A[r]
     i := p - 1
@@ -6076,7 +6090,6 @@ PARTITION(A, p, r):
     return i + 1
   \end{lstlisting}
   \end{minipage}
-\end{center}
 
 \begin{itemize}
   \item \texttt{A} è l'array di \textbf{input} di dimensione \(n\) \textit{(da ordinare)}
@@ -6096,7 +6109,7 @@ Il tempo di esecuzione di \texttt{QUICKSORT} dipende da come viene partizionato 
         \begin{itemize}
           \item la ricorrenza è \(T(n) = T(n - 1) + \Theta(n)\)
           \item risolvendo per sostituzione o tramite il Teorema dell'Esperto dimostra che la soluzione è \(\Theta(n^2)\)
-          \item questo caso si può verificare quando l'array è già ordinato
+          \item questo caso si può verificare quando l'array è già ordinato in senso decrescente
         \end{itemize}
   \item Se ogni volta i due sotto array hanno una dimensione pari a \(\sfrac{n}{2}\) si ha il caso \textbf{ottimo}:
         \begin{itemize}
@@ -6130,29 +6143,25 @@ Quindi il costo di una catena di divisioni è la stessa e quindi l'algoritmo sar
 \end{figure}
 
 \bigskip
-Lo stesso risultato sarebbe stato raggiunto anche applicando il Teorema dell'Esperto:
+Lo stesso risultato sarebbe stato raggiunto anche applicando il Teorema dell'Esperto.
 
-\begin{itemize}
-  \item Nel caso ottimo, la ricorrenza è \(T(n) \leq 2T(\sfrac{n}{2}) + \Theta(n)\)
-        \begin{itemize}
-          \item la soluzione sarà pari a \(T(n) = \bigO\left(n \log{(n)}\right)\)
-        \end{itemize}
-  \item Nel caso pessimo, in cui l'algoritmo produce una divisione \(9\) a \(1\), la ricorrenza è \(T(n) \leq T(\sfrac{9n}{10}) + T(\sfrac{n}{10}) + c \cdot n\)
-        \begin{itemize}
-          \item la soluzione sarà pari a \(T(n) = \bigO\left(n^2\right)\)
-        \end{itemize}
-\end{itemize}
+Nel caso ottimo, la ricorrenza è \(T(n) \leq 2T(\sfrac{n}{2}) + \Theta(n)\).
+La soluzione sarà quindi pari a: \[ T(n) = \bigO\left(n \log{(n)}\right) \]
+
+Nel caso pessimo, \textit{in cui l'algoritmo produce una divisione \(9\) a \(1\)}, la ricorrenza è \(T(n) \leq T(\sfrac{9n}{10}) + T(\sfrac{n}{10}) + c \cdot n\).
+La soluzione sarà quindi pari a: \[ T(n) = \bigO\left(n^2\right) \]
+
 
 \subsubsection{\texttt{COUNTING-SORT}}
 
 L'algoritmo \texttt{COUNTING-SORT} è un algoritmo di ordinamento che richiede che tutti i valori in ingresso \(a_0,\, \ldots,\, a_k\) sono tutti i numeri compresi tra \(0\) ed una certa costante \(k\).
 
-\textit{Idea} di base:
+\textit{Idea} di dell'algoritmo:
 se nell'array ci sono \(m_e\) valori più piccoli di un certo elemento \(e\) di valore \(v_e\), nell'array ordinato quest'ultimo sarà in posizioni \(m_e + 1\).
 Quindi per ordinare l'array basta contare quante copie dello stesso valore \(v_e\) sono presenti all'interno dello stesso: questa informazione viene usata per determinare, per ogni elemento \(e, 0 \leq v_e \leq k\), quanti elementi sono più piccoli di \(e\).
 Infine bisogna tenere conto degli elementi ripetuti.
 
-\begin{lstlisting}[style=pseudocode, caption={Pseudocodice algorimo \texttt{COUNTING-SORT}}, label={lst:counting-sort}]
+\begin{lstlisting}[float, style=pseudocode, caption={Pseudocodice algorimo \texttt{COUNTING-SORT}}, label={lst:counting-sort}]
 COUNTING-SORT(A, B, K):
   for i := 0 to k
     C[i] := 0
@@ -6311,7 +6320,7 @@ Una \textbf{pila} è una collezione di oggetti sulla quale è possibile compiere
   \item \textbf{Cancellare} l'elemento \textbf{in cima} alla collezione, restituendolo - operazione di \texttt{POP}
 \end{itemize}
 
-Una pila è gestita quindi con una politica \texttt{LIFO} \textit{(last-in, first-out)}: l'elemento che viene cancellato è l'\textbf{ultimo} ad essere stato inserito.
+Una pila è gestita quindi con una politica \LIFO \textit{(last-in, first-out)}: l'elemento che viene cancellato è l'\textbf{ultimo} ad essere stato inserito.
 Eseguendo una operazione \texttt{PUSH} di un elemento \texttt{e} su una pila \texttt{S}, seguita immediatamente da una \texttt{POP} di nuovo su \texttt{S}, l'elemento restituito dall'ultima operazione sarà di nuovo \texttt{e}.
 
 \bigskip
@@ -6335,7 +6344,8 @@ Lo pseudocodice di queste funzioni è mostrato nei Listati~\ref{lst:push-pila}~e
 PUSH(S, x)
   if S.top = S.length
     error "overflow"
-  else S.top := S.top + 1
+  else
+    S.top := S.top + 1
     S[S.top] := x
   \end{lstlisting}
 \end{minipage}
@@ -6344,8 +6354,9 @@ PUSH(S, x)
 POP(S)
   if S.top = 0
     error "underflow"
-  else S.top := S.top - 1
-    x := S[S.top + 1]
+  else
+    S.top := S.top - 1
+  return S[S.top + 1]
   \end{lstlisting}
 \end{minipage}
 
@@ -6361,7 +6372,7 @@ Una \textbf{coda} è una collezione di oggetti sulla quale è possibile compiere
   \item \textbf{Cancellare} un elemento \textbf{dal fondo} della collezione, restituendolo - operazione do \texttt{DEQUEUE}
 \end{itemize}
 
-Una coda è gestita quindi con una politica \texttt{FIFO} \textit{(first-in, first-out)}: l'elemento che viene cancellato è il \textbf{primo} ad essere stato inserito.
+Una coda è gestita quindi con una politica \FIFO \textit{(first-in, first-out)}: l'elemento che viene cancellato è il \textbf{primo} ad essere stato inserito.
 
 \bigskip
 La coda può essere implementata come un array.
@@ -6395,20 +6406,19 @@ Lo pseudocodice di queste funzioni è mostrato nei Listati~\ref{lst:enqueue-coda
 \begin{minipage}[t]{0.495\textwidth}
   \begin{lstlisting}[style=pseudocode, caption={\texttt{ENQUEUE} in coda}, label={lst:enqueue-coda}]
 ENQUEUE(Q, x)
-    if Q.tail = Q.length
-      Q.tail := 1
-    else Q.tail := Q.tail + 1
+  if Q.tail = Q.length
+    Q.tail := 1
+  else Q.tail := Q.tail + 1
   \end{lstlisting}
 \end{minipage}
 \begin{minipage}[t]{0.495\textwidth}
   \begin{lstlisting}[style=pseudocode, caption={\texttt{DEQUEUE} in coda}, label={lst:dequeue-coda}]
 DEQUEUE(Q)
-    x := Q[Q.head]
-    if Q.head = Q.tail
-      Q.head := 1
-    else
-      Q.head := Q.head + 1
-    return x
+  x := Q[Q.head]
+  if Q.head = Q.tail
+    Q.head := 1
+  else Q.head := Q.head + 1
+  return x
   \end{lstlisting}
 \end{minipage}
 
@@ -6472,7 +6482,7 @@ Nei prossimi Paragrafi verranno illustrati gli pseudocodici delle operazioni sul
 
 \textit{Complessità temporale}: \(\Theta(n)\) nel caso pessimo \textit{(la chiave non è nella lista)}.
 
-\begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{LIST-SEARCH}}, label={lst:list-search}]
+\begin{lstlisting}[float, style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{LIST-SEARCH}}, label={lst:list-search}]
 LIST-SEARCH(L, k)
   x := L.head
   while x != NIL and x.key != k
@@ -6488,7 +6498,7 @@ LIST-SEARCH(L, k)
 
 \textit{Complessità temporale}: \(\bigO(1)\).
 
-\begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{LIST-INSERT}}, label={lst:list-insert}]
+\begin{lstlisting}[float, style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{LIST-INSERT}}, label={lst:list-insert}]
 LIST-INSERT(L, x)
   x.next := L.head
   if L.head != NIL
@@ -6506,7 +6516,7 @@ Non è sufficientemente passare solo la chiave dell'oggetto: \textbf{è necessar
 
 \textit{Complessità temporale}: \(\bigO(1)\).
 
-\begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{LIST-DELETE}}, label={lst:list-delete}]
+\begin{lstlisting}[float, style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{LIST-DELETE}}, label={lst:list-delete}]
 LIST-DELETE(L, x)
   if x.prev != NIL
     x.prev.next := x.next
@@ -6777,7 +6787,7 @@ Nei prossimi Paragrafi verranno illustrati gli pseudocodici delle operazioni sul
 
 \paragraph{Inserimento}
 
-\begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{HASH-INSERT}}, label={sec:inserimento-ind-aperto}]
+\begin{lstlisting}[float, style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{HASH-INSERT}}, label={sec:inserimento-ind-aperto}]
 HASH-INSERT(T, k)
 i := 0
 repeat
@@ -6795,7 +6805,7 @@ Per inserire un elemento di chiave \texttt{k} nella collezione \texttt{T} l'algo
 
 \paragraph{Ricerca}
 
-\begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{HASH-SEARCH}}, label={sec:ricerca-ind-aperto}]
+\begin{lstlisting}[float, style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{HASH-SEARCH}}, label={sec:ricerca-ind-aperto}]
 HASH-SEARCH(T, k)
   i := 0
   repeat
@@ -6976,7 +6986,7 @@ Nei Paragrafi seguenti \textit{(\ref{attraversamento-albero-binario}~-~\ref{par:
 \label{attraversamento-albero-binario}
 
 L'attraversamento di un albero binario può avvenire esplorando prima in larghezza o prima in profondità.
-Nel primo caso si userà l'algoritmo \texttt{BFS} \textit{(Breadth First Search)}, mentre nel secondo si userà l'algoritmo \texttt{DFS} \textit{(Depth First Search)}.
+Nel primo caso si userà l'algoritmo \texttt{BFS} \textit{(Breadth First Search)}, mentre nel secondo si userà l'algoritmo \DFS \textit{(Depth First Search)}.
 
 \begin{itemize}
   \item Nel caso del \texttt{BFS}, si cerca di visitare il nodo più lontano dalla radice, a patto che sia figlio di un nodo già visitato
@@ -6998,19 +7008,22 @@ Un confronto grafico tra i due algoritmi e l'ordine di attraversamento è mostra
   \begin{subfigure}[t]{0.45\textwidth}
     \centering
     \tikzfig[0.8]{image-36.tikz}
-    \caption{Attraversamento tramite \textit{BFS}}
+    \caption{Attraversamento tramite \BFS}
     \label{fig:attraversamento-albero-bfs}
   \end{subfigure}
   \begin{subfigure}[t]{0.45\textwidth}
     \centering
     \tikzfig[0.8]{image-37.tikz}
-    \caption{Attraversamento tramite \textit{DFS}}
+    \caption{Attraversamento tramite \DFS}
     \label{fig:attraversamento-albero-dfs}
   \end{subfigure}
-  \caption{Confronto negli attraversamenti di un albero binario tramite \textit{BFS} e \textit{DFS}}
+  \caption{Confronto negli attraversamenti di un albero binario tramite \BFS e \DFS}
   \label{fig:confronto-attraversamento-bfs-dfs}
   \bigskip
 \end{figure}
+
+\bigskip
+Entrambi gli algoritmi verranno analizzati più nel dettaglio, applicati ai grafi, nei Paragrafi~\ref{par:grafi-bfs}~e~\ref{par:grafi-dfs}.
 
 \paragraph{Inserzione}
 \label{par:inserzione-albero-binario}
@@ -7136,7 +7149,7 @@ Il confronto tra i due casi avviene nella Figura~\ref{fig:altezza-albero-binario
 
 \paragraph{\texttt{INORDER-TREE-WALK} }
 
-\begin{lstlisting}[style=pseudocode, caption={Attraversamento di un BST in modo simmetrico}, label={lst:attraversamento-bst-inorder}]
+\begin{lstlisting}[float, style=pseudocode, caption={Attraversamento di un BST in modo simmetrico}, label={lst:attraversamento-bst-inorder}]
 INORDER-TREE-WALK(x)
   if x != NIL
     INORDER-TREE-WALK(x.left)
@@ -7202,7 +7215,7 @@ Per ogni nodo \texttt{x} che incontra, confronta il valore \texttt{x.key} con \t
   \item Se \texttt{k} è maggiore di \texttt{x.key}, allora la ricerca continua nel sotto albero destro
 \end{itemize}
 
-\begin{lstlisting}[style=pseudocode, caption={Ricerca di un nodo in un \BST}, label={lst:tree-search}]
+\begin{lstlisting}[float, style=pseudocode, caption={Ricerca di un nodo in un \BST}, label={lst:tree-search}]
 TREE-SEARCH(x, k)
   if x = NIL or k = x.key
     return x
@@ -7216,7 +7229,7 @@ TREE-SEARCH(x, k)
 Lo stesso algoritmo può essere implementato in modo \textit{ricorsivo} tramite un ciclo while.
 Un esempio di questo codice è mostrato nel Listato~\ref{lst:iterative-tree-search}.
 
-\begin{lstlisting}[style=pseudocode, caption={Ricerca iterativa di un nodo in un BST}, label={lst:iterative-tree-search}]
+\begin{lstlisting}[float, style=pseudocode, caption={Ricerca iterativa di un nodo in un BST}, label={lst:iterative-tree-search}]
 ITERATIVE-TREE-SEARCH(x, k)
   while x != NIL and k != x.key:
     if k < x.key
@@ -7275,12 +7288,12 @@ Gli pseudocodici delle due funzioni sono illustrati nei Listati~\ref{lst:predece
 \begin{minipage}[t]{0.495\textwidth}
   \begin{lstlisting}[style=pseudocode, caption={Successore di di un nodo}, label={lst:successore-bst}]
 TREE-SUCCESSOR(x)
-    if x.right != NIL
-      return TREE-MINIMUM(x.right)
-    y := x.parent
-    while y != NIL and x = y.right
-      x := y
-      y := y.parent
+  if x.right != NIL
+    return TREE-MINIMUM(x.right)
+  y := x.parent
+  while y != NIL and x = y.right
+    x := y
+    y := y.parent
   return y
   \end{lstlisting}
 \end{minipage}
@@ -7320,7 +7333,7 @@ Modifica \texttt{T} e alcuni dei campi di \texttt{z} in modo che il nuovo nodo s
 
 Lo pseudocodice dell'algoritmo è mostrato nel Listato~\ref{lst:inserimento-bst}.
 
-\begin{lstlisting}[style=pseudocode, caption={Inserimento di un nuovo nodo}, label={lst:inserimento-bst}]
+\begin{lstlisting}[float, style=pseudocode, caption={Inserimento di un nuovo nodo}, label={lst:inserimento-bst}]
 TREE-INSERT(T, z)
   y := NIL
   x := T.root
@@ -7361,7 +7374,7 @@ Infatti, per eliminare un nodo \texttt{z} da un \BST \texttt{T}:
 
 Lo pseudocodice dell'algoritmo è mostrato nel Listato~\ref{lst:cancellazione-bst}, mentre una raffigurazione dei tre casi è mostrata nelle Figure \ref{fig:cancellazione-nodo-bst-senza-sotto-alberi}, \ref{fig:cancellazione-nodo-bst-con-un-solo-sotto-albero} e \ref{fig:cancellazione-nodo-bst-con-due-sotto-alberi}.
 
-\begin{lstlisting}[style=pseudocode, caption={Cancellazione di un nodo}, label={lst:cancellazione-bst}]
+\begin{lstlisting}[float, style=pseudocode, caption={Cancellazione di un nodo}, label={lst:cancellazione-bst}]
 TREE-DELETE(T, z):
   if z.left = NIL or z.right = NIL
     y := z
@@ -7437,7 +7450,7 @@ Una possibile definizione formale \textit{(definita da Adelson-Velskii e Landis)
 \indentquote{Un albero è bilanciato se e solo se, per ogni nodo \texttt{x} dell'albero, le altezze dei due sotto alberi di \texttt{x} differiscono al massimo di \(1\).}
 
 Esistono varie tecniche per mantenere un albero bilanciato.
-Durante corso verranno esplorati gli alberi \textbf{rosso-neri} nella Sezione seguente.
+Nella sezione seguente verranno esplorati gli alberi \textbf{rosso-neri}.
 
 \subsection{Alberi rosso-neri - \RB}
 \label{sec:alberi-rosso-neri}
@@ -7445,10 +7458,10 @@ Durante corso verranno esplorati gli alberi \textbf{rosso-neri} nella Sezione se
 Gli \textbf{alberi rosso-neri} \textit{(o dall'Inglese red-black, \RB)} sono alberi bilanciati.
 Le operazioni fondamentali mostrate nella Sezione precedente avranno complessità temporale pari a \(\bigO(\log{(n)})\), con \(h = \text{ altezza dell'albero}\), minore di quanto riscontrato negli \BST.
 
-I nodi degli alberi \RB hanno un bit aggiuntivo, relativo al colore, che può indicare se esso è rosso o nero.
+I nodi degli alberi \RB hanno un attributo aggiuntivo, relativo al colore, che può indicare se esso è rosso o nero.
 Distribuendo i colori nel modo corretto, viene garantito che nessun percorso dalla radice alle foglie sia più lungo di un altro.
 
-Ogni nodo dell'albero contiene gli attributi \texttt{color}, \texttt{key}, \texttt{left}, \texttt{right} e\texttt{parent}.
+Ogni nodo dell'albero contiene gli attributi \texttt{color}, \texttt{key}, \texttt{left}, \texttt{right} e \texttt{parent}.
 Se un nodo non ha un padre o dei sotto alberi, allora il suo valore è \texttt{NIL}.
 
 Un albero binario è da considerarsi rosso-nero se ha le seguenti \(5\) \textit{proprietà}:
@@ -7458,7 +7471,7 @@ Un albero binario è da considerarsi rosso-nero se ha le seguenti \(5\) \textit{
   \item \label{enum:proprieta-2-nodi-rb}La \textbf{radice} è \textbf{nera}
   \item \label{enum:proprieta-3-nodi-rb}Ogni \textbf{foglia} è \textbf{nera}
   \item \label{enum:proprieta-4-nodi-rb}Se un nodo è \textbf{rosso}, entrambi i suoi figli sono \textbf{neri}
-  \item \label{enum:proprieta-5-nodi-rb} Per ogni nodo, ogni percorso dal nodo alle foglie discendenti contiene lo stesso numero di nodi neri
+  \item \label{enum:proprieta-5-nodi-rb} Per ogni \textbf{nodo}, ogni percorso dal nodo alle foglie discendenti contiene lo stesso numero di \textbf{nodi neri}
         \begin{itemize}
           \item il numero di nodi neri del nodo \texttt{x} è detto \(bh(\texttt{x})\)
           \item il nodo stesso non è conteggiato in \(bh(\texttt{x})\) anche se nero
@@ -7501,12 +7514,12 @@ Il numero di nodi interni di un albero \textit{(o di un sotto albero)} con radic
 Questa proprietà può essere dimostrata per induzione sull'altezza di \texttt{x}.
 
 Per la proprietà \ref{enum:proprieta-5-nodi-rb} degli alberi, almeno metà dei nodi dalla radice \texttt{x} \textit{(esclusa)} ad una foglia sono neri.
-Di conseguenza \(bh(\texttt{x}) \geq \sfrac{x}{2}\) e \(n \geq 2^{\sfrac{h}{2}}\) e:
+Di conseguenza \(bh(\texttt{x}) \geq \sfrac{x}{2}\), \(n \geq 2^{\sfrac{h}{2}}\) e quindi:
 \[ h \leq 2 \log_2{(n+1)} \]
 
 \subsubsection{Operazioni sugli alberi \RB}
 
-Nei Paragrafi seguenti \textit{(\ref{par:operazioni-rb-analoghe-a-bst}~\ref{par:cancellazione-rb})} verranno analizzate delle operazioni comunemente applicate ai \BST, insieme alle loro relative complessità.
+Nei Paragrafi seguenti \textit{(\ref{par:operazioni-rb-analoghe-a-bst}-\ref{par:cancellazione-rb})} verranno analizzate delle operazioni comunemente applicate ai \BST, insieme alle loro relative complessità.
 
 \paragraph{Ricerca, massimo, minimo, successore e predecessore}
 \label{par:operazioni-rb-analoghe-a-bst}
@@ -7521,20 +7534,21 @@ Lo pseudocodice delle operazioni di:
 
 è analogo a quello mostrato nelle operazioni dei \BST, nella Sezione~\ref{sec:operazioni-bst}.
 
-Grazie alla formula relativa all'altezza di un albero, ricavata nella Sezione precedente, la complessità temporale di tutte le operazioni fin'ora trattate è:
+Sfruttando ;a formula relativa all'altezza di un albero, ricavata nella Sezione precedente, è possibile ricalcolare la complessità temporale di tutte le operazioni fin'ora.
+Essa sarà pari a:
 
 \[ \bigO\left(h\right) = \bigO\left(\log{(n)}\right)\]
 
-Con \(n\) pari al numero di nodi dell'albero.
+Dove \(n\) indica il numero di nodi dell'albero.
 
 \paragraph{Rotazioni}
 \label{par:rotazioni-rb}
 
 Le operazioni di Inserimento e Cancellazione (Sezioni \ref{par:inserimento-rb} e \ref{par:cancellazione-rb}), impiegate su un albero \RB, hanno complessità temporale \(\bigO\left(\log{(n)}\right)\).
-Siccome essi modificano l'albero, il l'albero risultante da queste operazioni potrebbe violare le proprietà elencate nella Sezione~\ref{sec:alberi-rosso-neri}.
+Siccome essi modificano l'albero, la struttura risultante da queste operazioni potrebbe violare le proprietà elencate nella Sezione~\ref{sec:alberi-rosso-neri}.
 
 Per ripristinare queste proprietà, il colore di alcuni nodi nell'albero e la struttura dei puntatori devono essere modificati.
-Quest'ultima viene alterata tramite una operazione detta \textbf{rotazione}, che può essere \textit{sinistra} o \textit{destra}.
+Quest'ultima viene alterata tramite una operazione detta \textbf{rotazione}, che può essere \textbf{sinistra} o \textbf{destra}.
 
 Una rotazione \textbf{destra} su un nodo di un albero \RB richiede che il suo figlio \textbf{destro} non sia \texttt{T.nil}, mentre il suo figlio sinistro può essere un nodo qualsiasi.
 Allo stesso modo, una rotazione \textbf{sinistra} richiede che il figlio \textbf{sinistro} non sia \texttt{T.nil}.
@@ -7584,7 +7598,7 @@ RIGHT-ROTATE(T, x)
 
 \bigskip
 Entrambe le procedure hanno complessità temporale \(\bigO(1)\).
-Inoltre l'operazione di rotazione su un \BST mantiene la proprietà di essere \BST.
+Inoltre l'operazione di rotazione su un \RB produce sempre un \RB.
 
 \bigskip
 Una rappresentazione grafica dell'operazione è mostrata nell'immagine~\ref{fig:rotazione-sinistra-destra-rb}.
@@ -7592,7 +7606,7 @@ Una rappresentazione grafica dell'operazione è mostrata nell'immagine~\ref{fig:
 \begin{figure}[htbp]
   \bigskip
   \centering
-  \tikzfig[1]{image-48.tikz}
+  \tikzfig[1.5]{image-48.tikz}
   \caption{Rotazione sinistra e destra di un albero \RB}
   \label{fig:rotazione-sinistra-destra-rb}
   \bigskip
@@ -7602,7 +7616,7 @@ Una rappresentazione grafica dell'operazione è mostrata nell'immagine~\ref{fig:
 \label{par:inserimento-rb}
 
 L'inserimento è analogo a quello dell'\BST, illustrato nel Paragrafo~\ref{par:inserimento-bst}.
-Tuttavia a fine procedura è necessario ristabilire le proprietà degli alberi \RB se esse sono state violate tramite l'algoritmo \texttt{RB-INSERT-FIXUP}.
+Tuttavia a fine procedura è necessario ristabilire le proprietà degli alberi \RB, se esse sono state violate, tramite l'algoritmo \texttt{RB-INSERT-FIXUP}.
 
 \bigskip
 Gli pseudocodici dei due algoritmi sono mostrati nei Listati~\ref{lst:insermento-nodo-rb}~e~\ref{lst:rb-insert-fixup}.
@@ -7658,7 +7672,7 @@ RB-INSERT-FIXUP(T, z)
   \end{lstlisting}
 \end{minipage}
 
-Per comprendere il funzionamento della funzione \texttt{RB-INSERT-FIXUP} è necessario dividere il codice in \(3\) casi principali, per poi analizzare l'obiettivo del ciclo \textbf{\texttt{while}} delle linee \(2-21\).
+Per comprendere il funzionamento della procedura \texttt{RB-INSERT-FIXUP} è necessario dividere il codice in \(3\) casi principali, per poi analizzare l'obiettivo del ciclo \textbf{\texttt{while}} delle linee \(2-21\).
 
 Le proprietà \ref{enum:proprieta-1-nodi-rb} e \ref{enum:proprieta-3-nodi-rb} continuano ad essere valide poiché i figli di entrambi i nodi rossi inseriti sono \texttt{T.nil}.
 Allo stesso modo la proprietà~\ref{enum:proprieta-5-nodi-rb}, che regola il numero di nodi neri tra su ogni percorso, è ancora soddisfatta.
@@ -7707,7 +7721,7 @@ Quindi, come evidenziato nel Listato~\ref{lst:rb-insert-fixup}, sono evidenziati
 \end{itemize}
 
 \begin{figure}[htbp]
-  \begin{subfigure}{0.99\textwidth}
+  \begin{subfigure}{\textwidth}
     \centering
     \bigskip
     \tikzfig[0.7]{image-49.tikz}
@@ -7718,7 +7732,7 @@ Quindi, come evidenziato nel Listato~\ref{lst:rb-insert-fixup}, sono evidenziati
   \begin{subfigure}{0.99\textwidth}
     \centering
     \bigskip
-    \tikzfig[0.7]{image-50.tikz}
+    \tikzfig[0.8]{image-50.tikz}
     \caption{caso \(2\) dell'algoritmo \texttt{RB-INSERT-FIXUP}}
     \label{fig:caso-2-algoritmo-rb-insert-fixup}
     \bigskip
@@ -7726,7 +7740,7 @@ Quindi, come evidenziato nel Listato~\ref{lst:rb-insert-fixup}, sono evidenziati
   \begin{subfigure}{0.99\textwidth}
     \centering
     \bigskip
-    \tikzfig[0.7]{image-51.tikz}
+    \tikzfig[0.8]{image-51.tikz}
     \caption{caso \(3\) dell'algoritmo \texttt{RB-INSERT-FIXUP}}
     \label{fig:caso-3-algoritmo-rb-insert-fixup}
     \bigskip
@@ -7750,7 +7764,7 @@ Dopo l'eliminazione del nodo, una procedura secondaria chiamata \texttt{RB-DELET
 
 Il codice delle procedure è mostrato nel Listati~\ref{lst:cancellazione-nodo-rb}~e~\ref{lst:rb-delete-fixup}.
 
-\begin{lstlisting}[style=pseudocode, caption={Cancellazione in un RB}, label={lst:cancellazione-nodo-rb}]
+\begin{lstlisting}[float, style=pseudocode, caption={Cancellazione in un RB}, label={lst:cancellazione-nodo-rb}]
 RB-DELETE(T, z)
   if z.left = T.nil or z.right = T.nil
     y := z
@@ -7772,7 +7786,7 @@ RB-DELETE(T, z)
   if y.color = BLACK
     RB-DELETE-FIXUP(T, x)
 \end{lstlisting}
-\begin{lstlisting}[style=pseudocode, caption={Fixup dopo cancellazione}, label={lst:rb-delete-fixup}]
+\begin{lstlisting}[float, style=pseudocode, caption={Fixup dopo cancellazione}, label={lst:rb-delete-fixup}]
 RB-DELETE-FIXUP(T, x)
   if x.color = RED or x.parent = T.nil
     // caso 0
@@ -7803,7 +7817,6 @@ RB-DELETE-FIXUP(T, x)
   come le linee 2-26 con
     left and right invertiti
   \end{lstlisting}
-
 
 \bigskip
 Il funzionamento di \texttt{RB-DELETE}, come già introdotto, molto simile alla cancellazione di un nodo in un albero binario.
@@ -7838,19 +7851,19 @@ All'interno del codice si delineano \(4\) casi:
 \begin{itemize}
   \item[Caso \(0\):] \texttt{x} è un nodo rosso, oppure è la radice.
   \item[Caso \(1\):] \texttt{x} è un nodo nero, suo fratello destro \texttt{w} è rosso \textit{(Figura~\ref{fig:caso-1-algoritmo-rb-delete-fixup})}.
-  \begin{itemize}
-    \item il padre di \texttt{x} è nero
-    \item la struttura evolve nei casi \(2\), \(3\) o \(4\)
-  \end{itemize}
-\item[Caso \(2\):] \texttt{x} è un nodo nero, suo fratello destro \texttt{w} è nero con i figli entrambi neri \textit{(Figura~\ref{fig:caso-2-algoritmo-rb-delete-fixup})}.
-\begin{itemize}
-  \item se si proviene dal caso \(1\), allora \texttt{x.parent} è rosso. L'invocazione di \texttt{RB-DELETE-FIXUP} termina subito
-\end{itemize}
-\item[Caso \(3\):] \texttt{x} è nero, suo fratello destro \texttt{w} è nero con figlio sinistro rosso e figlio destro nero \textit{(Figura~\ref{fig:caso-3-algoritmo-rb-delete-fixup})}.
-\begin{itemize}
-  \item la struttura evolve nel caso \(4\)
-\end{itemize}
-\item[Caso \(4\):] \texttt{x} è nero, suo fratello destro \texttt{w} è nero con figlio destro rosso \textit{(Figura~\ref{fig:caso-4-algoritmo-rb-delete-fixup})}.
+    \begin{itemize}
+      \item il padre di \texttt{x} è nero
+      \item la struttura evolve nei casi \(2\), \(3\) o \(4\)
+    \end{itemize}
+  \item[Caso \(2\):] \texttt{x} è un nodo nero, suo fratello destro \texttt{w} è nero con i figli entrambi neri \textit{(Figura~\ref{fig:caso-2-algoritmo-rb-delete-fixup})}.
+    \begin{itemize}
+      \item se si proviene dal caso \(1\), allora \texttt{x.parent} è rosso. L'invocazione di \texttt{RB-DELETE-FIXUP} termina subito
+    \end{itemize}
+  \item[Caso \(3\):] \texttt{x} è nero, suo fratello destro \texttt{w} è nero con figlio sinistro rosso e figlio destro nero \textit{(Figura~\ref{fig:caso-3-algoritmo-rb-delete-fixup})}.
+    \begin{itemize}
+      \item la struttura evolve nel caso \(4\)
+    \end{itemize}
+  \item[Caso \(4\):] \texttt{x} è nero, suo fratello destro \texttt{w} è nero con figlio destro rosso \textit{(Figura~\ref{fig:caso-4-algoritmo-rb-delete-fixup})}.
 \end{itemize}
 
 Ogni volta che \texttt{RB-DELETE-FIXUP} viene invocata, essa può terminare \textit{(casi \(0,\ 1,\ 3,\ 4\))} o venire applicato ricorsivamente risalendo un livello \textit{(caso \(2\) non proveniente da \(1\))}.
@@ -7860,10 +7873,10 @@ Una catena di invocazioni esegue al massimo \(3\) rotazioni \textit{(evoluzione 
 Di conseguenza la complessità temporale sarà \(\bigO(h) = \bigO(\log{(n)})\).
 
 \begin{figure}[htbp]
-  \begin{subfigure}{0.99\textwidth}
+  \begin{subfigure}{\textwidth}
     \centering
     \bigskip
-    \tikzfig[0.7]{image-52.tikz}
+    \tikzfig[0.8]{image-52.tikz}
     \caption{caso \(1\) dell'algoritmo \texttt{RB-DELETE-FIXUP}}
     \label{fig:caso-1-algoritmo-rb-delete-fixup}
     \bigskip
@@ -7871,7 +7884,7 @@ Di conseguenza la complessità temporale sarà \(\bigO(h) = \bigO(\log{(n)})\).
   \begin{subfigure}{0.99\textwidth}
     \centering
     \bigskip
-    \tikzfig[0.7]{image-53.tikz}
+    \tikzfig[0.8]{image-53.tikz}
     \caption{caso \(2\) dell'algoritmo \texttt{RB-DELETE-FIXUP}}
     \label{fig:caso-2-algoritmo-rb-delete-fixup}
     \bigskip
@@ -7879,7 +7892,7 @@ Di conseguenza la complessità temporale sarà \(\bigO(h) = \bigO(\log{(n)})\).
   \begin{subfigure}{0.99\textwidth}
     \centering
     \bigskip
-    \tikzfig[0.7]{image-54.tikz}
+    \tikzfig[0.8]{image-54.tikz}
     \caption{caso \(3\) dell'algoritmo \texttt{RB-DELETE-FIXUP}}
     \label{fig:caso-3-algoritmo-rb-delete-fixup}
     \bigskip
@@ -7887,7 +7900,7 @@ Di conseguenza la complessità temporale sarà \(\bigO(h) = \bigO(\log{(n)})\).
   \begin{subfigure}{0.99\textwidth}
     \centering
     \bigskip
-    \tikzfig[0.7]{image-55.tikz}
+    \tikzfig[0.8]{image-55.tikz}
     \caption{caso \(4\) dell'algoritmo \texttt{RB-DELETE-FIXUP}}
     \label{fig:caso-4-algoritmo-rb-delete-fixup}
     \bigskip
@@ -7896,6 +7909,381 @@ Di conseguenza la complessità temporale sarà \(\bigO(h) = \bigO(\log{(n)})\).
   \caption{Casi di \texttt{RB-DELETE-FIXUP}}
   \label{fig:casi-algoritmo-rb-delete-fixup}
 \end{figure}
+
+\subsection{Rappresentazione dei grafi in memoria}
+
+Esistono \(2\) tecniche principali per rappresentare i grafi in memoria:
+
+\begin{itemize}
+  \item Tramite \textbf{liste di adiacenza}
+        \begin{itemize}
+          \item implementato tramite un array di liste
+          \item per ogni vertice \(v\), la corrispondente lista contiene i vertici adiacenti a \(v\)
+        \end{itemize}
+  \item Tramite \textbf{matrici di adiacenza}
+        \begin{itemize}
+          \item in una matrice di adiacenza \(M\) l'elemento \(m_{ij}\) è \(1\) se c'è un arco da \(i\) a \(j\), altrimenti è \(0\)
+        \end{itemize}
+\end{itemize}
+
+In entrambe le rappresentazioni, dato un nodo \texttt{u} appartenente ad un grafo \(G\), l'attributo \texttt{u.adj} rappresenta l'insieme di vertici adiacenti a \texttt{u} all'interno di \(G\).
+
+\bigskip
+La dimensione della rappresentazione è:
+
+\begin{itemize}
+  \item matrici di adiacenza: \(\bigO(|V|^2)\)
+        \begin{itemize}
+          \item la trasposta di una matrice di adiacenza relativa ad un grafo non orientato è uguale alla matrice stessa (\(A^T = A\))
+        \end{itemize}
+  \item liste di adiacenza: \(\bigO(|V|+|E|)\)
+        \begin{itemize}
+          \item il numero totale di elementi nelle liste è \(|E|\)
+          \item il numero di elementi nell'array è \(|V|\)
+        \end{itemize}
+\end{itemize}
+
+Quindi le liste di adiacenza sono in generale migliori quando il grafo è \textbf{sparso} (il numero di lati è elevato) mentre le matrici sono più adatte ai grafi \textbf{densi}.
+
+\subsubsection{Operazioni sui grafi}
+
+\paragraph{Visita in ampiezza - \BFS}
+\label{par:grafi-bfs}
+
+L'algoritmo \textit{Breadth First Search (\BFS)} è caratterizzato da:
+
+\begin{itemize}
+  \item \textit{Input}: un grafo \(G\) \textit{(sia diretto che non)}, un nodo \(s\) \textit{(sorgente)} di \(G\)
+  \item \textit{Output}: visitare tutti i ndi di \(G\) che sono raggiungibili da \(S\)
+        \begin{itemize}
+          \item un nodo \(u\) è raggiungibile da \(s\) se c'è un cammino nel grafo che collega \(s\) a \(u\)
+          \item il cammino tra \(s\) e un nodo \(u\) attraversato da \BFS è il più breve possibile
+        \end{itemize}
+\end{itemize}
+
+L'algoritmo \BFS esplora sistematicamente i lati di \(G\) espandendo la frontiera tra vertici visitati e da visitare: esso scopre tutti i vertici di distanza \(k\) da \(s\) prima di scoprire i vertici di distanza \(k+1\).
+
+Per tenere traccia dei nodi già visitati, l'algoritmo colora di \textit{bianco, grigio} e di \textit{nero} ogni nodo presente nel grafo:
+
+\begin{itemize}
+  \item Tutti i vertici sono inizialmente colorati di \textbf{bianco}
+  \item Un nodo tutti i cui vicini sono stati scoperti viene colorato di \textbf{nero}
+  \item Un nodo scoperto per la prima volta viene colorato di \textbf{grigio}
+        \begin{itemize}
+          \item i nodi grigi formano la frontiera da espandere
+        \end{itemize}
+\end{itemize}
+
+Inoltre, ad ogni nodo viene aggiunto un attributo \texttt{dist} che indica la distanza di \(u\) dal nodo \(s\).
+
+La lista di grafi da visitare è implementata tramite una coda \textit{(gestita con politica \FIFO)}.
+Ad ogni iterazione, un nodo viene scelto ed i nodi bianchi adiacenti vengono esplorati.
+
+\bigskip
+Il Listato~\ref{lst:codice-bfs} contiene il codice dell'algoritmo appena descritto.
+
+\begin{lstlisting}[float, style=pseudocode, caption={Algoritmo \texttt{BFS}}, label={lst:codice-bfs}]
+BFS(G, s)
+  for each u $\in$ G.V - {s}
+    u.colour := WHITE
+    u.dist := $\infty$
+  s.colour := GREY
+  s.dist := 0
+  Q := $\emptyset$
+  ENQUEUE(Q, s)
+  while Q is not empty:
+    u := DEQUEUE(Q)
+    for each v $\in$ u.adj:
+      if v.colour = WHITE:
+        v.colour := GREY
+        v.dist := u.dist + 1
+        ENQUEUE(Q, v)
+    u.colour := BLACK
+\end{lstlisting}
+
+Per calcolare la complessità temporale dell'algoritmo, è necessario analizzarlo in tutte le sue componenti.
+Infatti esso è composto da:
+
+\begin{itemize}
+  \item Fase di \textbf{inizializzazione} \textit{(linee \(2-8\))} con complessità \(\bigO(|V|)\)
+  \item Fase di visita dei nodi \textit{(linee \(9-15\))} con complessità \(\bigO(|E|)\)
+\end{itemize}
+
+La complessità totale sarà quindi \(\bigO(|V|+|E|)\).
+
+\paragraph{Visita in profondità - \DFS}
+\label{par:grafi-dfs}
+
+L'algoritmo \textit{Depth First Search (\DFS)}, al contrario dell'algoritmo \BFS, si basa sull'idea di visitare i nodi con una politica \LIFO \textit{(il \BFS preferisce una politica \FIFO)}.
+L'idea alla base è che i vicini di ogni nodo vengono visitati non appena questo è aggiunto in cima alla stack, senza dover aspettare gli altri nodi.
+Questa scelta porta a visitare prima i nodi più lontani.
+
+La procedura ha le stesse caratteristiche e funzionamento dell'algoritmo \BFS appena analizzato, con cui condivide anche la complessità.
+Lo pseudocodice può essere ottenuto partendo dal \DFS e cambiando \texttt{ENQUEUE} con \texttt{PUSH} e \texttt{DEQUEUE} con \texttt{POP}.
+Al suo interno i nodi vengono ulteriormente manipolati, aggiungendo gli attributi:
+
+\begin{itemize}
+  \item \texttt{d} che indica il tempo relativo all'inizio della scoperta di un nodo \textit{(discovery time)}
+  \item \texttt{f} che indica il tempo relativo alla fine della scoperta di un nodo \textit{(finishing time)}
+\end{itemize}
+
+\bigskip
+Lo pseudocodice è mostrato nei Listati~\ref{lst:codice-dfs}~e~\ref{lst:codice-dfs-visit}.
+
+\begin{minipage}[t]{.495\textwidth}
+  \begin{lstlisting}[style=pseudocode, caption={Algoritmo \texttt{DFS}}, label={lst:codice-dfs}]
+DFS(G, s)
+  for each u $\in$ G.V - {s}
+    u.colour := WHITE
+  time := 0
+  for each u $\in$ G.V
+    if u.colour = WHITE
+      DFS-VISIT(u)
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}[t]{.495\textwidth}
+  \begin{lstlisting}[style=pseudocode, caption={Funzione di supporto a \texttt{DFS}}, label={lst:codice-dfs-visit}]
+DFS-VISIT(G, s)
+  u.colour := GREY
+  time := time + 1
+  u.dist := time
+  for each v $\in$ u.adj
+    if v.colour = WHITE
+      DFS-VISIT(v)
+  u.colour := BLACK
+  time := time + 1
+\end{lstlisting}
+\end{minipage}
+
+La complessità temporale dell'algoritmo è data da:
+
+\begin{itemize}
+  \item Inizializzazione dei nodi e delle variabili \textit{(linee \(2-3\) dell'algoritmo \texttt{DFS})} con complessità \(\Theta(|V|)\)
+  \item L'algoritmo \texttt{DFS-VISIT} è ripetuto \textit{(linee \(5-7\) dell'algoritmo \texttt{DFS})} una volta durante l'esecuzione del ciclo \textbf{\texttt{for}} \textit{(linee \(5-7\) dell'algoritmo \texttt{DFS-VISIT})} per ogni lato con complessità \(\Theta(|E|)\)
+\end{itemize}
+
+La complessità totale sarà quindi \(\bigO(|V|+|E|)\) \textit{(analoga al \BFS)}.
+
+\paragraph{Ordinamento topologico}
+
+Un ordinamento topologico di un \texttt{DAG} è un ordinamento lineare dei nodi di tutti i vertici di un grafo \(G\) tale per cui se \(G\) contiene un lato \((u, v)\), allora \(u\) appare prima di \(g\) nell'ordinamento.
+I nodi saranno quindi disposti in una linea orizzontale.
+
+È importante notare che gli ordinamenti topologici non sono univoci e che un dato \textit{DAG} può ammettere più ordinamenti diversi tra di loro.
+
+L'ordinamento rispetterà quindi le precedenze tra eventi.
+Esso sarà caratterizzato da:
+
+\begin{itemize}
+  \item \textit{input}: un \textit{DAG} \(G\)
+  \item \textit{output}: una lista, ordinamento topologico di \(G\)
+\end{itemize}
+
+\bigskip
+\textit{Idea} dell'algoritmo:
+
+\begin{itemize}
+  \item il \textit{DAG} viene vistato con un algoritmo \DFS
+  \item quando un nodo viene colorato di nero, esso viene inserito in testa alla lista
+  \item una volta che tutti i nodi sono stati visitati, la lista costruita è un ordinamento topologico di \(G\)
+\end{itemize}
+
+\bigskip
+I Listati~\ref{lst:codice-topological-sort}~e~\ref{lst:codice-topsort-visit} contengono il codice dell'algoritmo appena descritto.
+
+\begin{minipage}[t]{0.495\textwidth}
+  \begin{lstlisting}[style=pseudocode, caption={Algoritmo \texttt{TOPOLOGICAL-SORT}}, label={lst:codice-topological-sort}]
+TOPOLOGICAL-SORT(G)
+  L := $\emptyset$
+  for each u $\in$ G.V
+    u.colour := WHITE
+  for each u $\in$ G.V
+    if u.colour = WHITE
+      TOPSORT-VISIT(L, u)
+  return L
+  \end{lstlisting}
+\end{minipage}
+\begin{minipage}[t]{0.495\textwidth}
+  \begin{lstlisting}[style=pseudocode, caption={Algoritmo \texttt{TOPSORT-VISIT}}, label={lst:codice-topsort-visit}]
+TOPSORT-VISIT
+  u.colour := grey
+  for each v $\in$ u.adj
+    TOPSORT-VISIT(L, v)
+  x := elemento di lista x
+  x.key = u
+  LIST-INSERT(L, x)
+  u.colour = BLACK
+  \end{lstlisting}
+\end{minipage}
+
+Il tempo di esecuzione di \texttt{TOPSORT} è lo stesso di \DFS, quindi la sua complessità temporale è \(\Theta(|V|+|E|)\).
+Infatti le linee \(6-8\) di \texttt{TOPSORT-VISIT} hanno complessità \(\Theta(1)\) ed il resto dell'algoritmo è uguale a \texttt{DFS}, con l'assenza della variabile \texttt{TIME}.
+
+\clearpage
+
+\section{Argomenti avanzati}
+
+\subsection{Cammini minimi}
+
+Il \textbf{cammino minimo} tra due vertici \textit{(o nodi)} di un grafo è il percorso che collega i vertici minimizzando la somma dei costi associati all'attraversamento di ciascun lato.
+
+Il costo di attraversamento di un lato è dato da una funzione detta di \textbf{peso} definita come \(w: E \rightarrow \mathbb{R}\).
+
+Il problema di ricerca del cammino minimo si mira a trovare un cammino \(P = (e_{v_1 v_2},e_{v_2 v_3},\ldots, e_{v_n v_n^\prime} )\), \textit{dal nodo \(v\) al nodo \(v^\prime\)}, che tra tutti i cammini possibili abbia il peso minore.
+Normalmente i cammini minimi sono calcolati partendo da un nodo fissato \(s\) detto \textbf{sorgente}, dato del problema.
+Affinché il cammino minimo resti ben definito non è possibile percorrere cicli negativi, poiché uno di essi verrebbe percorso infinite volte portando il costo a \(-\infty\).
+
+\bigskip
+Il peso di un cammino è definito come:
+\[ W(p) = \displaystyle \sum_{i=1}^{k} w (v_{i-1}, v_i) \]
+
+Il peso del cammino minimo dal nodo \(v\) al nodo \(v^\prime\) è quindi:
+
+\[ \delta(v, v^\prime) = \begin{cases}
+    \min\left\{w(p): v \xrightarrow{P}v^\prime\right\} \quad & \text{ se } \exists \text{ cammino da } v \text{ a } v^\prime \\[10pt]
+    \infty                                                   & \text{altrimenti}
+  \end{cases}\]
+
+L'uscita dell'algoritmo fornisce, per ogni vertice, il costo del cammino dal nodo di partenza fino ad esso.
+Per un nodo \(v\), il costo viene rappresentato come \(d[v] = \Delta(s, v)\).
+Il predecessore di un nodo \(v\) nel cammino minimo è indicato con \(Pi[v]\).
+
+Inizialmente il costo viene impostato come \(d[v] = \infty\) ed esso viene progressivamente ridotto tramite rilassamenti.
+Allo stesso modo il predecessore di ogni nodo viene inizializzato a \texttt{NIL}.
+
+Operativamente, il rilassamento di un lato tra i nodi \(u\) e \(v\) è definito come:
+
+\[\text{se } d[v] > d[u] + w(u, v) \quad \Rightarrow \quad d[v] \coloneqq d[u] + w(u, v), \ Pi[v] = u \]
+
+\textit{Informalmente}, \inlinequote{costa di meno} passare per il lato \((u, v)\).
+
+\bigskip
+Lo stesso algoritmo in pseudocodice è mostrato nel Listato~\ref{lst:algoritmo-rilassamento-lato}.
+
+\begin{lstlisting}[float, style=pseudocode, caption={Algoritmo per il rilassamento di un lato}, label={lst:algoritmo-rilassamento-lato}]
+RELAX(u, v, adj, d, Pi)
+  if d[v] > d[u] + adj[u][v]
+    d[v] := d[u] + adj[u][v]
+    Pi[v] := u
+\end{lstlisting}
+
+\subsubsection{Algoritmo di Bellman-Ford}
+
+L'\textbf{algoritmo di Bellman-Ford} trova il cammino minimo tra una sorgente \texttt{s} e tutti i nodi di un grafo, a patto che i costi siano tutti positivi,
+
+\textit{Idea} dell'algoritmo:
+rilassare, uno alla volta e partendo da \(s\), ogni cammino.
+Ad ogni iterazione si aumenta di un passo ogni cammino e dopo \(|V|-1\) iterazioni ogni nodo raggiungibile sarà stato visitato.
+
+\bigskip
+Lo pseudocodice dell'algoritmo è mostrato nel Listato~\ref{lst:algoritmo-bellman-ford}.
+
+\begin{lstlisting}[float, style=pseudocode, caption={Algoritmo di Bellman-Ford}, label={lst:algoritmo-bellman-ford}]
+BELLMAN-FORD(adj, s)
+  V := vettore dei nodi di adj
+  alloca d, array di dimensione adj
+  alloca Pi, array di dimensione adj
+  for i := 0 to adj.length
+    d[i] := $\infty$
+    Pi[i] := NIL
+  d[s] := 0
+  for i := 0 to adj.length - 1
+    for each u $\in$ V
+      for each v $\in$ adj[u]
+        RELAX(u, v, adj, d, Pi)
+  return d, Pi
+\end{lstlisting}
+
+\subsection{Programmazione dinamica}
+
+La programmazione dinamica, in analogia con la tecnica Divide et Impera, si basa sull'idea di scomporre il problema da risolvere in sotto problemi finché non sono abbastanza semplici da essere risolti con facilità.
+Questa tecnica è applicabile quando i problemi non sono indipendenti, cioè condividono dei sotto problemi in comune.
+Una volto risolto uno di questi, la soluzione viene salvata in una tabella per permetterne il riuso in seguito.
+Il termine programmazione non deriva dalla codifica in linguaggi di programmazione ma dal fatto che è una tecnica tabulare.
+
+La programmazione dinamica è spesso usata per problemi di ottimizzazione.
+La soluzione cercata è uno dei multipli sotto problemi ammessi.
+
+\bigskip
+I passi normalmente usati per applicare questa tecnica sono:
+
+\begin{enumerate}
+  \item Caratterizzazione della struttura delle soluzioni ottimali
+  \item Definizione ricorsiva dei valori di una soluzione ottimale del problema
+  \item Calcolo di una soluzione ottimale tramite algoritmi bottom-up \textit{(partendo dai problemi più semplici)}
+  \item Costruzione della soluzione ottimale del problema richiesto
+\end{enumerate}
+
+\subsubsection{Algoritmo di programmazione dinamica}
+
+Applicando un algoritmo ricorsivo per risolvere un certo problema tramite programmazione dinamica, può risultare che la complessità sia eccessivamente elevata \textit{(anche \(\Omega(2^n)\))} poiché certe soluzioni vengono calcolate più volte.
+
+Facendo uso di memoria aggiuntiva \textit{(dove permesso)} è possibile ridurre il tempo di esecuzione, fino ad avere complessità polinomiale.
+Questa scelta introduce un \textit{trade-off} spazio temporale: aumentando la complessità spaziale, quella temporale si riduce.
+
+\bigskip
+\textit{Idea} della tecnica:
+il risultato dei sotto problemi già calcolati viene memorizzato.
+Così facendo non è necessario calcolarli più di una volta, perché se essi servissero sarebbero disponibili nella tabella.
+Se il costo dei singoli problemi da distinguere è polinomiale, allora la soluzione dell'intero problema richiederebbe tempo polinomiale.
+
+Questa tecnica prende il nome di \textbf{memoization}.
+
+\subsubsection{Approcci top-down e bottom-up}
+
+All'interno della programmazione dinamica si identificano due tipi principali di approccio: \textbf{top-down} e \textbf{bottom-up}.
+
+L'approccio top-down consiste nel cercare di risolvere dapprima il problema di dimensione \(n\) \textit{(il più grande)} per poi concentrarsi su problemi sempre più piccoli.
+La dimensione della tabella dei risultati e dei parametri passati aumenta man mano che la ricerca della soluzione procede.
+
+L'approccio bottom-up, al contrario, si concentra dai problemi più piccoli procedendo fino ai problemi più grandi.
+Una volta risolto il problema di dimensione \(n\), tutti i problemi di dimensione \(< n\) sono già stati tutti risolti.
+
+\subsection{Algoritmi golosi}
+
+Gli algoritmi golosi (dall'Inglese greedy algorithm) rappresentano una classe particolare di algoritmi di ricerca.
+Essi infatti si concentrano sul trovare la soluzione ottimale per ogni passo di risoluzione.
+
+In generale, gli algoritmi golosi cercano gli ottimi locali valutando ad ogni passo la scelta migliore su cui continuare.
+Questi algoritmi potrebbero portare a soluzioni non ottimali a livello globale ma, in alcuni casi, si dimostra che l'ottimo viene raggiunto.
+
+Sono spesso impiegati in problemi difficili in cui l'ottimo locale fornisce una \inlinequote{buona approssimazione} dell'ottimo globale.
+
+\subsection{Complessità e non determinismo}
+
+L'obiettivo di questa Sezione sarà cercare di costruire una sorta di classe universale di complessità. cioè una funzione di complessità \(T(n)\) tale che ogni problema al suo interno ha soluzione che impiega al più \(T(n)\).
+Inoltre verrà analizzato il non determinismo in relazione alla sua influenza sulla complessità di soluzione dei problemi.
+
+Prima di poter cercare una risposta, è necessario dare alcune definizioni:
+
+\begin{itemize}
+  \item Data una funzione \(T(n)\), prende il nome \textbf{\(DTIME(T)\)} la classe di problemi tale per cui esiste un algoritmo che li risolve in tempo \(T(n)\)
+  \item Allo stesso modo, si indica con \textbf{\(DSPACE(T)\)} l'insieme riconoscibili in spazio \(T(n)\) mediante \TM deterministiche
+  \item \(NTIME(T)\) e \(NSPACE(T)\) rappresentano i loro analoghi con soluzioni non deterministiche
+\end{itemize}
+
+Un problema può essere identificato nel riconoscimento di un linguaggio (per semplicità, ricorsivo) e come algoritmo si sceglie una \TM.
+
+\bigskip
+Si dimostra che data una funzione totale e computabile \(T(n)\), esiste un linguaggio ricorsivo che non è in \(DTIME(T)\).
+È quindi possibile costruire una gerarchia di linguaggi (e allo stesso modo di problemi) organizzata in base alla complessità temporale deterministica.
+Allo stesso modo, si possono costruire delle gerarchie per \(DSPACE(T),\ NTIME(T)\) e \(NSPACE(T)\).
+
+\bigskip
+Ci si dedicherà ora alle computazioni non deterministiche.
+Data una \TM non deterministica \(\mathcal{M}\), la sua complessità temporale \(T_{\mathcal{m}}(x)\) relativa al riconoscimento di una stringa \(x\) è definita come la lunghezza della computazione più breve tra tutte quelle che accettano \(x\).
+\(T_{\mathcal{M}}(n)\) sarà poi il caso pessimo tra tutti i \(T_{\mathcal{M}}(x)\) con \(|X| = n\).
+
+\(NTIME(T)\) sarà la classe dei linguaggi ricorsivi riconoscibili in tempo \(T\) mediante \TM non deterministiche.
+
+Tuttavia, la soluzione di un problema attraverso algoritmi non deterministici avviene tramite meccanismi di calcolo effettivamente deterministici.
+Se fosse possibile costruire una tecnica \inlinequote{poco costosa} per passare da una formulazione non deterministica ad una deterministica sarebbe possibile risolvere problemi \inlinequote{interessanti} in modo efficiente.
+
+Questo metodo, ovviamente, non esiste.
+Come mostrato nel passaggio da \FSA a \NFA (avvenuto nella Sezione~\ref{sec:conversione-nfa-dfa}), infatti, il meccanismo si complica in modo esponenziale.
+Lo stesso concetto può essere mostrato per qualsiasi altro meccanismo di calcolo.
+
+\subsection[P vs NP]{\Pset vs \NPset}
 
 \clearpage
 
