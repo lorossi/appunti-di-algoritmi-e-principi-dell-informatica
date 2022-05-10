@@ -6,10 +6,11 @@
 %   So don't change the order!
 \RequirePackage[a4paper]{geometry} % page settings
 \RequirePackage[utf8]{inputenc} % utf encoding
+\RequirePackage{ccicons} % creative common icons
 \RequirePackage[dvipsnames]{xcolor} % text colours
 \RequirePackage[style=english]{csquotes} % for better quotes
 \RequirePackage{babel} % language specific stuff
-\usepackage[T1]{fontenc} % UTF encoding
+\RequirePackage[T1]{fontenc} % UTF encoding
 \RequirePackage{lmodern} % allows text at arbitrarily size
 \RequirePackage{tikz} % for drawings
 \RequirePackage{amsmath} % math environments
@@ -17,7 +18,6 @@
 \RequirePackage{amssymb} % math symbols
 \RequirePackage{mathtools} % math operators for asmmath
 \RequirePackage{hyperref} % links colouring
-\RequirePackage{ccicons} % creative common icons
 \RequirePackage{verbatim} % monospaced text blocks
 \RequirePackage{listings} % syntax highlighting
 \RequirePackage{enumitem} % custom enum
@@ -131,7 +131,7 @@
 
 % lstlisting style definition for pseudocode
 \lstdefinestyle{pseudocode}{
-  commentstyle=\color{gray}\bfseries,
+  commentstyle=\color{gray},
   keywordstyle=\color{black}\bfseries,
   basicstyle=\ttfamily,
   breakatwhitespace=false,
@@ -146,7 +146,7 @@
   showtabs=false,
   showlines=false,
   tabsize=2,
-  morekeywords={and,ceil,downto,else,end,error,floor,for,if,in,nand,new,NIL,nor,or,repeat,return,swap,then,to,while,xnor,xor,do,until},
+  morekeywords={and,ceil,downto,each,else,end,error,floor,for,if,in,nand,new,NIL,nor,or,repeat,return,swap,then,to,while,xnor,xor,do,until},
   mathescape=true,
   morecomment=[l][commentstyle]{//},
   }
@@ -230,11 +230,11 @@
      \iflanguage{italian} {
       \large{\textbf{Ultimo aggiornamento: \today}} \\
       \bigskip
-      \large{Questi appunti sono distributi con licenza Creative Commons 4.0  \ CC BY-NC \ccbynceu} \\
+      \large{Questi appunti sono distributi con licenza Creative Commons 4.0 - CC BY-NC \ccbynceu} \\
     }{
       \large{\textbf{Last update: \today}} \\
       \bigskip
-      \large{These notes are distributed under Creative Commons 4.0 license \ CC BY-NC \ccbynceu} \\
+      \large{These notes are distributed under Creative Commons 4.0 license - CC BY-NC \ccbynceu} \\
     }
   \end{center}
 
