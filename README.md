@@ -21,6 +21,10 @@ La compilazione di questi appunti è leggermente problematica a causa dell'uso i
 
 La prima compilazione, indipendentemente da quale metodo viene usato, potrebbe richiedere molto tempo perché tutte le immagini devono essere pre-generate.
 
+## Algoritmi
+
+La cartella `codes` contiene alcuni algoritmi di ordinamento studiati durante il corso, programmati in `C`.
+
 ## Licensing
 
 These notes are distributed under Creative Commons 4.0 license.
