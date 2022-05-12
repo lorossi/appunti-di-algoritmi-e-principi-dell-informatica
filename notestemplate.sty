@@ -150,6 +150,16 @@
   mathescape=true,
   morecomment=[l][commentstyle]{//},
   }
+
+\lstdefinestyle{customc}{
+  commentstyle=\color{gray},
+  keywordstyle=\color{black}\bfseries,
+  basicstyle=\ttfamily\footnotesize,
+  language=C,
+  showstringspaces=false,
+  tabsize=2,
+}
+
 % rename List into Codice o Code (according to language)
 \iflanguage{italian} {
   \renewcommand\lstlistingname{Listato}
