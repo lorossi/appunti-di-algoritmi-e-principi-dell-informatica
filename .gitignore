@@ -8,3 +8,6 @@ tikztemp/*
 *.synctex*
 
 *.d
+*.o
+*.out
+test_sort
