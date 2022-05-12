@@ -1,63 +1,6 @@
 #include "sort.h"
 
 /**
- * @brief Populate an array of length len with all numbers from 0 to len
- *
- * @param sequence array to fill
- * @param len length of the array
- */
-void populate_array(int *sequence, int len)
-{
-  for (int i = 0; i < len; i++)
-    sequence[i] = i;
-}
-
-/**
- * @brief Shuffle an array of length len
- *
- * @param sequence array to shuffle
- * @param len length of the array
- */
-void shuffle_array(int *sequence, int len)
-{
-  if (len == 1)
-    return;
-
-  for (int i = 0; i < len - 1; i++)
-  {
-    size_t j = i + rand() / (RAND_MAX / (len - i) + 1);
-    int t = sequence[j];
-    sequence[j] = sequence[i];
-    sequence[i] = t;
-  }
-}
-
-/**
- * @brief Test that the array is ordered
- *
- * @param sequence array to test
- * @param len length of the array
- */
-void test_array(int *sequence, int len)
-{
-  for (int i = 0; i < len; i++)
-    assert(sequence[i] == i);
-}
-
-/**
- * @brief Print the array
- *
- * @param sequence array to print
- * @param len length of the array
- */
-void print_array(int *sequence, int len)
-{
-  for (int i = 0; i < len; i++)
-    printf("%d ", sequence[i]);
-  printf("\n");
-}
-
-/**
  * @brief Swap two elements of an array
  *
  * @param a array containing the elements to swap
@@ -78,7 +21,7 @@ void swap(int *a, int p, int q)
  * @brief Support function for build_max_heap. Fix a node in a max heap
  *
  * @param a array containing the heap
- * @param i node to fix
+ * @param i index of the node to fix
  * @param len length of the array
  */
 void max_heapify(int *a, int i, int len)
