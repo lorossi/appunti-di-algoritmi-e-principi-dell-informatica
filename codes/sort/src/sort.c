@@ -54,6 +54,12 @@ void build_max_heap(int *sequence, int len)
     max_heapify(sequence, i, len);
 }
 
+/**
+ * @brief Heap sort
+ *
+ * @param sequence array to be ordered
+ * @param len length of the array
+ */
 void heap_sort(int *sequence, int len)
 {
   build_max_heap(sequence, len);
