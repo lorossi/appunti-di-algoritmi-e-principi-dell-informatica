@@ -1,7 +1,8 @@
 #include "sort.h"
 
 /**
- * @brief Swap two elements of an array
+ * @brief Swap two elements of an array.
+ * Complexity: O(1)
  *
  * @param a array containing the elements to swap
  * @param p index of the first element
@@ -18,7 +19,8 @@ void swap(int *a, int p, int q)
 }
 
 /**
- * @brief Support function for build_max_heap. Fix a node in a max heap
+ * @brief Support function for build_max_heap. Fix a node in a max heap.
+ * Compexity: O(log n).
  *
  * @param a array containing the heap
  * @param i index of the node to fix
@@ -43,7 +45,8 @@ void max_heapify(int *a, int i, int len)
 }
 
 /**
- * @brief Create a max heap from an array
+ * @brief Create a max heap from an array.
+ * Complexity: O(n log n).
  *
  * @param sequence array to be converted
  * @param len length of the array
@@ -55,7 +58,8 @@ void build_max_heap(int *sequence, int len)
 }
 
 /**
- * @brief Heap sort
+ * @brief Heap sort.
+ * Complexity: O(n log n).
  *
  * @param sequence array to be ordered
  * @param len length of the array
@@ -71,7 +75,8 @@ void heap_sort(int *sequence, int len)
 }
 
 /**
- * @brief Insertion sort
+ * @brief Insertion sort.
+ * Complexity: O(n^2).
  *
  * @param sequence array to sort
  * @param len length of the array
@@ -94,7 +99,8 @@ void insertion_sort(int *sequence, int len)
 }
 
 /**
- * @brief Selection sort
+ * @brief Selection sort.
+ * Complexity: O(n^2).
  *
  * @param sequence array to sort
  * @param len length of the array
@@ -114,7 +120,8 @@ void selection_sort(int *sequence, int len)
 }
 
 /**
- * @brief Bubble sort
+ * @brief Bubble sort.
+ * Complexity: O(n^2).
  *
  * @param sequence array to order
  * @param len length of the array
@@ -132,7 +139,8 @@ void bubble_sort(int *sequence, int len)
 }
 
 /**
- * @brief Support function for the merge sort
+ * @brief Support function for the merge sort.
+ * Complexity: O(n).
  *
  * @param sequence array to order
  * @param p index of the first element
@@ -174,7 +182,8 @@ void merge(int *sequence, int p, int q, int r)
 }
 
 /**
- * @brief Merge sort
+ * @brief Merge sort.
+ * Complexity: O(n log n).
  *
  * @param sequence array to order
  * @param p index of the first element
@@ -192,7 +201,8 @@ void merge_sort(int *sequence, int p, int r)
 }
 
 /**
- * @brief Support function of the quick sort
+ * @brief Support function of the quick sort.
+ * Complexity: O(n).
  *
  * @param sequence array to order
  * @param p index of the first element
@@ -218,6 +228,7 @@ int partition(int *sequence, int p, int r)
 
 /**
  * @brief Quick sort
+ * Complexity: O(n log n).
  *
  * @param sequence array to order
  * @param p index of the first element
