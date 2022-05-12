@@ -18,12 +18,12 @@ int main()
   printf("Number of tests: %d. Number of items per array: %d.\n\n", TESTS_NUM, ARRAY_LEN);
 
   started = clock();
-  printf("Testing insertion sort.\n");
+  printf("Testing bubble sort.\n");
   for (int i = 0; i < TESTS_NUM; i++)
   {
     populate_array(sequence, ARRAY_LEN);
     shuffle_array(sequence, ARRAY_LEN);
-    insertion_sort(sequence, ARRAY_LEN);
+    bubble_sort(sequence, ARRAY_LEN);
     test_array(sequence, ARRAY_LEN);
   }
   ended = clock();
@@ -42,12 +42,12 @@ int main()
   print_time(started, ended);
 
   started = clock();
-  printf("Testing bubble sort.\n");
+  printf("Testing insertion sort.\n");
   for (int i = 0; i < TESTS_NUM; i++)
   {
     populate_array(sequence, ARRAY_LEN);
     shuffle_array(sequence, ARRAY_LEN);
-    bubble_sort(sequence, ARRAY_LEN);
+    insertion_sort(sequence, ARRAY_LEN);
     test_array(sequence, ARRAY_LEN);
   }
   ended = clock();
@@ -85,6 +85,20 @@ int main()
     shuffle_array(sequence, ARRAY_LEN);
     quick_sort(sequence, 0, ARRAY_LEN - 1);
     test_array(sequence, ARRAY_LEN);
+  }
+  ended = clock();
+  print_time(started, ended);
+
+  started = clock();
+  printf("Testing counting sort.\n");
+  for (int i = 0; i < TESTS_NUM; i++)
+  {
+    int ordered[ARRAY_LEN];
+    populate_array(sequence, ARRAY_LEN);
+    shuffle_array(sequence, ARRAY_LEN);
+
+    counting_sort(sequence, ARRAY_LEN, ordered, ARRAY_LEN - 1);
+    test_array(ordered, ARRAY_LEN);
   }
   ended = clock();
   print_time(started, ended);

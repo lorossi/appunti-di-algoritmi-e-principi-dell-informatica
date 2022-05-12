@@ -23,5 +23,6 @@ void bubble_sort(int *sequence, int len);
 void merge_sort(int *sequence, int p, int r);
 void quick_sort(int *sequence, int p, int r);
 void heap_sort(int *sequence, int len);
+void counting_sort(int *sequence, int len, int *ordered, int max);
 
 #endif

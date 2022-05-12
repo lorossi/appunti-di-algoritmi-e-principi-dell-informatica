@@ -227,7 +227,7 @@ int partition(int *sequence, int p, int r)
 }
 
 /**
- * @brief Quick sort
+ * @brief Quick sort.
  * Complexity: O(n log n).
  *
  * @param sequence array to order
@@ -241,5 +241,34 @@ void quick_sort(int *sequence, int p, int r)
     int q = partition(sequence, p, r);
     quick_sort(sequence, p, q - 1);
     quick_sort(sequence, q + 1, r);
+  }
+}
+
+/**
+ * @brief Counting sort.
+ * Complexity: O(n).
+ *
+ * @param sequence array to order
+ * @param len length of the array
+ * @param ordered array to store the ordered sequence
+ * @param max maximum value of the array
+ */
+void counting_sort(int *sequence, int len, int *ordered, int max)
+{
+  int C[max + 1];
+
+  for (int i = 0; i <= max; i++)
+    C[i] = 0;
+
+  for (int j = 0; j < len; j++)
+    C[sequence[j]]++;
+
+  for (int i = 1; i <= max; i++)
+    C[i] += C[i - 1];
+
+  for (int j = len; j >= 0; j--)
+  {
+    ordered[C[sequence[j - 1]] - 1] = sequence[j - 1];
+    C[sequence[j - 1]]--;
   }
 }
