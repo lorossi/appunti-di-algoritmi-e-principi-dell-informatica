@@ -5456,6 +5456,10 @@ La sintassi dello \textbf{pseudocodice} è la seguente:
         \begin{itemize}
           \item la struttura a blocchi è determinata dall'indentazione
           \item non si usano le parentesi
+          \item nei cicli \textbf{\texttt{for}} il valore dell'indice termina al valore massimo \textbf{incluso}
+                \begin{itemize}
+                  \item il valore indicato da \textbf{\texttt{to}} sarà uguale al valore massimo dell'indice
+                \end{itemize}
         \end{itemize}
   \item \textbf{Commenti}:
         \begin{itemize}
@@ -5465,6 +5469,9 @@ La sintassi dello \textbf{pseudocodice} è la seguente:
   \item \textbf{Array}: la notazione è analoga a quella del \texttt{C}
         \begin{itemize}
           \item il primo elemento può avere indice diverso da \(0\)
+                \begin{itemize}
+                  \item normalmente il primo elemento dell'array \texttt{A} è \texttt{1}
+                \end{itemize}
           \item \texttt{A[j]} è l'elemento \(j\) dell'array \texttt{A}
           \item \texttt{A[i..j]} è il sotto array che inizia dall'elemento \(i\) e termina all'elemento \(j\)
         \end{itemize}
@@ -5720,7 +5727,7 @@ La proprietà caratteristica dei \textit{max-heap} è che il valore di ogni nodo
 
 L'algoritmo è di tipo ricorsivo ed è illustrato nel Listato~\ref{lst:costruzione-max-heap}.
 
-\begin{lstlisting}[float, style=pseudocode, caption={Costruzione di un \texttt{MAX-HEAP}}, label={lst:costruzione-max-heap}]
+\begin{lstlisting}[style=pseudocode, caption={Costruzione di un \texttt{MAX-HEAP}}, label={lst:costruzione-max-heap}]
 MAX-HEAPIFY(A, i)
   l := LEFT(i)
   r := RIGHT(i)
@@ -5763,7 +5770,7 @@ Funziona grazie a due proprietà dello heap:
   \item I sotto alberi fatti di solo foglie sono max-heap in quanto costituiti da \textbf{un solo elemento}
 \end{itemize}
 
-\begin{lstlisting}[float, style=pseudocode, caption={Algoritmo \texttt{BUILD-MAX-HEAP}}, label={lst:algoritmo-build-max-heap}]
+\begin{lstlisting}[style=pseudocode, caption={Algoritmo \texttt{BUILD-MAX-HEAP}}, label={lst:algoritmo-build-max-heap}]
 BUILD-MAX-HEAP(A)
   A.heap-size := A.length
   for i := A.length / 2 downto 1
@@ -5772,7 +5779,7 @@ BUILD-MAX-HEAP(A)
 
 \paragraph{Analisi dell'algoritmo \texttt{BUILD-MAX-HEAP}}
 
-Il costo dell'algoritmo \texttt{BUILD-MAX-HEAP}, a priori, potrebbe risultare pari a \(\bigO(\left(n \log{(n)}\right))\).
+Il costo dell'algoritmo \texttt{BUILD-MAX-HEAP}, a priori, potrebbe risultare pari a \(\bigO\left(n \log{(n)}\right)\).
 Tuttavia, questo limite non fornisce una precisione sufficiente.
 
 Infatti, si osserva che:
@@ -5807,14 +5814,10 @@ per ogni elemento \(x\) di una sequenza \(A\) di elementi, partendo dalla prima 
 
 L'array viene quindi ordinato senza sul posto, senza bisogno di spazio di memoria ausiliario.
 
-\begin{minipage}{0.99\textwidth}
-  \bigskip
-  \centering
   \begin{minipage}{0.45\textwidth}
-    \centering
     \begin{lstlisting}[style=pseudocode, label={Pseudocodice dell'algoritmo di Insertion Sort}, label={lst:pseudocodice-insertion-sort}]
 INSERTION-SORT(A)
-  for j := 1 to A.length
+  for j := 2 to A.length
     key := A[j]
     i := j - 1
     while i > 0 and A[i] > key
@@ -5836,14 +5839,15 @@ INSERTION-SORT(A)
       \(8\)         & \(c_7\)        & \(n-1\)                  \\
     \end{tabular}
   \end{minipage}
-  \bigskip
-\end{minipage}
+
 
 \paragraph{Analisi dell'algoritmo \texttt{INSERTION-SORT}}
 
 Il tempo di esecuzione di \texttt{INSERTION-SORT(A)} è:
 
 \[ T(n) = c_1 \cdot n + c_2 \cdot (n-1) + c_3 \cdot (n-1) + c_4 \cdot \displaystyle \sum_{j=2}^n t_j + c_5 \cdot \displaystyle \sum_{h=2}^n (t_j - 1) + c_6 \cdot \displaystyle \sum_{h=2}^n (t_j - 1) + c_7 \cdot (n-1) \]
+
+È quindi possibile identificare i casi ottimi e pessimi per poter calcolare l'effettiva complessità temporale:
 
 \begin{itemize}
   \item Caso \textbf{ottimo}:
@@ -5898,10 +5902,10 @@ MERGE-SORT(A, p, R)
 MERGE(A, p, q, r)
   $\texttt{n}_{\texttt{1}}$ := q - p + 1
   $\texttt{n}_{\texttt{2}}$ := r - q
-  alloca L[1 .. $\texttt{n}_{\texttt{1}}$+1]
-  alloca R[1 .. $\texttt{n}_{\texttt{2}}$+1]
+  alloca L[1 .. $\texttt{n}_{\texttt{1}}$ + 1]
+  alloca R[1 .. $\texttt{n}_{\texttt{2}}$ + 1]
   for i := 1 to $\texttt{n}_{\texttt{1}}$
-    L[i] := A[p+i-1]
+    L[i] := A[p + i - 1]
   for j := 1 to $\texttt{n}_{\texttt{2}}$
     R[j] := A[q + j]
   L[$\texttt{n}_{\texttt{1}}$ + 1] := $\infty$
@@ -5915,7 +5919,7 @@ MERGE(A, p, q, r)
     else
       A[k] := R[j]
       j := j + 1
-          \end{lstlisting}
+  \end{lstlisting}
 \end{minipage}
 \begin{minipage}[t]{0.495\textwidth}
   \centering
@@ -6026,11 +6030,12 @@ Di conseguenza, \(n^{\log_b(a)} = n^1 = n\) e la complessità temporale è quind
 L'algoritmo \texttt{HEAPSORT}, \textit{come suggerisce il nome}, sfrutta le proprietà degli heap \textit{(Sezione~\ref{sec:heap})} per ordinare gli elementi di un array.
 Questo algoritmo farà uso degli algoritmi \textit{di supporto} \texttt{BUILD-MAX-HEAP} \textit{(Sezione~\ref{sec:algoritmo-build-max-heap})} e \texttt{MAX-HEAPIFY} \textit{(Sezione~\ref{sec:algoritmo-max-heapify})}.
 
+\bigskip
 \textit{Idea} dell'algoritmo:
 Ad ogni ciclo viene preso l'elemento più grande \textit{(primo dell'array, in quanto max-heap)} in fondo alla parte di array ancora da ordinare \textit{(corrispondente allo heap).}
-Lo heap viene decrementato di \(1\) e viene ricostruito il max-heap mettendo come radice l'ultima foglia a destra dell'ultimo livello e invocando \texttt{MAX-HEAPIFY}.
+La dimensione dell'heap viene decrementata di \(1\) e viene ricostruito il max-heap \textit{(tramite \texttt{MAX-HEAPIFY})} usando come radice l'ultima foglia a destra dell'ultimo livello \textit{(l'ultimo elemento dell'array)}.
 
-\begin{lstlisting}[style=pseudocode, float, caption={Pseudocodice dell'algoritmo \texttt{HEAPSORT}}, label={sec:algoritmo-heapsort}]
+\begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{HEAPSORT}}, label={sec:algoritmo-heapsort}]
 HEAPSORT(A)
   BUILD-MAX-HEAP(A)
   for i := A.length downto 2
@@ -6086,18 +6091,19 @@ QUICKSORT(A, p, r):
     q := PARTITION(A, p, r)
     QUICKSORT(A, p, q - 1)
     QUICKSORT(A, q + 1, r)
-        \end{lstlisting}
+  \end{lstlisting}
 \end{minipage}
 \begin{minipage}[t]{0.495\textwidth}
   \begin{lstlisting}[style=pseudocode, caption={Pseudocodice di \texttt{PARTITION}}, label={sec:algoritmo-partition}]
 PARTITION(A, p, r):
-    x := A[r]
-    i := p - 1
-    for j := p to r - 1
-        if A[j] <= x
-            i := i + 1
-            swap A[i], A[j]
-    return i + 1
+  x := A[r]
+  i := p - 1
+  for j := p to r - 1
+    if A[j] <= x
+        i := i + 1
+        swap A[i], A[j]
+  swap A[i + 1], A[r]
+  return i + 1
   \end{lstlisting}
 \end{minipage}
 
@@ -6170,7 +6176,7 @@ se nell'array ci sono \(m_e\) valori più piccoli di un certo elemento \(e\) di 
 Quindi per ordinare l'array basta contare quante copie dello stesso valore \(v_e\) sono presenti all'interno dello stesso: questa informazione viene usata per determinare, per ogni elemento \(e, 0 \leq v_e \leq k\), quanti elementi sono più piccoli di \(e\).
 Infine bisogna tenere conto degli elementi ripetuti.
 
-\begin{lstlisting}[float, style=pseudocode, caption={Pseudocodice algorimo \texttt{COUNTING-SORT}}, label={lst:counting-sort}]
+\begin{lstlisting}[style=pseudocode, caption={Pseudocodice algorimo \texttt{COUNTING-SORT}}, label={lst:counting-sort}]
 COUNTING-SORT(A, B, K):
   for i := 0 to k
     C[i] := 0
@@ -6396,6 +6402,11 @@ Usando questa implementazione, gli attributi della coda \texttt{Q} indicheranno:
   \item \texttt{Q.tail - 1} l'indice dell'elemento da meno da meno tempo nell'array
 \end{itemize}
 
+La presenza di uno spazio aggiuntivo nell'array rispetto alla dimensione effettiva della coda è dovuto alla gestione dell'elemento aggiunto quando essa è piena.
+In tal caso i puntatori \texttt{head} e \texttt{tail} combacerebbero, facendo collassare la struttura.
+Questo non è l'unico stratagemma impiegato per risolvere il problema ma esistono strategie alternative.
+
+\bigskip
 Inoltre, per poter scrivere lo pseudocodice, è necessario analizzare ulteriormente il funzionamento della coda:
 
 \begin{itemize}
@@ -6415,6 +6426,8 @@ Lo pseudocodice di queste funzioni è mostrato nei Listati~\ref{lst:enqueue-coda
 \begin{minipage}[t]{0.495\textwidth}
   \begin{lstlisting}[style=pseudocode, caption={\texttt{ENQUEUE} in coda}, label={lst:enqueue-coda}]
 ENQUEUE(Q, x)
+  if Q.head = Q.tail + 1:
+    error "overflow"
   if Q.tail = Q.length
     Q.tail := 1
   else
@@ -6424,6 +6437,8 @@ ENQUEUE(Q, x)
 \begin{minipage}[t]{0.495\textwidth}
   \begin{lstlisting}[style=pseudocode, caption={\texttt{DEQUEUE} in coda}, label={lst:dequeue-coda}]
 DEQUEUE(Q)
+  if Q.head = Q.tail:
+    error "underflow"
   x := Q[Q.head]
   if Q.head = Q.tail
     Q.head := 1
@@ -6493,7 +6508,10 @@ Nei prossimi Paragrafi verranno illustrati gli pseudocodici delle operazioni sul
 
 \textit{Complessità temporale}: \(\Theta(n)\) nel caso pessimo \textit{(la chiave non è nella lista)}.
 
-\begin{lstlisting}[float, style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{LIST-SEARCH}}, label={lst:list-search}]
+\bigskip
+Lo pseudocodice è riportato nel Listato~\ref{lst:list-search}.
+
+\begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{LIST-SEARCH}}, label={lst:list-search}]
 LIST-SEARCH(L, k)
   x := L.head
   while x != NIL and x.key != k
@@ -6509,14 +6527,17 @@ LIST-SEARCH(L, k)
 
 \textit{Complessità temporale}: \(\bigO(1)\).
 
-\begin{lstlisting}[float, style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{LIST-INSERT}}, label={lst:list-insert}]
+\bigskip
+Lo pseudocodice è riportato nel Listato~\ref{lst:list-insert}.
+
+\begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{LIST-INSERT}}, label={lst:list-insert}]
 LIST-INSERT(L, x)
   x.next := L.head
   if L.head != NIL
     L.head.prev := x
   L.head := x
   x.prev := NIL
-  \end{lstlisting}
+\end{lstlisting}
 
 \paragraph{Cancellazione di un elemento}
 
@@ -6525,9 +6546,12 @@ Non è sufficientemente passare solo la chiave dell'oggetto: \textbf{è necessar
 
 \textit{Output}: nessuno, la lista \texttt{L} viene alterata senza che ne venga creata una nuova.
 
-\textit{Complessità temporale}: \(\bigO(1)\).
+\textit{Complessità temporale}: \(\Theta(1)\).
 
-\begin{lstlisting}[float, style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{LIST-DELETE}}, label={lst:list-delete}]
+\bigskip
+Lo pseudocodice è riportato nel Listato~\ref{lst:list-delete}.
+
+\begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{LIST-DELETE}}, label={lst:list-delete}]
 LIST-DELETE(L, x)
   if x.prev != NIL
     x.prev.next := x.next
@@ -6535,7 +6559,27 @@ LIST-DELETE(L, x)
     L.head := x.next
   if x.next != NIL
     x.next.prev := x.prev
-  \end{lstlisting}
+\end{lstlisting}
+
+\paragraph{Cancellazione di un elemento data la chiave}
+
+\textit{Input}: la lista \texttt{L} in cui cercare e l'oggetto \texttt{x} da cancellare.
+Contrariamente alla funzione analizzata precedentemente, \textbf{è sufficiente passare solo la chiave dell'oggetto}.
+
+\textit{Output}: nessuno, la lista \texttt{L} viene alterata senza che ne venga creata una nuova.
+
+\textit{Complessità temporale}: \(\Theta(n)\) nel caso pessimo \textit{(l'oggetto ricercato non è nella lista)}.
+
+\bigskip
+Lo pseudocodice è riportato nel Listato~\ref{lst:list-delete-key}.
+
+\begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{LIST-DELETE-KEY}}, label={lst:list-delete-key}]
+  LIST-DELETE(L, k)
+    x = LIST-SEARCH(L, k)
+    if x = NIL:
+      return
+    LIST-DELETE(L, x)
+\end{lstlisting}
 
 \subsubsection{Altri tipi di liste}
 
@@ -6579,17 +6623,17 @@ I parametri \texttt{T} e \texttt{k} rappresentano rispettivamente il \textbf{diz
 \begin{lstlisting}[numbers=none, style=pseudocode, caption={Ricerca}, label={lst:search-dizionario}]
 DIRECT-ADDRESS-SEARCH(T, k)
   return T[k]
-  \end{lstlisting}
+\end{lstlisting}
 
 \begin{lstlisting}[style=pseudocode, caption={Inserzione}, label={lst:insert-dizionario}]
 DIRECT-ADDRESS-INSERT(T, k)
   T[x.key] = x
-  \end{lstlisting}
+\end{lstlisting}
 
 \begin{lstlisting}[numbers=none, style=pseudocode, caption={Cancellazione}, label={lst:delete-dizionario}]
 DIRECT-ADDRESS-DELETE(T, k)
   T[x.key] := NIL
-  \end{lstlisting}
+\end{lstlisting}
 
 La complessità delle operazioni è \(\bigO(1)\), quindi i dizionari sono le strutture dati più efficienti tra quelle analizzate fin'ora.
 Tuttavia, se il numero di chiavi memorizzate è di molto inferiore alla cardinalità dell'insieme delle possibili chiavi, lo spazio occupato sarà inutilmente alto.
@@ -6662,11 +6706,11 @@ CHAINED-HASH-INSERT(T, x)
 \begin{lstlisting}[style=pseudocode, numbers=none]
 CHAINED-HASH-SEARCH(T, k)
   cerca un elemento con chiave k nella lista T[h(k)]
-  \end{lstlisting}
+\end{lstlisting}
 \begin{lstlisting}[style=pseudocode, numbers=none]
 CHAINED-HASH-DELETE(T, x)
   cancella x dalla lista T[h(x.key)]
-    \end{lstlisting}
+\end{lstlisting}
 
 Le complessità di queste operazioni è:
 
@@ -6676,6 +6720,9 @@ Le complessità di queste operazioni è:
           \item per ipotesi, l'elemento non è già nella tabella
         \end{itemize}
   \item \(\bigO(\texttt{T}[h(k)])\) per la \textbf{ricerca} - \texttt{CHAINED-HASH-SEARCH}
+  \begin{itemize}
+    \item \(\bigO(n)\) con \(n = \text{numero di elementi nella lista \texttt{T}[h(k)]}\)
+  \end{itemize}
   \item \(\bigO(1)\) per la \textbf{cancellazione} - \texttt{CHAINED-HASH-DELETE}
         \begin{itemize}
           \item se la lista è singolarmente concatenata, allora la complessità è \(\bigO(\texttt{T}[h(x.key)])\)
@@ -6798,7 +6845,7 @@ Nei prossimi Paragrafi verranno illustrati gli pseudocodici delle operazioni sul
 
 \paragraph{Inserimento}
 
-\begin{lstlisting}[float, style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{HASH-INSERT}}, label={sec:inserimento-ind-aperto}]
+\begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{HASH-INSERT}}, label={sec:inserimento-ind-aperto}]
 HASH-INSERT(T, k)
 i := 0
 repeat
@@ -6816,7 +6863,7 @@ Per inserire un elemento di chiave \texttt{k} nella collezione \texttt{T} l'algo
 
 \paragraph{Ricerca}
 
-\begin{lstlisting}[float, style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{HASH-SEARCH}}, label={sec:ricerca-ind-aperto}]
+\begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{HASH-SEARCH}}, label={sec:ricerca-ind-aperto}]
 HASH-SEARCH(T, k)
   i := 0
   repeat
@@ -7159,7 +7206,7 @@ Il confronto tra i due casi avviene nella Figura~\ref{fig:altezza-albero-binario
 
 \paragraph{\texttt{INORDER-TREE-WALK} }
 
-\begin{lstlisting}[float, style=pseudocode, caption={Attraversamento simmetrico di \BST}, label={lst:attraversamento-bst-inorder}]
+\begin{lstlisting}[style=pseudocode, caption={Attraversamento simmetrico di \BST}, label={lst:attraversamento-bst-inorder}]
 INORDER-TREE-WALK(x)
   if x != NIL
     INORDER-TREE-WALK(x.left)
@@ -7225,7 +7272,7 @@ Per ogni nodo \texttt{x} che incontra, confronta il valore \texttt{x.key} con \t
   \item Se \texttt{k} è maggiore di \texttt{x.key}, allora la ricerca continua nel sotto albero destro
 \end{itemize}
 
-\begin{lstlisting}[float, style=pseudocode, caption={Ricerca di un nodo in un \BST}, label={lst:tree-search}]
+\begin{lstlisting}[style=pseudocode, caption={Ricerca di un nodo in un \BST}, label={lst:tree-search}]
 TREE-SEARCH(x, k)
   if x = NIL or k = x.key
     return x
@@ -7239,7 +7286,7 @@ TREE-SEARCH(x, k)
 Lo stesso algoritmo può essere implementato in modo \textit{ricorsivo} tramite un ciclo while.
 Un esempio di questo codice è mostrato nel Listato~\ref{lst:iterative-tree-search}.
 
-\begin{lstlisting}[float, style=pseudocode, caption={Ricerca iterativa di un nodo in un BST}, label={lst:iterative-tree-search}]
+\begin{lstlisting}[style=pseudocode, caption={Ricerca iterativa di un nodo in un BST}, label={lst:iterative-tree-search}]
 ITERATIVE-TREE-SEARCH(x, k)
   while x != NIL and k != x.key:
     if k < x.key
@@ -7343,7 +7390,7 @@ Modifica \texttt{T} e alcuni dei campi di \texttt{z} in modo che il nuovo nodo s
 
 Lo pseudocodice dell'algoritmo è mostrato nel Listato~\ref{lst:inserimento-bst}.
 
-\begin{lstlisting}[float, style=pseudocode, caption={Inserimento di un nuovo nodo}, label={lst:inserimento-bst}]
+\begin{lstlisting}[style=pseudocode, caption={Inserimento di un nuovo nodo}, label={lst:inserimento-bst}]
 TREE-INSERT(T, z)
   y := NIL
   x := T.root
@@ -7384,7 +7431,7 @@ Infatti, per eliminare un nodo \texttt{z} da un \BST \texttt{T}:
 
 Lo pseudocodice dell'algoritmo è mostrato nel Listato~\ref{lst:cancellazione-bst}, mentre una raffigurazione dei tre casi è mostrata nelle Figure \ref{fig:cancellazione-nodo-bst-senza-sotto-alberi}, \ref{fig:cancellazione-nodo-bst-con-un-solo-sotto-albero} e \ref{fig:cancellazione-nodo-bst-con-due-sotto-alberi}.
 
-\begin{lstlisting}[float, style=pseudocode, caption={Cancellazione di un nodo}, label={lst:cancellazione-bst}]
+\begin{lstlisting}[style=pseudocode, caption={Cancellazione di un nodo}, label={lst:cancellazione-bst}]
 TREE-DELETE(T, z):
   if z.left = NIL or z.right = NIL
     y := z
@@ -7774,7 +7821,7 @@ Dopo l'eliminazione del nodo, una procedura secondaria chiamata \texttt{RB-DELET
 
 Il codice delle procedure è mostrato nel Listati~\ref{lst:cancellazione-nodo-rb}~e~\ref{lst:rb-delete-fixup}.
 
-\begin{lstlisting}[float, style=pseudocode, caption={Cancellazione in un RB}, label={lst:cancellazione-nodo-rb}]
+\begin{lstlisting}[style=pseudocode, caption={Cancellazione in un RB}, label={lst:cancellazione-nodo-rb}]
 RB-DELETE(T, z)
   if z.left = T.nil or z.right = T.nil
     y := z
@@ -7796,7 +7843,7 @@ RB-DELETE(T, z)
   if y.color = BLACK
     RB-DELETE-FIXUP(T, x)
 \end{lstlisting}
-\begin{lstlisting}[float, style=pseudocode, caption={Fixup dopo cancellazione}, label={lst:rb-delete-fixup}]
+\begin{lstlisting}[style=pseudocode, caption={Fixup dopo cancellazione}, label={lst:rb-delete-fixup}]
 RB-DELETE-FIXUP(T, x)
   if x.color = RED or x.parent = T.nil
     // caso 0
@@ -7992,7 +8039,7 @@ Ad ogni iterazione, un nodo viene scelto ed i nodi bianchi adiacenti vengono esp
 \bigskip
 Il Listato~\ref{lst:codice-bfs} contiene il codice dell'algoritmo appena descritto.
 
-\begin{lstlisting}[float, style=pseudocode, caption={Algoritmo \texttt{BFS}}, label={lst:codice-bfs}]
+\begin{lstlisting}[style=pseudocode, caption={Algoritmo \texttt{BFS}}, label={lst:codice-bfs}]
 BFS(G, s)
   for each u $\in$ G.V - {s}
     u.colour := WHITE
@@ -8170,7 +8217,7 @@ Operativamente, il rilassamento di un lato tra i nodi \(u\) e \(v\) è definito 
 \bigskip
 Lo stesso algoritmo in pseudocodice è mostrato nel Listato~\ref{lst:algoritmo-rilassamento-lato}.
 
-\begin{lstlisting}[float, style=pseudocode, caption={Algoritmo per il rilassamento di un lato}, label={lst:algoritmo-rilassamento-lato}]
+\begin{lstlisting}[style=pseudocode, caption={Algoritmo per il rilassamento di un lato}, label={lst:algoritmo-rilassamento-lato}]
 RELAX(u, v, adj, d, Pi)
   if d[v] > d[u] + adj[u][v]
     d[v] := d[u] + adj[u][v]
@@ -8188,7 +8235,7 @@ Ad ogni iterazione si aumenta di un passo ogni cammino e dopo \(|V|-1\) iterazio
 \bigskip
 Lo pseudocodice dell'algoritmo è mostrato nel Listato~\ref{lst:algoritmo-bellman-ford}.
 
-\begin{lstlisting}[float, style=pseudocode, caption={Algoritmo di Bellman-Ford}, label={lst:algoritmo-bellman-ford}]
+\begin{lstlisting}[style=pseudocode, caption={Algoritmo di Bellman-Ford}, label={lst:algoritmo-bellman-ford}]
 BELLMAN-FORD(adj, s)
   V := vettore dei nodi di adj
   alloca d, array di dimensione adj
@@ -8514,5 +8561,16 @@ Se, ad ogni ciclo, il contatore:
   \item Viene moltiplicato per un valore costante \texttt{k}: la complessità è \(T(n) = \Theta\left(\log_\texttt{k}{(n)}\right) = \Theta\left(\log{(n)}\right)\)
   \item Viene elevato ad un valore costante \texttt{k}: la complessità è \(T(n) = \Theta\left(\log{\left(\log{(n)}\right)}\right)\)
 \end{itemize}
+
+\clearpage
+
+\section{Codice relativo agli algoritmi}
+
+In questa sezione vengono presentati gli algoritmi mostrati durante il corso.
+Il linguaggio di implementazione è il C.
+
+\subsection{Algoritmi di ordinamento}
+
+\lstinputlisting[style=customc, firstline=3]{codes/sort/src/sort.c}
 
 \end{document}
