@@ -6452,7 +6452,7 @@ DEQUEUE(Q)
 
 La complessità temporale delle operazioni è \(\bigO(1)\).
 
-\subsection{lista \textit{(doppiamente)} concatenata - \textit{deque}}
+\subsection{Lista \textit{(doppiamente)} concatenata - \textit{deque}}
 \label{sec:liste-concatenate}
 
 Una lista concatenata è una struttura dati in cui gli elementi sono sistemati in un ordine lineare, in modo simile ad un array.
@@ -6576,11 +6576,11 @@ Contrariamente alla funzione analizzata precedentemente, \textbf{è sufficiente 
 Lo pseudocodice è riportato nel Listato~\ref{lst:list-delete-key}.
 
 \begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{LIST-DELETE-KEY}}, label={lst:list-delete-key}]
-  LIST-DELETE(L, k)
-    x = LIST-SEARCH(L, k)
-    if x = NIL:
-      return
-    LIST-DELETE(L, x)
+LIST-DELETE-KEY(L, k)
+  x = LIST-SEARCH(L, k)
+  if x = NIL:
+    return
+  LIST-DELETE(L, x)
 \end{lstlisting}
 
 \subsubsection{Altri tipi di liste}
@@ -6704,18 +6704,18 @@ La collisioni e le loro risoluzioni sono mostrate rispettivamente nelle Figure~\
 
 \subsubsection{Operazioni sulle tabelle hash}
 
+\begin{lstlisting}[style=pseudocode, caption={Ricerca}, label={lst:chained-hash-search}]
+  CHAINED-HASH-SEARCH(T, k)
+    cerca un elemento con chiave k nella lista T[h(k)]
+  \end{lstlisting}
+
 \begin{minipage}{\textwidth}
-  \begin{lstlisting}[style=pseudocode, numbers=none]
+  \begin{lstlisting}[style=pseudocode, caption={Inserimento}, label={lst:chained-hash-insert}]
 CHAINED-HASH-INSERT(T, x)
   inserisci X in testa alla lista T[h(x.key)]
 \end{lstlisting}
 
-  \begin{lstlisting}[style=pseudocode, numbers=none]
-CHAINED-HASH-SEARCH(T, k)
-  cerca un elemento con chiave k nella lista T[h(k)]
-\end{lstlisting}
-
-  \begin{lstlisting}[style=pseudocode, numbers=none]
+  \begin{lstlisting}[style=pseudocode, caption={Cancellazione}, label={lst:chained-hash-delete}]
 CHAINED-HASH-DELETE(T, x)
   cancella x dalla lista T[h(x.key)]
 \end{lstlisting}
@@ -6798,7 +6798,7 @@ Nel \textbf{metodo della moltiplicazione}, il valore di \(k\) viene inizialmente
 Dopodiché si considera la parte frazionaria di \(kA\) moltiplicata per \(m\), prendendone la parte intera.
 
 La funzione \(h(k)\) ha quindi forma:
-\[h(k) = \left\lfloor m (kA \modop 1) \right\rfloor \]
+\[h(k) = \left\lfloor m \cdot (kA \modop 1) \right\rfloor \]
 In questa formula \(x \modop 1 = x - \lfloor x \rfloor\) corrisponde alla parte frazionaria di \(x\).
 
 Tramite questa funzione il valore di \(m\) non è critico, perché le eventuali collisioni dipenderanno dal valore di \(A\).
@@ -6920,12 +6920,13 @@ Così facendo tuttavia le complessità non dipenderebbero più dal fattore di ca
 
 Il tempo impiegato per trovare lo slot desiderato \textit{(sia esso relativo ad un oggetto da eliminare o da inserire)} dipende dalla sequenza di ispezione restituita dalla funzione \(h\), quindi dipende dalla sua implementazione.
 
-Ipotizzando che le chiavi e le sequenze di ispezione abbiano distribuzione uniforme \textit{(ipotesi di \textbf{hashing uniforme})}, ognuna delle \(m!\) permutazioni di \(\langle 0, \ldots, m-1 \rangle\) ha la stessa probabilità di essere scelta.
+Ipotizzando che le chiavi e le sequenze di ispezione abbiano distribuzione uniforme \textit{(per l'ipotesi di hashing uniforme)}, ognuna delle \(m!\) permutazioni di \(\langle 0, \ldots, m-1 \rangle\) ha la stessa probabilità di essere scelta.
 Questa è una estensione alla sequenza di ispezione della precedente condizione di hashing uniforme semplice.
 
-L'analisi della complessità viene fatta in funzione del fattore di carico \(\alpha\), che grazie alla struttura della tabella rispetterà le condizioni \(0 \leq \alpha \leq 1,\ \alpha = \sfrac{n}{m} \Rightarrow n \leq m\).
+L'analisi della complessità viene fatta in funzione del fattore di carico \(\alpha\), che grazie alla struttura della tabella rispetterà le condizioni:
+\[ 0 \leq \alpha \leq 1,\ \alpha = \sfrac{n}{m} \Rightarrow n \leq m \]
 
-Sotto ipotesi di hashing uniforme, il numero medio di ispezioni necessarie per effettuare l'inserimento di in nuovo oggetto nella tabella è \(m\) se \(\alpha = 1\) \textit{(la tabella è piena)} e non più di \(\sfrac{1}{1-\alpha}\) se \(\alpha<1\) \textit{(se la tabella ha spazio disponibile)}.
+Sotto ipotesi di hashing uniforme, il numero medio di ispezioni necessarie per effettuare l'inserimento di in nuovo oggetto nella tabella è \(m\) se \(\alpha = 1\) \textit{(la tabella è piena)} e non più di \(\sfrac{1}{(1-\alpha)}\) se \(\alpha<1\) \textit{(se la tabella ha spazio disponibile)}.
 Il numero medio di ispezioni necessarie per trovare un elemento presente in tabella è:
 
 \[  T(\alpha) \ \begin{cases}
@@ -6967,7 +6968,7 @@ Serie lunghe di slot occupati tendono ad allungarsi ulteriormente, aumentando di
 \paragraph{Ispezione quadratica}
 
 Il metodo di \textbf{ispezione quadratica} usa una funzione di hash nella forma:
-\[ h(k, i) = \left(h^\prime(k) + c_1 i + c_2 i ^2\right), \quad c_2 \neq 0,\ i = 0, 1, \ldots, m-1 \]
+\[ h(k, i) = \left(h^\prime(k) + c_1 i + c_2 i ^2\right),\ c_2 \neq 0,\ i = 0, 1, \ldots, m-1 \]
 in cui \(h^\prime( k)\) prende il nome di \textit{funzione di hash ausiliaria} e \(c_1, c_2\) sono chiamate \textit{costanti ausiliarie}.
 
 La posizione iniziale della sequenza è \(T\left[h^\prime (k)\right]\), seguita da posizioni la cui distanza dipende in modo quadratico dal valore di \(i\).
@@ -6991,7 +6992,7 @@ La posizione iniziale della sequenza è \(T\left[h_1(k)\right]\) mentre le posiz
 \bigskip
 Contrariamente ai metodi visti fin'ora, la sequenza generata dal doppio hashing dipende in due modi dalla chiave \(k\), dato che la posizione iniziale e la distanza tra posizioni successive della sequenza possono variare.
 
-Il valore di \(h_2(k)\) non deve avere divisori comuni \textit{(se non \(1\))} con la dimensione \(m\) della tabella di hash per permettere la ricerca dell'intera tabella stessa.
+Il valore di \(h_2(k)\) non deve avere divisori comuni \textit{(al di fuori di \(1\))} con la dimensione \(m\) della tabella di hash per permettere la ricerca dell'intera tabella stessa.
 
 Un modo comodo per assicurare questa è scegliere \(m\) pari ad una potenza di \(2\) e scegliere \(h_2\) in modo che produca sempre numeri dispari.
 
@@ -7035,17 +7036,17 @@ Ogni nodo dell'albero è rappresentato da un oggetto che ha i seguenti attributi
           \item può rappresentare il contenuto del nodo
           \item può avere anche dati satelliti
         \end{itemize}
-  \item \texttt{p}, il \textbf{puntatore} al nodo \textbf{padre}
+  \item \texttt{parent}, il \textbf{puntatore} al nodo \textbf{padre}
         \begin{itemize}
-          \item a volte viene chiamato \texttt{parent}
-          \item se \texttt{x.p = NIL}, allora \texttt{x} è la radice
+          \item a volte viene chiamato semplicemente \texttt{p}
+          \item se \texttt{x.parent = NIL}, allora \texttt{x} è la radice
         \end{itemize}
   \item \texttt{left}, il \textbf{puntatore} alla radice del \textbf{sotto albero sinistro}
-        \begin{itemize}[label=\(\rightarrow\)]
+        \begin{itemize}
           \item se \texttt{left = NIL}, allora il sotto albero sinistro è \textbf{vuoto}
         \end{itemize}
   \item \texttt{right}, il \textbf{puntatore} alla radice del \textbf{sotto albero destro}
-  \item   \begin{itemize}[label=\(\rightarrow\)]
+  \begin{itemize}
           \item se \texttt{right = NIL}, allora il sotto albero destro è \textbf{vuoto}
         \end{itemize}
 \end{itemize}
@@ -7071,21 +7072,21 @@ Nei Paragrafi seguenti \textit{(\ref{attraversamento-albero-binario}~-~\ref{par:
 \paragraph{Attraversamento}
 \label{attraversamento-albero-binario}
 
-L'attraversamento di un albero binario può avvenire esplorando prima in larghezza o prima in profondità.
+L'attraversamento di un albero binario può avvenire esplorando prima in \textbf{larghezza} o prima in \textbf{profondità}.
 Nel primo caso si userà l'algoritmo \texttt{BFS} \textit{(Breadth First Search)}, mentre nel secondo si userà l'algoritmo \DFS \textit{(Depth First Search)}.
 
 \begin{itemize}
-  \item Nel caso del \texttt{BFS}, si cerca di visitare il nodo più lontano dalla radice, a patto che sia figlio di un nodo già visitato
+  \item Nel caso del \texttt{BFS}, si cerca di visitare il nodo \textbf{più lontano} dalla radice, a patto che sia figlio di un nodo già visitato
         \begin{itemize}
-          \item non è necessario ricordare i nodi che sono stati visitati
+          \item \textbf{non è necessario ricordare} i nodi che sono stati visitati
         \end{itemize}
-  \item Nel caso del \texttt{DFS}, si cerca di visitare il nodo più vicino alla radice, a patto che non sia già stato visitato
+  \item Nel caso del \texttt{DFS}, si cerca di visitare il nodo \textbf{più vicino} alla radice, a patto che non sia già stato visitato
         \begin{itemize}
-          \item è necessario tenere traccia di quali nodi sono già stati visitati
+          \item \textbf{è necessario tenere traccia} di quali nodi sono già stati visitati
         \end{itemize}
 \end{itemize}
 
-Entrambi gli algoritmi verranno analizzati più nel dettaglio, applicati ai grafi, nei Paragrafi~\ref{par:grafi-bfs}~e~\ref{par:grafi-dfs}.
+Entrambi gli algoritmi verranno analizzati più nel dettaglio, nelle loro applicazioni ai grafi, nei Paragrafi~\ref{par:grafi-bfs}~e~\ref{par:grafi-dfs}.
 
 \bigskip
 Un confronto grafico tra i due algoritmi e l'ordine di attraversamento è mostrato nelle Figure~\ref{fig:attraversamento-albero-bfs}~e~\ref{fig:attraversamento-albero-dfs}.
@@ -7418,8 +7419,8 @@ La struttura dati deve essere modificata in modo da rispettare la proprietà dei
 L'inserimento di un nuovo valore è una operazione relativamente immediata.
 
 Per inserire un nuovo valore \texttt{v} all'interno del \BST \texttt{T}, viene usato l'algoritmo \texttt{TREE-INSERT}.
-Esso prende come parametro un puntatore al nodo \texttt{z} tale per cui \(\texttt{z.key } = \texttt{ v}\), \(\texttt{z.left } = \texttt{ NIL}\), \(\texttt{z.right } = \texttt{ NIL}\).
-Modifica \texttt{T} e alcuni dei campi di \texttt{z} in modo che il nuovo nodo sia inserito nella posizione appropriata dell'albero.
+Esso prende come parametro un puntatore al nodo \texttt{z} tale per cui \(\texttt{z.key} = \texttt{v}\), \(\texttt{z.left} = \texttt{NIL}\), \(\texttt{z.right} = \texttt{NIL}\).
+\texttt{T} e alcuni dei campi di \texttt{z} vengono poi modificati in modo che il nuovo nodo sia inserito nella posizione appropriata dell'albero.
 
 \bigskip
 Lo pseudocodice dell'algoritmo è mostrato nel Listato~\ref{lst:inserimento-bst}.
@@ -7454,9 +7455,9 @@ Analogamente a quanto già descritto per la procedura di inserimento, l'operazio
 Infatti, per eliminare un nodo \texttt{z} da un \BST \texttt{T}:
 
 \begin{itemize}
-  \item Se \texttt{z} non ha sotto alberi, allora è sufficiente modificare il padre di \texttt{z}, rimuovendo i suoi figli
-  \item Se \texttt{z} ha un solo sotto albero, allora è sufficiente modificare il padre di \texttt{z}, aggiungendo come sotto albero \texttt{z}
-  \item Se \texttt{z} ha due sotto alberi, è necessario:
+  \item Se \texttt{z} \textbf{non ha sotto alberi}, allora è sufficiente modificare il padre di \texttt{z}, rimuovendo i suoi figli
+  \item Se \texttt{z} \textbf{ha un solo sotto albero}, allora è sufficiente modificare il padre di \texttt{z}, aggiungendo come sotto albero \texttt{z}
+  \item Se \texttt{z} \textbf{ha due sotto alberi}, è necessario:
         \begin{itemize}
           \item trovare il successore \texttt{s} di \texttt{z}
           \item copiare \texttt{s.key}, \texttt{s.left}, \texttt{s.right} in \texttt{z} e cancellare \texttt{s}
@@ -7636,10 +7637,10 @@ Dove \(n\) indica il numero di nodi dell'albero.
 \paragraph{Rotazioni}
 \label{par:rotazioni-rb}
 
-Le operazioni di Inserimento e Cancellazione (Sezioni \ref{par:inserimento-rb} e \ref{par:cancellazione-rb}), impiegate su un albero \RB, hanno complessità temporale \(\bigO\left(\log{(n)}\right)\).
-Poiché essi modificano l'albero, la struttura risultante da queste operazioni potrebbe violare le proprietà elencate nella Sezione~\ref{sec:alberi-rosso-neri}.
+Le operazioni di Inserimento e Cancellazione (Sezioni \ref{par:inserimento-rb} e \ref{par:cancellazione-rb}), hanno la caratteristica di alterare l'albero.
+La struttura risultante da queste operazioni potrebbe quindi violare le proprietà elencate nella Sezione~\ref{sec:alberi-rosso-neri}.
 
-Per ripristinare queste proprietà, il colore di alcuni nodi nell'albero e la struttura dei puntatori devono essere modificati.
+Affinché esse siano sempre rispettate, il colore di alcuni nodi nell'albero e la struttura dei puntatori potrebbero dover essere modificati.
 Quest'ultima viene alterata tramite una operazione detta \textbf{rotazione}, che può essere \textbf{sinistra} o \textbf{destra}.
 
 Una rotazione \textbf{destra} su un nodo di un albero \RB richiede che il suo figlio \textbf{destro} non sia \texttt{T.NIL}, mentre il suo figlio sinistro può essere un nodo qualsiasi.
@@ -7942,21 +7943,21 @@ Nel secondo caso, l'assegnamento nella linea \(10\) assicura che il padre di \te
 All'interno del codice si delineano \(4\) casi:
 
 \begin{itemize}
-  \item[Caso \(0\):] \texttt{x} è un nodo rosso, oppure è la radice.
-  \item[Caso \(1\):] \texttt{x} è un nodo nero, suo fratello destro \texttt{w} è rosso \textit{(Figura~\ref{fig:caso-1-algoritmo-rb-delete-fixup})}.
+  \item[Caso \(0\):] \texttt{x} è un nodo \textbf{rosso}, oppure è la \textbf{radice}.
+  \item[Caso \(1\):] \texttt{x} è un nodo \textbf{nero}, suo fratello destro \texttt{w} è \textbf{rosso} \textit{(Figura~\ref{fig:caso-1-algoritmo-rb-delete-fixup})}.
     \begin{itemize}
-      \item il padre di \texttt{x} è nero
+      \item il padre di \texttt{x} è \textbf{nero}
       \item la struttura evolve nei casi \(2\), \(3\) o \(4\)
     \end{itemize}
-  \item[Caso \(2\):] \texttt{x} è un nodo nero, suo fratello destro \texttt{w} è nero con i figli entrambi neri \textit{(Figura~\ref{fig:caso-2-algoritmo-rb-delete-fixup})}.
+  \item[Caso \(2\):] \texttt{x} è un nodo \textbf{nero}, suo fratello destro \texttt{w} è \textbf{nero} con i figli \textbf{entrambi neri} \textit{(Figura~\ref{fig:caso-2-algoritmo-rb-delete-fixup})}.
     \begin{itemize}
-      \item se si proviene dal caso \(1\), allora \texttt{x.parent} è rosso. L'invocazione di \texttt{RB-DELETE-FIXUP} termina subito
+      \item se si proviene dal caso \(1\), allora \texttt{x.parent} è \textbf{rosso}. L'invocazione di \texttt{RB-DELETE-FIXUP} termina subito
     \end{itemize}
-  \item[Caso \(3\):] \texttt{x} è nero, suo fratello destro \texttt{w} è nero con figlio sinistro rosso e figlio destro nero \textit{(Figura~\ref{fig:caso-3-algoritmo-rb-delete-fixup})}.
+  \item[Caso \(3\):] \texttt{x} è \textbf{nero}, suo fratello destro \texttt{w} è \textbf{nero} con figlio sinistro \textbf{rosso} e figlio destro \textbf{nero} \textit{(Figura~\ref{fig:caso-3-algoritmo-rb-delete-fixup})}.
     \begin{itemize}
       \item la struttura evolve nel caso \(4\)
-    \end{itemize}
-  \item[Caso \(4\):] \texttt{x} è nero, suo fratello destro \texttt{w} è nero con figlio destro rosso \textit{(Figura~\ref{fig:caso-4-algoritmo-rb-delete-fixup})}.
+    \end{itemize}\textbf{}
+  \item[Caso \(4\):] \texttt{x} è \textbf{nero}, suo fratello destro \texttt{w} è \textbf{nero} con figlio destro \textbf{rosso} \textit{(Figura~\ref{fig:caso-4-algoritmo-rb-delete-fixup})}.
 \end{itemize}
 
 Ogni volta che \texttt{RB-DELETE-FIXUP} viene invocata, essa può terminare \textit{(casi \(0,\ 1,\ 3,\ 4\))} o venire applicato ricorsivamente risalendo un livello \textit{(caso \(2\) non proveniente da \(1\))}.
@@ -8610,7 +8611,7 @@ La complessità delle operazioni comuni sui grafi \textit{(studiati nella Sezion
   \begin{tabular}{c|c|c|c}
     \textit{tipo di albero} & \textit{ricerca}              & \textit{inserimento}          & \textit{cancellazione}        \\ \hline
     \textit{albero binario} & \(\bigO(n)\)                  & \(\bigO(n)\)                  & \(\bigO(n)\)                  \\
-    \BST                    & \(\bigO(h) = \bigO(\log(n))\) & \(\bigO(h) = \bigO(\log(n))\) & \(\bigO(h) = \bigO(\log(n))\) \\
+    \BST                    & \(\bigO(n)\) & \(\bigO(n)\) & \(\bigO(n)\) \\
     \RB tree                & \(\bigO(h) = \bigO(\log(n))\) & \(\bigO(h) = \bigO(\log(n))\) & \(\bigO(h) = \bigO(\log(n))\) \\
   \end{tabular}
   \bigskip

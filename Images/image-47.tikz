@@ -24,16 +24,16 @@
 		\draw [style=solid] (5) to (17);
 		\draw [style=solid] (6) to (24);
 		\draw [style=solid, in=165, out=-45] (7) to (10);
-		\draw [style=solid, in=-180, out=-105, looseness=0.75] (7) to (10);
+		\draw [style=solid, in=-165, out=-120, looseness=0.75] (7) to (10);
 		\draw [style=solid, in=-105, out=135, looseness=1.25] (10) to (4);
 		\draw [style=solid, bend right=15] (10) to (4);
 		\draw [style=solid, in=75, out=-120] (5) to (10);
-		\draw [style=solid, in=45, out=-135, looseness=0.75] (17) to (10);
+		\draw [style=solid, in=45, out=-150, looseness=0.75] (17) to (10);
 		\draw [style=solid, in=-45, out=30, looseness=0.75] (10) to (17);
 		\draw [style=solid, in=255, out=15] (10) to (6);
 		\draw [style=solid, in=-135, out=0] (10) to (24);
-		\draw [style=solid, in=-30, out=-90] (24) to (10);
-		\draw [style=solid, in=-150, out=-120, looseness=1.25] (3) to (10);
+		\draw [style=solid, in=-60, out=-45] (24) to (10);
+		\draw [style=solid, in=-150, out=-135, looseness=1.25] (3) to (10);
 		\draw [style=solid] (0)
 			 to [in=90, out=-165, looseness=1.25] (25.center)
 			 to [in=-105, out=-90, looseness=1.25] (10);
