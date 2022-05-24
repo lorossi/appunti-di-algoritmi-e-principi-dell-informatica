@@ -20,7 +20,7 @@ void swap(int *a, int p, int q)
 
 /**
  * @brief Support function for build_max_heap. Fix a node in a max heap.
- * Compexity: O(log n).
+ * Complexity: O(log n).
  *
  * @param a array containing the heap
  * @param i index of the node to fix
@@ -34,7 +34,7 @@ void max_heapify(int *a, int i, int len)
   // largest child of the node
   int max = i;
 
-  // check if the childern are larger than the node
+  // check if the children are larger than the node
   if (left < len && a[left] > a[i])
     max = left;
   if (right < len && a[right] > a[max])
@@ -224,7 +224,7 @@ void merge_sort(int *sequence, int p, int r)
   {
     // find the middle element
     int q = (p + r) / 2;
-    // sort the two poetions
+    // sort the two positions
     merge_sort(sequence, p, q);
     merge_sort(sequence, q + 1, r);
     // merge the two sorted portions

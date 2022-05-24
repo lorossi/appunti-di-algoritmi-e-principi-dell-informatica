@@ -15,7 +15,7 @@
 		\node [style=none] (12) at (8.25, -2) {};
 		\node [style=none] (13) at (4.25, -2) {};
 		\node [style=top align] (14) at (6.25, -1) {\tiny\texttt{LEFT-ROTATE(T, x)}};
-		\node [style=bottom align] (15) at (6.25, -2) {\tiny\texttt{LEFT-ROTATE(T, x)}};
+		\node [style=bottom align] (15) at (6.25, -2) {\tiny\texttt{RIGHT-ROTATE(T, x)}};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [style=solid] (0) to (1);

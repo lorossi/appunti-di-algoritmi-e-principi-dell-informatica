@@ -36,10 +36,10 @@
 
 \ProcessOptions\relax
 
-%%%%%%%%%%%%%%%% TIKZ and TIKZIT CONFIGURATIONS %%%%%%%%%%%%%%%%
-\input{tikzstyle.tikzstyles}
-% tiks libraries for automata and drawing
+% tikz libraries for automata and drawing
 \usetikzlibrary{automata, positioning, backgrounds, arrows, arrows.meta, shapes, shapes.geometric, shapes.misc}
+% tikz styles
+\input{tikzstyle.tikzstyles}
 % standard layers used in .tikz files
 \pgfdeclarelayer{edgelayer}
 \pgfdeclarelayer{nodelayer}
@@ -51,23 +51,6 @@
 % eternalize tikz so that it does not renders all the images each time
 \usetikzlibrary{external}
 \tikzexternalize[prefix=tikztemp/]
-
-% command to add tikzit image
-\newcommand{\tikzfig}[2][1] {
-  \IfFileExists{Images/#2} {
-    \scalebox{#1}{
-    \tikzstyle{every picture}=[tikzfig]
-    \tikzsetnextfilename{#2}
-    \input{Images/#2}
-    }
-  }{
-    % image not found, just write it down
-    \textcolor{BrickRed}{
-      \colorbox{white}{Image Images/#2 not found!}
-    }
-  }
-}
-%%%%%%%%%%%%%%%% end of TIKZ and TIKZIT CONFIGURATIONS %%%%%%%%%%%%%%%%
 
 % images folder
 \graphicspath{{Images/}}
@@ -153,7 +136,7 @@
 
   % lstlsting style definition for C
 \lstdefinestyle{customc}{
-  commentstyle=\color{gray},
+  commentstyle=\color{darkgray},
   keywordstyle=\color{black}\bfseries,
   basicstyle=\ttfamily\footnotesize,
   language=C,
@@ -168,6 +151,22 @@
 }{
   \renewcommand\lstlistingname{Code}
   \renewcommand\lstlistlistingname{Codes}
+}
+
+% command to add tikzit image
+\newcommand{\tikzfig}[2][1] {
+  \IfFileExists{Images/#2} {
+    \scalebox{#1}{
+    \tikzstyle{every picture}=[tikzfig]
+    \tikzsetnextfilename{#2}
+    \input{Images/#2}
+    }
+  }{
+    % image not found, just write it down
+    \textcolor{BrickRed}{
+      \colorbox{white}{Image Images/#2 not found!}
+    }
+  }
 }
 
 % command for indented quote block

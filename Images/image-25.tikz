@@ -1,15 +1,15 @@
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=black] (0) at (0, 0) {};
-		\node [style=black] (2) at (4, -3) {};
-		\node [style=black] (6) at (6, -6) {};
+		\node [style=black, minimum size=10pt] (0) at (0, 0) {};
+		\node [style=black, minimum size=10pt] (2) at (4, -3) {};
+		\node [style=black, minimum size=10pt] (6) at (6, -6) {};
 		\node [style=none] (60) at (-8, -9) {};
 		\node [style=none] (61) at (-8, 0) {};
 		\node [style=none, rotate=90] (62) at (-8.75, -5) {\(\log_2(n)+1\)};
-		\node [style=black] (82) at (2, -6) {};
-		\node [style=black] (84) at (-4, -3) {};
-		\node [style=black] (85) at (-6, -6) {};
-		\node [style=black] (98) at (-2, -6) {};
+		\node [style=black, minimum size=10pt] (82) at (2, -6) {};
+		\node [style=black, minimum size=10pt] (84) at (-4, -3) {};
+		\node [style=black, minimum size=10pt] (85) at (-6, -6) {};
+		\node [style=black, minimum size=10pt] (98) at (-2, -6) {};
 		\node [style=right align] (99) at (10, 0) {\(c_n\)};
 		\node [style=right align] (100) at (10, -3) {\(c_n\)};
 		\node [style=right align] (101) at (10, -6) {\(c_n\)};
@@ -29,31 +29,31 @@
 		\node [style=right align] (115) at (-2.5, -6) {\footnotesize\(\frac{c_n}{4}\)};
 		\node [style=right align] (116) at (1.5, -6) {\footnotesize\(\frac{c_n}{4}\)};
 		\node [style=right align] (117) at (5.5, -6) {\footnotesize\(\frac{c_n}{4}\)};
-		\node [style=black] (124) at (2, -9.25) {};
-		\node [style=black] (125) at (3, -9.25) {};
-		\node [style=black] (126) at (4, -9.25) {};
-		\node [style=black] (127) at (6, -9.25) {};
+		\node [style=black, minimum size=10pt] (124) at (2, -9.25) {};
+		\node [style=black, minimum size=10pt] (125) at (3, -9.25) {};
+		\node [style=black, minimum size=10pt] (126) at (4, -9.25) {};
+		\node [style=black, minimum size=10pt] (127) at (6, -9.25) {};
 		\node [style=bottom align] (135) at (2, -9.75) {\(c\)};
 		\node [style=bottom align] (136) at (3, -9.75) {\(c\)};
 		\node [style=bottom align] (137) at (4, -9.75) {\(c\)};
 		\node [style=bottom align] (138) at (6, -9.75) {\(c\)};
-		\node [style=black] (139) at (5, -9.25) {};
+		\node [style=black, minimum size=10pt] (139) at (5, -9.25) {};
 		\node [style=bottom align] (140) at (5, -9.75) {\(c\)};
-		\node [style=black] (141) at (-3, -9.25) {};
-		\node [style=black] (142) at (-2, -9.25) {};
-		\node [style=black] (143) at (-1, -9.25) {};
-		\node [style=black] (144) at (1, -9.25) {};
+		\node [style=black, minimum size=10pt] (141) at (-3, -9.25) {};
+		\node [style=black, minimum size=10pt] (142) at (-2, -9.25) {};
+		\node [style=black, minimum size=10pt] (143) at (-1, -9.25) {};
+		\node [style=black, minimum size=10pt] (144) at (1, -9.25) {};
 		\node [style=bottom align] (145) at (-3, -9.75) {\(c\)};
 		\node [style=bottom align] (146) at (-2, -9.75) {\(c\)};
 		\node [style=bottom align] (147) at (-1, -9.75) {\(c\)};
 		\node [style=bottom align] (148) at (1, -9.75) {\(c\)};
-		\node [style=black] (149) at (0, -9.25) {};
+		\node [style=black, minimum size=10pt] (149) at (0, -9.25) {};
 		\node [style=bottom align] (150) at (0, -9.75) {\(c\)};
-		\node [style=black] (153) at (-6, -9.25) {};
-		\node [style=black] (154) at (-4, -9.25) {};
+		\node [style=black, minimum size=10pt] (153) at (-6, -9.25) {};
+		\node [style=black, minimum size=10pt] (154) at (-4, -9.25) {};
 		\node [style=bottom align] (157) at (-6, -9.75) {\(c\)};
 		\node [style=bottom align] (158) at (-4, -9.75) {\(c\)};
-		\node [style=black] (159) at (-5, -9.25) {};
+		\node [style=black, minimum size=10pt] (159) at (-5, -9.25) {};
 		\node [style=bottom align] (160) at (-5, -9.75) {\(c\)};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}

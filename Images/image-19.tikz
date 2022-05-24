@@ -1,31 +1,30 @@
 \begin{tikzpicture}
 	\begin{pgfonlayer}{nodelayer}
-		\node [style=left align] (2) at (0.75, -2) {\TM};
-		\node [style=left align] (3) at (0.75, -4) {\NPDA};
-		\node [style=left align] (4) at (0.75, -6) {\PDA};
-		\node [style=right align] (6) at (-0.75, -8) {\NFA};
-		\node [style=right align] (15) at (-0.75, -2) {\NTM};
-		\node [style=none] (0) at (0, 0) {};
+		\node [style=left align] (2) at (0.75, -1.5) {\TM};
+		\node [style=left align] (3) at (0.75, -3.5) {\NPDA};
+		\node [style=left align] (4) at (0.75, -5.5) {\PDA};
+		\node [style=right align] (6) at (-0.75, -7.5) {\NFA};
+		\node [style=right align] (15) at (-0.75, -1.5) {\NTM};
 		\node [style=none] (1) at (0, -9) {};
-		\node [style=none] (19) at (0, 0.5) {\textit{potenza}};
-		\node [style=left align] (5) at (0.75, -8) {\FSA};
-		\node [style=none] (7) at (-0.5, -8) {};
-		\node [style=none] (8) at (0.5, -8) {};
-		\node [style=none] (11) at (-0.5, -4) {};
-		\node [style=none] (12) at (0.5, -4) {};
-		\node [style=none] (13) at (-0.5, -6) {};
-		\node [style=none] (14) at (0.5, -6) {};
-		\node [style=none] (16) at (0.5, -2) {};
-		\node [style=none] (17) at (-0.25, -9) {};
-		\node [style=none] (18) at (0.25, -9) {};
-		\node [style=none] (20) at (-0.5, -2) {};
+		\node [style=top align] (19) at (0, 0) {\textit{potenza}};
+		\node [style=left align] (5) at (0.75, -7.5) {\FSA};
+		\node [style=none] (7) at (-0.5, -7.5) {};
+		\node [style=none] (8) at (0.5, -7.5) {};
+		\node [style=none] (11) at (-0.5, -3.5) {};
+		\node [style=none] (12) at (0.5, -3.5) {};
+		\node [style=none] (13) at (-0.5, -5.5) {};
+		\node [style=none] (14) at (0.5, -5.5) {};
+		\node [style=none] (16) at (0.5, -1.5) {};
+		\node [style=none] (17) at (-0.5, -9) {};
+		\node [style=none] (18) at (0.5, -9) {};
+		\node [style=none] (20) at (-0.5, -1.5) {};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
-		\draw [style=big arrow, in=270, out=90] (1.center) to (0.center);
 		\draw [style=big] (7.center) to (8.center);
 		\draw [style=big] (11.center) to (12.center);
 		\draw [style=big] (13.center) to (14.center);
 		\draw [style=big] (17.center) to (18.center);
 		\draw [style=big] (20.center) to (16.center);
+		\draw [style=big arrow, in=270, out=90] (1.center) to (19);
 	\end{pgfonlayer}
 \end{tikzpicture}
