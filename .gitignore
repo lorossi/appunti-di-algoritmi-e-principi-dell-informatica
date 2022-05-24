@@ -10,4 +10,4 @@ tikztemp/*
 *.d
 *.o
 *.out
-test_sort
+codes/*/test*
