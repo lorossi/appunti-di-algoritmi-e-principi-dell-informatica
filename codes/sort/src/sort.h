@@ -1,11 +1,11 @@
 #ifndef _SORT
 #define _SORT
 
+#include <assert.h>
+#include <limits.h>
+#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <assert.h>
-#include <time.h>
-#include <limits.h>
 
 // TESTING FUNCTIONS
 void populate_array(int *sequence, int len);

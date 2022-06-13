@@ -1,5 +1,8 @@
 #include "sort.h"
 
+#include <time.h>
+#include <stdio.h>
+
 #define ARRAY_LEN 1000
 #define TESTS_NUM 1000
 int sequence[ARRAY_LEN];
