@@ -112,6 +112,32 @@
 \advance\cftsubsecindent 0.5em\relax
 \advance\cftsubsecnumwidth 0.5em\relax
 
+% rename List into Listato o Code (according to language)
+\iflanguage{italian} {
+  \renewcommand\lstlistingname{Listato}
+  \renewcommand\lstlistlistingname{Listati}
+}{
+  \renewcommand\lstlistingname{Code}
+  \renewcommand\lstlistlistingname{Codes}
+}
+
+% command to add tikzit image
+\newcommand{\tikzfig}[2][1] {
+  \IfFileExists{Images/#2} {
+    \scalebox{#1}{
+    \tikzstyle{every picture}=[tikzfig]
+    \tikzsetnextfilename{#2}
+    \input{Images/#2}
+    }
+  }{
+    % image not found, just write it down
+    \textcolor{BrickRed}{
+      \colorbox{white}{Image Images/#2 not found!}
+    }
+  }
+}
+
+
 % lstlisting style definition for pseudocode
 \lstdefinestyle{pseudocode}{
   commentstyle=\color{gray},
@@ -142,31 +168,6 @@
   language=C,
   showstringspaces=false,
   tabsize=2,
-}
-
-% rename List into Listato o Code (according to language)
-\iflanguage{italian} {
-  \renewcommand\lstlistingname{Listato}
-  \renewcommand\lstlistlistingname{Listati}
-}{
-  \renewcommand\lstlistingname{Code}
-  \renewcommand\lstlistlistingname{Codes}
-}
-
-% command to add tikzit image
-\newcommand{\tikzfig}[2][1] {
-  \IfFileExists{Images/#2} {
-    \scalebox{#1}{
-    \tikzstyle{every picture}=[tikzfig]
-    \tikzsetnextfilename{#2}
-    \input{Images/#2}
-    }
-  }{
-    % image not found, just write it down
-    \textcolor{BrickRed}{
-      \colorbox{white}{Image Images/#2 not found!}
-    }
-  }
 }
 
 % command for indented quote block
