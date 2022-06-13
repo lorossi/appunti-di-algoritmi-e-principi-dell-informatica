@@ -11,3 +11,4 @@ tikztemp/*
 *.o
 *.out
 codes/*/test*
+codes/*/venv*
