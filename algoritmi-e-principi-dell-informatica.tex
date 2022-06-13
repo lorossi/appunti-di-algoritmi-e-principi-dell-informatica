@@ -5620,7 +5620,7 @@ Il valore di \(\sfrac{n}{b}\) è considerato arrotondato per difetto o per ecces
 
 Se, come nel caso \ref{enum:teorema-esperto-1}, la funzione \(n^{\log_b(a)}\) è la più grande delle due, allora la soluzione è \(T(n) = \Theta\left(n^{\log_b (a)}\right)\).
 Se, invece, è \(f(n)\) ad essere la più grande, come nel caso \ref{enum:teorema-esperto-3}, allora la soluzione è \(T(n) = \Theta\left(f(n)\right)\).
-Infine, se come nel caso \ref{enum:teorema-esperto-2}, le due funzioni sono della stessa dimensione, moltiplicando per un fattore logaritmico risulta che la soluzione è \(T(n) = \Theta\left(n^{\log_b(a)} \log{(n)}\right) = \Theta\left(f(n) \log{(n)}\right)\).
+Infine, se come nel caso \ref{enum:teorema-esperto-2}, le due funzioni sono della stessa dimensione, moltiplicando per un fattore logaritmico risulta che la soluzione è \(T(n) = \Theta\left(n^{\log_b(a)} \log{(n)}\right)\).
 
 \bigskip
 Prima di poter applicare il teorema, è necessario tenere conto di alcuni dettagli non \textit{ovvi}.
@@ -6765,7 +6765,7 @@ Di conseguenza, la complessità temporale è, in media, \textbf{costante per tut
 
 \subsubsection{Funzioni hash}
 
-Fin'ora non è stato discusso il modo in cui una funzione possa creare un hash ma solo che esistono funzioni che possono farlo.
+Fin'ora non è stato discusso il modo in cui una funzione possa creare un hash, ma solo dell'esistenza della stessa.
 La domanda che sorge spontanea è quindi:
 
 \indentquote{Come si definisce una funzione hash? Quali devono essere le sue caratteristiche?}
@@ -6941,9 +6941,9 @@ Per questo motivo si accettano delle approssimazioni che si rivelano soddisfacen
 Esistono \(3\) tecniche:
 
 \begin{enumerate}
-  \item Ispezione lineare
-  \item Ispezione quadratica
-  \item Doppio hashing
+  \item Ispezione \textbf{lineare}
+  \item Ispezione \textbf{quadratica}
+  \item \textbf{Doppio hashing}
 \end{enumerate}
 
 Seppur nessuna di queste tecniche produca le \(m!\) permutazioni che sarebbero necessarie per soddisfare l'ipotesi di hashing uniforme, nella pratica forniscono una distribuzione di chiavi sufficientemente uniforme.
@@ -8289,9 +8289,9 @@ BELLMAN-FORD(adj, s)
 
 \subsection{Programmazione dinamica}
 
-La programmazione dinamica, in analogia con la tecnica Divide et Impera, si basa sull'idea di scomporre il problema da risolvere in sotto problemi finché non sono abbastanza semplici da essere risolti con facilità.
+La programmazione dinamica, in analogia con la tecnica \textit{Divide et Impera}, si basa sull'idea di scomporre il problema da risolvere in sotto problemi finché non sono abbastanza semplici da essere risolti con facilità.
 Questa tecnica è applicabile quando i problemi non sono indipendenti, cioè condividono dei sotto problemi in comune.
-Una volto risolto uno di questi, la soluzione viene salvata in una tabella per permetterne il riuso in seguito.
+Una volta risolto uno di questi, la soluzione viene salvata in una tabella per permetterne il riuso in seguito.
 Il termine programmazione non deriva dalla codifica in linguaggi di programmazione ma dal fatto che è una tecnica tabulare.
 
 La programmazione dinamica è spesso usata per problemi di ottimizzazione.
@@ -8301,10 +8301,10 @@ La soluzione cercata è uno dei multipli sotto problemi ammessi.
 I passi normalmente usati per applicare questa tecnica sono:
 
 \begin{enumerate}
-  \item Caratterizzazione della struttura delle soluzioni ottimali
-  \item Definizione ricorsiva dei valori di una soluzione ottimale del problema
-  \item Calcolo di una soluzione ottimale tramite algoritmi bottom-up \textit{(partendo dai problemi più semplici)}
-  \item Costruzione della soluzione ottimale del problema richiesto
+  \item \textbf{Caratterizzazione} della struttura delle soluzioni ottimali
+  \item \textbf{Definizione} ricorsiva dei valori di una soluzione ottimale del problema
+  \item \textbf{Calcolo} di una soluzione ottimale tramite algoritmi bottom-up \textit{(partendo dai problemi più semplici)}
+  \item \textbf{Costruzione} della soluzione ottimale del problema richiesto
 \end{enumerate}
 
 \subsubsection{Algoritmo di programmazione dinamica}
