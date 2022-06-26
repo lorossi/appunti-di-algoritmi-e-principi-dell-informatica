@@ -20,8 +20,6 @@
 \usepackage{mathrsfs}
 \newcommand{\flower}{\ding{97}\xspace}
 
-% TODO una volta finiti gli appunti, ri numerare le immagini in modo che sia tutto in ordine
-
 \begin{document}
 
 \makecover{Algoritmi e Principi dell'Informatica}{AA 2021/2022}
@@ -1747,7 +1745,7 @@ Di seguito sono enunciate alcune proprietà delle \TM:
   \item \label{enum:proprieta-2-tm} Ogni \TM è equivalente ad un'opportuna \TM avente un alfabeto formato solo da \textbf{due simboli distinti}
         \begin{itemize}
           \item può essere necessario accrescere il numero di stati
-          \item di conseguenza, sono sufficienti \(2\) simboli \textit{(più il simbolo \texttt{blank})} per implementare qualsiasi algoritmo
+          \item di conseguenza, sono sufficienti \(2\) simboli per implementare qualsiasi algoritmo
         \end{itemize}
 \end{enumerate}
 
@@ -2412,29 +2410,29 @@ In Tabella~\ref{tab:gerarchia-Chomsky} sono mostrate alcune caratteristiche di c
   La gerarchia è composta dalle grammatiche così come segue:
 
   \bigskip
-  \begin{enumerate}[start=0, label=Tipo \arabic*:]
-    \item Include tutte le grammatiche formali
-    \item Hanno regole in forma \(\alpha A \beta \rightarrow \alpha\gamma\beta\)
-          \begin{itemize}
-            \item \(A\) è un non terminale
-            \item \(\alpha, \beta, \gamma\) sono stringhe di terminali e non terminali
-            \item \(\gamma\) è non vuota
-            \item il contesto viene preservato \textit{(solo il non terminale viene sostituito)}
-            \item la regola \(S \rightarrow \epsilon\) è consentita se \(S\) non appare a destra in alcuna regola
-          \end{itemize}
-    \item Hanno regole in forma \(A \rightarrow \gamma\)
-          \begin{itemize}
-            \item \(A\) è un non terminale
-            \item \(\gamma\) è una stringa di terminali e non terminali
-          \end{itemize}
-    \item Hanno regole in forma \(X \rightarrow a\) e (\(X \rightarrow aY\) o \(X \rightarrow Ya\))
-          \begin{itemize}
-            \item \(X, Y\) sono non terminali
-            \item \(a\) è un terminale
-            \item \(a\) può essere seguito (o preceduto) da un terminale \textit{(le due possibilità sono mutualmente esclusive)}
-            \item La regola \(S \rightarrow \epsilon\) è consentita se \(S\) non appare a destra in alcuna regola
-          \end{itemize}
-  \end{enumerate}
+  \begin{itemize}
+    \item[Tipo 3:] Hanno regole in forma \(X \rightarrow a\) e (\(X \rightarrow aY\) o \(X \rightarrow Ya\))
+      \begin{itemize}
+        \item \(X, Y\) sono non terminali
+        \item \(a\) è un terminale
+        \item \(a\) può essere seguito \textbf{oppure} preceduto da un terminale \textit{(le due possibilità sono mutualmente esclusive)}
+        \item La regola \(S \rightarrow \epsilon\) è consentita se \(S\) non appare a destra in alcuna regola
+      \end{itemize}
+    \item[Tipo 2:] Hanno regole in forma \(A \rightarrow \gamma\)
+      \begin{itemize}
+        \item \(A\) è un non terminale
+        \item \(\gamma\) è una stringa di terminali e non terminali
+      \end{itemize}
+    \item[Tipo 1:] Hanno regole in forma \(\alpha A \beta \rightarrow \alpha\gamma\beta\)
+      \begin{itemize}
+        \item \(A\) è un non terminale
+        \item \(\alpha, \beta, \gamma\) sono stringhe di terminali e non terminali
+        \item \(\gamma\) è non vuota
+        \item il contesto viene preservato \textit{(solo il non terminale viene sostituito)}
+        \item la regola \(S \rightarrow \epsilon\) è consentita se \(S\) non appare a destra in alcuna regola
+      \end{itemize}
+    \item[Tipo 0:] Include tutte le grammatiche formali
+  \end{itemize}
   \bigskip
 \end{minipage}
 
@@ -2781,7 +2779,7 @@ Esso include:
   \item La notazione \([\textsuperscript{$\wedge$} \alpha]\) indica \textbf{un qualunque simbolo} \(\notin \alpha\)
   \item Il simbolo \(\textsuperscript{$\wedge$}\) indica \textbf{\(\epsilon\) all'inizio di una riga} di testo
   \item Il simbolo \(\$\) indica \textbf{\(\epsilon\) alla fine di una riga} di testo
-  \item I simboli \(\ast, +, \, | \,, (, )\) rappresentano gli \textbf{operatori} come già definiti \textit{(a esempio in Sezione~\ref{sec:operazioni-linguaggi})}
+  \item I simboli \(\ast, +, \, | \,, (, )\) rappresentano gli \textbf{operatori} come già definiti \textit{(per esempio nella Sezione~\ref{sec:operazioni-linguaggi})}
   \item Il simbolo \(\backslash\) funge da \textbf{escape}
 \end{itemize}
 
@@ -5235,7 +5233,7 @@ Infine, è possibile fare le seguenti \textit{osservazioni}:
 \begin{itemize}
   \item Per quanto grande possa essere il grado di un polinomio, sarà sempre inferiore ad una funzione esponenziale
         \begin{itemize}[label=\(\rightarrow\)]
-          \item è sufficiente confrontare l'andamento delle funzioni \(n^k\) e \(2^n\)
+          \item è sufficiente confrontare l'andamento delle funzioni \(n^k\) e \(k^n\) per \(n \rightarrow \infty\)
         \end{itemize}
   \item Grazie al teorema di correlazione polinomiale è possibile parlare dei problemi risolvibili in tempo e/o spazio polinomiale astraendo dalla classe del calcolatore
   \item \textit{classe dei problemi trattabili in pratica} \(\equiv\) \textit{classe dei problemi risolvibili in tempo polinomiale}
@@ -5327,9 +5325,14 @@ In questi ultimi l'ordine dei vertici negli archi non è rilevante.
         \begin{itemize}
           \item tra i due intercorre la relazione \(0 \leq |E| \leq |V|^2\)
         \end{itemize}
-  \item un grafo è detto \textbf{denso} se \(|E| \approx |V|^2\) (il numero di lati è prossimo al numero massimo)
+  \item Un grafo è detto \textbf{denso} se \(|E| \approx |V|^2\) (il numero di lati è prossimo al numero massimo)
         \begin{itemize}
           \item in caso contrario è detto \textbf{sparso}
+        \end{itemize}
+  \item Il numero di massimo di archi in un grafo è:
+        \begin{itemize}
+          \item per i grafi non \textbf{orientati} \(2 \cdot \dfrac{|E|}{|V|(|V|-1)}\)
+          \item per i grafi \textbf{orientati} \(\dfrac{|E|}{|V|(|V|-1)}\)
         \end{itemize}
 \end{itemize}
 
@@ -5383,7 +5386,7 @@ Un esempio di albero è mostrato in Figura~\ref{fig:esempio-di-albero}.
 
 Il Lemma di altezza dell'albero binario recita che:
 
-\indentquote{Ogni albero binario di altezza \(h\) ha un numero di foglie al più pari a \(2^h\).}
+\indentquote{Ogni albero binario di altezza \(h\) ha un numero di foglie al più pari a \(2^h\)}
 
 La dimostrazione è banale e avviene per induzione.
 
@@ -5665,17 +5668,19 @@ Nel caso \ref{enum:caso-particolare-teorema-esperto-3} la condizione aggiuntiva 
 
 \bigskip
 Un'altro caso particolare è identificato nel caso in cui la ricorrenza abbia forma
-\[T(n) = \begin{cases}
-    \Theta(1) \quad                                                           & \text{se } n \leq m \leq h \\
-    \displaystyle \sum_{1 \leq i \leq h} a_i \cdot T(n-i) + c \cdot n^k \quad & \text{altrimenti}
-  \end{cases}\]
-in cui i coefficienti \(a_i \in \mathbb{N} \, \forall \, i\).
 
-\bigskip
-Ponendo \(a = \displaystyle \sum_{i \leq i \leq h} a_i\), se:
+\[T(n) = \begin{cases}
+    \Theta(1)                                                      & \text{se } n \leq m \leq h \\
+    \displaystyle \sum_{1 \leq i \leq h} a_i  T(n-i) + c n^k \quad & \text{se } n > m
+  \end{cases}
+\]
+
+in cui i coefficienti \(a_i\) sono tutti appropriati valori naturali \textit{(\(a_i \in \mathbb{N} \, \forall \, i\))}.
+
+Ponendo \(a = \displaystyle \sum_{i \leq i \leq h} a_i\), allora risulta immediatamente che:
 
 \[\begin{cases}
-    a = 1  \ \Rightarrow \      & T(n) = \bigO(n^{k+1}) \\
+    a = 1  \ \Rightarrow \      & T(n) = \bigO(a n^{k+1}) = \bigO(n^{k+1}) \\
     a \geq 2  \  \Rightarrow \  & T(n) = \bigO(a^n n^k)
   \end{cases}\]
 
@@ -5686,19 +5691,19 @@ Ponendo \(a = \displaystyle \sum_{i \leq i \leq h} a_i\), se:
 \begin{center}
   \begin{minipage}{0.31\textwidth}
     \centering
-    \begin{lstlisting}[style=pseudocode, numbers=none]
+    \begin{lstlisting}[style=pseudocode]
 PARENT(i):
   return floor(i / 2)
 \end{lstlisting}
   \end{minipage}
   \begin{minipage}{0.3\textwidth}
-    \begin{lstlisting}[style=pseudocode, xleftmargin=20pt, xrightmargin=20pt, numbers=none]
+    \begin{lstlisting}[style=pseudocode, xleftmargin=20pt, xrightmargin=20pt]
 LEFT(i):
   return 2 * i
 \end{lstlisting}
   \end{minipage}
   \begin{minipage}{0.3\textwidth}
-    \begin{lstlisting}[style=pseudocode, numbers=none]
+    \begin{lstlisting}[style=pseudocode]
 RIGHT(i):
   return 2 * i + 1
 \end{lstlisting}
@@ -5796,6 +5801,7 @@ Il passo finale della soluzione deriva dall'uguaglianza
 come sommatoria di una serie geometrica.
 
 \subsection{Problemi di ordinamento}
+\label{sec:problemi-di-ordinamento}
 
 L'\textbf{ordinamento} degli elementi di una sequenza è un problema molto comune e fornisce un classico esempio di problema risolvibile tramite algoritmi.
 Esistono parecchi algoritmi di ordinamento \textit{(insertion sort, selection sort, bubble sort, \ldots)}, ognuno con la propria complessità.
@@ -6170,7 +6176,7 @@ La soluzione sarà quindi pari a: \[ T(n) = \bigO\left(n^2\right) \]
 
 \subsubsection{\texttt{COUNTING-SORT}}
 
-L'algoritmo \texttt{COUNTING-SORT} è un algoritmo di ordinamento che richiede che tutti i valori in ingresso \(a_0,\, \ldots,\, a_k\) corrispondano a tutti i numeri interi compresi tra \(0\) ed una certa costante \(m\), ammettendo ripetizioni \textit{(quindi \(k \geq m\))}.
+L'algoritmo \texttt{COUNTING-SORT} è un algoritmo di ordinamento che richiede che tutti i valori in ingresso \(a_0,\, \ldots,\, a_k\) siano numeri interi compresi tra \(0\) ed una certa costante \(m\), ammettendo ripetizioni \textit{(quindi \(k \geq m\))}.
 
 \textit{Idea} di dell'algoritmo:
 se nell'array ci sono \(m_e\) valori più piccoli di un certo elemento \(e\) di valore \(v_e\), nell'array ordinato quest'ultimo sarà in posizioni \(m_e + 1\).
@@ -6212,9 +6218,8 @@ La complessità dell'algoritmo \texttt{COUNTING-SORT} è data dai \(4\) cicli \t
 La complessità totale sarà quindi \(\Theta(n+k)\).
 
 Se \(k = \bigO(n)\), allora l'algoritmo \texttt{COUNTING-SORT} ha complessità \(\bigO(n)\) \textit{(lineare)}.
-\texttt{COUNTING-SORT} è più veloce di \texttt{MERGE-SORT} e \texttt{HEAPSORT} perché fa delle forti assunzioni sulla distribuzione dei valori da ordinare \textit{(assumendo che ogni valore sia \(\leq k\))}.
-
-In caso contrario, la complessità dell'algoritmo \texttt{COUNTING-SORT} sarà superiore a quella degli altri algoritmi.
+\texttt{COUNTING-SORT} è più veloce di \texttt{MERGE-SORT} e \texttt{HEAPSORT} perché fa delle forti assunzioni sulla distribuzione dei valori da ordinare: all'interno dell'insieme di valori di ordinare siano presenti solo i numeri naturali tra \(0\) e \(k\), anche ripetuti.
+Quindi questo algoritmo non può funzionare qualora si volessero ordinare elementi frazionari o negativi.
 
 \bigskip
 Si noti che è possibile ottenere una versione semplificata dell'algoritmo senza fare uso dell'array \texttt{B}, perdendo tuttavia stabilità.
@@ -6235,7 +6240,10 @@ Poiché ogni algoritmo deve poter creare le \(n!\) permutazioni, incluse quelle 
 
 \bigskip
 Un esempio di albero di decisione è mostrato nella Figura~\ref{fig:albero-di-decisione-esempio}.
-Un nodo con la notazione \(i : j\) indica la permutazione tra gli elementi \(i\) e \(j\). Il percorso verde mostra la decisione dell'algoritmo di ordinamento quando avendo come input \(\langle a_1 = 9, a_2 = 6, a_3  = 2\rangle\). La permutazione \(\langle 3, 2, 1 \rangle\) nella foglia verde indica l'ordinamento corretto. Poiché ci sono \(3\) elementi, ci saranno \(3! = 6\) foglie.
+Un nodo con la notazione \(i : j\) indica la permutazione tra gli elementi \(i\) e \(j\).
+Il percorso verde mostra la decisione dell'algoritmo di ordinamento quando avendo come input \(\langle a_1 = 9, a_2 = 6, a_3  = 2\rangle\).
+La permutazione \(\langle 3, 2, 1 \rangle\) nella foglia verde indica l'ordinamento corretto.
+Dato che gli elementi da ordinare sono \(3\), l'albero presenterà \(3! = 6\) foglie.
 
 \begin{figure}[htbp]
   \bigskip
@@ -6246,7 +6254,7 @@ Un nodo con la notazione \(i : j\) indica la permutazione tra gli elementi \(i\)
   \bigskip
 \end{figure}
 
-Poiché è possibile costruire un albero di decisione per ogni dato \(n\), tenendo conto del \nameref{par:lemma-altezza-albero-binario}, \textit{(Paragrafo~\ref{par:lemma-altezza-albero-binario})}, si ottiene il seguente teorema:
+Considerato che è possibile costruire un albero di decisione per ogni dato \(n\), tenendo conto del \nameref{par:lemma-altezza-albero-binario}, \textit{(Paragrafo~\ref{par:lemma-altezza-albero-binario})}, si ottiene il seguente teorema:
 
 \indentquote{Ogni albero di decisione di ordinamento di \(n\) elementi ha altezza \(\Omega(n \log n)\).}
 
@@ -6623,20 +6631,27 @@ Lo pseudocodice delle funzioni appena elencate è mostrato nei Listati~\ref{lst:
 I parametri \texttt{T} e \texttt{k} rappresentano rispettivamente il \textbf{dizionario} e la \textbf{chiave} dell'elemento da cercare.
 
 \begin{minipage}{\textwidth}
-  \begin{lstlisting}[numbers=none, style=pseudocode, caption={Ricerca}, label={lst:search-dizionario}]
+  \bigskip
+  \centering
+  \begin{minipage}[t]{0.32\textwidth}
+    \begin{lstlisting}[style=pseudocode, basicstyle=\footnotesize\ttfamily, caption={Ricerca}, label={lst:search-dizionario}]
 DIRECT-ADDRESS-SEARCH(T, k)
   return T[k]
 \end{lstlisting}
-
-  \begin{lstlisting}[style=pseudocode, caption={Inserimento}, label={lst:insert-dizionario}]
+  \end{minipage}
+  \begin{minipage}[t]{0.32\textwidth}
+    \begin{lstlisting}[style=pseudocode, basicstyle=\footnotesize\ttfamily, caption={Inserimento}, label={lst:insert-dizionario}]
 DIRECT-ADDRESS-INSERT(T, k)
   T[x.key] = x
 \end{lstlisting}
-
-  \begin{lstlisting}[numbers=none, style=pseudocode, caption={Cancellazione}, label={lst:delete-dizionario}]
+  \end{minipage}
+  \begin{minipage}[t]{0.32\textwidth}
+    \begin{lstlisting}[style=pseudocode, basicstyle=\footnotesize\ttfamily, caption={Cancellazione}, label={lst:delete-dizionario}]
 DIRECT-ADDRESS-DELETE(T, k)
   T[x.key] := NIL
 \end{lstlisting}
+  \end{minipage}
+  \bigskip
 \end{minipage}
 
 La complessità delle operazioni è \(\bigO(1)\), quindi i dizionari sono le strutture dati \textbf{più efficienti} tra quelle analizzate fin'ora.
@@ -6704,18 +6719,16 @@ La collisioni e le loro risoluzioni sono mostrate rispettivamente nelle Figure~\
 
 \subsubsection{Operazioni sulle tabelle hash}
 
-\begin{lstlisting}[style=pseudocode, caption={Ricerca}, label={lst:chained-hash-search}]
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[style=pseudocode, basicstyle=\footnotesize\ttfamily, caption={Ricerca}, label={lst:chained-hash-search}]
   CHAINED-HASH-SEARCH(T, k)
     cerca un elemento con chiave k nella lista T[h(k)]
   \end{lstlisting}
-
-\begin{minipage}{\textwidth}
-  \begin{lstlisting}[style=pseudocode, caption={Inserimento}, label={lst:chained-hash-insert}]
+  \begin{lstlisting}[style=pseudocode, basicstyle=\footnotesize\ttfamily, caption={Inserimento}, label={lst:chained-hash-insert}]
 CHAINED-HASH-INSERT(T, x)
   inserisci X in testa alla lista T[h(x.key)]
 \end{lstlisting}
-
-  \begin{lstlisting}[style=pseudocode, caption={Cancellazione}, label={lst:chained-hash-delete}]
+  \begin{lstlisting}[style=pseudocode, basicstyle=\footnotesize\ttfamily, caption={Cancellazione}, label={lst:chained-hash-delete}]
 CHAINED-HASH-DELETE(T, x)
   cancella x dalla lista T[h(x.key)]
 \end{lstlisting}
@@ -6910,17 +6923,17 @@ L'algoritmo prende come input una tabella di hash \texttt{T} ed una chiave \text
     t[i] = DELETED
   \end{lstlisting}
 
-La cancellazione è una operazione più complicata, in quanto impostare a \texttt{NIL} lo slot desiderato non è possibile.
-Se così fosse, la ricerca di chiavi successive a quella cancellata non sarebbe permesso.
+La cancellazione rappresenta una operazione più complicata, in quanto impostare a \texttt{NIL} lo slot desiderato non è possibile:
+se così fosse, la ricerca di chiavi successive a quella cancellata non sarebbe permesso.
 
-Una possibile soluzione sta nel rimpiazzare il valore \texttt{NIL} con un valore convenzionale \texttt{DELETED}.
+Una possibile soluzione viene trovata nel rimpiazzare il valore \texttt{NIL} con un valore convenzionale, fissato a priori, come \texttt{DELETED}.
 Così facendo tuttavia le complessità non dipenderebbero più dal fattore di carico \textit{(come si vedrà più avanti)}.
 
 \paragraph{Complessità temporale}
 
 Il tempo impiegato per trovare lo slot desiderato \textit{(sia esso relativo ad un oggetto da eliminare o da inserire)} dipende dalla sequenza di ispezione restituita dalla funzione \(h\), quindi dipende dalla sua implementazione.
 
-Ipotizzando che le chiavi e le sequenze di ispezione abbiano distribuzione uniforme \textit{(per l'ipotesi di hashing uniforme)}, ognuna delle \(m!\) permutazioni di \(\langle 0, \ldots, m-1 \rangle\) ha la stessa probabilità di essere scelta.
+Ipotizzando che le chiavi e le sequenze di ispezione abbiano distribuzione uniforme \textit{(per l'ipotesi di hashing uniforme)}, ognuna delle \(m!\) permutazioni di \(\langle 0, \, \ldots, \, m-1 \rangle\) ha la stessa probabilità di essere scelta.
 Questa è una estensione alla sequenza di ispezione della precedente condizione di hashing uniforme semplice.
 
 L'analisi della complessità viene fatta in funzione del fattore di carico \(\alpha\), che grazie alla struttura della tabella rispetterà le condizioni:
@@ -7046,7 +7059,7 @@ Ogni nodo dell'albero è rappresentato da un oggetto che ha i seguenti attributi
           \item se \texttt{left = NIL}, allora il sotto albero sinistro è \textbf{vuoto}
         \end{itemize}
   \item \texttt{right}, il \textbf{puntatore} alla radice del \textbf{sotto albero destro}
-  \begin{itemize}
+        \begin{itemize}
           \item se \texttt{right = NIL}, allora il sotto albero destro è \textbf{vuoto}
         \end{itemize}
 \end{itemize}
@@ -7087,9 +7100,7 @@ Nel primo caso si userà l'algoritmo \texttt{BFS} \textit{(Breadth First Search)
 \end{itemize}
 
 Entrambi gli algoritmi verranno analizzati più nel dettaglio, nelle loro applicazioni ai grafi, nei Paragrafi~\ref{par:grafi-bfs}~e~\ref{par:grafi-dfs}.
-
-\bigskip
-Un confronto grafico tra i due algoritmi e l'ordine di attraversamento è mostrato nelle Figure~\ref{fig:attraversamento-albero-bfs}~e~\ref{fig:attraversamento-albero-dfs}.
+Un confronto grafico tra i due è mostrato nelle Figure~\ref{fig:attraversamento-albero-bfs}~e~\ref{fig:attraversamento-albero-dfs}.
 
 \begin{figure}
   \bigskip
@@ -7533,21 +7544,25 @@ La complessità temporale di entrambi gli algoritmi è \(\bigO(h)\), con \(h = \
 
 \subsection{Alberi bilanciati}
 
-Esistono svariate definizioni di albero bilanciato.
-
-\textit{Informalmente}, un albero è detto \textbf{bilanciato} se e solo se non esistono due foglie nell'albero tali che la distanza dalla radice di una sia molto maggiore dell'altra.
+\textit{Informalmente}, un albero è detto \textbf{bilanciato} se e solo se non esistono due foglie nell'albero tali che la distanza dalla radice di una sia \textit{molto maggiore} dell'altra.
 
 Una possibile definizione formale \textit{(definita da Adelson-Velskii e Landis)}, è la seguente:
 
 \indentquote{Un albero è bilanciato se e solo se, per ogni nodo \texttt{x} dell'albero, le altezze dei due sotto alberi di \texttt{x} differiscono al massimo di \(1\).}
 
-Esistono varie tecniche per mantenere un albero bilanciato.
-Nella sezione seguente verranno esplorati gli alberi \textbf{rosso-neri}.
+Si noti che \textbf{non esiste una definizione univoca} ed alberi bilanciati di diversi tipi possono ammettere \textbf{discriminanti diverse} riguardanti le lunghezze dei cammini.
+
+\bigskip
+
+Esistono diverse tecniche \textit{(ed altrettante strutture dati distinte)} per mantenere un albero bilanciato:
+nella Sezione~\ref{sec:alberi-rosso-neri} verranno esplorati gli alberi \textbf{rosso-neri}.
 
 \subsection{Alberi rosso-neri - \RB}
 \label{sec:alberi-rosso-neri}
 
 Gli \textbf{alberi rosso-neri} (o dall'Inglese \textit{red-black}, in breve \RB) sono alberi \textbf{bilanciati}.
+Infatti, il rapporto tra il cammino più lungo e quello più corto del grafo è sempre minore o uguale a \(2\).
+
 Le operazioni fondamentali, mostrate nella Sezione precedente, applicate agli alberi \RB avranno complessità temporale pari a \(\bigO(\log{(n)})\), con \(h = \text{altezza dell'albero}\), minore di quanto riscontrato negli \BST.
 
 Ogni nodo dell'albero contiene gli attributi \texttt{color}, \texttt{key}, \texttt{left}, \texttt{right} e \texttt{parent}.
@@ -7589,7 +7604,7 @@ Il confronto tra le due rappresentazioni è mostrato nella Figura~\ref{fig:confr
   \end{subfigure}
   \begin{subfigure}[b]{.495\textwidth}
     \centering
-    \tikzfig[.9]{image-47.tikz}
+    \tikzfig[.8]{image-47.tikz}
     \caption{Tutte le foglie sono rappresentate da un solo nodo}
     \bigskip
     \label{fig:foglie-rappresentate-da-un-solo-nodo}
@@ -7637,8 +7652,7 @@ Dove \(n\) indica il numero di nodi dell'albero.
 \paragraph{Rotazioni}
 \label{par:rotazioni-rb}
 
-Le operazioni di Inserimento e Cancellazione (Sezioni \ref{par:inserimento-rb} e \ref{par:cancellazione-rb}), hanno la caratteristica di alterare l'albero.
-La struttura risultante da queste operazioni potrebbe quindi violare le proprietà elencate nella Sezione~\ref{sec:alberi-rosso-neri}.
+Le operazioni di Inserimento e Cancellazione \textit{(Sezioni \ref{par:inserimento-rb} e \ref{par:cancellazione-rb})}, hanno la caratteristica di alterare l'albero: la struttura risultante potrebbe quindi violare le proprietà elencate nella Sezione~\ref{sec:alberi-rosso-neri}.
 
 Affinché esse siano sempre rispettate, il colore di alcuni nodi nell'albero e la struttura dei puntatori potrebbero dover essere modificati.
 Quest'ultima viene alterata tramite una operazione detta \textbf{rotazione}, che può essere \textbf{sinistra} o \textbf{destra}.
@@ -8156,7 +8170,7 @@ La complessità temporale dell'algoritmo è data da:
   \item L'algoritmo \texttt{DFS-VISIT} è ripetuto \textit{(linee \(5-7\) dell'algoritmo \texttt{DFS})} una volta durante l'esecuzione del ciclo \textbf{\texttt{for}} \textit{(linee \(5-7\) dell'algoritmo \texttt{DFS-VISIT})} per ogni lato con complessità \(\Theta(|E|)\)
 \end{itemize}
 
-La complessità totale sarà quindi \(\bigO(|V|+|E|)\) \textit{(analoga al \BFS)}.
+La complessità totale sarà quindi \(\bigO(|V|+|E|)\) \textit{(analoga alla complessità del \BFS, come già annunciato)}.
 
 \paragraph{Ordinamento topologico}
 
@@ -8403,19 +8417,16 @@ L'obiettivo di questa Sezione sarà ricapitolare delle conclusioni tratte nelle 
 
 \subsection{Scala di potenza delle classi di automi}
 
-Le classi di automi possono essere rappresentati in una scala, in ordine dal \textbf{più} al \textbf{meno} potente.
-Ciò avviene nella Figura~\ref{fig:scala-potenza-automi}.
+Le classi di automi possono essere rappresentati in una scala, in ordine dal \textbf{più} al \textbf{meno} potente, come nella Figura~\ref{fig:scala-potenza-automi}.
 
 Si noti che \NFA e \FSA hanno potenza equivalente in quanto esiste un algoritmo per convertire i primi nei secondi.
 Allo stesso modo \TM e \NTM hanno potenza equivalente perché il non determinismo non aggiunge potenza.
 
 \begin{figure}[htbp]
-  \bigskip
   \centering
   \tikzfig{image-19.tikz}
   \caption{Scala di potenza degli automi}
   \label{fig:scala-potenza-automi}
-  \bigskip
 \end{figure}
 
 \subsection{Chiusura degli automi rispetto alle operazioni}
@@ -8581,7 +8592,7 @@ Si ricordi che un insieme di funzioni è banale se è \textbf{vuoto} o se è l'i
 \subsection{Complessità}
 
 \begin{itemize}
-  \item Tutti i logaritmi sono nello stesso \(\Theta\) si può non omettere la \textbf{base}
+  \item Tutti i logaritmi sono nello stesso \(\Theta\), quindi si può omettere la \textbf{base}
         \begin{itemize}
           \item la formula di cambio base comporta un fattore moltiplicativo
           \item è possibile non indicare la base del logaritmo quando si valuta l'andamento asintotico
@@ -8601,23 +8612,78 @@ Se, ad ogni ciclo, il contatore:
   \item Viene elevato ad un valore costante \texttt{k}: la complessità è \(T(n) = \Theta\left(\log{\left(\log{(n)}\right)}\right)\)
 \end{itemize}
 
-\subsection{Complessità delle operazioni sui grafi}
+\subsection{Complessità delle operazioni sugli heap}
 
-La complessità delle operazioni comuni sui grafi \textit{(studiati nella Sezione~\ref{sec:alberi})}, nei loro rispettivi casi peggiori, sono mostrate nella Tabella~\ref{tab:complessita-operazioni-comuni-sui-grafi-caso-peggiore}.
+Le complessità delle operazioni comuni sugli heap \textit{(studiati nella Sezione~\ref{sec:heap})}, nei loro rispettivi casi peggiori, sono:
+
+\begin{itemize}
+  \item \textit{Costruzione}: \(\bigO(\log{(n)})\)
+  \item \textit{Ricerca}: \(\bigO(n)\)
+        \begin{itemize}
+          \item \textit{ricerca del \textbf{minimo} in un \textbf{min}-heap}: \(\bigO(1)\)
+          \item \textit{ricerca del \textbf{massimo} in un \textbf{max}-heap}: \(\bigO(1)\)
+        \end{itemize}
+  \item \textit{Inserimento}: \(\bigO(\log{(n)})\)
+  \item \textit{Cancellazione}: \(\bigO(\log{(n)})\)
+\end{itemize}
+
+\subsection{Complessità degli algoritmi di ordinamento}
+
+Le complessità degli algoritmi di ordinamento \textit{(studiati nella Sezione~\ref{sec:problemi-di-ordinamento})} sono mostrate nella Tabella~\ref{tab:complessita-ordinamento}.
 
 \begin{table}[htbp]
   \bigskip
   \centering
   \begin{tabular}{c|c|c|c}
-    \textit{tipo di albero} & \textit{ricerca}              & \textit{inserimento}          & \textit{cancellazione}        \\ \hline
-    \textit{albero binario} & \(\bigO(n)\)                  & \(\bigO(n)\)                  & \(\bigO(n)\)                  \\
-    \BST                    & \(\bigO(n)\) & \(\bigO(n)\) & \(\bigO(n)\) \\
-    \RB tree                & \(\bigO(h) = \bigO(\log(n))\) & \(\bigO(h) = \bigO(\log(n))\) & \(\bigO(h) = \bigO(\log(n))\) \\
+    \textit{algoritmo}      & \textit{caso migliore} & \textit{caso medio}    & \textit{caso peggiore} \\ \hline
+    \texttt{INSERTION-SORT} & \(\bigO(n)\)           & \(\bigO(n^2)\)         & \(\bigO(n^2)\)         \\
+    \texttt{MERGE-SORT}     & \(\bigO(n \log{(n)})\) & \(\bigO(n \log{(n)})\) & \(\bigO(n \log{(n)})\) \\
+    \texttt{HEAPSORT}       & \(\bigO(n \log{(n)})\) & \(\bigO(n \log{(n)})\) & \(\bigO(n \log{(n)})\) \\
+    \texttt{QUICKSORT}      & \(\bigO(n \log{(n)})\) & \(\bigO(n \log{(n)})\) & \(\bigO(n^2)\)         \\
+    \texttt{COUNTING-SORT}  & \(\bigO(n+k)\)         & \(\bigO(n+k)\)         & \(\bigO(n+k)\)
   \end{tabular}
   \bigskip
-  \caption{Complessità delle operazioni comuni sui grafi - \textbf{caso peggiore}}
-  \label{tab:complessita-operazioni-comuni-sui-grafi-caso-peggiore}
+  \caption{Complessità degli algoritmi di ordinamento}
+  \label{tab:complessita-ordinamento}
 \end{table}
+
+Il parametro \(n\) indica la lunghezza dell'array da ordinare.
+Nel caso del \texttt{COUNTING-SORT}, il parametro \(k\) indica il range dei valori che possono essere assunti dagli \(n\) valori da ordinare.
+
+\subsection{Complessità delle operazioni sugli alberi}
+
+Le complessità delle operazioni comuni sugli alberi \textit{(studiati nella Sezione~\ref{sec:alberi})}, nei loro rispettivi casi peggiori, sono mostrate nella Tabella~\ref{tab:complessita-operazioni-comuni-sugli-alberi-caso-peggiore}.
+
+\begin{table}[htbp]
+  \bigskip
+  \centering
+  \begin{tabular}{c|c|c|c}
+    \textit{tipo di albero} & \textit{ricerca}     & \textit{inserimento} & \textit{cancellazione} \\ \hline
+    \textit{albero binario} & \(\bigO(n)\)         & \(\bigO(n)\)         & \(\bigO(n)\)           \\
+    \BST                    & \(\bigO(n)\)         & \(\bigO(n)\)         & \(\bigO(n)\)           \\
+    \RB tree                & \(\bigO(\log{(n)})\) & \(\bigO(\log{(n)})\) & \(\bigO(\log{(n)})\)   \\
+  \end{tabular}
+  \bigskip
+  \caption{Complessità delle operazioni comuni sugli alberi - \textbf{caso peggiore}}
+  \label{tab:complessita-operazioni-comuni-sugli-alberi-caso-peggiore}
+\end{table}
+
+\subsection{Complessità temporali e spaziali di operazioni e rappresentazioni relative ai grafi}
+
+Le complessità spaziali delle rappresentazioni dei grafi \textit{(studiati nella Sezione~\ref{sec:grafi})}, sono:
+
+\begin{itemize}
+  \item Tramite \textit{liste di adiacenza}: \(\bigO(|V|+|E|)\)
+  \item Tramite \textit{matrice di adiacenza}: \(\bigO(|V|^2)\)
+\end{itemize}
+
+Le complessità temporali delle operazioni, nei loro rispettivi casi peggiori, sono:
+
+\begin{itemize}
+  \item \textit{Ordinamento topologico}: \(\bigO(|V|+|E|)\)
+  \item \textit{Visita in ampiezza} - \textit{BFS}: \(\bigO(|V|+|E|)\)
+  \item \textit{Visita in profondità} - \textit{DFS}: \(\bigO(|V|+|E|)\)
+\end{itemize}
 
 \clearpage
 
