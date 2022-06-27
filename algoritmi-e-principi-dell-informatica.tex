@@ -408,8 +408,8 @@ Poiché la concatenazione \textbf{non è commutativa}, la chiusura di Kleene \te
 
 Un \textbf{automa a stati finiti} (o \FSA, dall'Inglese \textit{Finite State Automaton}) è il più semplice modello di astrazione.
 
-Esso rappresenta un sistema che ammette un \textit{insieme finito} di stati (e di conseguenza un numero limitato di configurazioni).
-In seguito ad un determinato ingresso (a sua volta formato da un insieme finito di valori), potrà avvenire una transizione tra due stati distinti.
+Esso rappresenta un sistema che ammette un \textit{insieme finito} di stati \textit{(e di conseguenza un numero limitato di configurazioni)}.
+In seguito ad un determinato ingresso \textit{(a sua volta formato da un insieme finito di valori)}, potrà avvenire una transizione tra due stati distinti.
 
 Gli \FSA rappresentano il più semplice modello di computazione: molti dispositivi possono essere modellati come tali, seppure con alcune limitazioni.
 
@@ -630,9 +630,10 @@ La definizione di \(Q, A, \delta, q_0, F\) è analoga a quella avvenuta nella Se
 La condizione di accettazione resta la stessa degli accettori.
 Di conseguenza, \textbf{la traduzione avviene solo su stringhe accettate}.
 
-\subsubsection{Traduzione di una stringa}
+\subsubsection{Condizione di accettazione di un \FST}
+\label{sec:condizione-accettazione-FST}
 
-Analogamente a quanto già illustrato nella definizione della sequenza di mosse \(\delta\) (Sezione~\ref{sec:sequenza-di-mosse}), \(\eta^\ast\) verrà definito induttivamente.
+Analogamente a quanto già illustrato nella definizione della sequenza di mosse \(\delta\) \textit{(Sezione~\ref{sec:sequenza-di-mosse})}, \(\eta^\ast\) verrà definito induttivamente.
 Infatti, ricordando che \(\eta^\ast : Q \times I^\ast \rightarrow O^\ast \):
 
 \begin{enumerate}
@@ -643,6 +644,10 @@ Infatti, ricordando che \(\eta^\ast : Q \times I^\ast \rightarrow O^\ast \):
 sarà quindi valida la relazione:
 
 \[\forall \, x, \tau(x) = \eta^\ast (q_0, x) \Leftrightarrow \delta^\ast(q_0, x) \in F\]
+
+\bigskip
+\textit{Informalmente}: una stringa viene tradotta se e solo se essa viene accettata e la corrispondente traduzione sarà sul nastro di uscita.
+In caso contrario, lo stato di quest'ultimo non è rilevante.
 
 \subsubsection{Pumping lemma}
 \label{sec:pumping-lemma}
@@ -891,7 +896,7 @@ La loro \textit{intersezione} \(C = A \cap B\) può essere rappresentata come se
 \paragraph{Unione}
 \label{par:FSA-unione}
 % pagina 111 libro, slide 35 1-02.FSA
-Analogamente a quanto avviene nell'intersezione (Sezione~\ref{par:intersezione-FSA}), con le stesse ipotesi, l'unione di due \FSA:
+Analogamente a quanto avviene nell'intersezione \textit{(Sezione~\ref{par:intersezione-FSA})}, con le stesse ipotesi, l'unione di due \FSA:
 
 \begin{align*}
   A_1 & = \langle Q_1, I_1, \delta_1, q_{01}, F_1 \rangle \\
@@ -916,8 +921,8 @@ Si imponga inoltre che l'automa, una volta in \(\overline{q}\), ci rimanga per q
 
 In questo modo, la funzione di transizione di \(A\) (e quindi la sua corrispondente \(\delta^\ast)\) è totale.
 
+\bigskip
 \textit{Proprietà del complemento:}
-
 \begin{itemize}
   \item Se l'intera stringa di ingresso viene scandita, allora per complementare il risultato basta \textit{scambiare il} \texttt{si} \textit{con il} \texttt{no}
   \item Se la fine della stringa non viene raggiunta, allora lo scambio di \(F\) con \(Q - F\) non funziona
@@ -925,7 +930,7 @@ In questo modo, la funzione di transizione di \(A\) (e quindi la sua corrisponde
   \item In generale, \textit{non è possibile considerare equivalenti la risposta negativa a una domanda e la risposta positiva della domanda opposta}
 \end{itemize}
 
-Grazie a questa operazione, è possibile definire l'unione di due \FSA (Sezione~\ref{par:FSA-unione}) tramite le leggi di \textit{De Morgan}:
+Grazie a questa operazione, è possibile definire l'unione di due \FSA \textit{(Sezione~\ref{par:FSA-unione})} tramite le leggi di \textit{De Morgan}:
 
 \[ L(A_1) \cup L(A_2) = \overline{\overline{L(A_1)} \cap \overline{L(A_2)}} = \left(L(A_1)^C \cup L(A_2)^C\right)^C \]
 
@@ -935,7 +940,7 @@ con il medesimo risultato.
 
 \section{Pushdown automaton - \PDA}
 
-Come mostrato prima nell'applicazione del \textit{pumping lemma} al linguaggio \( L = \left\{ a^n b^n \, | \, n > 0 \right\}\) (Sezione~\ref{par:conseguenza-negativa-pumping-lemma}), dimostra l'impossibilità di riconoscere alcuni linguaggi tramite \FSA, a causa della loro inabilità nel contare una quantità di simboli sconosciuta a priori.
+Come mostrato prima nell'applicazione del \textit{pumping lemma} al linguaggio \( L = \left\{ a^n b^n \, | \, n > 0 \right\}\) \textit{(Sezione~\ref{par:conseguenza-negativa-pumping-lemma})}, dimostra l'impossibilità di riconoscere alcuni linguaggi tramite \FSA, a causa della loro inabilità nel contare una quantità di simboli sconosciuta a priori.
 
 A causa di questa mancanza, essi sono inadatti al riconoscimento di molti linguaggi di interesse pratico.
 Per ovviare a questo limite, vengono introdotti i \PDA (in Italiano \textit{automi a pila} or \textit{AP}), il cui diagramma semplificato è mostrato in Figura~\ref{fig:diagramma-PDA}.
@@ -1004,7 +1009,7 @@ il \PDA:
 
 \begin{itemize}
   \item Cambia il proprio \textbf{stato}
-  \item Sposta in avanti la \textbf{stato}
+  \item Sposta in avanti il \textbf{nastro di ingresso} di un carattere
   \item Sostituisce il simbolo letto dalla \textbf{pila} con una stringa \(\alpha\) \textit{eventualmente vuota}
 \end{itemize}
 
@@ -1100,7 +1105,7 @@ Allora:
         \begin{itemize}
           \item se questa proprietà non fosse soddisfatta, entrambe le transizioni \textbf{sarebbero consentite}
           \item questa condizione \textbf{garantisce il determinismo} poiché non sarebbe possibile definire unicamente quale delle più transizioni scegliere partendo dallo stato
-          \item più avanti verrà mostrato il funzionamento degli automi in assenza di determinismo (Sezione~\ref{sec:non-determinismo})
+          \item più avanti verrà mostrato il funzionamento degli automi in assenza di determinismo \textit{(Sezione~\ref{sec:non-determinismo})}
         \end{itemize}
 \end{itemize}
 
@@ -1250,9 +1255,9 @@ Ciò detto, un \PDA è \textbf{aciclico} se e solo se
 e che quindi:
 
 \begin{enumerate}
-  \item Legge sempre l'intera stringa di ingresso e, al termine di essa, si ferma
-  \item Non può ripetere un ciclo indefinitamente con \(\epsilon\)-mosse
-  \item Si ferma dopo un numero finito di mosse
+  \item Legge sempre l'intera stringa di ingresso e, al termine di essa, \textbf{si ferma}
+  \item Non può ripetere un \textbf{ciclo} indefinitamente con \(\epsilon\)-mosse
+  \item Si ferma dopo un numero \textbf{finito} di mosse
 \end{enumerate}
 
 Ogni \PDA ciclico può (e deve) essere trasformato nel proprio equivalente aciclico.
@@ -1346,7 +1351,7 @@ Un \textbf{trasduttore a pila} (\textit{pushdown transducer} o \PDT) è una tupl
 Si noti che:
 
 \begin{itemize}
-  \item \(Q, I, \Gamma, \delta, q_0, Z_0, F\) sono definiti in modo analogo ai \PDA nella sezione~\ref{sec:definizione-formale-PDA}.
+  \item \(Q, I, \Gamma, \delta, q_0, Z_0, F\) sono definiti in modo analogo ai \PDA nella Sezione~\ref{sec:definizione-formale-PDA}.
   \item \(\eta\) è definita solo dove è definita \(\delta\)
   \item La pila può essere necessaria perché richiesta dal linguaggio da riconoscere o perché richiesta dalla traduzione
 \end{itemize}
@@ -1404,12 +1409,13 @@ Ovverosia:
 \end{itemize}
 
 \subsubsection{Condizione di accettazione di un \PDT}
+\label{sec:condizione-accettazione-PDT}
 % da slide 46 - 1-03PDA.pdf
 
 La condizione di accettazione di un \PDT può essere descritta come:
 \[ \forall \, x \in I^\ast, \ x \in L \Leftrightarrow c_0 = \langle q_0, x, Z_0, \epsilon \rangle \vdash^\ast c_F = \langle q, \epsilon, \gamma, z \rangle, \ q \in F\]
 
-La traduzione di \(x\) è definita se e solo se la stringa \(x\) è accettata
+La traduzione di \(x\) è definita se e solo se la stringa \(x\) è accettata, analogamente a quanto avviene nei \FST \textit{(Sezione~\ref{sec:condizione-accettazione-FST})}.
 
 \clearpage
 
@@ -1571,7 +1577,7 @@ Essa dovrà includere:
 \begin{itemize}
   \item Lo \textbf{stato} del dispositivo di controllo
   \item La \textbf{stringa} sul nastro di ingresso e la \textbf{posizione della testina}
-  \item la \textbf{stringa} e la \textbf{posizione della testina} per ogni nastro di memoria
+  \item La \textbf{stringa} contenuta in ogni nastro di memoria e la relativa \textbf{posizione della testina}
 \end{itemize}
 
 \bigskip
@@ -1641,7 +1647,7 @@ Allora la transizione \(c \vdash_M c^\prime\) (da \(c\) a \(c^\prime\)) se e sol
 \end{gather}
 
 \bigskip
-Se vale \textbf{una delle condizioni mutuamente esclusive}:
+In aggiunta, deve valere \textbf{una delle condizioni mutuamente esclusive}:
 \begin{gather}
   x = x^\prime, \ i = i^\prime, \ y = y^\prime, \ N = S \label{eq:transizione-TM-1}                        \\
   x^\prime = xi, \ i^\prime = \overline{j}, \ y^\prime = \overline{y}, \ N = R \label{eq:transizione-TM-2} \\
@@ -1669,19 +1675,19 @@ Infine anche \textbf{una delle due condizioni mutualmente esclusive}:
   \item La condizione~\ref{eq:transizione-TM-0} vincola lo stato di \(c^\prime\) a essere quello di arrivo della transizione
   \item Le condizioni dal \ref{eq:transizione-TM-1} al \ref{eq:transizione-TM-3} definiscono l'evoluzione del nastro di ingresso nel passaggio da \(c\) a \(c^\prime\):
         \begin{itemize}
-          \item Se la testina rimane ferma (condizione~\ref{eq:transizione-TM-1}, in cui \(N=S\)), le tre parti in cui essa divide il nastro \textit{(parte sinistra, destra e simbolo corrente)} rimangono invariate tra le due configurazioni
-          \item Se la testina si muove a destra (condizione~\ref{eq:transizione-TM-2}, in cui \(N=R\)), la parte a sinistra della testina in \(c^\prime\) conterrà anche il simbolo corrente di \(c\), il simbolo corrente di \(c^\prime\) sara il primo simbolo della parte destra in \(c\) e la rimanente parte destra di \(c\) sarà la parte destra di \(c'\)
-          \item Se la testina si muove a sinistra (condizione~\ref{eq:transizione-TM-3}, in cui \(N=L\)), laa parte a sinistra della testina in \(c^\prime\) conterrà tutti i simboli della parte sinistra in \(c\), tranne l'ultimo che diverrà il simbolo corrente di \(c^\prime\) e la parte destra di \(c^\prime\) sarà composta dal simbolo corrente in \(c\) seguito dalla sua parte destra
+          \item Se la testina \textbf{rimane ferma} (condizione~\ref{eq:transizione-TM-1}, in cui \(N=S\)), le tre parti in cui essa divide il nastro \textit{(parte sinistra, destra e simbolo corrente)} rimangono invariate tra le due configurazioni
+          \item Se la testina \textbf{si muove a destra} (condizione~\ref{eq:transizione-TM-2}, in cui \(N=R\)), la parte a sinistra della testina in \(c^\prime\) conterrà anche il simbolo corrente di \(c\), il simbolo corrente di \(c^\prime\) sara il primo simbolo della parte destra in \(c\) e la rimanente parte destra di \(c\) sarà la parte destra di \(c'\)
+          \item Se la testina \textbf{si muove a sinistra }(condizione~\ref{eq:transizione-TM-3}, in cui \(N=L\)), laa parte a sinistra della testina in \(c^\prime\) conterrà tutti i simboli della parte sinistra in \(c\), tranne l'ultimo che diverrà il simbolo corrente di \(c^\prime\) e la parte destra di \(c^\prime\) sarà composta dal simbolo corrente in \(c\) seguito dalla sua parte destra
         \end{itemize}
   \item Le condizioni dal \ref{eq:transizione-TM-4} alla \ref{eq:transizione-TM-6} specificano l'evoluzione dei nastri di memoria in analogia con i precedenti casi. In particolare:
         \begin{itemize}
-          \item La testina rimane ferma, condizione~\ref{eq:transizione-TM-4}
-          \item La testina si muove a destra, condizione~\ref{eq:transizione-TM-5}
-          \item La testina si muove a sinistra, condizione~\ref{eq:transizione-TM-6}
+          \item La testina \textbf{rimane ferma}, condizione~\ref{eq:transizione-TM-4}
+          \item La testina si \textbf{muove a destra}, condizione~\ref{eq:transizione-TM-5}
+          \item La testina si \textbf{muove a sinistra}, condizione~\ref{eq:transizione-TM-6}
         \end{itemize}
   \item Le condizioni \ref{eq:transizione-TM-7} e \ref{eq:transizione-TM-8} specificano l'evoluzione del nastro di uscita
         \begin{itemize}
-          \item Non è specificato il comportamento per \(N=L\) perché la testina del nastro di uscita si muove solo a destra
+          \item Non è specificato il comportamento per \(N=L\) perché la testina del nastro di uscita \textbf{si muove solo a destra}
           \item Se la \TM non ha un nastro di uscita, queste condizioni non vanno considerate
         \end{itemize}
 \end{itemize}
@@ -1706,7 +1712,7 @@ Il linguaggio \textit{accettato} da \(M\) è definito come:
 \textit{Intuitivamente}, il linguaggio riconosciuto da una \TM \(M\) è composto da tutte e sole le stringhe che permettono di andare dallo stato iniziale a uno degli stati finali.
 Poiché il nastro di ingresso è in grado di muoversi in entrambe le direzioni, non è richiesto che al termine dell'esecuzione la testina si trovi al termine della stringa di ingresso.
 
-Una volta che \(M\) raggiunge uno stato finale, per definizione della funzione di transizione \(\delta\), non potrà più lasciarla e la computazione termina.
+Una volta che \(M\) raggiunge uno stato finale, per definizione della funzione di transizione \(\delta\), \textbf{non potrà più lasciarlo} e la computazione termina.
 
 \subsection{Operazioni sulle \TM}
 
@@ -1866,7 +1872,7 @@ A tal proposito, si consulti la Figura~\ref{fig:configurazione-MT-nastro-singolo
 \label{sec:non-determinismo}
 
 Tutti i modelli considerati fino ad ora (\FSA, \PDA, \TM, \ldots) sono \textbf{deterministici}: una volta fissato uno \textit{stato iniziale} e un \textit{ingresso}, la loro evoluzione è \textit{univocamente determinata}.
-In certe situazioni, però, il modello che si desidera modellare non può essere descritto in modo così deterministico, in quanto l'osservatore non possiede informazioni sufficientemente accurate da consentirgli di prevederne l'esatta evoluzione per ogni configurazione.
+In certe situazioni, però, il sistema che si desidera modellare non può essere descritto in modo deterministico, in quanto l'osservatore non possiede informazioni sufficientemente accurate da consentirgli di prevederne l'esatta evoluzione per ogni configurazione.
 
 Per esempio, si consideri la serie di istruzioni:
 
@@ -2045,7 +2051,7 @@ Inoltre, la formalizzazione più naturale di un problema è quella descritta med
 
 \textit{Operativamente}, per convertire un \FSA in un \DFA è necessario:
 
-\begin{enumerate}
+\begin{enumerate}[label=\alph*), ref=(\alph*)]
   \item Creare l'insieme vuoto di stati del \DFA \(Q^\prime\)
   \item Creare la tabella di transizione del \DFA \(T^\prime\)
   \item Aggiungere lo stato iniziale del del \NFA a \(Q^\prime\)
@@ -2207,7 +2213,7 @@ Un esempio di albero di configurazione per una \NTM è mostrato in Figura~\ref{f
   \bigskip
 \end{figure}
 
-\subsubsection{Accettazione di una stringa da un \NTM}
+\subsubsection{Condizione di accettazione di una \NTM}
 
 Una stringa \(x \in I^\ast\) è accettata da una \NTM se e solo se esiste una computazione che termina in uno stato di accettazione.
 Il problema dell'accettazione di una stringa si pu\`o ridurre quindi alla visita di un albero di computazione.
@@ -2215,12 +2221,12 @@ Il problema dell'accettazione di una stringa si pu\`o ridurre quindi alla visita
 Per cercare la via verso uno stato di accettazione, si riconoscono due tipi di approccio:
 
 \begin{itemize}
-  \item Visita in \textit{"profondità"}, detta \textbf{depth first}
+  \item Visita in \textit{"profondità"}, detta \textbf{depth first} o \textbf{DFS}
         \begin{itemize}
           \item Un percorso viene seguito fino al suo termine
           \item Quando viene raggiunta la fine, un'altro ramo viene selezionato ed esplorato tramite \textit{backtracking}
         \end{itemize}
-  \item Visita in \textit{"ampiezza"}, detta \textbf{breadth first}
+  \item Visita in \textit{"ampiezza"}, detta \textbf{breadth first} o \textbf{BFS}
         \begin{itemize}
           \item Si crea una coda di nodi da visitare
           \item Ogni volta che un nuovo nodo viene trovato, i suoi successori si aggiungono alla fine della coda
@@ -2360,7 +2366,7 @@ Data una grammatica \(G\), si definisce su \(V^\ast\) la relazione binaria di \t
 \end{gather*}
 Il simbolo \(G\) in \(\xRightarrow[G]{}\) viene normalmente omesso qualora il contesto sia univocamente definito, indicando quindi le derivazioni come \(\xRightarrow{}\).
 
-Come già visto con le operazioni tra linguaggi, (Sezione~\ref{sec:operazioni-linguaggi}), \(\xRightarrow[G]{\ast}, \xRightarrow[G]{+}, \xRightarrow[G]{n}\) indicano rispettivamente la chiusura riflessiva e transitiva, la chiusura transitiva e la potenza \(n\) di \(\xRightarrow[G]{}\).
+Come già visto con le operazioni tra linguaggi, \textit{(Sezione~\ref{sec:operazioni-linguaggi})}, \(\xRightarrow[G]{\ast}, \xRightarrow[G]{+}, \xRightarrow[G]{n}\) indicano rispettivamente la chiusura \textbf{riflessiva}, la chiusura \textbf{transitiva} e la \textbf{potenza} \(n\) di \(\xRightarrow[G]{}\).
 
 \subsubsection{Linguaggio di accettazione di una grammatica}
 
@@ -2682,14 +2688,13 @@ Come visto fino ad ora, i linguaggi possono essere rappresentati tramite diverse
         \end{itemize}
 \end{itemize}
 
-In questo capitolo si tratterà delle \textbf{espressioni regolari} (scritto come \RE o \textit{Regex}).
+In questo capitolo si tratterà delle \textbf{espressioni regolari} \textit{(abbreviate come \RE o \textit{Regex})}.
 Esse sono delle espressioni utilizzabili per denotare un linguaggio attraverso la scrittura delle stringhe che lo compongono.
 
 \subsection{Pattern}
 
-Prima di dare una definizione formale di \RE, è necessario introdurre il concetto di \textbf{pattern}.
+Per poter fornire una definizione formale di \RE, è necessario introdurre il concetto di \textbf{pattern}.
 
-\bigskip
 Un sistema di pattern è una tripla \(\langle A, V, p \rangle\) dove:
 
 \begin{itemize}
@@ -2822,9 +2827,9 @@ e molti altri.
 All'interno del corso verranno usati la \PL e la \FOL \textit{(introdotte nelle Sezioni \ref{sec:logica-proposizionale} e \ref{sec:logica-primo-ordine})} per:
 
 \begin{itemize}
-  \item Definire i linguaggi \textit{(Sezione~\ref{sec:logica-linguaggi})}
-  \item Specificare le proprietà di programmi \textit{(Sezione~\ref{sec:precondizioni-postcondizioni})}
-  \item Specificare le proprietà dei sistemi \textit{(Sezione~\ref{sec:specifiche})}
+  \item \textbf{Definire} i linguaggi \textit{(Sezione~\ref{sec:logica-linguaggi})}
+  \item \textbf{Specificare} le proprietà di programmi \textit{(Sezione~\ref{sec:precondizioni-postcondizioni})}
+  \item \textbf{Specificare} le proprietà dei sistemi \textit{(Sezione~\ref{sec:specifiche})}
 \end{itemize}
 
 \subsection{Logica proposizionale - \PL}
@@ -2863,7 +2868,7 @@ Sia \(\mathcal{L}\) un linguaggio della \textbf{logica proposizionale}.
           \item \(A\) è detto letterale \textbf{positivo}
           \item \(\lnot A\) è detto letterale \textbf{negativo}
         \end{itemize}
-  \item se \(L\) è un letterale, allora \(\overline{L}\) è il \textbf{letterale complementare} definito come \(\lnot A\) \textit{se} \(L = A\) o \(A\) \textit{se} \(L = \lnot A\)
+  \item Se \(L\) è un letterale, allora \(\overline{L}\) è il \textbf{letterale complementare} definito come \(\lnot A\) \textit{se} \(L = A\) o \(A\) \textit{se} \(L = \lnot A\)
   \item \textit{Informalmente}, una \textbf{sotto formula} è una formula inclusa in un'altra formula
   \item L'insieme \(\tau(F)\) delle sotto formule di \(\mathcal{F}\) è definito come il più piccolo insieme di formule tale che:
         \begin{itemize}
@@ -3022,7 +3027,7 @@ Il \textit{teorema di sostituzione} e le \textit{equivalenze notevoli} possono e
 
 \subsubsection{Sistemi formali - \textit{calculi}}
 
-Un \textit{sistema formale (assiomatico deduttivo)}, oppure \textbf{calculus} in Inglese, consiste in un insieme di assiomi e un insieme di regole di inferenza che producono conseguenze logiche all'interno di una logica.
+Un \textbf{sistema formale} \textit{(assiomatico deduttivo)}, oppure \textbf{calculus} in Inglese, consiste in un insieme di assiomi e un insieme di regole di inferenza che producono conseguenze logiche all'interno di una logica.
 Questi elementi definiscono una \textit{relazione di derivabilità} (detta anche \textbf{dimostrabilità}) tra un insieme di formule \(\mathcal{F}\) e una formula \(G\).
 
 Se una formula \(G\) può essere ottenuto da \(\mathcal{F}\) applicando solo regole di inferenza e assiomi, si scrive che \(\mathcal{F} \vdash G\).
@@ -3033,7 +3038,7 @@ Se una formula \(F\) piò essere derivata in una teoria \(\mathcal{F}\) usando g
 \subsection{Logica del primo ordine - \FOL}
 \label{sec:logica-primo-ordine}
 
-La logica proposizionale (vista in Sezione~\ref{sec:logica-proposizionale}) ha molte applicazioni, ma il suo potere espressivo è ristretto.
+La logica proposizionale \textit{(vista in Sezione~\ref{sec:logica-proposizionale})} ha molte applicazioni, ma il suo potere espressivo è ristretto.
 Infatti, frasi come \inlinequote{tutti gli esseri umani sono mortali} e \inlinequote{ogni bambino ha dei genitori} possono essere espresse come proposizioni in un modo che non cattura le relazioni sottintese tra esseri umani, mortali, bambini e genitori.
 
 \textit{Gottlob Frege}, logico tedesco, ha sviluppato la \FOL (\textbf{logica del prim'ordine} o \textbf{logica dei predicati}) nel \(1879\), estendendo la logica proposizionale con \textit{funzioni}, \textit{variabili} e \textit{quantificatori}.
@@ -3094,7 +3099,7 @@ Infatti, frasi come \inlinequote{tutti gli esseri umani sono mortali} e \inlineq
           \exists \, X_1 \left(\ldots \left(\exists \, X_n (F) \right) \ldots \right) \quad & \text{è abbreviato come} \quad \exists \, X_1, \ldots, X_n(F) \\
           \forall \, X_1 \left(\ldots \left(\forall \, X_n (F) \right) \ldots \right) \quad & \text{è abbreviato come} \quad \forall \, X_1, \ldots, X_n(F) \\
         \end{align*}
-  \item Se \(QX(F)\) è una formula e \(Q\) è un quantificatore, allora \(F\) si dice \textbf{ambito} di \(Q\) e \(Q\) è \textbf{applicato} a \(F\)
+  \item Se \(Q(F)\) è una formula e \(Q\) è un quantificatore, allora \(F\) si dice \textbf{ambito} di \(Q\) e \(Q\) è \textbf{applicato} a \(F\)
   \item Un'occorrenza di una variabile in una formula è \textbf{legata} se e solo se la sua occorrenza è entro l'ambito di un quantificatore che impiega quella variabile
         \begin{itemize}[label=\(\rightarrow\)]
           \item è legata al quantificatore di ambito più piccolo che la rende legata
@@ -3181,7 +3186,7 @@ Il significato di una formula è un valore di verità che è definito induttivam
 
 La relazione di conseguenza logica \(\vDash\) tra insiemi di formule e formule può essere esteso anche a \FOL, così come i concetti di \textbf{validità, soddisfacibilità, falsificabilità, contingenza} e \textbf{insoddisfacibilità} (visti nella Sezione~\ref{sec:semantica-PL}).
 
-Analogamente, anche le equivalenze mostrate per \PL (Sezione~\ref{sec:forme-normali-PL}) possono essere estese a \FOL, con l'aggiunta di:
+Analogamente, anche le equivalenze mostrate per \PL \textit{(Sezione~\ref{sec:forme-normali-PL})} possono essere estese a \FOL, con l'aggiunta di:
 
 \begin{align*}
   \forall \, X (F)                       & \equiv \lnot \left(\exists \, (\lnot F)\right) & \textit{ dualità dei quantificatori } 1           \\
@@ -3271,7 +3276,7 @@ Tra i molti modi possibili di rappresentare formalmente \(L\), si consideri il s
 
 Questo linguaggio può quindi essere espresso in \FOL come:
 \[ x \in L \Leftrightarrow (x \in L_1) \lor (x \in L_2) \lor \, \exists \, y \left((x = ay \land y \in L) \lor (x = yc \land y \in L)\right) \]
-in cui \(L_1, L_2\) sono definite come nell'esempio precedente (Sezione~\ref{par:esempio-fol-2}).
+in cui \(L_1, L_2\) sono definite come nell'esempio precedente \textit{(Sezione~\ref{par:esempio-fol-2})}.
 
 \paragraph{Esempio 4}
 \label{par:esempio-fol-4}
@@ -3385,7 +3390,7 @@ La relazione di assegnamento (indicata con \(\vDash\)) è definita nel modo segu
 Data una stringa \(\phi\), il linguaggio \(L(\phi)\) è definito come:
 \[ L(\phi) = \left\{ w \in \Sigma^+ \, | \, \exists \, v :  w, v \vDash \phi \right\} \]
 
-\subsubsection{Proprietà di \MFO}
+\textbf{}\subsubsection{Proprietà di \MFO}
 \label{sec:proprieta-mfo}
 
 I linguaggi esprimibili mediante \MFO sono \textbf{chiusi} rispetto a:
@@ -3403,12 +3408,12 @@ Infatti, i linguaggi definiti tramite questa logica prendono il nome di \textit{
 Ne consegue che:
 
 \begin{itemize}
-  \item \MFO è strettamente meno potente degli \FSA
+  \item \MFO è strettamente \textbf{meno potente} degli \FSA
         \begin{itemize}
           \item data una formula \MFO si può sempre costruire un \FSA equivalente
           \item \(L_P\) può invece essere riconosciuto facilmente mediante \FSA
         \end{itemize}
-  \item In \MFO non è possibile esprimere il linguaggio \(L_P\) rappresentante tutte e sole le parole di lunghezza pari con \(l = \{ a \}\)
+  \item In \MFO\textbf{ non è possibile esprimere} il linguaggio \(L_P\) rappresentante tutte e sole le parole di lunghezza pari con \(l = \{ a \}\)
         \begin{itemize}
           \item La formula \MFO \(a(0) \land a(1) \land \lastop(1)\) definisce il linguaggio \(L_{P2}\) fatto dalla sola parola \(\{aa\}\) di lunghezza \(2\)
           \item Poiché \(L_P = L_{P2}^\ast\), a causa della mancata chiusura rispetto alla stella di Kleene, si spiega perché
@@ -3419,7 +3424,7 @@ Ne consegue che:
 
 Per ottenere lo stesso potere espressivo degli \FSA è necessario poter quantificare sui predicati monadici.
 
-Quindi la \textbf{logica monadica del secondo ordine} è costruita sugli stessi elementi della \MFO (visti nella Sezione~\ref{sec:logica-monadica-primo-ordine}) con in aggiunta:
+Quindi la \textbf{logica monadica del secondo ordine} è costruita sugli stessi elementi della \MFO \textit{(visti nella Sezione~\ref{sec:logica-monadica-primo-ordine})} con in aggiunta:
 
 \begin{itemize}
   \item \textbf{Variabili del secondo ordine}
@@ -3473,7 +3478,7 @@ Quindi, la relazione di assegnamento per le formule della logica \MSO è definit
 
 \subsubsection{Espressività della logica \MSO}
 
-Poiché ogni formula \MFO è anche formula di \MSO, e poiché è risultato impossibile descrivere il linguaggio \(L_P\) (come nella Sezione~\ref{sec:proprieta-mfo}), si deduce immediatamente che la logica \MSO è più espressiva della logica \MFO.
+Poiché ogni formula \MFO è anche formula di \MSO, e poiché è risultato impossibile descrivere il linguaggio \(L_P\) \textit{(come nella Sezione~\ref{sec:proprieta-mfo})}, si deduce immediatamente che la logica \MSO è più espressiva della logica \MFO.
 
 Per lo stesso motivo, si può dimostrare che la \MSO ha la stessa espressività degli \FSA, e quindi per ogni \FSA sarà possibile costruire una formula \MSO e viceversa.
 
@@ -3847,7 +3852,7 @@ Per poter enumerare le \TM dell'insieme sarà però prima necessario ordinarle i
 A tal fine è sufficiente imporre un ordinamento all'interno degli insiemi \(Q\), \(A\) ed \(\{R, L, S\}\), ottenendo un insieme ordinato:
 \[ \mathscr{E}: \{TM_A\} \mapsto \mathbb{N} \]
 
-L'enumerazione \(\mathscr{E}\) è algoritmica: è possibile implementare la costruzione con un algoritmo \textit{(sia esso implementato in un linguaggio di programmazione o a sua volta una \TM)} che emetta in uscita tutti gli elementi di \(\{\TM_A\}\) nell'ordine lessicografico appena imposto.
+L'enumerazione \(\mathscr{E}\) è algoritmica: è possibile implementarla con un algoritmo \textit{(sia esso implementato in un linguaggio di programmazione o a sua volta una \TM)} che emetta in uscita tutti gli elementi di \(\{\TM_A\}\) nell'ordine lessicografico appena imposto.
 Analogamente, sarà possibile costruire un algoritmo che faccia l'operazione inversa, cioè che partendo da una \TM ne estragga il corrispondente \(k \in \mathbb{N}\).
 
 \bigskip
@@ -4135,8 +4140,8 @@ Quindi entrambi i casi sono inammissibili e la dimostrazione è terminata.
 Sia \(h^\prime\) la funzione definita come:
 \[ h^\prime(x) =
   \begin{cases}
-    1 \text{ se } f_x(x) \neq \bot \\
-    0 \text{ altrimenti }
+    1 \quad & \text{ se } f_x(x) \neq \bot \\
+    0 \quad & \text{ altrimenti }
   \end{cases}
 \]
 Allora \(h^\prime\) \textbf{non è computabile.}
@@ -4153,8 +4158,8 @@ Si definisca inizialmente la funzione
 
 \[ h(x) =
   \begin{cases}
-    1 \text{ se } k(x) = 0 \\
-    \bot \text{ altrimenti }
+    1 \quad & \text{ se } k(x) = 0 \\
+    \bot \quad & \text{ altrimenti }
   \end{cases}
 \]
 Si osservi ora che \(h\) è computabile se \(k\) è computabile.
@@ -4184,8 +4189,8 @@ Infine, se un problema è risolvibile, allora una sua generalizzazione potrebbe 
 Sia \(k(y)\) la funzione definita come:
 \[ k(y) =
   \begin{cases}
-    1 \text{ se } \forall \, x \in \mathbb{N}, \ f_y(x) \neq \bot \\
-    0 \text{ altrimenti }
+    1 \quad & \text{ se } \forall \, x \in \mathbb{N}, \ f_y(x) \neq \bot \\
+    0 \quad & \text{ altrimenti }
   \end{cases}
 \]
 Allora \(k(y)\) \textbf{non è computabile.}
@@ -4282,11 +4287,11 @@ Un problema si dice \textbf{semidecidibile} se esiste un algoritmo \textit{(proc
   \item Negli altri casi, \textbf{potrebbe non terminare mai}
 \end{itemize}
 
-Il problema della terminazione (Sezione~\ref{sec:problema-della-terminazione}) è \textbf{indecidibile} e \textbf{semidecidibile} allo stesso tempo.
+Il problema della terminazione \textit{(Sezione~\ref{sec:problema-della-terminazione})} è \textbf{indecidibile} e \textbf{semidecidibile} allo stesso tempo.
 
 \paragraph{Problema della terminazione e semidecidibilità}
 
-È dimostrato che il problema della terminazione (Sezione~\ref{sec:problema-della-terminazione}) è \textbf{semidecidibile}.
+È dimostrato che il problema della terminazione \textit{(Sezione~\ref{sec:problema-della-terminazione})} è \textbf{semidecidibile}.
 Si consideri infatti l'analoga formulazione \(\exists \, z \, | \, f_x(z) \neq \bot\).
 
 \textit{Schema di dimostrazione}:
@@ -4339,8 +4344,8 @@ Questa formalizzazione del problema è del tutto generale perché applicabile a 
 Dato un insieme \(S\), la sua \textbf{funzione caratteristica} \(c_s : \mathbb{N} \rightarrow \{0, 1\}\) è definita come:
 \[
   c_s = \begin{cases}
-    1 \text{ se } x \in S \\
-    0 \text{ altrimenti }
+    1 \quad & \text{ se } x \in S \\
+    0 \quad & \text{ altrimenti }
   \end{cases}
 \]
 L'appartenenza di un elemento a un insieme e la ricorsività dello stesso è un problema la cui risolvibilità dipende dalla computabilità della sua funzione caratteristica.
@@ -4386,8 +4391,8 @@ Altrimenti, esiste almeno un elemento \(k \in S\).
 
 Sia \(g_s(x)\) la funzione definita come:
 \[ g_s(x) = \begin{cases}
-    x \text{ se } c_s(x) = 1 \\
-    k \text{ altrimenti }
+    x \quad & \text{ se } c_s(x) = 1 \\
+    k \quad & \text{ altrimenti }
   \end{cases}
 \]
 
@@ -4426,8 +4431,8 @@ Poiché \(\mathscr{E} \equiv \mathbb{N}\), \(\forall \, x, x \in \mathscr{L}\) e
 Si definisca \(c_s\) come:
 \[
   c_{s_i} = \begin{cases}
-    1 \text{ se } x = s_i \in \mathscr{L} \text{ e } i = 2\cdot k + 1 \\
-    0 \text{ altrimenti }
+    1 \quad & \text{ se } x = s_i \in \mathscr{L} \text{ e } i = 2\cdot k + 1 \\
+    0 \quad & \text{ altrimenti }
   \end{cases}
 \]
 Chiaramente \(c_s\) è ben definito, poiché \(x\) potrà apparire in \(\mathscr{L}\) solo in posizione o pari o dispari (e non entrambe).
@@ -4440,8 +4445,8 @@ Basta infatti cercare se \(x\) (elemento dato) appare in posizione pari o dispar
 
 Per definizione, la funzione caratteristica di \(\overline{S}\) è definita come:
 \[  g_{\overline{s}}(x) = \begin{cases}
-    1 \text{ se } c_s(x) = 1 \\
-    0 \text{ altrimenti }
+    1 \quad & \text{ se } c_s(x) = 1 \\
+    0 \quad & \text{ altrimenti }
   \end{cases}  \]
 
 Quindi in virtù del punto~\ref{enum:teorema-0.5-0.5-1-b} del teorema appena dimostrato, sia \(S\) che \(\overline{S}\) sono ricorsivamente enumerabili.
@@ -4513,8 +4518,8 @@ Per assurdo, si supponga che \(S\) sia ricorsivo, che \(F \neq \emptyset\) e che
 
 Si consideri ora la funzione caratteristica \(c_s\) di \(S\) definita come:
 \[ c_s(x) = \begin{cases}
-    1 \text{ se } f_x \in F \\
-    0 \text{ altrimenti }
+    1 \quad & \text{ se } f_x \in F \\
+    0 \quad & \text{ altrimenti }
   \end{cases} \]
 Per ipotesi assurda, si supponga che \(c_s\) sia computabile.
 
@@ -4524,8 +4529,8 @@ Sempre per ipotesi, enumerando effettivamente tutte le \TM \(M_i\) si può trova
   \item \label{enum:dimostrazione-rice-2} Il primo \(j \notin S\) per cui \(f_j \notin S\)
   \item \label{enum:dimostrazione-rice-3} La funzione \(\overline{c}_s(x)\), computabile e totale, definita come
         \[ \overline{c}_s = \begin{cases}
-            i \text{ se } f_x \notin F \\
-            j \text{ altrimenti }
+            i \quad & \text{ se } f_x \notin F \\
+            j \quad & \text{ altrimenti }
           \end{cases} \]
   \item \label{enum:dimostrazione-rice-4} Per il teorema di Kleene, un \(\overline{x}\) tale che \(f_{\overline{c}_s(\overline{x})} = f_{\overline{d}}\)
 \end{enumerate}
@@ -4542,7 +4547,7 @@ Tuttavia, per \ref{enum:dimostrazione-rice-3} si ha che \(f_{\overline{x}} = f_j
 Il teorema di \textit{Rice} ha un forte impatto pratico negativo.
 
 Ad esempio, ponendo \(f = \{g\}\), quindi un insieme composto dalla sola funzione \(g\), per il teorema \textbf{non è decidibile} se una generica \TM calcoli \(g\) o meno.
-Tuttavia, per la tesi di \textit{Church} (Sezione~\ref{sec:tesi-di-church}) il risultato non è ristretto alle \TM e al formalismo delle funzioni.
+Tuttavia, per la tesi di \textit{Church} \textit{(Sezione~\ref{sec:tesi-di-church})} il risultato non è ristretto alle \TM e al formalismo delle funzioni.
 Non è quindi possibile stabilire algoritmicamente se un dato algoritmo sia in grado di risolvere un determinato problema o se due programmi siano equivalenti \textit{(cioè se calcolano la stessa funzione)}.
 
 Inoltre, non è possibile stabilire se un algoritmo risolve un problema che goda di una qualsiasi proprietà non banale \textit{(e quindi una proprietà che non sia appartenenza ad una categoria non esistente o coincidente con tutti i problemi risolvibili)}.
@@ -4604,7 +4609,7 @@ L'obiettivo di questa Sezione sarà definire in modo formale la nozione e lo stu
 
 \subsection{Analisi della complessità}
 
-La tecnica che prende il nome di \textbf{analisi della complessità} consiste nel costruire strumenti per valutare la complessità di un calcolo, per poter successivamente analizzare algoritmi e strutture di nati notevoli.
+La tecnica che prende il nome di \textbf{analisi della complessità} consiste nel costruire strumenti per valutare la complessità di un calcolo, per poter successivamente analizzare algoritmi e strutture dati notevoli.
 
 Essi verranno sottoposti ad analisi quantitative su:
 
@@ -4631,8 +4636,10 @@ Allora è possibile definire:
 \begin{itemize}
   \item La \textbf{complessità temporale} come:
         \begin{itemize}
-          \item \(T_M(x) = r\) se \(M\) termina in \(c_r\)
-          \item \(\infty\) se \(M\) non termina
+          \item \[T_M(x) = \begin{cases}
+            r \quad & \text{ se } M \text{ termina  in } c_r \\
+            \infty \quad & \text{ se } M \text{ non termina }
+          \end{cases}          \]
           \item poiché \(M\) è deterministica, la computazione sarà \textbf{unica} sull'ingresso \(x\)
         \end{itemize}
   \item La \textbf{complessità spaziale} come:
@@ -4644,7 +4651,7 @@ Allora è possibile definire:
                 \end{itemize}
           \item la complessità \textbf{spaziale} è sempre minore della complessità \textbf{temporale}
                 \begin{itemize}[label=\(\rightarrow\)]
-                  \item \(\forall \, x \ \dfrac{S_M(x)}{k} \leq T_M(X)\)
+                  \item \(\forall \, x \ \dfrac{S_M(x)}{k} \leq T_M(x)\)
                 \end{itemize}
         \end{itemize}
 \end{itemize}
@@ -4655,10 +4662,12 @@ Quindi si semplifica lo studio di \(T_M(x)\) ed \(S_M(x)\) ponendo \(n = |x|\) \
 Questa semplificazione implica une perdita di generalità perché ingressi diversi, seppur di dimensioni uguali, potrebbero avere complessità diverse.
 \textit{Formalmente}:
 
-\begin{align*}
-  |x_1| = |x_2| \  & \nRightarrow  \ T_M(x_1) = T_M(x_2) \\
-  |x_1| = |x_2| \  & \nRightarrow \ T_S(x_1) = T_S(x_2)
-\end{align*}
+\[
+  \begin{cases}
+    |x_1| = |x_2| \  & \nRightarrow  \ T_M(x_1) = T_M(x_2) \\
+    |x_1| = |x_2| \  & \nRightarrow \ S_M(x_1) = S_NMx_2)
+  \end{cases}
+\]
 
 \bigskip
 Per gestire la variabilità dell'ingresso così introdotta, è necessario distinguere tra:
@@ -4705,10 +4714,10 @@ Questo modello tuttavia presenta delle limitazioni:
         \begin{itemize}
           \item la notazione \(\Omega\)-grande è più precisa rispetto alla notazione \bigO-grande per i valori piccoli di \(n\)
         \end{itemize}
-  \item Algoritmi con complessità asintotica maggiore possono essere più veloce di uno a complessità minore per valori \textbf{piccoli} di \(n\)
+  \item Algoritmi con complessità asintotica maggiore possono essere più veloci di uno a complessità minore per valori \textbf{piccoli} di \(n\)
 \end{itemize}
 
-Per ovviare a questi problemi, si faranno uso di tutte e tre le notazioni in base ai casi presi in analisi.
+Per ovviare a questi problemi, si fa uso di tutte e tre le notazioni in base ai casi presi in analisi.
 
 \subsubsection[Notazione O-grande]{Notazione \bigO-grande}
 
@@ -4815,9 +4824,9 @@ Alternativamente si usa la notazione \(\Theta(f(n)) < \Theta(g(n))\).
         \end{itemize}
 \end{itemize}
 
-\subsubsection{Complessità dei modelli deterministici di calcolo}
+\subsubsection{Complessità dei modelli deterministici di calcolo nel riconoscimento di una stringa}
 
-Si vuole ora studiare la complessità dei modelli \textbf{deterministici} di calcolo studiati fin'ora.
+Si vuole ora studiare la complessità dei modelli \textbf{deterministici} di calcolo studiati fin'ora, applicati all'operazione di riconoscimento di una stringa.
 Il risultato della trattazione è illustrato in Tabella~\ref{tab:complessita-modelli-calcolo}.
 
 \begin{table}[htbp]
@@ -4836,7 +4845,7 @@ Il risultato della trattazione è illustrato in Tabella~\ref{tab:complessita-mod
 
 \subsection{Teorema di accelerazione lineare}
 
-Quattro enunciati analoghi del Teorema di accelerazione lineare sono mostrati nelle seguenti Sezioni, seguiti ai relativi risvolti pratici.
+Quattro enunciati analoghi del Teorema di accelerazione lineare sono mostrati nelle seguenti Sezioni, seguiti dai relativi risvolti pratici.
 
 \subsubsection[Enunciato 1]{Enunciato \(1\)}
 \label{sec:enunciato-accelerazione-1}
@@ -4935,7 +4944,7 @@ La struttura di una macchina \RAM è mostrata nella Figura~\ref{fig:struttura-ma
 
 \bigskip
 
-I programmi all'interno dell'unità di controllo sono codificati tramite una semantica simile al codice \texttt{Assembly}, seppur di molto semplificato.
+I programmi all'interno dell'unità di controllo sono codificati tramite una semantica simile al codice \texttt{Assembly}, seppur di molto semplificata.
 Viene definita una specifica dei comandi (un \textit{Instruction Set}) che permette operazioni matematiche, logiche e di salto.
 
 Un'esempio di tale linguaggio è mostrato nella Tabella~\ref{tab:instruction-set-macchina-RAM}.
@@ -5059,7 +5068,7 @@ In caso contrario è indispensabile il criterio di costo logaritmico, l'unico in
 
 \bigskip
 La conseguenza immediata di questa differenza di complessità implica che con macchine diverse lo stesso algoritmo può dare luogo a complessità diverse.
-Non è possibile identificare un modello \inlinequote{migliore} tra i vari formalismi studiati e non esiste un'analogo alla Tesi di Church (Sezione~\ref{sec:tesi-di-church}), però è possibile stabilire una relazione di maggiorazione a priori tra le complessità dei diversi modelli di calcolo.
+Non è possibile identificare un modello \inlinequote{migliore} tra i vari formalismi studiati e non esiste un'analogo alla Tesi di Church \textit{(Sezione~\ref{sec:tesi-di-church})}, però è possibile stabilire una relazione di maggiorazione a priori tra le complessità dei diversi modelli di calcolo.
 Essa prende il nome di \textit{\nameref{sec:tesi-correlazione-polinomiale}}.
 
 \paragraph{Relazione tra i criteri di costo}
@@ -5074,7 +5083,7 @@ Questa uguaglianza sarà tuttavia valida nei casi in cui \(C_{\text{cost}} = n\)
 \subsection{Tesi di correlazione polinomiale}
 \label{sec:tesi-correlazione-polinomiale}
 
-La Tesi di correlazione polinomiale, in analogia con la Tesi di Church, prova una relazione tra le complessità di diverse modelli di automi.
+La \textbf{Tesi di correlazione polinomiale}, in analogia con la Tesi di Church, prova una relazione tra le complessità di diverse modelli di automi.
 Essa afferma che:
 
 \indentquote{Se un problema è risolvibile mediante il modello \(\mathscr{M}_1\) con complessità spaziale o temporale \(C_1(n)\), allora è risolvibile da un qualsiasi altro modello Turing completo \(\mathscr{M}_2\) con complessità \(C_2(n) \leq \pi \left(C_1(n)\right),\text{ con } \pi \text{ polinomio }\)}
@@ -5331,8 +5340,8 @@ In questi ultimi l'ordine dei vertici negli archi non è rilevante.
         \end{itemize}
   \item Il numero di massimo di archi in un grafo è:
         \begin{itemize}
-          \item per i grafi non \textbf{orientati} \(2 \cdot \dfrac{|E|}{|V|(|V|-1)}\)
-          \item per i grafi \textbf{orientati} \(\dfrac{|E|}{|V|(|V|-1)}\)
+          \item per i grafi non \textbf{orientati} \(2 \cdot |V|(|V|-1)\)
+          \item per i grafi \textbf{orientati} \(|V|(|V|-1)\)
         \end{itemize}
 \end{itemize}
 
@@ -5359,12 +5368,12 @@ Ogni \textbf{nodo} ha un \textbf{padre} \textit{(tranne la radice)} e uno o più
 Più precisamente vengono chiamati:
 
 \begin{itemize}
-  \item \textbf{Nodi interni}: tutti i nodi dei cammini tra la radice e le foglie
-  \item \textbf{Profondità} di un nodo \(N\): la \textbf{distanza} di \(N\) dalla radice
-  \item \textbf{Antenato} di un nodo \(N\):  ogni nodo che \textbf{precede} \(N\) sul cammino dalla radice a \(N\)
-  \item \textbf{Padre} di un nodo \(N\): il nodo che \textbf{precede} immediatamente \(N\) lungo il cammino dalla radice a \(N\)
-  \item \textbf{Figlio} di un nodo \(N\): ogni nodo che \textbf{succede} immediatamente \(N\) lungo il cammino dalla radice a \(N\)
-  \item \textbf{Fratelli} di un nodo \(N\): ogni nodo che ha lo stesso padre di \(N\)
+  \item \textbf{Nodi interni}, tutti i nodi dei cammini tra la radice e le foglie
+  \item \textbf{Profondità} di un nodo \(N\), la \textbf{distanza} di \(N\) dalla radice
+  \item \textbf{Antenato} di un nodo \(N\), ogni nodo che \textbf{precede} \(N\) sul cammino dalla radice a \(N\)
+  \item \textbf{Padre} di un nodo \(N\), il nodo che \textbf{precede} immediatamente \(N\) lungo il cammino dalla radice a \(N\)
+  \item \textbf{Figlio} di un nodo \(N\), ogni nodo che \textbf{succede} immediatamente \(N\) lungo il cammino dalla radice a \(N\)
+  \item \textbf{Fratelli} di un nodo \(N\), ogni nodo che ha lo stesso padre di \(N\)
 \end{itemize}
 
 Infine un albero è detto \textbf{binario} se ogni nodo ha \textbf{al più} \(2\) figli.
@@ -5397,12 +5406,12 @@ Uno \textbf{heap binario} è un albero binario detto \textbf{quasi completo}.
 Infatti tutti i suoi livelli sono completi \textit{(su ogni livello ogni nodo ha due figli)}, tranne l'ultimo che potrebbe essere completo solo fino ad un certo punto da sinistra.
 
 Un \textbf{max-heap} è uno heap tale che, per ogni nodo \(x\) dell'albero, il valore contenuto nel padre di \(x\) è \(\geq\) del contenuto di \(x\).
-Considerando i singoli nodi, \(A\left(\left\lfloor\sfrac{i}{2}\right\rfloor\right) \geq A[i]\).
 Nei \textbf{min-heap}, al contrario, il valore contenuto nel padre di \(x\) è \(\leq\) del contenuto di \(x\).
 
 \bigskip
 È sempre possibile costruire e rappresentare un heap tramite un \textbf{array}.
 L'albero binario che deriva da questa interpretazione è quasi completo.
+Il procedimento di tale costruzione \textit{(applicato ai max-heap)} verrà mostrato nella Sezione~\ref{lst:costruzione-max-heap}.
 
 \bigskip
 Un esempio di \textbf{max-heap} e la sua corrispondenza con un array è mostrata nella Figura~\ref{fig:esempio-di-max-heap}.
@@ -5499,7 +5508,7 @@ La sintassi dello \textbf{pseudocodice} è la seguente:
 
 \bigskip
 Per la valutazione della complessità di algoritmi scritti in pseudocodice si userà il \textbf{criterio di costo costante} \textit{(Sezione~\ref{sec:criterio-costo-logaritmico})}, poiché non verranno manipolati dati più grandi rispetto a quelli in ingresso.
-Come conseguenza diretta, ogni istruzione \texttt{i} di pseudocodice verrà eseguita in un tempo costante \(c_\texttt{i}\)
+Come conseguenza diretta, ogni istruzione \texttt{i} di pseudocodice verrà eseguita in un tempo costante \(c_\texttt{i}\).
 Grazie a questa assunzione sarà possibile trascurare il modello di calcolo della macchina che esegue lo pseudocodice \textit{(normalmente la macchina \RAM)}.
 
 La complessità temporale sarà studiata con più dovizia di quella spaziale perché più rilevante nella realtà.
@@ -5531,6 +5540,9 @@ In generale, un algoritmo \textbf{divide et impera} presenta le seguenti caratte
               D(n) + aT\left(\sfrac{n}{b}\right) + C(n) & \quad \text{ altrimenti }
           \end{cases}\]
 \end{itemize}
+
+Questa notazione prende il nome di \textbf{ricorrenza}.
+Nelle Sezioni seguenti essa verrà studiata in dettaglio.
 
 \subsubsection{Ricorrenze}
 
@@ -5599,7 +5611,7 @@ Questo risultato va sempre verificato con il metodo di sostituzione.
 \subsubsection{Teorema dell'Esperto}
 \label{sec:teorema-dell-esperto}
 
-Il \textbf{Teorema dell'Esperto} fornisce un metodo \inlinequote{da manuale} per risolvere le ricorrenze nella forma:
+Il \textbf{Teorema dell'Esperto} \textit{(detto anche Teorema del Maestro)} fornisce un metodo \inlinequote{da manuale} per risolvere le ricorrenze nella forma:
 \[ T(n) = aT(\sfrac{n}{b}) + f(n)\]
 
 Il teorema richiede di memorizzare tre casi, ma permette di trovare una soluzione alla ricorrenza con relativa semplicità.
@@ -5638,7 +5650,7 @@ Questa condizione è soddisfatta dalla maggior parte delle funzioni polinomialme
 E importante realizzare che i tre casi del teorema \textbf{non coprono tutti i possibili comportamenti} asintotici di \(f(n)\).
 C'è infatti un \inlinequote{vuoto} tra i casi \ref{enum:teorema-esperto-1} e \ref{enum:teorema-esperto-2} quando \(f(n)\) è più piccola di \(n^{\log_b(a)}\) ma non \textbf{polinomialmente} più piccola.
 In modo analogo, la stessa problematica si presenta tra i casi \ref{enum:teorema-esperto-2} e \ref{enum:teorema-esperto-3} quando \(f(n)\) è più grande di \(n^{\log_b(a)}\), ma non \textbf{polinomialmente} più grande.
-Se la funzione \(f(n)\) cade in uno di questi \inlinequote{vuoti}, o se la condizione di regolarità del caso \ref{enum:teorema-esperto-3} non è valida, il teorema del maestro \textbf{non è applicabile}.
+Se la funzione \(f(n)\) cade in uno di questi \inlinequote{vuoti}, o se la condizione di regolarità del caso \ref{enum:teorema-esperto-3} non è valida, il Teorema dell'Esperto \textbf{non è applicabile}.
 
 \paragraph{Confronto polinomiale}
 
@@ -5978,14 +5990,14 @@ Siano:
   \item \(C(n) = \Theta(n)\) perché è necessario scorrere tutti gli elementi dei sotto array per poterli ricombinare
 \end{itemize}
 
-La ricorrenza totale corrisponderà quindi a:
+La ricorrenza corrisponderà quindi a:
 
 \[T(n) = \begin{cases}
     \Theta(1)                                           & \quad \text{ se } n < 2   \\
     \Theta(1) + 2T\left(\dfrac{n}{2}\right) + \Theta(n) & \quad \text{ altrimenti }
   \end{cases}\]
 
-Per essere più precisi, la ricorrenza dovrebbe essere \(T(\lfloor \sfrac{n}{2} \rfloor) + T(\lfloor \sfrac{n}{2} \rfloor)\) e non \(2T(\sfrac{n}{2})\), ma l'approssimazione è sufficiente perché non influisce sul comportamento asintotico della funzione.
+Per essere più precisi, la ricorrenza dovrebbe essere \(T(\lfloor \sfrac{n}{2} \rfloor) + T(\lfloor \sfrac{n}{2} \rfloor)\) e non \(2T(\sfrac{n}{2})\), ma l'approssimazione è corretta perché non influisce sul comportamento asintotico della funzione.
 
 \bigskip
 
@@ -6044,7 +6056,7 @@ HEAPSORT(A)
   for i := A.length downto 2
     swap A[1], A[i]
     A.heap-size := A.heap-size - 1
-    MAX-HEAPIFY(A, 1)
+    MAX-HEAPIFY(A, i)
 \end{lstlisting}
 
 Dove \texttt{A} è l'array di \textbf{input} di dimensione \(n\) \textit{(da ordinare)}
@@ -6185,11 +6197,11 @@ Infine è necessario tenere conto degli elementi ripetuti.
 
 \begin{lstlisting}[style=pseudocode, caption={Pseudocodice algorimo \texttt{COUNTING-SORT}}, label={lst:counting-sort}]
 COUNTING-SORT(A, B, K):
-  for i := 1 to k
+  for i := 1 to K
     C[i] := 0
   for j := 1 to A.length
     C[A[j]] := C[A[j]] + 1
-  for i := 2 to k
+  for i := 2 to K
     C[i] := C[i] + C[i - 1]
   for j := A.length downto 1
     B[C[A[j]]] := A[j]
@@ -6256,7 +6268,7 @@ Dato che gli elementi da ordinare sono \(3\), l'albero presenterà \(3! = 6\) fo
 
 Considerato che è possibile costruire un albero di decisione per ogni dato \(n\), tenendo conto del \nameref{par:lemma-altezza-albero-binario}, \textit{(Paragrafo~\ref{par:lemma-altezza-albero-binario})}, si ottiene il seguente teorema:
 
-\indentquote{Ogni albero di decisione di ordinamento di \(n\) elementi ha altezza \(\Omega(n \log n)\).}
+\indentquote{Ogni albero di decisione di ordinamento di \(n\) elementi ha altezza \(\Omega(n \log n)\)}
 
 \paragraph{Dimostrazione del limite inferiore della complessità}
 
@@ -6633,24 +6645,18 @@ I parametri \texttt{T} e \texttt{k} rappresentano rispettivamente il \textbf{diz
 \begin{minipage}{\textwidth}
   \bigskip
   \centering
-  \begin{minipage}[t]{0.32\textwidth}
-    \begin{lstlisting}[style=pseudocode, basicstyle=\footnotesize\ttfamily, caption={Ricerca}, label={lst:search-dizionario}]
+    \begin{lstlisting}[style=pseudocode, caption={Ricerca}, label={lst:search-dizionario}]
 DIRECT-ADDRESS-SEARCH(T, k)
   return T[k]
 \end{lstlisting}
-  \end{minipage}
-  \begin{minipage}[t]{0.32\textwidth}
-    \begin{lstlisting}[style=pseudocode, basicstyle=\footnotesize\ttfamily, caption={Inserimento}, label={lst:insert-dizionario}]
+    \begin{lstlisting}[style=pseudocode, caption={Inserimento}, label={lst:insert-dizionario}]
 DIRECT-ADDRESS-INSERT(T, k)
   T[x.key] = x
 \end{lstlisting}
-  \end{minipage}
-  \begin{minipage}[t]{0.32\textwidth}
-    \begin{lstlisting}[style=pseudocode, basicstyle=\footnotesize\ttfamily, caption={Cancellazione}, label={lst:delete-dizionario}]
+    \begin{lstlisting}[style=pseudocode, caption={Cancellazione}, label={lst:delete-dizionario}]
 DIRECT-ADDRESS-DELETE(T, k)
   T[x.key] := NIL
 \end{lstlisting}
-  \end{minipage}
   \bigskip
 \end{minipage}
 
@@ -6720,15 +6726,15 @@ La collisioni e le loro risoluzioni sono mostrate rispettivamente nelle Figure~\
 \subsubsection{Operazioni sulle tabelle hash}
 
 \begin{minipage}{\textwidth}
-\begin{lstlisting}[style=pseudocode, basicstyle=\footnotesize\ttfamily, caption={Ricerca}, label={lst:chained-hash-search}]
+\begin{lstlisting}[style=pseudocode, caption={Ricerca}, label={lst:chained-hash-search}]
   CHAINED-HASH-SEARCH(T, k)
     cerca un elemento con chiave k nella lista T[h(k)]
   \end{lstlisting}
-  \begin{lstlisting}[style=pseudocode, basicstyle=\footnotesize\ttfamily, caption={Inserimento}, label={lst:chained-hash-insert}]
+  \begin{lstlisting}[style=pseudocode, caption={Inserimento}, label={lst:chained-hash-insert}]
 CHAINED-HASH-INSERT(T, x)
   inserisci X in testa alla lista T[h(x.key)]
 \end{lstlisting}
-  \begin{lstlisting}[style=pseudocode, basicstyle=\footnotesize\ttfamily, caption={Cancellazione}, label={lst:chained-hash-delete}]
+  \begin{lstlisting}[style=pseudocode, caption={Cancellazione}, label={lst:chained-hash-delete}]
 CHAINED-HASH-DELETE(T, x)
   cancella x dalla lista T[h(x.key)]
 \end{lstlisting}
@@ -6884,7 +6890,7 @@ HASH-INSERT(T, k)
   i := 0
   repeat
     j := h(k, i)
-    if T[j] = NULL
+    if T[j] = NIL
       T[j] := k
       return j
     else
@@ -6902,11 +6908,11 @@ HASH-SEARCH(T, k)
   i := 0
   repeat
     j := h(k, i)
-    if t[j] = k
+    if T[j] = k
       return j
     else:
       i := i + 1
-  until t[j] = NIL or i = m
+  until T[j] = NIL or i = m
   return NIL
 \end{lstlisting}
 
@@ -6918,9 +6924,10 @@ L'algoritmo prende come input una tabella di hash \texttt{T} ed una chiave \text
 \paragraph{Cancellazione}
 
 \begin{lstlisting}[style=pseudocode, caption={Pseudocodice dell'algoritmo \texttt{HASH-DELEETE}}, label={sec:eliminazione-ind-aperto}]
-  HASH-DELETE(T, k)
-    i := HASH-SEARCH(T, k)
-    t[i] = DELETED
+HASH-DELETE(T, k)
+  i := HASH-SEARCH(T, k)
+  if T[i] != NIL
+    T[i] = DELETED
   \end{lstlisting}
 
 La cancellazione rappresenta una operazione più complicata, in quanto impostare a \texttt{NIL} lo slot desiderato non è possibile:
@@ -7033,9 +7040,9 @@ Di conseguenza, questo è considerato il metodo migliore per generare sequenze d
 Come già introdotto nella Sezione~\ref{sec:alberi}, un \textbf{albero binario} è composto da \(3\) elementi:
 
 \begin{itemize}
-  \item un nodo \textbf{radice}
-  \item un albero binario, suo \textbf{sotto albero sinistro}
-  \item un albero binario, suo \textbf{sotto albero destro}
+  \item Un nodo \textbf{radice}
+  \item Un albero binario, suo \textbf{sotto albero sinistro}
+  \item Un albero binario, suo \textbf{sotto albero destro}
 \end{itemize}
 
 Normalmente gli alberi binari sono rappresentati nella memoria del calcolatore usando delle strutture di dati concatenate, come le liste concatenate \textit{(viste nella Sezione~\ref{sec:liste-concatenate})}.
@@ -7203,7 +7210,7 @@ Il suo nome deriva dalla sua caratteristica di funzionamento:
   \item Il sotto albero \textbf{sinistro} viene visitato ed i suoi nodi vengono restituiti
   \item La \textbf{radice} viene restituita
   \item Il sotto albero \textbf{destro} viene visitato ed i suoi nodi vengono restituiti
-\end{enumerate}.
+\end{enumerate}
 
 \bigskip
 Esistono definiti altri algoritmi che funzionano in modo analogo:
@@ -7337,6 +7344,7 @@ ITERATIVE-TREE-SEARCH(x, k)
       x = x.left
     else
       x = x.right
+  return x
 \end{lstlisting}
   \bigskip
 \end{minipage}
@@ -7709,7 +7717,7 @@ L'operazione di rotazione su un \RB produce sempre un \RB \textit{(l'operazione 
 Inoltre, applicando due volte la rotazione \textit{(prima sinistra e poi destra)} su un nodo si ottiene lo stesso albero di partenza.
 
 \bigskip
-Una rappresentazione grafica dell'operazione è mostrata nell'immagine~\ref{fig:rotazione-sinistra-destra-rb}.
+Una rappresentazione grafica dell'operazione è mostrata nella Figura~\ref{fig:rotazione-sinistra-destra-rb}.
 
 \begin{figure}[htbp]
   \bigskip
@@ -8174,7 +8182,7 @@ La complessità totale sarà quindi \(\bigO(|V|+|E|)\) \textit{(analoga alla com
 
 \paragraph{Ordinamento topologico}
 
-Un ordinamento topologico di un \textit{DAG} (un \textit{directed acyclic graph}, come descritto nella Sezione~\ref{sec:introduzione-grafi}) è un ordinamento lineare dei nodi di tutti i vertici di un grafo \(G\) tale per cui se \(G\) contiene un lato \((u, v)\), allora \(u\) appare prima di \(g\) nell'ordinamento.
+Un ordinamento topologico di un \textit{DAG} \textit{(un \textit{directed acyclic graph}, come descritto nella Sezione~\ref{sec:introduzione-grafi})} è un ordinamento lineare dei nodi di tutti i vertici di un grafo \(G\) tale per cui se \(G\) contiene un lato \((u, v)\), allora \(u\) appare prima di \(g\) nell'ordinamento.
 I nodi saranno quindi disposti in una linea orizzontale.
 
 È importante notare che gli ordinamenti topologici non sono univoci e che un dato \textit{DAG} può ammettere più ordinamenti diversi tra di loro.
@@ -8387,7 +8395,7 @@ Tuttavia, la soluzione di un problema attraverso algoritmi non deterministici av
 Se fosse possibile costruire una tecnica \inlinequote{poco costosa} per passare da una formulazione non deterministica ad una deterministica sarebbe possibile risolvere problemi \inlinequote{interessanti} in modo efficiente.
 
 Questo metodo, ovviamente, non esiste.
-Come mostrato nel passaggio da \FSA a \NFA (avvenuto nella Sezione~\ref{sec:conversione-nfa-dfa}), infatti, il meccanismo si complica in modo esponenziale.
+Come mostrato nel passaggio da \FSA a \NFA \textit{(avvenuto nella Sezione~\ref{sec:conversione-nfa-dfa})}, infatti, il meccanismo si complica in modo esponenziale.
 Lo stesso concetto può essere mostrato per qualsiasi altro meccanismo di calcolo.
 
 \clearpage
@@ -8603,7 +8611,7 @@ Si ricordi che un insieme di funzioni è banale se è \textbf{vuoto} o se è l'i
 
 \subsubsection{Complessità dei cicli}
 
-Si supponga che un ciclo viene eseguito \(n\) volte.
+Si supponga che un ciclo venga eseguito \(n\) volte.
 Se, ad ogni ciclo, il contatore:
 
 \begin{itemize}
